@@ -1,0 +1,198 @@
+{
+    //============== Native ======================================================//
+    "debug.onTaskErrors": "debugAnyway",
+    "editor.bracketPairColorization.enabled": false,
+    "editor.formatOnSave": true,
+    "editor.renderWhitespace": "trailing",
+    "editor.rulers": [
+        120
+    ],
+    "editor.suggestSelection": "first",
+    "editor.tabSize": 4,
+    "explorer.compactFolders": false,
+    "explorer.confirmDelete": false,
+    "explorer.confirmDragAndDrop": false,
+    "explorer.copyRelativePathSeparator": "/",
+    "files.autoSave": "off", // This will build the project when you switch to another window (annoying).
+    "files.associations": {
+        "*.py": "python",
+        "*.pylintrc": "ini",
+        "*.ahk": "ahk2",
+        "*.pyx": "cython",
+        ".clang*": "yaml",
+        "*.gpj": "jsonc",
+        "*.gvw": "jsonc",
+        "xstring": "cpp",
+        "memory": "cpp",
+        "chrono": "cpp",
+        "iomanip": "cpp"
+    },
+    "files.exclude": {
+        "node_modules/**/*": true,
+        "**/.classpath": true,
+        "**/.project": true,
+        "**/.settings": true,
+        "**/.factorypath": true
+    },
+    "files.insertFinalNewline": true,
+    "files.trimFinalNewlines": true,
+    "files.trimTrailingWhitespace": true,
+    "git.autofetch": true,
+    "git.confirmSync": false,
+    "git.enableSmartCommit": true,
+    "markdown.validate.enabled": true,
+    "terminal.integrated.defaultProfile.windows": "Command Prompt",
+    "terminal.integrated.enableMultiLinePasteWarning": false,
+    "workbench.editor.untitled.hint": "hidden",
+    "workbench.editorAssociations": {
+        "*.md": "vscode.markdown.preview.editor",
+        "*.svg": "svgPreviewer.customEditor"
+    },
+    "workbench.startupEditor": "none",
+    "[cmake]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "cheshirekow.cmake-format",
+        "editor.quickSuggestions": {
+            "strings": true
+        }
+    },
+    "[c]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[cpp]": {
+        "editor.formatOnSave": true,
+        "editor.defaultFormatter": "ms-vscode.cpptools"
+    },
+    "[json]": {
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "vscode.json-language-features"
+    },
+    "[jsonc]": {
+        "editor.formatOnSave": false
+    },
+    "[markdown]": {
+        "files.trimTrailingWhitespace": false,
+        "editor.formatOnSave": false,
+        "editor.defaultFormatter": "yzhang.markdown-all-in-one",
+        "editor.wordWrap": "wordWrapColumn"
+    },
+    "[plaintext]": {
+        "editor.wordWrap": "wordWrapColumn",
+        "editor.wordWrapColumn": 120
+    },
+    "[yaml]": {
+        "diffEditor.ignoreTrimWhitespace": false,
+        "editor.autoIndent": "keep",
+        "editor.defaultFormatter": "redhat.vscode-yaml",
+        "editor.formatOnSave": false,
+        "editor.insertSpaces": true,
+        "editor.quickSuggestions": {
+            "other": true,
+            "comments": false,
+            "strings": true
+        },
+        "editor.tabSize": 2,
+    },
+    //==============  C/C++  ======================================================//
+    "C_Cpp.codeAnalysis.runAutomatically": true,
+    "C_Cpp.clang_format_sortIncludes": true,
+    "C_Cpp.codeAnalysis.clangTidy.enabled": true,
+    "C_Cpp.configurationWarnings": "disabled",
+    "C_Cpp.default.browse.limitSymbolsToIncludedHeaders": false,
+    "C_Cpp.default.cStandard": "c23",
+    "C_Cpp.default.configurationProvider": "ms-vscode.cmake-tools",
+    "C_Cpp.default.cppStandard": "c++23",
+    "C_Cpp.formatting": "clangFormat",
+    //=========== C/C++ Runner ===================================================//
+    "C_Cpp_Runner.cStandard": "c11",
+    "C_Cpp_Runner.cppStandard": "c++20",
+    "C_Cpp_Runner.enableWarnings": true,
+    "C_Cpp_Runner.warningsAsError": false,
+    //============= CodeSnap =====================================================//
+    "codesnap.showWindowControls": false,
+    "codesnap.shutterAction": "copy",
+    //==============  CMake  ======================================================//
+    "cmake.additionalKits": [
+        "C:/Program Files/CMake/bin/cmake.exe"
+    ],
+    "cmake.buildTask": false, // Build using tasks.json instead of internal process.
+    "cmake.clearOutputBeforeBuild": true,
+    "cmake.cmakePath": "C:/Program Files/CMake/bin/cmake.exe",
+    "cmake.configureOnEdit": true,
+    "cmake.configureOnOpen": true,
+    "cmake.configureSettings": {
+        //"CMAKE_TOOLCHAIN_FILE": "${workspaceFolder}/external/vcpkg/scripts/buildsystems/vcpkg.cmake"
+    },
+    "cmake.ctestArgs": [], // Arguments to pass to CTest.
+    "cmake.debugConfig": {
+        "args": [
+            // "--verbose",
+            // "true",
+            // "--filename",
+            // "${workspaceFolder}/app/test.json"
+        ],
+        "externalConsole": true
+    },
+    "cmake.generator": "Visual Studio 17 2022",
+    "cmake.ignoreCMakeListsMissing": false,
+    "cmake.launchBehavior": "newTerminal",
+    "cmake.showSystemKits": false,
+    //=========== CMake Format ===================================================//
+    "cmakeFormat.args": [
+        "--config-files=C:/Users/Onimuru/OneDrive/__Code/C++/__Template/.cmake-format.yaml",
+        "--literal-comment-pattern=.*"
+    ],
+    //====== CMake Language Support ==============================================//
+    "cmake.languageSupport.enableFileAPI": true,
+    //=  Doxygen Documentation Generator  =========================================//
+    "doxdocgen.cpp.tparamTemplate": "@tparam {param} ",
+    "doxdocgen.file.fileTemplate": "@file {name}",
+    "doxdocgen.generic.boolReturnsTrueFalse": false,
+    "doxdocgen.generic.briefTemplate": "@brief {text}",
+    "doxdocgen.generic.includeTypeAtReturn": false,
+    "doxdocgen.generic.paramTemplate": "@param {param} ",
+    "doxdocgen.generic.returnTemplate": "@return",
+    //============ Error Lens ====================================================//
+    "errorLens.delay": 1000,
+    "errorLens.enabled": true,
+    "errorLens.enabledDiagnosticLevels": [
+        "error",
+        "warning"
+    ],
+    //===========  IntelliCode  ===================================================//
+    "vsintellicode.modify.editor.suggestSelection": "automaticallyOverrodeDefaultValue",
+    //========= Output Colorizer =================================================//
+    "editor.tokenColorCustomizations": {
+        "textMateRules": [
+            {
+                "scope": "invalid.deprecated",
+                "settings": {
+                    "foreground": "#d1d425",
+                }
+            }
+        ]
+    },
+    //==========  SVG Previewer  ==================================================//
+    "svg.preview.autoOpen": true,
+    //=======  Workspace Formatter  ===============================================//
+    "Workspace_Formatter.closeAfterSave": true,
+    "Workspace_Formatter.excludePattern": [
+        "**/build",
+        "**/extern*",
+        "**/.*",
+        "**/.vscode",
+        "**/html"
+    ],
+    "Workspace_Formatter.includePattern": [
+        "*.cmake",
+        "*.h(pp)?",
+        "*.cc",
+        "*.c(pp)?"
+    ],
+    //===============  WSL  =======================================================//
+    "remote.WSL.fileWatcher.polling": true,
+    //=============== YAML =======================================================//
+    "yaml.format.enable": true,
+    "yaml.format.printWidth": 120
+}
