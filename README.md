@@ -1,10 +1,10 @@
 # C++ Project Template
 
 ![C++](https://img.shields.io/badge/C%2B%2B-11%2F14%2F17%2F20%2F23-blue)
-[![License](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)](./LICENSE)
 [![Documentation](https://svgshare.com/i/vaA.svg)](https://onimuru.github.io/__Template/)
-![Linux Build](https://github.com/Onimuru/__Template/workflows/Ubuntu%20CI/badge.svg)
-[![Codecov](https://codecov.io/gh/Onimuru/__Template/branch/master/graph/badge.svg?token=Z2CFXJ9IGL)](https://codecov.io/gh/Onimuru/__Template)
+[![Continuous Integration](https://github.com/Onimuru/__Template/actions/workflows/continuous-integration.yml/badge.svg)](https://github.com/Onimuru/__Template/actions/workflows/continuous-integration.yml)
+[![Codecov](https://codecov.io/gh/Onimuru/__Template/branch/main/graph/badge.svg?token=Z2CFXJ9IGL)](https://codecov.io/gh/Onimuru/__Template)
+[![License](https://camo.githubusercontent.com/890acbdcb87868b382af9a4b1fac507b9659d9bf/68747470733a2f2f696d672e736869656c64732e696f2f62616467652f6c6963656e73652d4d49542d626c75652e737667)](./LICENSE)
 
 
 This is a template for C++ projects. What you get:
@@ -57,7 +57,7 @@ Headers go in [include/](include/), source code in [src/](src/), and unit tests 
 - MSVC 2017 (or higher), G++9 (or higher), Clang++9 (or higher)
 - (Optional) [Doxygen](https://www.doxygen.nl/download.html) and [Graphviz](https://graphviz.org/download/)
 - (Optional) [Cppcheck](https://cppcheck.sourceforge.io/)
-- (Optional) Code Coverage (only on GNU|Clang): [lcov](https://pypi.org/project/lcov/) and [gcovr](https://gcovr.com/en/stable/installation.html)
+- (Optional, **GNU or Clang only**) Code Coverage: [lcov](https://pypi.org/project/lcov/) and [gcovr](https://gcovr.com/en/stable/installation.html)
 
 ## Additional setup
 
@@ -71,6 +71,7 @@ Headers go in [include/](include/), source code in [src/](src/), and unit tests 
 - (Optional) Automate unit tests with [git hooks](https://www.redhat.com/sysadmin/git-hooks)
 - (Optional) Install the various [hooks](https://pre-commit.com/hooks.html) listed in [.pre-commit-config.yaml](.pre-commit-config.yaml) for use with pre-commit or delete the file if you don't intend to use it. Pre-commit can be automated with git hooks like ctest above
 - (Optional) Setup [Ccache](https://ccache.dev/) to speed up subsequent compilations. It is already built into the project but only runs if the program can be found
+- (Optional, **Windows only**) If you have multiple projects, consider using [symlinks](https://blogs.windows.com/windowsdeveloper/2016/12/02/symlinks-windows-10/) to use the same formatting settings ([.clang-format](.clang-format), [.clang-tidy](.clang-tidy), etc..) for all your projects with a single file. There is a [batch](Tools/Symlink.bat) file that will perform this process automatically but you will need to change the source directory. [The first two lines](https://stackoverflow.com/a/52517718) are to run with admin privileges
 
 ## Building
 

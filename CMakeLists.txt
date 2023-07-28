@@ -8,16 +8,18 @@ include(cmake/SafeGuards.cmake)
 
 # Note: update this with your new project's details.
 
-project("__Template"
+project("__Name"
         VERSION "0.1.0" # Note: Listing the version is nice here since it sets lots of useful variables.
-        DESCRIPTION "C++ Template project"
-        HOMEPAGE_URL "https://github.com/Onimuru/__Template"
+        DESCRIPTION "__Description"
+        HOMEPAGE_URL "__Url"
         LANGUAGES CXX C # Note: To support external libraries, it's good practice to list both CXX and C.
 )
 
 #==========  CMake Variables  ==================================================#
 
 message(STATUS "\n-- Configuring CMake for ${PROJECT_NAME} v${PROJECT_VERSION}...\n--")
+
+string(COMPARE EQUAL "${CMAKE_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}" PROJECT_IS_TOP_LEVEL) # Note: This variable is set by `project()` in CMake 3.21+.
 
 # Only do these if this is the main project, and not if it is included through add_subdirectory:
 if(PROJECT_IS_TOP_LEVEL)
@@ -40,59 +42,72 @@ set(CMAKE_SUPPRESS_REGENERATION true)
 
 set(CMAKE_COLOR_DIAGNOSTICS ON)
 
+set(GIT_SHA
+    "Unknown"
+    CACHE STRING "SHA this build was generated from"
+)
+string(SUBSTRING "${GIT_SHA}" 0 8 GIT_SHORT_SHA)
+
 #====  Define CMake Module Imports  ============================================#
 
 include(cmake/Options.cmake)
 
 include(cmake/UpdateSubmodules.cmake)
 
-include(cmake/CCache.cmake)
+include(cmake/Cache.cmake)
+enable_cache()
 
-if(ENABLE_DOXYGEN)
-    include(cmake/Doxygen.cmake)
-endif()
+if(ENABLE_CPPCHECK
+   OR ENABLE_CLANG_TIDY
+   OR ENABLE_INCLUDE_WHAT_YOU_USE
+)
+    include(cmake/StaticAnalyzers.cmake)
 
-if(ENABLE_CODE_ANALYSIS)
-    include(cmake/CodeAnalysis.cmake)
+    if(ENABLE_CPPCHECK)
+        enable_cppcheck()
+    endif()
+
+    if(ENABLE_CLANG_TIDY)
+        enable_clang_tidy()
+    endif()
+
+    if(ENABLE_INCLUDE_WHAT_YOU_USE)
+        enable_include_what_you_use()
+    endif()
 endif()
 
 if(ENABLE_SANITIZE_ADDR OR ENABLE_SANITIZE_UNDEF)
     include(cmake/Sanitize.cmake)
-
     add_sanitizer_flags()
 endif()
 
 if(ENABLE_IPO)
     include(cmake/InterproceduralOptimization.cmake)
+    enable_ipo()
 endif()
 
 include(cmake/Warnings.cmake)
 
-if(USE_CONAN)
-    message(STATUS "Using Conan")
-
-    include(${CMAKE_BINARY_DIR}/conan_toolchain.cmake)
-elseif(USE_VCPKG)
-    message(STATUS "Using VCPKG")
-
-    set(VCPKG_BUILD_DOCS OFF)
-    set(VCPKG_BUILD_TESTS OFF)
-    set(VCPKG_BUILD_EXAMPLES OFF)
-
-    if(VERBOSE_OUTPUT)
-        set(VCPKG_VERBOSE ON)
-    endif()
-
-    option(VCPKG_APPLOCAL_DEPS "Automatically copy dependencies into the output directory for executables." ON)
-
-    include(${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
+if(ENABLE_DOXYGEN)
+    include(cmake/Doxygen.cmake)
+    enable_doxygen()
 endif()
 
-#============== OS Fixes ======================================================#
+set(VCPKG_BUILD_DOCS OFF)
+set(VCPKG_BUILD_TESTS OFF)
+set(VCPKG_BUILD_EXAMPLES OFF)
 
-# For Windows, it is necessary to link with the MultiThreaded library. Depending on how the rest of the project's
-# dependencies are linked, it might be necessary to change the line to statically link with the library:
-set(CMAKE_MSVC_RUNTIME_LIBRARY "MultiThreaded$<$<CONFIG:Debug>:Debug>DLL")
+if(VERBOSE_OUTPUT)
+    set(VCPKG_VERBOSE ON)
+else()
+    list(APPEND VCPKG_INSTALL_OPTIONS "--no-print-usage") #: https://learn.microsoft.com/en-us/vcpkg/commands/install
+endif()
+
+option(VCPKG_APPLOCAL_DEPS "Automatically copy dependencies into the output directory for executables." ON)
+
+include(${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
+
+#============== OS Fixes ======================================================#
 
 # This will allow the use of the same _DEBUG macro available in both Linux and Windows environment. Easy to put Debug specific code:
 if(UNIX)
@@ -133,8 +148,6 @@ foreach(SOURCE_FILE ${SOURCE_FILES})
         list(APPEND SOURCE_LIST ${SOURCE_FILE})
     endif()
 endforeach()
-
-message(STATUS "Added all header and implementation files")
 
 #===========  Create Target  ===================================================#
 
@@ -183,7 +196,7 @@ else()
     endif()
 endif()
 
-#=====  Set Standard And Warnings  =============================================#
+#=====  Set Standard and Warnings  =============================================#
 
 set_target_properties(
     ${PROJECT_NAME}
@@ -195,7 +208,7 @@ set_target_properties(
                ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
 )
 
-message(STATUS "Using standard C++${CMAKE_CXX_STANDARD}")
+message(STATUS "* using standard C++${CMAKE_CXX_STANDARD}")
 
 if(ENABLE_WARNINGS)
     target_set_warnings(${PROJECT_NAME})
@@ -213,7 +226,7 @@ else()
     target_include_directories(
         ${PROJECT_NAME}
         PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
-        PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src" "${CMAKE_BINARY_DIR}/"
+        PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include" "${CMAKE_CURRENT_SOURCE_DIR}/src"
     )
 endif()
 
@@ -245,25 +258,26 @@ if(PROJECT_IS_TOP_LEVEL)
         if(ENABLE_CODE_COVERAGE)
             include(cmake/CodeCoverage.cmake)
 
+            append_coverage_compiler_flags()
+
             setup_target_for_coverage_lcov(
                 NAME
                 coverage
                 EXECUTABLE
                 ctest
                 EXCLUDE
-                "${CMAKE_CURRENT_SOURCE_DIR}/src/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/test/*"
+                "${CMAKE_CURRENT_SOURCE_DIR}/cmake/*"
+                "${CMAKE_CURRENT_SOURCE_DIR}/docs/*"
                 "${CMAKE_CURRENT_SOURCE_DIR}/external/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/vendor/*"
-                "/*/.conan/*"
-                "/usr/*"
-                "/opt/*"
+                "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
+                "${CMAKE_CURRENT_SOURCE_DIR}/test/*"
+                "${CMAKE_CURRENT_SOURCE_DIR}/build/*"
             )
         endif()
 
         add_library(TESTING_LIBRARY INTERFACE)
 
-        target_precompile_headers(TESTING_LIBRARY REUSE_FROM ${PROJECT_NAME})
+        target_precompile_headers(TESTING_LIBRARY INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
 
         set_target_properties(
             ${TESTING_LIBRARY}
