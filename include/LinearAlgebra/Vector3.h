@@ -2,7 +2,6 @@
 
 #include <array>          /* array */
 #include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
-#include <corecrt_math.h> /* sqrt */
 #include <compare>        /* operator<, operator<=, operator>, operator>= */
 #include <cstddef>        /* size_t */
 

@@ -1,9 +1,7 @@
 #pragma once
 
 #include <array>          /* array */
-#include <cmath>          /* cos, sin */
 #include <compare>        /* operator<, operator<=, operator>, operator>= */
-#include <corecrt_math.h> /* sqrt */
 #include <cstddef>        /* size_t */
 #include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
 
