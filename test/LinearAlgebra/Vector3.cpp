@@ -1,6 +1,9 @@
+#include <cmath>  /* sqrt */
+#include <gtest/gtest.h>
+
 #include "LinearAlgebra/Vector3.h"
 
-#include <gtest/gtest.h>
+#include "LinearAlgebra/Matrix3.h"
 
 // Static Functions
 
@@ -30,16 +33,16 @@ TEST(Vector3, StaticFunctionLerp) {
     const Vec3 b(10, 10, 10);
 
     for (int i = 0; i <= 10; i++) {
-        EXPECT_EQ(Vec3::Lerp(a, b, i / 10.0F), Vec3(i, i, i));
+        EXPECT_EQ(Vec3::Lerp(a, b, i / 10.0f), Vec3(i, i, i));
     }
 }
 
 TEST(Vector3, StaticFunctionTransform) {
-    Vec3 a = Vec3::Transform(Vec3(2, 1, -3), Mat3(1.29F, 1, 0, 0, 0.73F, 0, 0, 0, 2.34F));  //* Matrix3 transform.
+    Vec3 a = Vec3::Transform(Vec3(2, 1, -3), Mat3(1.29f, 1, 0, 0, 0.73f, 0, 0, 0, 2.34f));  //* Matrix3 transform.
 
-    EXPECT_NEAR(a[0], 2.58F, 1e-6);
-    EXPECT_NEAR(a[1], 2.73F, 1e-6);
-    EXPECT_NEAR(a[2], -7.02F, 1e-6);
+    EXPECT_NEAR(a[0], 2.58f, 1e-6);
+    EXPECT_NEAR(a[1], 2.73f, 1e-6);
+    EXPECT_NEAR(a[2], -7.02f, 1e-6);
 }
 
 // Constructors
@@ -83,12 +86,12 @@ TEST(Vector3, AccessorOperatorAccessScalar) {
     EXPECT_EQ(a[2], 2);
 }
 
-TEST(Vector3, AccessorOperatorConstAccessScalar) {  //~ Not calling the function.
+TEST(Vector3, AccessorOperatorConstAccessScalar) {
     Vec3 a(1, 8, 2);
 
-    const float x = a[(const int)0];
-    const float y = a[(const int)1];
-    const float z = a[(const int)2];
+    const float x = a[0];
+    const float y = a[1];
+    const float z = a[2];
 
     EXPECT_EQ(a[0], x);
     EXPECT_EQ(a[1], y);
@@ -96,7 +99,7 @@ TEST(Vector3, AccessorOperatorConstAccessScalar) {  //~ Not calling the function
 }
 
 TEST(Vector3, AccessorOperatorCast) {
-    Vector3<int> a(Vector3<float>(1.9F, 2.3F, 5.3F));
+    Vector3<int> a(Vector3<float>(1.9f, 2.3f, 5.3f));
 
     EXPECT_EQ(a[0], (int)1);
     EXPECT_EQ(a[1], (int)2);
@@ -138,31 +141,31 @@ TEST(Vector3, ComparisonOperatorGreaterThanOrEqual) {
 // Assignment Operators
 
 TEST(Vector3, AssignmentOperatorDivideEquals) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) /= 8.0F, Vec3(2.0F / 8.0F, 4.0F / 8.0F, 1.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) /= 8.0f, Vec3(2.0f / 8.0f, 4.0f / 8.0f, 1.0f));
 }
 
 TEST(Vector3, AssignmentOperatorTimesEquals) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) *= 8.0F, Vec3(16.0F, 32.0F, 64.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) *= 8.0f, Vec3(16.0f, 32.0f, 64.0f));
 
     //* Matrix3 transform.
 }
 
 TEST(Vector3, AssignmentOperatorPlusEquals) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) += Vec3(1.0F, -1.0F, 0.0F), Vec3(3.0F, 3.0F, 8.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) += Vec3(1.0f, -1.0f, 0.0f), Vec3(3.0f, 3.0f, 8.0f));
 }
 
 TEST(Vector3, AssignmentOperatorMinusEquals) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) -= Vec3(1.0F, -1.0F, 0.0F), Vec3(1.0F, 5.0F, 8.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) -= Vec3(1.0f, -1.0f, 0.0f), Vec3(1.0f, 5.0f, 8.0f));
 }
 
 // Arithmetic Operators
 
 TEST(Vector3, ArithmeticOperatorDivide) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) / 8.0F, Vec3(2.0F / 8.0F, 4.0F / 8.0F, 1.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) / 8.0f, Vec3(2.0f / 8.0f, 4.0f / 8.0f, 1.0f));
 }
 
 TEST(Vector3, ArithmeticOperatorTimes) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) * 8.0F, Vec3(16.0F, 32.0F, 64.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) * 8.0f, Vec3(16.0f, 32.0f, 64.0f));
 
     EXPECT_EQ(Vec3(0, 5, 2) * Vec3(3, 0, 5), 10);  //* Dot product.
     EXPECT_EQ(Vec3(-5, -5, 5) * Vec3(0, 7, -2), -45);
@@ -171,16 +174,16 @@ TEST(Vector3, ArithmeticOperatorTimes) {
 }
 
 TEST(Vector3, ArithmeticOperatorPlus) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) + Vec3(1.0F, -1.0F, 0.0F), Vec3(3.0F, 3.0F, 8.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) + Vec3(1.0f, -1.0f, 0.0f), Vec3(3.0f, 3.0f, 8.0f));
 }
 
 TEST(Vector3, ArithmeticOperatorMinus) {
-    EXPECT_EQ(Vec3(2.0F, 4.0F, 8.0F) - Vec3(1.0F, -1.0F, 0.0F), Vec3(1.0F, 5.0F, 8.0F));
+    EXPECT_EQ(Vec3(2.0f, 4.0f, 8.0f) - Vec3(1.0f, -1.0f, 0.0f), Vec3(1.0f, 5.0f, 8.0f));
 }
 
 TEST(Vector3, ArithmeticOperatorNegate) {
-    EXPECT_EQ(-Vec3(2.0F, 4.0F, -8.0F), Vec3(-2.0F, -4.0F, 8.0F));
-    EXPECT_NE(-Vec3(2.0F, 4.0F, -8.0F), -Vec3(-2.0F, -4.0F, 8.0F));
+    EXPECT_EQ(-Vec3(2.0f, 4.0f, -8.0f), Vec3(-2.0f, -4.0f, 8.0f));
+    EXPECT_NE(-Vec3(2.0f, 4.0f, -8.0f), -Vec3(-2.0f, -4.0f, 8.0f));
 }
 
 // Instance Methods
@@ -199,18 +202,18 @@ TEST(Vector3, InstanceMethodGetNormalized) {
     Vec3 a(5, 5, 5);
     a = a.GetNormalized();
 
-    EXPECT_NEAR(a[0], 0.577350F, 1e-6);
-    EXPECT_NEAR(a[1], 0.577350F, 1e-6);
-    EXPECT_NEAR(a[2], 0.577350F, 1e-6);
+    EXPECT_NEAR(a[0], 0.577350f, 1e-6);
+    EXPECT_NEAR(a[1], 0.577350f, 1e-6);
+    EXPECT_NEAR(a[2], 0.577350f, 1e-6);
 }
 
 TEST(Vector3, InstanceMethodNormalize) {
     Vec3 a(3, 1, 2);
     a.Normalize();
 
-    EXPECT_NEAR(a[0], 0.801784F, 1e-6);
-    EXPECT_NEAR(a[1], 0.267261F, 1e-6);
-    EXPECT_NEAR(a[2], 0.534522F, 1e-6);
+    EXPECT_NEAR(a[0], 0.801784f, 1e-6);
+    EXPECT_NEAR(a[1], 0.267261f, 1e-6);
+    EXPECT_NEAR(a[2], 0.534522f, 1e-6);
 
     // EXPECT_FLOAT_EQ()
 }
@@ -220,7 +223,7 @@ TEST(Vector3, InstanceMethodNegate) {
 }
 
 TEST(Vector3, InstanceMethodLerp) {
-    EXPECT_EQ(Vec3(1, 2, 0).Lerp(Vec3(2, 1, 1), 0.25F), Vec3(1.25F, 1.75F, 0.25F));
+    EXPECT_EQ(Vec3(1, 2, 0).Lerp(Vec3(2, 1, 1), 0.25f), Vec3(1.25f, 1.75f, 0.25f));
 }
 
 TEST(Vector3, InstanceMethodPrint) {

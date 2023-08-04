@@ -1,10 +1,14 @@
 #pragma once
 
-#include "Math.h"
-#include "Matrix3.h"
+#include <array>          /* array */
+#include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
+#include <corecrt_math.h> /* sqrt */
+#include <compare>        /* operator<, operator<=, operator>, operator>= */
+#include <cstddef>        /* size_t */
 
-#include <array>    /* array */
-#include <iostream> /* stream, cout */
+#include "Math.h" /* square */
+
+#include "Matrix3.h"
 
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
@@ -123,9 +127,9 @@ public:
         return elements[index];
     }
 
-    template<typename T>
-    explicit operator Vector3<T>() const {
-        return {(T)elements[0], (T)elements[1], (T)elements[2]};
+    template<typename U>
+    explicit operator Vector3<U>() const {
+        return {static_cast<U>(elements[0]), static_cast<U>(elements[1]), static_cast<U>(elements[2])};
     }
 
     friend std::ostream& operator<<(std::ostream& stream, const Vector3<T>& vector) {

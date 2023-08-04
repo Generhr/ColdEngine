@@ -1,78 +1,159 @@
-// #define FMT_HEADER_ONLY // may need this line
+#include "Scene.h"
+#include "MainWindow.h"
 
-#include <filesystem>
-#include <fstream>
+#include <chrono>
 #include <iostream>
+#include <thread>
 
-#include <fmt/format.h>
-#include <spdlog/spdlog.h>
-#include <cxxopts.hpp>
-#include <nlohmann/json.hpp>
+using namespace std::chrono_literals;
 
-#include "config.h"
+struct game_state {
+    // this contains the state of your game, such as positions and velocities
+};
 
-using json = nlohmann::json;
-namespace fs = std::filesystem;
+void update(game_state*) {
+    // update game logic here
+}
 
-int main(int argc, char** argv) {
-    std::cout << "JSON: " << NLOHMANN_JSON_VERSION_MAJOR << "." << NLOHMANN_JSON_VERSION_MINOR << "."
-              << NLOHMANN_JSON_VERSION_PATCH << '\n';
-    std::cout << "FMT: " << FMT_VERSION << '\n';
-    std::cout << "CXXOPTS: " << CXXOPTS__VERSION_MAJOR << "." << CXXOPTS__VERSION_MINOR << "." << CXXOPTS__VERSION_PATCH
-              << '\n';
-    std::cout << "SPDLOG: " << SPDLOG_VER_MAJOR << "." << SPDLOG_VER_MINOR << "." << SPDLOG_VER_PATCH << '\n';
-    std::cout << "\n\nUsage Example:\n";
+void render(game_state const&) {
+    // render stuff here
+}
 
-    // Compiler Warning and clang tidy error
-    // std::int32_t i = 0;
+game_state interpolate(game_state const& current, game_state const& previous, float alpha) {
+    game_state interpolated_state;
 
-    // Address Sanitizer should see this
-    // int *x = new int[42];
-    // x[100] = 5; // Boom!
+    // interpolate between previous and current by alpha here
 
-    const auto welcome_message = fmt::format("Welcome to {} v{}\n", project_name, project_version);
-    spdlog::info(welcome_message);
+    return interpolated_state;
+}
 
-    cxxopts::Options options(project_name.data(), welcome_message);
+int main(int argc, char* argv[]) {
+    HINSTANCE hInst = GetModuleHandle(nullptr);
+    LPWSTR pArgs = GetCommandLineW();
 
-    options.add_options("arguments")("h,help", "Print usage")("f,filename",
-        "File name",
-        cxxopts::value<std::string>())("v,verbose", "Verbose output", cxxopts::value<bool>()->default_value("false"));
+    try {
+        MainWindow wnd(hInst, pArgs);
 
-    auto result = options.parse(argc, argv);
+        wnd.ShowMessageBox(L"Beep boop", L"Thumbs up!");
 
-    if (argc == 1 || result.count("help")) {
-        std::cout << options.help() << '\n';
-        return 0;
+        try {
+            using clock = std::chrono::high_resolution_clock;
+
+            auto previousTime = clock::now();
+            auto delta = std::chrono::duration<float> {0ms};
+
+            constexpr auto timestep =
+                std::chrono::duration<float, std::ratio<1, 60>> {1};  // Fixed timestep of 1/60th of a second.
+
+            game_state current_state;
+            game_state previous_state;
+            Scene theGame(wnd);
+
+            auto lastFpsUpdate = previousTime;
+            constexpr auto oneSecond = std::chrono::duration<float> {1000ms};
+            float framesThisSecond = 0;
+            float fps = 60.0F;
+
+            while (wnd.ProcessMessage()) {
+                auto const currentTime = clock::now();
+                delta += std::chrono::duration<float> {currentTime - previousTime};
+                previousTime = currentTime;
+
+                // Handle Events
+
+                // Update
+
+                int numUpdateSteps = 0;
+
+                while (delta >= timestep) {
+                    delta -= timestep;
+
+                    previous_state = current_state;
+                    update(&current_state);  // Update at a fixed rate each time.
+
+                    theGame.UpdateModel();
+
+                    if (++numUpdateSteps >= 240) {
+                        std::cerr << "PANIC" << '\n';
+
+                        // Panic
+
+                        std::cin.get();
+                    }
+                }
+
+                // FPS
+
+                if (std::chrono::duration<float> {currentTime - lastFpsUpdate} >= oneSecond) {  // Update every second.
+                    fps = (1 - 0.25f) * fps + 0.25f * (framesThisSecond / oneSecond.count());   // Compute the new FPS.
+
+                    std::cout << static_cast<int>(fps) << " ("
+                              << std::chrono::duration<float> {currentTime - lastFpsUpdate} << ")\n";
+
+                    lastFpsUpdate = currentTime;
+                    framesThisSecond = 0;
+                }
+
+                framesThisSecond++;
+
+                // Render
+
+                // Calculate how close or far we are from the next timestep:
+                auto const alpha = delta / timestep;
+                auto interpolated_state = interpolate(current_state, previous_state, alpha);
+
+                render(interpolated_state);
+
+                theGame.ComposeFrame();
+
+                // Throttle
+
+                auto const frameTime = std::chrono::duration<float> {clock::now() - currentTime};
+                static constexpr auto targetFrameTime =
+                    std::chrono::duration<float, std::ratio<1, 60>> {1} -
+                    5ms;  // You'll have to experiment with how much early. Too early and you burn too much CPU (and
+                          // battery). Too little, and `sleep_for` occasionally wakes up too late when the CPU is under
+                          // a high load.
+
+                if (frameTime < targetFrameTime) {
+                    auto const sleepDuration = targetFrameTime - frameTime;
+
+                    std::this_thread::sleep_for(sleepDuration);
+                }
+            }
+        }
+        catch (const ColdException& e) {
+            const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at Windows message loop.";
+
+            wnd.ShowMessageBox(e.GetExceptionType(), eMsg);
+        }
+        catch (const std::exception& e) {
+            // need to convert std::exception what() string from narrow to wide string
+            const std::string whatStr(e.what());
+            const std::wstring eMsg =
+                std::wstring(whatStr.begin(), whatStr.end()) + L"\n\nException caught at Windows message loop.";
+
+            wnd.ShowMessageBox(L"Unhandled STL Exception", eMsg);
+        }
+        catch (...) {
+            wnd.ShowMessageBox(L"Unhandled Non-STL Exception", L"\n\nException caught at Windows message loop.");
+        }
     }
+    catch (const ColdException& e) {
+        const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at main window creation.";
 
-    auto filename = std::string {};
-    auto verbose = false;
-
-    if (result.count("filename")) {
-        filename = result["filename"].as<std::string>();
+        // MessageBox(nullptr, eMsg.c_str(), e.GetExceptionType().c_str(), MB_OK);
     }
-    else {
-        return 1;
+    catch (const std::exception& e) {
+        // need to convert std::exception what() string from narrow to wide string
+        const std::string whatStr(e.what());
+        const std::wstring eMsg =
+            std::wstring(whatStr.begin(), whatStr.end()) + L"\n\nException caught at main window creation.";
+
+        // MessageBox(nullptr, eMsg.c_str(), L"Unhandled STL Exception", MB_OK);
     }
-
-    verbose = result["verbose"].as<bool>();
-
-    if (verbose) {
-        fmt::print("Opening file: {}\n", filename);
-    }
-
-    auto ifs = std::ifstream {filename};
-
-    if (!ifs.is_open()) {
-        return 1;
-    }
-
-    const auto parsed_data = json::parse(ifs);
-
-    if (verbose) {
-        const auto name = parsed_data["name"];
-        fmt::print("Name: {}\n", name);
+    catch (...) {
+        // MessageBox(nullptr, L"\n\nException caught at main window creation.", L"Unhandled Non-STL Exception", MB_OK);
     }
 
     return 0;

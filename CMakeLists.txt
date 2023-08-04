@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.16...3.27 FATAL_ERROR) #? 3.16 - target_precompile_headers
+cmake_minimum_required(VERSION 3.21...3.27 FATAL_ERROR) #? 3.21 - PROJECT_IS_TOP_LEVEL
 
 #============  Safe Guards  ====================================================#
 
@@ -6,25 +6,21 @@ include(cmake/SafeGuards.cmake)
 
 #==========  Project Details  ==================================================#
 
-# Note: update this with your new project's details.
-
-project("__Name"
-        VERSION "0.1.0" # Note: Listing the version is nice here since it sets lots of useful variables.
-        DESCRIPTION "__Description"
-        HOMEPAGE_URL "__Url"
-        LANGUAGES CXX C # Note: To support external libraries, it's good practice to list both CXX and C.
+project("ColdEngine"
+        VERSION "1.0.0"
+        DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
+        HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
+        LANGUAGES CXX C
 )
 
 #==========  CMake Variables  ==================================================#
 
 message(STATUS "\n-- Configuring CMake for ${PROJECT_NAME} v${PROJECT_VERSION}...\n--")
 
-string(COMPARE EQUAL "${CMAKE_SOURCE_DIR}" "${PROJECT_SOURCE_DIR}" PROJECT_IS_TOP_LEVEL) # Note: This variable is set by `project()` in CMake 3.21+.
-
 # Only do these if this is the main project, and not if it is included through add_subdirectory:
 if(PROJECT_IS_TOP_LEVEL)
     if(NOT DEFINED CMAKE_CXX_STANDARD)
-        set(CMAKE_CXX_STANDARD # Note: GoogleTest requires at least C++14.
+        set(CMAKE_CXX_STANDARD
             20
             CACHE STRING "The C++ standard to use."
         )
@@ -33,7 +29,7 @@ if(PROJECT_IS_TOP_LEVEL)
     # Require C++17 features like if constexpr:
     set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
-    set(CMAKE_CXX_EXTENSIONS OFF) # Note: While this is generally a good practice, you should ensure that this setting doesn't cause any issues with third-party libraries or the project's requirements.
+    set(CMAKE_CXX_EXTENSIONS OFF)
     set(CMAKE_C_EXTENSIONS OFF)
 endif()
 
@@ -105,14 +101,7 @@ endif()
 
 option(VCPKG_APPLOCAL_DEPS "Automatically copy dependencies into the output directory for executables." ON)
 
-include(${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake)
-
-#============== OS Fixes ======================================================#
-
-# This will allow the use of the same _DEBUG macro available in both Linux and Windows environment. Easy to put Debug specific code:
-if(UNIX)
-    add_compile_options("$<$<CONFIG:DEBUG>:-D_DEBUG>")
-endif()
+include("${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake")
 
 #==========  Configure Files  ==================================================#
 
@@ -124,77 +113,60 @@ add_subdirectory(external EXCLUDE_FROM_ALL)
 
 set(PRECOMPILED_HEADER_LIST "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h")
 
-# Note: globbing sources is considered bad practice as CMake's generators may not detect new files
-# automatically. Keep that in mind when changing files, or explicitly mention them here.
+if(ENABLE_CLANG_TIDY)
+    set(NO_STATIC_CODE_ANALYSIS_LIST "${CMAKE_CURRENT_SOURCE_DIR}/src/DXErr.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/include/DXErr.h")
+endif()
 
-set(HEADER_LIST # Note: Add here any file you want to add manually which is not in include/*.
-)
+set(HEADER_LIST)
 
 file(GLOB_RECURSE HEADER_FILES include/*${SUFFIX_HPPHEADER})
 
 foreach(HEADER_FILE ${HEADER_FILES})
-    if(NOT "${HEADER_FILE}" IN_LIST PRECOMPILED_HEADER_LIST) #~ https://gitlab.kitware.com/cmake/cmake/-/issues/22091
+    if(NOT "${HEADER_FILE}" IN_LIST PRECOMPILED_HEADER_LIST AND NOT "${HEADER_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST) #~ https://gitlab.kitware.com/cmake/cmake/-/issues/22091
         list(APPEND HEADER_LIST ${HEADER_FILE})
     endif()
 endforeach()
 
-set(SOURCE_LIST # Note: Add here any file you want to add manually which is not in src/*.cpp.
-)
+set(SOURCE_LIST)
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
 foreach(SOURCE_FILE ${SOURCE_FILES})
-    if(NOT "${SOURCE_FILE}" MATCHES ".*/Main.cpp")
+    if(NOT "${SOURCE_FILE}" MATCHES ".*/Main.cpp" AND NOT "${SOURCE_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST)
         list(APPEND SOURCE_LIST ${SOURCE_FILE})
     endif()
 endforeach()
 
 #===========  Create Target  ===================================================#
 
-if(BUILD_HEADERS_ONLY)
-    add_library(${PROJECT_NAME} INTERFACE)
+if(ENABLE_CLANG_TIDY AND NO_STATIC_CODE_ANALYSIS_LIST)
+    add_library(NO_STATIC_CODE_ANALYSIS OBJECT "${NO_STATIC_CODE_ANALYSIS_LIST}")
+    set_target_properties(NO_STATIC_CODE_ANALYSIS PROPERTIES CXX_CLANG_TIDY "")
+    target_include_directories(NO_STATIC_CODE_ANALYSIS PRIVATE "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>")
 
-    if(VERBOSE_OUTPUT)
-        message(STATUS "Created ${PROJECT_NAME} interface library with the following headers:")
-
-        foreach(HEADER IN LISTS HEADER_LIST)
-            message(STATUS "* ${HEADER}")
-        endforeach()
-    else()
-        message(STATUS "Created ${PROJECT_NAME} interface library")
-    endif()
-elseif(BUILD_EXECUTABLE)
-    add_executable(${PROJECT_NAME} "src/Main.cpp" "${SOURCE_LIST}" "${HEADER_LIST}") # Note: Including header files here helps IDEs but is not required.
-
-    if(VERBOSE_OUTPUT)
-        message(STATUS "Created ${PROJECT_NAME} binary with the following sources:")
-        message(STATUS "* ${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp")
-
-        foreach(SOURCE IN LISTS SOURCE_LIST)
-            message(STATUS "* ${SOURCE}")
-        endforeach()
-    else()
-        message(STATUS "Created ${PROJECT_NAME} binary")
-    endif()
+    add_executable(${PROJECT_NAME} "src/Main.cpp" "$<TARGET_OBJECTS:NO_STATIC_CODE_ANALYSIS>" "${SOURCE_LIST}")
 else()
-    add_library(${PROJECT_NAME} STATIC "${SOURCE_LIST}" "${HEADER_LIST}")
-
-    if(VERBOSE_OUTPUT)
-        message(STATUS "Created ${PROJECT_NAME} static library with the following sources:")
-
-        foreach(SOURCE IN LISTS SOURCE_LIST)
-            message(STATUS "* ${SOURCE}")
-        endforeach()
-
-        message(STATUS "and the following headers:")
-
-        foreach(HEADER IN LISTS HEADER_LIST)
-            message(STATUS "* ${HEADER}")
-        endforeach()
-    else()
-        message(STATUS "Created ${PROJECT_NAME} static library")
-    endif()
+    add_executable(${PROJECT_NAME} "src/Main.cpp" "${SOURCE_LIST}")
 endif()
+
+if(VERBOSE_OUTPUT)
+    message(STATUS "Created ${PROJECT_NAME} binary with the following sources:")
+    message(STATUS "* ${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp")
+
+    foreach(SOURCE IN LISTS SOURCE_LIST)
+        message(STATUS "* ${SOURCE}")
+    endforeach()
+else()
+    message(STATUS "Created ${PROJECT_NAME} binary")
+endif()
+
+#========  Include Directories  ================================================#
+
+target_include_directories(
+    ${PROJECT_NAME}
+    PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include"
+)
 
 #=====  Set Standard and Warnings  =============================================#
 
@@ -214,42 +186,15 @@ if(ENABLE_WARNINGS)
     target_set_warnings(${PROJECT_NAME})
 endif()
 
-#========  Include Directories  ================================================#
-
-if(BUILD_HEADERS_ONLY)
-    target_precompile_headers(${PROJECT_NAME} INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
-
-    target_include_directories(${PROJECT_NAME} INTERFACE $<INSTALL_INTERFACE:include> $<BUILD_INTERFACE:${CMAKE_CURRENT_SOURCE_DIR}/include>)
-else()
-    target_precompile_headers(${PROJECT_NAME} PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
-
-    target_include_directories(
-        ${PROJECT_NAME}
-        PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
-        PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include" "${CMAKE_CURRENT_SOURCE_DIR}/src"
-    )
-endif()
-
 #=========  Link Dependencies  =================================================#
 
-find_package(cxxopts CONFIG REQUIRED)
-find_package(fmt CONFIG REQUIRED)
-find_package(nlohmann_json CONFIG REQUIRED)
-find_package(spdlog CONFIG REQUIRED)
-
-if(BUILD_HEADERS_ONLY)
-    target_link_libraries(${PROJECT_NAME} INTERFACE nlohmann_json::nlohmann_json fmt::fmt spdlog::spdlog cxxopts::cxxopts)
-else()
-    target_link_libraries(${PROJECT_NAME} PRIVATE nlohmann_json::nlohmann_json fmt::fmt spdlog::spdlog cxxopts::cxxopts)
+if(NOT ENABLE_CLANG_TIDY)
+    target_precompile_headers(${PROJECT_NAME} PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
 endif()
 
 #===========  Alias Targets  ===================================================#
 
-if(BUILD_EXECUTABLE)
-    add_executable(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
-else()
-    add_library(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
-endif()
+add_executable(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
 #========= Unit Testing Setup =================================================#
 
@@ -267,18 +212,23 @@ if(PROJECT_IS_TOP_LEVEL)
                 ctest
                 EXCLUDE
                 "${CMAKE_CURRENT_SOURCE_DIR}/cmake/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/docs/*"
                 "${CMAKE_CURRENT_SOURCE_DIR}/external/*"
                 "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
                 "${CMAKE_CURRENT_SOURCE_DIR}/test/*"
                 "${CMAKE_CURRENT_SOURCE_DIR}/build/*"
+                "${CMAKE_CURRENT_SOURCE_DIR}/docs/*"
             )
         endif()
 
         add_library(TESTING_LIBRARY INTERFACE)
 
-        target_precompile_headers(TESTING_LIBRARY INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
+        if(ENABLE_CLANG_TIDY AND NO_STATIC_CODE_ANALYSIS_LIST)
+            target_sources(TESTING_LIBRARY INTERFACE "$<TARGET_OBJECTS:NO_STATIC_CODE_ANALYSIS>" "${SOURCE_LIST}" "${HEADER_LIST}")
+        else()
+            target_sources(TESTING_LIBRARY INTERFACE "${SOURCE_LIST}" "${HEADER_LIST}")
+        endif()
 
+        target_include_directories(TESTING_LIBRARY INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
         set_target_properties(
             ${TESTING_LIBRARY}
             PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD}
@@ -286,8 +236,9 @@ if(PROJECT_IS_TOP_LEVEL)
                        CXX_EXTENSIONS NO
         )
 
-        target_sources(TESTING_LIBRARY INTERFACE "${SOURCE_LIST}" "${HEADER_LIST}") # Note: Including header files here helps IDEs but is not required.
-        target_include_directories(TESTING_LIBRARY INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+        if(NOT ENABLE_CLANG_TIDY)
+            target_precompile_headers(TESTING_LIBRARY INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
+        endif()
 
         enable_testing()
 

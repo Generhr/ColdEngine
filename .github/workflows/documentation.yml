@@ -1,0 +1,46 @@
+name: Documentation
+
+on:
+  push:
+    branches:
+      - main
+    paths: [include/**, lib/**, src/**]
+  pull_request:
+    branches:
+      - main
+    paths: [include/**, lib/**, src/**]
+
+concurrency:
+  group: documentation
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: windows-latest
+    # timeout-minutes: 5
+
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Get CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Run vcpkg
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgDirectory: "${{ github.workspace }}/external/vcpkg"
+          vcpkgJsonGlob: "${{ github.workspace }}/vcpkg.json"
+
+      - name: Install Packages
+        run: choco install doxygen graphviz -y
+
+      - name: Run CMake
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: "ninja-multi-vcpkg"
+          configurePresetAdditionalArgs: '[`-DENABLE_DOXYGEN=ON`]'
+          buildPreset: "ninja-multi-vcpkg-release"
+          buildPresetAdditionalArgs: '[`--target doxygen`, ` -j4`]'

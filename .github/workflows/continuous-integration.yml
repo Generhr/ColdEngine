@@ -1,0 +1,36 @@
+name: Continuous Integration
+
+on: [push, workflow_dispatch]
+
+concurrency:
+  group: continuous-integration
+  cancel-in-progress: true
+
+jobs:
+  build:
+    runs-on: windows-latest
+    # timeout-minutes: 10
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v3
+        with:
+          submodules: true
+
+      - name: Get CMake
+        uses: lukka/get-cmake@latest
+
+      - name: Run vcpkg
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgDirectory: "${{ github.workspace }}/external/vcpkg"
+          vcpkgJsonGlob: "${{ github.workspace }}/vcpkg.json"
+
+      - name: Run CMake
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: "ninja-multi-vcpkg"
+          configurePresetAdditionalArgs: '[`-DENABLE_TESTING=ON`]'
+          buildPreset: "ninja-multi-vcpkg-debug"
+          buildPresetAdditionalArgs: '[`--target unit_tests`, ` -j4`]'
+          testPreset: "ninja-multi-vcpkg-debug"

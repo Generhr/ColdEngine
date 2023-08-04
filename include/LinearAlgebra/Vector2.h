@@ -1,11 +1,16 @@
 #pragma once
 
-#include "Math.h"
+#include <array>          /* array */
+#include <cmath>          /* cos, sin */
+#include <compare>        /* operator<, operator<=, operator>, operator>= */
+#include <corecrt_math.h> /* sqrt */
+#include <cstddef>        /* size_t */
+#include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
+
+#include "Math.h" /* square */
+
 #include "Matrix2.h"
 #include "Matrix3.h"
-
-#include <array>    /* array */
-#include <iostream> /* stream, cout */
 
 /**
  * Class for a two-dimensional vector object and assorted functions useful for manipulating points.
@@ -114,9 +119,9 @@ public:
         return elements[index];
     }
 
-    template<typename T>
-    explicit operator Vector2<T>() const {
-        return {(T)elements[0], (T)elements[1]};
+    template<typename U>
+    explicit operator Vector2<U>() const {
+        return {static_cast<U>(elements[0]), static_cast<U>(elements[1])};
     }
 
     friend std::ostream& operator<<(std::ostream& stream, const Vector2<T>& vector) {

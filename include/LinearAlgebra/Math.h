@@ -36,9 +36,9 @@ namespace Math {
     template<typename T>
     inline T wrapAngle(T theta) {
         const auto p = PI<T>;
-        const T modded = fmod(theta, (T)2.0 * p);
+        const T modded = fmod(theta, static_cast<T>(2.0) * p);
 
-        return (modded > p) ? (modded - (T)2.0 * p) : modded;
+        return (modded > p) ? (modded - static_cast<T>(2.0) * p) : modded;
     }
 
     // Basic Functions
