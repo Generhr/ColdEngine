@@ -55,12 +55,23 @@ jobs:
         # Override language selection by uncommenting this and choosing your languages
       # Autobuild attempts to build any compiled languages (C/C++, C#, Go, or Java).
       # If this step fails, then you should remove it and run the build manually (see below).
-      - name: Build
-        # with:
 
-        #   languages: go, javascript, csharp, python, cpp, java, ruby
+      - name: Get CMake
+        uses: lukka/get-cmake@latest
 
-        uses: github/codeql-action/autobuild@v2
+      - name: Run vcpkg
+        uses: lukka/run-vcpkg@v10
+        with:
+          vcpkgDirectory: "${{ github.workspace }}/external/vcpkg"
+          vcpkgJsonGlob: "${{ github.workspace }}/vcpkg.json"
+
+      - name: Run CMake
+        uses: lukka/run-cmake@v10
+        with:
+          configurePreset: "ninja-multi-vcpkg"
+          configurePresetAdditionalArgs: '[`-DENABLE_TESTING=OFF`]'
+          buildPreset: "ninja-multi-vcpkg-release"
+          buildPresetAdditionalArgs: '[`--target all`, `-j4`]'
 
       # ℹ️ Command-line programs to run using the OS shell.
       # 📚 See https://docs.github.com/en/actions/using-workflows/workflow-syntax-for-github-actions#jobsjob_idstepsrun

@@ -14,7 +14,7 @@ cmake_dependent_option(ENABLE_IPO "Enable Interprocedural Optimization, aka Link
 option(ENABLE_WARNINGS "Enable to add compiler warnings." ON)
 option(ENABLE_WARNINGS_AS_ERRORS "Enable to treat compiler warnings as errors." OFF)
 
-option(ENABLE_DOXYGEN "Enable to create a doxygen build target (doxygen)." ON)
+option(ENABLE_DOXYGEN "Enable to create a doxygen build target (doxygen)." OFF)
 
 option(VERBOSE_OUTPUT "Enable verbose output, allowing for a better understanding of each step taken." OFF)
 

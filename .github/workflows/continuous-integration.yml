@@ -9,7 +9,7 @@ concurrency:
 jobs:
   build:
     runs-on: windows-latest
-    # timeout-minutes: 10
+    timeout-minutes: 10
 
     steps:
       - name: Checkout
@@ -31,6 +31,6 @@ jobs:
         with:
           configurePreset: "ninja-multi-vcpkg"
           configurePresetAdditionalArgs: '[`-DENABLE_TESTING=ON`]'
-          buildPreset: "ninja-multi-vcpkg-debug"
-          buildPresetAdditionalArgs: '[`--target unit_tests`, ` -j4`]'
-          testPreset: "ninja-multi-vcpkg-debug"
+          buildPreset: "ninja-multi-vcpkg-release"
+          buildPresetAdditionalArgs: '[`--target unit_tests`, `-j4`]'
+          testPreset: "ninja-multi-vcpkg-release"
