@@ -1,6 +1,6 @@
 #pragma once
 
-#include "ColdException.h"
+#include "EngineException.h"
 #include "Graphics.h"
 #include "Keyboard.h"
 #include "Mouse.h"
@@ -8,7 +8,6 @@
 
 #include <string>
 
-// for granting special access to hWnd only for Graphics constructor
 class HWNDKey {
     friend Graphics::Graphics(HWNDKey&);
 
@@ -18,7 +17,11 @@ public:
     HWNDKey(const HWNDKey&) = delete;
     HWNDKey& operator=(const HWNDKey&) = delete;
     HWNDKey(HWNDKey&&) = delete;
-    HWNDKey& operator=(HWNDKey&&) = delete;  // Delete move assignment
+    HWNDKey& operator=(HWNDKey&&) = delete;
+
+    HWND GetHWND() const {
+        return hWnd;
+    }
 
 protected:
     HWNDKey() = default;
@@ -29,11 +32,11 @@ protected:
 
 class MainWindow : public HWNDKey {
 public:
-    class Exception : public ColdException {
+    class Exception : public EngineException {
     public:
         ~Exception() override = default;
 
-        using ColdException::ColdException;
+        using EngineException::EngineException;
 
         std::wstring GetFullMessage() const override {
             return GetNote() + L"\nAt: " + GetLocation();

@@ -35,7 +35,7 @@ jobs:
           vcpkgJsonGlob: "${{ github.workspace }}/vcpkg.json"
 
       - name: Install Packages
-        run: choco install doxygen graphviz -y
+        run: choco install doxygen.install graphviz -y
 
       - name: Run CMake
         uses: lukka/run-cmake@v10

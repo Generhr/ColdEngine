@@ -8,21 +8,21 @@
 using namespace std::chrono_literals;
 
 struct game_state {
-    // this contains the state of your game, such as positions and velocities
+    // This contains the state of your game, such as positions and velocities
 };
 
 void update(game_state*) {
-    // update game logic here
+    // Update game logic here
 }
 
 void render(game_state const&) {
-    // render stuff here
+    // Render stuff here
 }
 
 game_state interpolate(game_state const& current, game_state const& previous, float alpha) {
     game_state interpolated_state;
 
-    // interpolate between previous and current by alpha here
+    // Interpolate between previous and current by alpha here
 
     return interpolated_state;
 }
@@ -122,13 +122,13 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-        catch (const ColdException& e) {
+        catch (const EngineException& e) {
             const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at Windows message loop.";
 
             wnd.ShowMessageBox(e.GetExceptionType(), eMsg);
         }
         catch (const std::exception& e) {
-            // need to convert std::exception what() string from narrow to wide string
+            // Need to convert std::exception what() string from narrow to wide string
             const std::string whatStr(e.what());
             const std::wstring eMsg =
                 std::wstring(whatStr.begin(), whatStr.end()) + L"\n\nException caught at Windows message loop.";
@@ -139,13 +139,13 @@ int main(int argc, char* argv[]) {
             wnd.ShowMessageBox(L"Unhandled Non-STL Exception", L"\n\nException caught at Windows message loop.");
         }
     }
-    catch (const ColdException& e) {
+    catch (const EngineException& e) {
         const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at main window creation.";
 
         // MessageBox(nullptr, eMsg.c_str(), e.GetExceptionType().c_str(), MB_OK);
     }
     catch (const std::exception& e) {
-        // need to convert std::exception what() string from narrow to wide string
+        // Need to convert std::exception what() string from narrow to wide string
         const std::string whatStr(e.what());
         const std::wstring eMsg =
             std::wstring(whatStr.begin(), whatStr.end()) + L"\n\nException caught at main window creation.";

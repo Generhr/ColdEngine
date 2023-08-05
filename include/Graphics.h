@@ -1,11 +1,12 @@
 #pragma once
 
-#include "ColdException.h"
+#include "EngineException.h"
 #include "Colors.h"
 #include "GDIPlusManager.h"
 #include "LinearAlgebra/Vector2.h"
 #include "LinearAlgebra/Vector3.h"
 #include "Surface.h"
+#include "TexVertex.h"
 
 #define byte                                                                                                           \
     win_byte_override  // https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h
@@ -20,7 +21,7 @@
 
 class Graphics {
 public:
-    class Exception : public ColdException {
+    class Exception : public EngineException {
     public:
         Exception(HRESULT hr, const std::wstring& note, const wchar_t* file, unsigned int line);
         std::wstring GetErrorName() const;
@@ -33,10 +34,10 @@ public:
     };
 
 private:
-    // vertex format for the framebuffer fullscreen textured quad
+    // Vertex format for the framebuffer fullscreen textured quad
     struct FSQVertex {
-        float x, y, z;  // position
-        float u, v;     // texcoords
+        float x, y, z;  // Position
+        float u, v;     // Texcoords
     };
 
 public:
@@ -115,13 +116,36 @@ public:
     }
 
     void DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
+    void DrawTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
+    void DrawTriangleTexWrap(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
 
 private:
     void DrawFlatTopTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
     void DrawFlatBottomTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
+    void DrawFlatTopTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
+    void DrawFlatBottomTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
+    void DrawFlatTriangleTex(const TexVertex& v0,
+        const TexVertex& v1,
+        const TexVertex& v2,
+        const Surface& tex,
+        const TexVertex& dv0,
+        const TexVertex& dv1,
+        TexVertex& itEdge1);
+    void DrawFlatTopTriangleTexWrap(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
+    void DrawFlatBottomTriangleTexWrap(const TexVertex& v0,
+        const TexVertex& v1,
+        const TexVertex& v2,
+        const Surface& tex);
+    void DrawFlatTriangleTexWrap(const TexVertex& v0,
+        const TexVertex& v1,
+        const TexVertex& v2,
+        const Surface& tex,
+        const TexVertex& dv0,
+        const TexVertex& dv1,
+        TexVertex& itEdge1);
 
 private:
-    //  GDIPlusManager gdipMan;
+    GDIPlusManager gdipMan;
     Microsoft::WRL::ComPtr<IDXGISwapChain> pSwapChain;
     Microsoft::WRL::ComPtr<ID3D11Device> pDevice;
     Microsoft::WRL::ComPtr<ID3D11DeviceContext> pImmediateContext;

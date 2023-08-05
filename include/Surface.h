@@ -3,17 +3,18 @@
 #include "Colors.h"
 #include "Win.h"
 // #include "Rect.h"
-#include "ColdException.h"
+#include "EngineException.h"
 
 #include <assert.h>
 #include <memory>
 #include <string>
+#include <filesystem>
 
 class Surface {
 public:
-    class Exception : public ColdException {
+    class Exception : public EngineException {
     public:
-        using ColdException::ColdException;
+        using EngineException::EngineException;
 
         std::wstring GetFullMessage() const override {
             return GetNote() + L"\nAt: " + GetLocation();
@@ -96,11 +97,12 @@ public:
     }
 
     static Surface FromFile(const std::wstring& name);
+    static Surface FromMemory(const unsigned char* imageData, unsigned int width, unsigned int height);
     void Save(const std::wstring& filename) const;
     void Copy(const Surface& src);
 
 private:
-    // calculate pixel pitch required for given byte alignment (must be multiple of 4 bytes)
+    // Calculate pixel pitch required for given byte alignment (must be multiple of 4 bytes)
     static unsigned int GetPitch(unsigned int width, unsigned int byteAlignment) {
         assert(byteAlignment % 4 == 0);
         const unsigned int pixelAlignment = byteAlignment / sizeof(Color);
@@ -114,6 +116,6 @@ private:
 private:
     unsigned int width;
     unsigned int height;
-    unsigned int pitch;  // pitch is in PIXELS, not bytes!
+    unsigned int pitch;  // Pitch is in PIXELS, not bytes!
     std::unique_ptr<Color[]> pBuffer;
 };

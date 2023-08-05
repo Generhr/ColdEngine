@@ -7,20 +7,22 @@
 #include <sstream>
 #include <vector>
 
+#include <iostream>
+
 #pragma comment(lib, "gdiplus.lib")
 
 void Surface::PutPixelAlpha(unsigned int x, unsigned int y, const Color c) {
     assert(x < width);
     assert(y < height);
-    // load source pixel
+    // Load source pixel
     const Color d = GetPixel(x, y);
 
-    // blend channels
+    // Blend channels
     const unsigned char rsltRed = (c.GetR() * c.GetA() + d.GetR() * (255u - c.GetA())) / 256u;
     const unsigned char rsltGreen = (c.GetG() * c.GetA() + d.GetG() * (255u - c.GetA())) / 256u;
     const unsigned char rsltBlue = (c.GetB() * c.GetA() + d.GetB() * (255u - c.GetA())) / 256u;
 
-    // pack channels back into pixel and fire pixel onto surface
+    // Pack channels back into pixel and fire pixel onto surface
     PutPixel(x, y, {rsltRed, rsltGreen, rsltBlue});
 }
 
@@ -29,12 +31,13 @@ Surface Surface::FromFile(const std::wstring& name) {
     unsigned int height = 0;
     unsigned int pitch = 0;
     std::unique_ptr<Color[]> pBuffer = nullptr;
-
     {
         Gdiplus::Bitmap bitmap(name.c_str());
+
         if (bitmap.GetLastStatus() != Gdiplus::Status::Ok) {
             std::wstringstream ss;
             ss << L"Loading image [" << name << L"]: failed to load.";
+
             throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
         }
 
@@ -46,7 +49,7 @@ Surface Surface::FromFile(const std::wstring& name) {
             for (unsigned int x = 0; x < width; x++) {
                 Gdiplus::Color c;
                 bitmap.GetPixel(x, y, &c);
-                pBuffer[y * pitch + x] = static_cast<Color>(c.GetValue());
+                pBuffer[y * pitch + x] = Color(c.GetValue());
             }
         }
     }
@@ -56,8 +59,8 @@ Surface Surface::FromFile(const std::wstring& name) {
 
 void Surface::Save(const std::wstring& filename) const {
     auto GetEncoderClsid = [&filename](const WCHAR* format, CLSID* pClsid) -> void {
-        UINT num = 0;   // number of image encoders
-        UINT size = 0;  // size of the image encoder array in bytes
+        UINT num = 0;   // Number of image encoders
+        UINT size = 0;  // Size of the image encoder array in bytes
 
         Gdiplus::ImageCodecInfo* pImageCodecInfo = nullptr;
 

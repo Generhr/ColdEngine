@@ -11,11 +11,11 @@
 #include "LinearAlgebra/Vector2.h"
 
 // Ignore the intellisense error "cannot open source file" for .shh files. They will be created during the build
-// sequence before the preprocessor runs.
+// Sequence before the preprocessor runs.
 namespace FramebufferShaders {
 #include "FramebufferPS.shh"
 #include "FramebufferVS.shh"
-}  // namespace FramebufferShaders
+}  // Namespace FramebufferShaders
 
 #pragma comment(lib, "d3d11.lib")
 
@@ -235,7 +235,7 @@ void Graphics::DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Colo
     const Vec3* pv1 = &v1;
     const Vec3* pv2 = &v2;
 
-    // sorting vertices by y
+    // Sorting vertices by y
     if (pv1->operator[](1) < pv0->operator[](1)) {
         std::swap(pv0, pv1);
     }
@@ -277,6 +277,107 @@ void Graphics::DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Colo
         else {  // Major left
             DrawFlatBottomTriangle(*pv0, vi, *pv1, c);
             DrawFlatTopTriangle(vi, *pv1, *pv2, c);
+        }
+    }
+}
+
+void Graphics::DrawTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex) {
+    // Using pointers so we can swap (for sorting purposes)
+    const TexVertex* pv0 = &v0;
+    const TexVertex* pv1 = &v1;
+    const TexVertex* pv2 = &v2;
+
+    // Sorting vertices by y
+    if (pv1->pos[1] < pv0->pos[1]) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv2->pos[1] < pv1->pos[1]) {
+        std::swap(pv1, pv2);
+    }
+
+    if (pv1->pos[1] < pv0->pos[1]) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv0->pos[1] == pv1->pos[1]) {  // Natural flat top
+        // Sorting top vertices by x
+        if (pv1->pos[0] < pv0->pos[0]) {
+            std::swap(pv0, pv1);
+        }
+
+        DrawFlatTopTriangleTex(*pv0, *pv1, *pv2, tex);
+    }
+    else if (pv1->pos[1] == pv2->pos[1]) {  // Natural flat bottom
+
+        // Sorting bottom vertices by x
+        if (pv2->pos[0] < pv1->pos[0])
+            std::swap(pv1, pv2);
+        DrawFlatBottomTriangleTex(*pv0, *pv1, *pv2, tex);
+    }
+    else {  // General triangle
+        // Find splitting vertex
+        const float alphaSplit = (pv1->pos[1] - pv0->pos[1]) / (pv2->pos[1] - pv0->pos[1]);
+        const TexVertex vi = pv0->Lerp(*pv2, alphaSplit);
+
+        if (pv1->pos[0] < vi.pos[0]) {  // Major right
+            DrawFlatBottomTriangleTex(*pv0, *pv1, vi, tex);
+            DrawFlatTopTriangleTex(*pv1, vi, *pv2, tex);
+        }
+        else {  // Major left
+            DrawFlatBottomTriangleTex(*pv0, vi, *pv1, tex);
+            DrawFlatTopTriangleTex(vi, *pv1, *pv2, tex);
+        }
+    }
+}
+
+void Graphics::DrawTriangleTexWrap(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex) {
+    // Using pointers so we can swap (for sorting purposes)
+    const TexVertex* pv0 = &v0;
+    const TexVertex* pv1 = &v1;
+    const TexVertex* pv2 = &v2;
+
+    // Sorting vertices by y
+    if (pv1->pos[1] < pv0->pos[1]) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv2->pos[1] < pv1->pos[1]) {
+        std::swap(pv1, pv2);
+    }
+
+    if (pv1->pos[1] < pv0->pos[1]) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv0->pos[1] == pv1->pos[1]) {  // Natural flat top
+        // Sorting top vertices by x
+        if (pv1->pos[0] < pv0->pos[0]) {
+            std::swap(pv0, pv1);
+        }
+
+        DrawFlatTopTriangleTexWrap(*pv0, *pv1, *pv2, tex);
+    }
+    else if (pv1->pos[1] == pv2->pos[1]) {  // Natural flat bottom
+        // Sorting bottom vertices by x
+        if (pv2->pos[0] < pv1->pos[0]) {
+            std::swap(pv1, pv2);
+        }
+
+        DrawFlatBottomTriangleTexWrap(*pv0, *pv1, *pv2, tex);
+    }
+    else {  // General triangle
+        // Find splitting vertex
+        const float alphaSplit = (pv1->pos[1] - pv0->pos[1]) / (pv2->pos[1] - pv0->pos[1]);
+        const TexVertex vi = pv0->Lerp(*pv2, alphaSplit);
+
+        if (pv1->pos[0] < vi.pos[0]) {  // Major right
+            DrawFlatBottomTriangleTexWrap(*pv0, *pv1, vi, tex);
+            DrawFlatTopTriangleTexWrap(*pv1, vi, *pv2, tex);
+        }
+        else {  // Major left
+            DrawFlatBottomTriangleTexWrap(*pv0, vi, *pv1, tex);
+            DrawFlatTopTriangleTexWrap(vi, *pv1, *pv2, tex);
         }
     }
 }
@@ -330,8 +431,164 @@ void Graphics::DrawFlatBottomTriangle(const Vec3& v0, const Vec3& v1, const Vec3
     }
 }
 
+void Graphics::DrawFlatBottomTriangleTex(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex) {
+    // Calulcate dVertex / dy
+    const float delta_y = v2.pos[1] - v0.pos[1];
+    const TexVertex dv0 = (v1 - v0) / delta_y;
+    const TexVertex dv1 = (v2 - v0) / delta_y;
+
+    // Create right edge interpolant
+    TexVertex itEdge1 = v0;
+
+    // Call the flat triangle render routine
+    DrawFlatTriangleTex(v0, v1, v2, tex, dv0, dv1, itEdge1);
+}
+
+void Graphics::DrawFlatTriangleTex(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex,
+    const TexVertex& dv0,
+    const TexVertex& dv1,
+    TexVertex& itEdge1) {
+    // Create edge interpolant for left edge (always v0)
+    TexVertex itEdge0 = v0;
+
+    // Calculate start and end scanlines
+    const int yStart = (int)ceil(v0.pos[1] - 0.5f);
+    const int yEnd = (int)ceil(v2.pos[1] - 0.5f);  // The scanline AFTER the last line drawn
+
+    // Do interpolant prestep
+    itEdge0 += dv0 * (float(yStart) + 0.5f - v0.pos[1]);
+    itEdge1 += dv1 * (float(yStart) + 0.5f - v0.pos[1]);
+
+    // Init tex width/height and clamp values
+    const float tex_width = float(tex.GetWidth());
+    const float tex_height = float(tex.GetHeight());
+    const float tex_clamp_x = tex_width - 1.0f;
+    const float tex_clamp_y = tex_height - 1.0f;
+
+    for (int y = yStart; y < yEnd; y++, itEdge0 += dv0, itEdge1 += dv1) {
+        // Calculate start and end pixels
+        const int xStart = (int)ceil(itEdge0.pos[0] - 0.5f);
+        const int xEnd = (int)ceil(itEdge1.pos[0] - 0.5f);  // The pixel AFTER the last pixel drawn
+
+        // Calculate scanline dTexCoord / dx
+        const Vec2 dtcLine = (itEdge1.tc - itEdge0.tc) / (itEdge1.pos[0] - itEdge0.pos[0]);
+
+        // Create scanline tex coord interpolant and prestep
+        Vec2 itcLine = itEdge0.tc + dtcLine * (float(xStart) + 0.5f - itEdge0.pos[0]);
+
+        for (int x = xStart; x < xEnd; x++, itcLine += dtcLine) {
+            PutPixel(x,
+                y,
+                tex.GetPixel(int(std::min(itcLine[0] * tex_width, tex_clamp_x)),
+                    int(std::min(itcLine[1] * tex_height, tex_clamp_y))));
+            // Need std::min b/c tc.x/y == 1.0, we'll read off edge of tex
+            // and with fp err, tc.x/y can be > 1.0 (by a tiny amount)
+        }
+    }
+}
+
+void Graphics::DrawFlatTopTriangleTexWrap(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex) {
+    // Calulcate dVertex / dy
+    const float delta_y = v2.pos[1] - v0.pos[1];
+    const TexVertex dv0 = (v2 - v0) / delta_y;
+    const TexVertex dv1 = (v2 - v1) / delta_y;
+
+    // Create right edge interpolant
+    TexVertex itEdge1 = v1;
+
+    // Call the flat triangle render routine
+    DrawFlatTriangleTexWrap(v0, v1, v2, tex, dv0, dv1, itEdge1);
+}
+
+void Graphics::DrawFlatBottomTriangleTexWrap(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex) {
+    // Calulcate dVertex / dy
+    const float delta_y = v2.pos[1] - v0.pos[1];
+    const TexVertex dv0 = (v1 - v0) / delta_y;
+    const TexVertex dv1 = (v2 - v0) / delta_y;
+
+    // Create right edge interpolant
+    TexVertex itEdge1 = v0;
+
+    // Call the flat triangle render routine
+    DrawFlatTriangleTexWrap(v0, v1, v2, tex, dv0, dv1, itEdge1);
+}
+
+void Graphics::DrawFlatTriangleTexWrap(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex,
+    const TexVertex& dv0,
+    const TexVertex& dv1,
+    TexVertex& itEdge1) {
+    // Create edge interpolant for left edge (always v0)
+    TexVertex itEdge0 = v0;
+
+    // Calculate start and end scanlines
+    const int yStart = (int)ceil(v0.pos[1] - 0.5f);
+    const int yEnd = (int)ceil(v2.pos[1] - 0.5f);  // The scanline AFTER the last line drawn
+
+    // Do interpolant prestep
+    itEdge0 += dv0 * (float(yStart) + 0.5f - v0.pos[1]);
+    itEdge1 += dv1 * (float(yStart) + 0.5f - v0.pos[1]);
+
+    // Init tex width/height and clamp values
+    const float tex_width = float(tex.GetWidth());
+    const float tex_height = float(tex.GetHeight());
+    const float tex_clamp_x = tex_width - 1.0f;
+    const float tex_clamp_y = tex_height - 1.0f;
+
+    for (int y = yStart; y < yEnd; y++, itEdge0 += dv0, itEdge1 += dv1) {
+        // Calculate start and end pixels
+        const int xStart = (int)ceil(itEdge0.pos[0] - 0.5f);
+        const int xEnd = (int)ceil(itEdge1.pos[0] - 0.5f);  // The pixel AFTER the last pixel drawn
+
+        // Calculate scanline dTexCoord / dx
+        const Vec2 dtcLine = (itEdge1.tc - itEdge0.tc) / (itEdge1.pos[0] - itEdge0.pos[0]);
+
+        // Create scanline tex coord interpolant and prestep
+        Vec2 itcLine = itEdge0.tc + dtcLine * (float(xStart) + 0.5f - itEdge0.pos[0]);
+
+        for (int x = xStart; x < xEnd; x++, itcLine += dtcLine) {
+            PutPixel(x,
+                y,
+                tex.GetPixel(int(std::fmod(itcLine[0] * tex_width, tex_clamp_x)),
+                    int(std::fmod(itcLine[1] * tex_height, tex_clamp_y))));
+            // Need std::min b/c tc.x/y == 1.0, we'll read off edge of tex
+            // and with fp err, tc.x/y can be > 1.0 (by a tiny amount)
+        }
+    }
+}
+
+void Graphics::DrawFlatTopTriangleTex(const TexVertex& v0,
+    const TexVertex& v1,
+    const TexVertex& v2,
+    const Surface& tex) {
+    // Calulcate dVertex / dy
+    const float delta_y = v2.pos[1] - v0.pos[1];
+    const TexVertex dv0 = (v2 - v0) / delta_y;
+    const TexVertex dv1 = (v2 - v1) / delta_y;
+
+    // Create right edge interpolant
+    TexVertex itEdge1 = v1;
+
+    // Call the flat triangle render routine
+    DrawFlatTriangleTex(v0, v1, v2, tex, dv0, dv1, itEdge1);
+}
+
 Graphics::Exception::Exception(HRESULT hr, const std::wstring& note, const wchar_t* file, unsigned int line)
-    : ColdException(file, line, note), hr(hr) {
+    : EngineException(file, line, note), hr(hr) {
 }
 
 std::wstring Graphics::Exception::GetFullMessage() const {

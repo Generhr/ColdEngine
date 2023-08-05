@@ -2,18 +2,18 @@
 
 #include <string>
 
-class ColdException {
+class EngineException {
 public:
-    ColdException(std::wstring file, unsigned int line, std::wstring note = L"")
+    EngineException(std::wstring file, unsigned int line, std::wstring note = L"")
         : file(std::move(file)), line(line), note(std::move(note)) {
     }
 
-    virtual ~ColdException() = default;
+    virtual ~EngineException() = default;
 
-    ColdException(const ColdException&) = delete;
-    ColdException& operator=(const ColdException&) = delete;
-    ColdException(ColdException&&) = delete;
-    ColdException& operator=(ColdException&&) = delete;
+    EngineException(const EngineException&) = delete;
+    EngineException& operator=(const EngineException&) = delete;
+    EngineException(EngineException&&) = delete;
+    EngineException& operator=(EngineException&&) = delete;
 
     const std::wstring& GetFile() const {
         return file;

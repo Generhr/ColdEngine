@@ -4,8 +4,10 @@
 
 #include "LinearAlgebra/Vector3.h"
 
+template<class T>
 struct IndexedTriangleList {
-    IndexedTriangleList(std::vector<Vec3> verts_in, std::vector<size_t> indices_in)
+public:
+    IndexedTriangleList(std::vector<T> verts_in, std::vector<size_t> indices_in)
         : vertices(std::move(verts_in)), indices(std::move(indices_in)) {
         assert(vertices.size() > 2);
         assert(indices.size() % 3 == 0);
@@ -13,7 +15,7 @@ struct IndexedTriangleList {
         cullFlags.resize(indices.size() / 3, false);
     }
 
-    std::vector<Vec3> vertices;
+    std::vector<T> vertices;
     std::vector<size_t> indices;
     std::vector<bool> cullFlags;
 };

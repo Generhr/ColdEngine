@@ -7,7 +7,8 @@
 
 class SolidCubeScene : public Scene {
 public:
-    SolidCubeScene() = default;
+    SolidCubeScene() : Scene("Solid Cube Different Colored Triangles") {
+    }
 
     virtual void Update(Keyboard& kbd, Mouse& mouse, float dt) override {
         if (kbd.KeyIsPressed('Q')) {
@@ -44,19 +45,19 @@ public:
     }
 
     virtual void Draw(Graphics& graphics) const override {
-        // generate indexed triangle list
+        // Generate indexed triangle list
         auto triangles = cube.GetTriangles();
-        // generate rotation matrix from euler angles
+        // Generate rotation matrix from euler angles
         const Mat3 rot = Mat3::CreateXRotationMatrix(theta_x) * Mat3::CreateYRotationMatrix(theta_y) *
                          Mat3::CreateZRotationMatrix(theta_z);
 
-        // transform from model space -> world (/view) space
+        // Transform from model space -> world (/view) space
         for (auto& v : triangles.vertices) {
             v *= rot;
             v += {0.0f, 0.0f, offset_z};
         }
 
-        // backface culling test (must be done in world (/view) space)
+        // Backface culling test (must be done in world (/view) space)
         for (size_t i = 0, end = triangles.indices.size() / 3; i < end; i++) {
             const Vec3& v0 = triangles.vertices[triangles.indices[i * 3]];
             const Vec3& v1 = triangles.vertices[triangles.indices[i * 3 + 1]];
@@ -65,14 +66,14 @@ public:
             triangles.cullFlags[i] = Vec3::CrossProduct((v1 - v0), (v2 - v0)) * v0 > 0.0f;
         }
 
-        // transform to screen space (includes perspective transform)
+        // Transform to screen space (includes perspective transform)
         for (auto& v : triangles.vertices) {
             pst.Transform(v);
         }
 
-        // draw the mf triangles!
+        // Draw the mf triangles!
         for (size_t i = 0, end = triangles.indices.size() / 3; i < end; i++) {
-            // skip triangles previously determined to be back-facing
+            // Skip triangles previously determined to be back-facing
             if (!triangles.cullFlags[i]) {
                 graphics.DrawTriangle(triangles.vertices[triangles.indices[i * 3]],
                     triangles.vertices[triangles.indices[i * 3 + 1]],

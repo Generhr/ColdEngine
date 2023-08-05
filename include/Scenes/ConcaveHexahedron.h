@@ -21,7 +21,7 @@ public:
         return {vertices, {0, 1, 1, 3, 3, 2, 2, 0, 3, 0, 3, 4, 1, 4, 2, 4, 4, 0}};
     }
 
-    IndexedTriangleList GetTriangles() const {
+    IndexedTriangleList<Vec3> GetTriangles() const {
         return {vertices, {1, 0, 3, 3, 0, 2, 1, 4, 0, 4, 2, 0, 3, 4, 1, 4, 3, 2}};
     }
 

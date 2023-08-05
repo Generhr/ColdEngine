@@ -7,7 +7,7 @@ include(cmake/SafeGuards.cmake)
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.2.0"
+        VERSION "1.3.0"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C
@@ -106,6 +106,9 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.c
 #==========  Configure Files  ==================================================#
 
 add_subdirectory(configure)
+
+file(GLOB_RECURSE COPY_FILES "res/*")
+file(COPY ${COPY_FILES} DESTINATION "${CMAKE_BINARY_DIR}/bin/res")
 
 #========== Add Source Files ==================================================#
 

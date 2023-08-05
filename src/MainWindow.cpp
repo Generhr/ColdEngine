@@ -8,7 +8,7 @@
 
 
 MainWindow::MainWindow(HINSTANCE hInst, wchar_t* pArgs) : hInst(hInst), args(pArgs) {
-    // register window class
+    // Register window class
     WNDCLASSEX wc = {sizeof(WNDCLASSEX),
         CS_CLASSDC,
         __HandleMsgSetup,
@@ -139,7 +139,6 @@ LRESULT MainWindow::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         case WM_CHAR:
             kbd.OnChar(static_cast<unsigned char>(wParam));
             break;
-        // ************ END KEYBOARD MESSAGES ************ //
 
         // ************ MOUSE MESSAGES ************ //
         case WM_MOUSEMOVE: {
@@ -206,7 +205,6 @@ LRESULT MainWindow::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
             break;
         }
-            // ************ END MOUSE MESSAGES ************ //
     }
 
     return DefWindowProc(hWnd, msg, wParam, lParam);

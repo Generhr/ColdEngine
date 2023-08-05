@@ -5,6 +5,7 @@
 
 #include "Graphics.h"
 #include "Scene.h"
+#include "FrameTimer.h"
 
 class Engine {
 public:
@@ -21,11 +22,14 @@ public:
     void ComposeFrame();
 
     void CycleScenes();
+    void ReverseCycleScenes();
+    void SetWindowName() const;
 
 private:
     MainWindow& window;
     Graphics graphics;
 
+    FrameTimer ft;
     std::vector<std::unique_ptr<Scene>> scenes;
     std::vector<std::unique_ptr<Scene>>::iterator curScene;
 };
