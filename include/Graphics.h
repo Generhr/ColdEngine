@@ -42,6 +42,8 @@ private:
 public:
     explicit Graphics(class HWNDKey& key);
 
+    ~Graphics();
+
     Graphics(const Graphics&) = delete;
     Graphics& operator=(const Graphics&) = delete;
     Graphics(Graphics&&) = delete;
@@ -51,8 +53,12 @@ public:
 
     void BeginFrame();
 
-    void DrawLine(const Vec3& p1, const Vec3& p2, Color c) {
-        DrawLine(p1[0], p1[1], p2[0], p2[1], c);
+    void PutPixel(int x, int y, Color c) {
+        sysBuffer.PutPixel(x, y, c);
+    }
+
+    void PutPixel(int x, int y, int r, int g, int b) {
+        PutPixel(x, y, {static_cast<unsigned char>(r), static_cast<unsigned char>(g), static_cast<unsigned char>(b)});
     }
 
     void DrawLine(float x1, float y1, float x2, float y2, Color c) {
@@ -104,15 +110,15 @@ public:
         }
     }
 
-    void PutPixel(int x, int y, int r, int g, int b) {
-        PutPixel(x, y, {static_cast<unsigned char>(r), static_cast<unsigned char>(g), static_cast<unsigned char>(b)});
+    void DrawLine(const Vec3& p1, const Vec3& p2, Color c) {
+        DrawLine(p1[0], p1[1], p2[0], p2[1], c);
     }
 
-    void PutPixel(int x, int y, Color c) {
-        sysBuffer.PutPixel(x, y, c);
-    }
+    void DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
 
-    ~Graphics();
+private:
+    void DrawFlatTopTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
+    void DrawFlatBottomTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
 
 private:
     //  GDIPlusManager gdipMan;

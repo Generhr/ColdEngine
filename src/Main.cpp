@@ -1,4 +1,4 @@
-#include "Scene.h"
+#include "Engine.h"
 #include "MainWindow.h"
 
 #include <chrono>
@@ -47,7 +47,7 @@ int main(int argc, char* argv[]) {
 
             game_state current_state;
             game_state previous_state;
-            Scene theGame(wnd);
+            Engine engine(wnd);
 
             auto lastFpsUpdate = previousTime;
             constexpr auto oneSecond = std::chrono::duration<float> {1000ms};
@@ -71,7 +71,7 @@ int main(int argc, char* argv[]) {
                     previous_state = current_state;
                     update(&current_state);  // Update at a fixed rate each time.
 
-                    theGame.UpdateModel();
+                    engine.UpdateModel();
 
                     if (++numUpdateSteps >= 240) {
                         std::cerr << "PANIC" << '\n';
@@ -104,7 +104,7 @@ int main(int argc, char* argv[]) {
 
                 render(interpolated_state);
 
-                theGame.ComposeFrame();
+                engine.ComposeFrame();
 
                 // Throttle
 

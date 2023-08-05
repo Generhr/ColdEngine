@@ -8,8 +8,10 @@
 #include <functional>
 #include <string>
 
-// Ignore the intellisense error "cannot open source file" for .shh files.
-// They will be created during the build sequence before the preprocessor runs.
+#include "LinearAlgebra/Vector2.h"
+
+// Ignore the intellisense error "cannot open source file" for .shh files. They will be created during the build
+// sequence before the preprocessor runs.
 namespace FramebufferShaders {
 #include "FramebufferPS.shh"
 #include "FramebufferVS.shh"
@@ -22,7 +24,7 @@ using Microsoft::WRL::ComPtr;
 Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     assert(key.hWnd != nullptr);
 
-    // create device and swap chain/get render target view
+    // Create device and swap chain/get render target view
     DXGI_SWAP_CHAIN_DESC sd = {};
     sd.BufferCount = 1;
     sd.BufferDesc.Width = Graphics::ScreenWidth;
@@ -47,7 +49,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 #endif
 #endif
 
-    // create device and front/back buffers
+    // Create device and front/back buffers
     if (FAILED(hr = D3D11CreateDeviceAndSwapChain(nullptr,
                    D3D_DRIVER_TYPE_HARDWARE,
                    nullptr,
@@ -63,21 +65,21 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating device and swap chain");
     }
 
-    // get handle to backbuffer
+    // Get handle to backbuffer
     ComPtr<ID3D11Resource> pBackBuffer;
     if (FAILED(hr = pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), static_cast<LPVOID*>(&pBackBuffer)))) {
         throw COLD_GFX_EXCEPTION(hr, L"Getting back buffer");
     }
 
-    // create a view on backbuffer that we can render to
+    // Create a view on backbuffer that we can render to
     if (FAILED(hr = pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pRenderTargetView))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating render target view on backbuffer");
     }
 
-    // set backbuffer as the render target using created view
+    // Set backbuffer as the render target using created view
     pImmediateContext->OMSetRenderTargets(1, pRenderTargetView.GetAddressOf(), nullptr);
 
-    // set viewport dimensions
+    // Set viewport dimensions
     D3D11_VIEWPORT vp;
     vp.Width = static_cast<float>(Graphics::ScreenWidth);
     vp.Height = static_cast<float>(Graphics::ScreenHeight);
@@ -87,8 +89,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     vp.TopLeftY = 0.0f;
     pImmediateContext->RSSetViewports(1, &vp);
 
-    ///////////////////////////////////////
-    // create texture for cpu render target
+    // Create texture for cpu render target
     D3D11_TEXTURE2D_DESC sysTexDesc;
     sysTexDesc.Width = Graphics::ScreenWidth;
     sysTexDesc.Height = Graphics::ScreenHeight;
@@ -101,7 +102,8 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     sysTexDesc.BindFlags = D3D11_BIND_SHADER_RESOURCE;
     sysTexDesc.CPUAccessFlags = D3D11_CPU_ACCESS_WRITE;
     sysTexDesc.MiscFlags = 0;
-    // create the texture
+
+    // Create the texture
     if (FAILED(hr = pDevice->CreateTexture2D(&sysTexDesc, nullptr, &pSysBufferTexture))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating sysbuffer texture");
     }
@@ -110,13 +112,13 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     srvDesc.Format = sysTexDesc.Format;
     srvDesc.ViewDimension = D3D11_SRV_DIMENSION_TEXTURE2D;
     srvDesc.Texture2D.MipLevels = 1;
-    // create the resource view on the texture
+
+    // Create the resource view on the texture
     if (FAILED(hr = pDevice->CreateShaderResourceView(pSysBufferTexture.Get(), &srvDesc, &pSysBufferTextureView))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating view on sysBuffer texture");
     }
 
-    ////////////////////////////////////////////////
-    // create pixel shader for framebuffer
+    // Create pixel shader for framebuffer
     // Ignore the intellisense error "namespace has no member"
     if (FAILED(hr = pDevice->CreatePixelShader(FramebufferShaders::FramebufferPSBytecode,
                    sizeof(FramebufferShaders::FramebufferPSBytecode),
@@ -125,8 +127,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating pixel shader");
     }
 
-    /////////////////////////////////////////////////
-    // create vertex shader for framebuffer
+    // Create vertex shader for framebuffer
     // Ignore the intellisense error "namespace has no member"
     if (FAILED(hr = pDevice->CreateVertexShader(FramebufferShaders::FramebufferVSBytecode,
                    sizeof(FramebufferShaders::FramebufferVSBytecode),
@@ -135,8 +136,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating vertex shader");
     }
 
-    //////////////////////////////////////////////////////////////
-    // create and fill vertex buffer with quad for rendering frame
+    // Create and fill vertex buffer with quad for rendering frame
     const FSQVertex vertices[] = {
         {-1.0f, 1.0f, 0.5f, 0.0f, 0.0f},
         {1.0f, 1.0f, 0.5f, 1.0f, 0.0f},
@@ -152,12 +152,12 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     bd.CPUAccessFlags = 0u;
     D3D11_SUBRESOURCE_DATA initData = {};
     initData.pSysMem = vertices;
+
     if (FAILED(hr = pDevice->CreateBuffer(&bd, &initData, &pVertexBuffer))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating vertex buffer");
     }
 
-    //////////////////////////////////////////
-    // create input layout for fullscreen quad
+    // Create input layout for fullscreen quad
     const D3D11_INPUT_ELEMENT_DESC ied[] = {
         {"POSITION", 0, DXGI_FORMAT_R32G32B32_FLOAT, 0, 0, D3D11_INPUT_PER_VERTEX_DATA, 0},
         {"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}};
@@ -171,7 +171,6 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating input layout");
     }
 
-    ////////////////////////////////////////////////////
     // Create sampler state for fullscreen textured quad
     D3D11_SAMPLER_DESC sampDesc = {};
     sampDesc.Filter = D3D11_FILTER_MIN_MAG_MIP_POINT;
@@ -181,31 +180,38 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     sampDesc.ComparisonFunc = D3D11_COMPARISON_NEVER;
     sampDesc.MinLOD = 0;
     sampDesc.MaxLOD = D3D11_FLOAT32_MAX;
+
     if (FAILED(hr = pDevice->CreateSamplerState(&sampDesc, &pSamplerState))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating sampler state");
     }
 }
 
 Graphics::~Graphics() {
-    // clear the state of the device context before destruction
-    if (pImmediateContext)
+    // Clear the state of the device context before destruction
+    if (pImmediateContext) {
         pImmediateContext->ClearState();
+    }
+}
+
+void Graphics::BeginFrame() {
+    sysBuffer.Clear(Colors::Red);
 }
 
 void Graphics::EndFrame() {
     HRESULT hr;
 
-    // lock and map the adapter memory for copying over the sysbuffer
+    // Lock and map the adapter memory for copying over the sysbuffer
     if (FAILED(hr = pImmediateContext
                         ->Map(pSysBufferTexture.Get(), 0u, D3D11_MAP_WRITE_DISCARD, 0u, &mappedSysBufferTexture))) {
         throw COLD_GFX_EXCEPTION(hr, L"Mapping sysbuffer");
     }
-    // perform the copy line-by-line
+
+    // Perform the copy line-by-line
     sysBuffer.Present(mappedSysBufferTexture.RowPitch, reinterpret_cast<BYTE*>(mappedSysBufferTexture.pData));
-    // release the adapter memory
+    // Release the adapter memory
     pImmediateContext->Unmap(pSysBufferTexture.Get(), 0u);
 
-    // render offscreen scene texture to back buffer
+    // Render offscreen scene texture to back buffer
     pImmediateContext->IASetInputLayout(pInputLayout.Get());
     pImmediateContext->VSSetShader(pVertexShader.Get(), nullptr, 0u);
     pImmediateContext->PSSetShader(pPixelShader.Get(), nullptr, 0u);
@@ -217,18 +223,113 @@ void Graphics::EndFrame() {
     pImmediateContext->PSSetSamplers(0u, 1u, pSamplerState.GetAddressOf());
     pImmediateContext->Draw(6u, 0u);
 
-    // flip back/front buffers
+    // Flip back/front buffers
     if (FAILED(hr = pSwapChain->Present(1u, 0u))) {
         throw COLD_GFX_EXCEPTION(hr, L"Presenting back buffer");
     }
 }
 
-void Graphics::BeginFrame() {
-    sysBuffer.Clear(Colors::Red);
+void Graphics::DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c) {
+    // Using pointers so we can swap (for sorting purposes)
+    const Vec3* pv0 = &v0;
+    const Vec3* pv1 = &v1;
+    const Vec3* pv2 = &v2;
+
+    // sorting vertices by y
+    if (pv1->operator[](1) < pv0->operator[](1)) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv2->operator[](1) < pv1->operator[](1)) {
+        std::swap(pv1, pv2);
+    }
+
+    if (pv1->operator[](1) < pv0->operator[](1)) {
+        std::swap(pv0, pv1);
+    }
+
+    if (pv0->operator[](1) == pv1->operator[](1)) {  // Natural flat top
+        // Sorting top vertices by x
+        if (pv1->operator[](0) < pv0->operator[](0)) {
+            std::swap(pv0, pv1);
+        }
+
+        DrawFlatTopTriangle(*pv0, *pv1, *pv2, c);
+    }
+    else if (pv1->operator[](1) == pv2->operator[](1)) {  // Natural flat bottom
+        // Sorting bottom vertices by x
+        if (pv2->operator[](0) < pv1->operator[](0)) {
+            std::swap(pv1, pv2);
+        }
+
+        DrawFlatBottomTriangle(*pv0, *pv1, *pv2, c);
+    }
+    else {  // General triangle
+
+        // Find splitting vertex
+        const float alphaSplit = (pv1->operator[](1) - pv0->operator[](1)) / (pv2->operator[](1) - pv0->operator[](1));
+        const Vec3 vi = *pv0 + (*pv2 - *pv0) * alphaSplit;
+
+        if (pv1->operator[](0) < vi.operator[](0)) {  // Major right
+            DrawFlatBottomTriangle(*pv0, *pv1, vi, c);
+            DrawFlatTopTriangle(*pv1, vi, *pv2, c);
+        }
+        else {  // Major left
+            DrawFlatBottomTriangle(*pv0, vi, *pv1, c);
+            DrawFlatTopTriangle(vi, *pv1, *pv2, c);
+        }
+    }
 }
 
-//////////////////////////////////////////////////
-//           Graphics Exception
+void Graphics::DrawFlatTopTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c) {
+    // Calculate slopes in screen space
+    const float m0 = (v2[0] - v0[0]) / (v2[1] - v0[1]);
+    const float m1 = (v2[0] - v1[0]) / (v2[1] - v1[1]);
+
+    // Calculate start and end scanlines
+    const int yStart = static_cast<int>(ceil(v0[1] - 0.5f));
+    const int yEnd = static_cast<int>(ceil(v2[1] - 0.5f));  // The scanline AFTER the last line drawn
+
+    for (int y = yStart; y < yEnd; y++) {
+        // Calculate start and end points (x-coordinates). Add 0.5 to y value because we're calculating based on pixel
+        // CENTERS
+        const float px0 = m0 * (static_cast<float>(y) + 0.5f - v0[1]) + v0[0];
+        const float px1 = m1 * (static_cast<float>(y) + 0.5f - v1[1]) + v1[0];
+
+        // Calculate start and end pixels
+        const int xStart = static_cast<int>(ceil(px0 - 0.5f));
+        const int xEnd = static_cast<int>(ceil(px1 - 0.5f));  // The pixel AFTER the last pixel drawn
+
+        for (int x = xStart; x < xEnd; x++) {
+            PutPixel(x, y, c);
+        }
+    }
+}
+
+void Graphics::DrawFlatBottomTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c) {
+    // Calculate slopes in screen space
+    const float m0 = (v1[0] - v0[0]) / (v1[1] - v0[1]);
+    const float m1 = (v2[0] - v0[0]) / (v2[1] - v0[1]);
+
+    // Calculate start and end scanlines
+    const int yStart = static_cast<int>(ceil(v0[1] - 0.5f));
+    const int yEnd = static_cast<int>(ceil(v2[1] - 0.5f));  // The scanline AFTER the last line drawn
+
+    for (int y = yStart; y < yEnd; y++) {
+        // Calculate start and end points. Add 0.5 to y value because we're calculating based on pixel CENTERS
+        const float px0 = m0 * (static_cast<float>(y) + 0.5f - v0[1]) + v0[0];
+        const float px1 = m1 * (static_cast<float>(y) + 0.5f - v0[1]) + v0[0];
+
+        // Calculate start and end pixels
+        const int xStart = static_cast<int>(ceil(px0 - 0.5f));
+        const int xEnd = static_cast<int>(ceil(px1 - 0.5f));  // The pixel AFTER the last pixel drawn
+
+        for (int x = xStart; x < xEnd; x++) {
+            PutPixel(x, y, c);
+        }
+    }
+}
+
 Graphics::Exception::Exception(HRESULT hr, const std::wstring& note, const wchar_t* file, unsigned int line)
     : ColdException(file, line, note), hr(hr) {
 }

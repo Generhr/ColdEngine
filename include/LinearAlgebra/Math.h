@@ -35,10 +35,10 @@ namespace Math {
 
     template<typename T>
     inline T wrapAngle(T theta) {
-        const auto p = PI<T>;
-        const T modded = fmod(theta, static_cast<T>(2.0) * p);
+        const auto pi = PI<T>;
+        const T modded = fmod(theta, static_cast<T>(2.0) * pi);
 
-        return (modded > p) ? (modded - static_cast<T>(2.0) * p) : modded;
+        return (modded > pi) ? (modded - static_cast<T>(2.0) * pi) : modded;
     }
 
     // Basic Functions
