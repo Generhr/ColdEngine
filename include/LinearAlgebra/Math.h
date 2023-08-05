@@ -60,7 +60,7 @@ namespace Math {
         return start + (end - start) * alpha;
     }
 
-    // Mapping Function
+    // Mapping Functions
 
     template<typename T>
     inline auto map(const T& value, const T& start1, const T& stop1, const T& start2, const T& stop2) {
