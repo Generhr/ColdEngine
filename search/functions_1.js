@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['helloworld_22',['HelloWorld',['../namespaceUtility.html#ad163dfbe3fd278ea6039caabe9ec2497',1,'Utility']]]
+  ['beginframe_469',['BeginFrame',['../class_graphics.html#ae9f5bcaa267fdff06bbfcf1e2ddf7137',1,'Graphics']]]
 ];

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['c_24',['c',['../Main_8cpp.html#aa0de7d50969b1568594a6735d702f4da',1,'Main.cpp']]]
+  ['buffer_666',['buffer',['../class_mouse.html#aaa92dec51803701895f55bfd66731a17',1,'Mouse']]],
+  ['buffersize_667',['bufferSize',['../class_mouse.html#ad86e90c5043f6383a60298271a267d91',1,'Mouse']]]
 ];

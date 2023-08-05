@@ -1,0 +1,13 @@
+<map id="Math::wrapAngle" name="Math::wrapAngle">
+<area shape="rect" id="node1" title=" " alt="" coords="243,244,361,272"/>
+<area shape="rect" id="node2" href="$class_con_hex_scene.html#af420f2632ea258eca9accd19cb26b286" title=" " alt="" coords="23,5,177,33"/>
+<area shape="rect" id="node3" href="$class_con_hex_wire_scene.html#ac4c9a3c1352b4def3ca8db94012dfeb2" title=" " alt="" coords="10,57,190,85"/>
+<area shape="rect" id="node4" href="$class_cube_order_scene.html#a3a9793800646dfb310c2249e3b0d25e8" title=" " alt="" coords="15,109,185,137"/>
+<area shape="rect" id="node5" href="$class_cube_skinned_scene.html#a7fd5f455db4d2d817ef04f393f1ea42b" title=" " alt="" coords="8,161,192,189"/>
+<area shape="rect" id="node6" href="$class_folded_cube_scene.html#aee9ed7ce452be6a8a013f85127c0f1cd" title=" " alt="" coords="12,213,188,241"/>
+<area shape="rect" id="node7" href="$class_folded_cube_wrap_scene.html#a25102a9c5af6066310e78aaac5c4f15c" title=" " alt="" coords="21,265,179,309"/>
+<area shape="rect" id="node8" href="$class_solid_cube_scene.html#af2c5d8dc35630177d863663b972bb1cd" title=" " alt="" coords="17,333,183,361"/>
+<area shape="rect" id="node9" href="$class_tex_cube_scene.html#a6a27aafa838f3e3ede4f80cd246551b0" title=" " alt="" coords="21,385,179,413"/>
+<area shape="rect" id="node10" href="$class_tex_wrap_cube_scene.html#aafcaf650b4d40ebbf3c8da6233825ac1" title=" " alt="" coords="5,437,195,465"/>
+<area shape="rect" id="node11" href="$class_x_mutual_scene.html#a86c7ec15e3cd229fc71c33d2717ad421" title=" " alt="" coords="23,489,177,517"/>
+</map>

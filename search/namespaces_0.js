@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['generator_13',['Generator',['../namespaceGenerator.html',1,'']]]
+  ['colors_410',['Colors',['../namespace_colors.html',1,'']]]
 ];
