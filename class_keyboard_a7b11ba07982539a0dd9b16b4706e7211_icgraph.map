@@ -1,8 +1,9 @@
 <map id="Keyboard::KeyIsPressed" name="Keyboard::KeyIsPressed">
-<area shape="rect" id="node1" title=" " alt="" coords="317,88,482,116"/>
-<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a291519be4aae4268c5b6cdb4b9fc864a" title=" " alt="" coords="104,5,268,33"/>
-<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="103,57,269,85"/>
-<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="108,109,264,153"/>
-<area shape="rect" id="node5" href="$class_engine.html#a56cc30926ee112fbf83bfa4083d3af79" title=" " alt="" coords="113,177,259,205"/>
-<area shape="rect" id="node6" href="$_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,177,55,205"/>
+<area shape="rect" id="node1" title=" " alt="" coords="328,117,493,145"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a291519be4aae4268c5b6cdb4b9fc864a" title=" " alt="" coords="110,5,273,33"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="108,57,275,85"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="113,109,270,153"/>
+<area shape="rect" id="node5" href="$class_double_cube_scene.html#aa0b545717ab49ff4b4726d15bb8917bb" title=" " alt="" coords="103,177,280,205"/>
+<area shape="rect" id="node6" href="$class_engine.html#a56cc30926ee112fbf83bfa4083d3af79" title=" " alt="" coords="119,229,264,257"/>
+<area shape="rect" id="node7" href="$_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,229,55,257"/>
 </map>

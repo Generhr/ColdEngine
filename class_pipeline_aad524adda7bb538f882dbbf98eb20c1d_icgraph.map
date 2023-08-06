@@ -1,6 +1,7 @@
 <map id="Pipeline::BindRotation" name="Pipeline::BindRotation">
-<area shape="rect" id="node1" title=" " alt="" coords="210,57,359,85"/>
-<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="8,5,159,33"/>
-<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="6,57,161,85"/>
-<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="5,109,162,153"/>
+<area shape="rect" id="node1" title=" " alt="" coords="219,88,368,116"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="12,5,164,33"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="11,57,165,85"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="10,109,166,153"/>
+<area shape="rect" id="node5" href="$class_double_cube_scene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="5,177,171,205"/>
 </map>

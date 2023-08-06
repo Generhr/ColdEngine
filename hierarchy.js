@@ -32,7 +32,8 @@ var hierarchy =
     [ "Scene", "class_scene.html", [
       [ "CubeSkinScene", "class_cube_skin_scene.html", null ],
       [ "CubeSolidScene", "class_cube_solid_scene.html", null ],
-      [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", null ]
+      [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", null ],
+      [ "DoubleCubeScene", "class_double_cube_scene.html", null ]
     ] ],
     [ "SolidEffect", "class_solid_effect.html", null ],
     [ "Surface", "class_surface.html", null ],
@@ -47,5 +48,6 @@ var hierarchy =
     [ "SolidEffect::Vertex", "class_solid_effect_1_1_vertex.html", null ],
     [ "TextureEffect::Vertex", "class_texture_effect_1_1_vertex.html", null ],
     [ "VertexColorEffect::Vertex", "class_vertex_color_effect_1_1_vertex.html", null ],
-    [ "VertexColorEffect", "class_vertex_color_effect.html", null ]
+    [ "VertexColorEffect", "class_vertex_color_effect.html", null ],
+    [ "ZBuffer", "class_z_buffer.html", null ]
 ];

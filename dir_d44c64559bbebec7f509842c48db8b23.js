@@ -59,5 +59,8 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "Triangle.h", "_triangle_8h.html", [
       [ "Triangle", "class_triangle.html", "class_triangle" ]
     ] ],
-    [ "Win.h", "_win_8h.html", "_win_8h" ]
+    [ "Win.h", "_win_8h.html", "_win_8h" ],
+    [ "ZBuffer.h", "_z_buffer_8h.html", [
+      [ "ZBuffer", "class_z_buffer.html", "class_z_buffer" ]
+    ] ]
 ];

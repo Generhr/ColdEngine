@@ -1,6 +1,7 @@
 <map id="Scene" name="Scene">
-<area shape="rect" id="node1" title=" " alt="" coords="173,5,232,33"/>
+<area shape="rect" id="node1" title=" " alt="" coords="253,5,312,33"/>
 <area shape="rect" id="node2" href="$class_cube_skin_scene.html" title=" " alt="" coords="5,81,120,109"/>
 <area shape="rect" id="node3" href="$class_cube_solid_scene.html" title=" " alt="" coords="144,81,261,109"/>
 <area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html" title=" " alt="" coords="286,81,442,109"/>
+<area shape="rect" id="node5" href="$class_double_cube_scene.html" title=" " alt="" coords="466,81,595,109"/>
 </map>

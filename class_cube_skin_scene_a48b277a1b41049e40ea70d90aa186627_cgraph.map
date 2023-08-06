@@ -1,9 +1,11 @@
 <map id="CubeSkinScene::Draw" name="CubeSkinScene::Draw">
-<area shape="rect" id="node1" title=" " alt="" coords="5,152,157,180"/>
-<area shape="rect" id="node2" href="$class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d" title=" " alt="" coords="212,5,362,33"/>
-<area shape="rect" id="node3" href="$class_pipeline.html#a8292a77189cee1306958bf86ebee73e5" title=" " alt="" coords="205,57,369,85"/>
-<area shape="rect" id="node4" href="$class_matrix3.html#a3672400f647456083337d53db6478505" title=" " alt="" coords="208,109,366,153"/>
-<area shape="rect" id="node5" href="$class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc" title=" " alt="" coords="208,177,366,221"/>
-<area shape="rect" id="node6" href="$class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a" title=" " alt="" coords="208,245,366,289"/>
-<area shape="rect" id="node7" href="$class_pipeline.html#a76274774f61e4b5a1c708decf65712b9" title=" " alt="" coords="235,313,339,341"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,169,157,197"/>
+<area shape="rect" id="node2" href="$class_pipeline.html#adf2322f3b604145324fe70fd45266b46" title=" " alt="" coords="214,5,360,33"/>
+<area shape="rect" id="node4" href="$class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d" title=" " alt="" coords="212,57,362,85"/>
+<area shape="rect" id="node5" href="$class_pipeline.html#a8292a77189cee1306958bf86ebee73e5" title=" " alt="" coords="205,109,369,137"/>
+<area shape="rect" id="node6" href="$class_matrix3.html#a3672400f647456083337d53db6478505" title=" " alt="" coords="208,161,366,205"/>
+<area shape="rect" id="node7" href="$class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc" title=" " alt="" coords="208,229,366,273"/>
+<area shape="rect" id="node8" href="$class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a" title=" " alt="" coords="208,297,366,341"/>
+<area shape="rect" id="node9" href="$class_pipeline.html#a76274774f61e4b5a1c708decf65712b9" title=" " alt="" coords="235,365,339,393"/>
+<area shape="rect" id="node3" href="$class_z_buffer.html#af1a6407078bb83629e3b4dec9f0554cf" title=" " alt="" coords="417,5,516,33"/>
 </map>

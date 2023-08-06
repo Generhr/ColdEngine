@@ -1,11 +1,12 @@
 <map id="include/PubeScreenTransformer.h" name="include/PubeScreenTransformer.h">
-<area shape="rect" id="node1" title=" " alt="" coords="308,5,524,33"/>
-<area shape="rect" id="node2" href="$_pipeline_8h.html" title=" " alt="" coords="355,81,478,109"/>
-<area shape="rect" id="node3" href="$_solid_effect_8h.html" title=" " alt="" coords="5,165,182,193"/>
-<area shape="rect" id="node4" href="$_cube_solid_scene_8h.html" title=" " alt="" coords="103,249,276,293"/>
-<area shape="rect" id="node6" href="$_texture_effect_8h.html" title=" " alt="" coords="256,165,446,193"/>
-<area shape="rect" id="node7" href="$_cube_skin_scene_8h.html" title=" " alt="" coords="300,257,519,285"/>
-<area shape="rect" id="node8" href="$_vertex_color_effect_8h.html" title=" " alt="" coords="520,157,691,201"/>
-<area shape="rect" id="node9" href="$_cube_vertex_color_scene_8h.html" title=" " alt="" coords="542,249,725,293"/>
-<area shape="rect" id="node5" href="$_engine_8cpp.html" title=" " alt="" coords="355,341,464,369"/>
+<area shape="rect" id="node1" title=" " alt="" coords="343,5,559,33"/>
+<area shape="rect" id="node2" href="$_pipeline_8h.html" title=" " alt="" coords="389,81,512,109"/>
+<area shape="rect" id="node3" href="$_solid_effect_8h.html" title=" " alt="" coords="105,165,282,193"/>
+<area shape="rect" id="node4" href="$_cube_solid_scene_8h.html" title=" " alt="" coords="5,249,179,293"/>
+<area shape="rect" id="node6" href="$_double_cube_scene_8h.html" title=" " alt="" coords="203,249,387,293"/>
+<area shape="rect" id="node7" href="$_texture_effect_8h.html" title=" " alt="" coords="356,165,546,193"/>
+<area shape="rect" id="node8" href="$_cube_skin_scene_8h.html" title=" " alt="" coords="411,257,629,285"/>
+<area shape="rect" id="node9" href="$_vertex_color_effect_8h.html" title=" " alt="" coords="620,157,791,201"/>
+<area shape="rect" id="node10" href="$_cube_vertex_color_scene_8h.html" title=" " alt="" coords="653,249,835,293"/>
+<area shape="rect" id="node5" href="$_engine_8cpp.html" title=" " alt="" coords="353,341,461,369"/>
 </map>

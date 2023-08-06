@@ -5,6 +5,7 @@ var annotated_dup =
     [ "CubeSkinScene", "class_cube_skin_scene.html", "class_cube_skin_scene" ],
     [ "CubeSolidScene", "class_cube_solid_scene.html", "class_cube_solid_scene" ],
     [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", "class_cube_vertex_color_scene" ],
+    [ "DoubleCubeScene", "class_double_cube_scene.html", "class_double_cube_scene" ],
     [ "Engine", "class_engine.html", "class_engine" ],
     [ "EngineException", "class_engine_exception.html", "class_engine_exception" ],
     [ "FrameTimer", "class_frame_timer.html", "class_frame_timer" ],
@@ -29,5 +30,6 @@ var annotated_dup =
     [ "Vector2", "class_vector2.html", "class_vector2" ],
     [ "Vector3", "class_vector3.html", "class_vector3" ],
     [ "Vector4", "class_vector4.html", "class_vector4" ],
-    [ "VertexColorEffect", "class_vertex_color_effect.html", "class_vertex_color_effect" ]
+    [ "VertexColorEffect", "class_vertex_color_effect.html", "class_vertex_color_effect" ],
+    [ "ZBuffer", "class_z_buffer.html", "class_z_buffer" ]
 ];

@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.4.1</span>
+   &#160;<span id="projectnumber">1.4.3</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -147,29 +147,31 @@ $(document).ready(function(){initNavTree('_cube_skin_scene_8h_source.html',''); 
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    }</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160; </div>
 <div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627">   58</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627">Draw</a>()<span class="keyword"> override </span>{</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">// Generate rotation matrix from euler angles</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_matrix3.html">Mat3</a> rot = <a class="code" href="class_matrix3.html#a3672400f647456083337d53db6478505">Mat3::CreateXRotationMatrix</a>(theta_x) * <a class="code" href="class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc">Mat3::CreateYRotationMatrix</a>(theta_y) *</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;                         <a class="code" href="class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a">Mat3::CreateZRotationMatrix</a>(theta_z);</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// Translation from offset</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a> trans = {0.0f, 0.0f, offset_z};</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Set pipeline transform</span></div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d">BindRotation</a>(rot);</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a8292a77189cee1306958bf86ebee73e5">BindTranslation</a>(trans);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// Render triangles</span></div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Draw</a>(itlist);</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList&lt;Vertex&gt;</a> itlist;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    <a class="code" href="class_pipeline.html">Pipeline</a> pipeline;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> dTheta = Math::PI&lt;float&gt;;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    <span class="keywordtype">float</span> offset_z = 2.0f;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keywordtype">float</span> theta_x = 0.0f;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">float</span> theta_y = 0.0f;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">float</span> theta_z = 0.0f;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;};</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#adf2322f3b604145324fe70fd45266b46">BeginFrame</a>();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">// Generate rotation matrix from euler angles</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_matrix3.html">Mat3</a> rot = <a class="code" href="class_matrix3.html#a3672400f647456083337d53db6478505">Mat3::CreateXRotationMatrix</a>(theta_x) * <a class="code" href="class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc">Mat3::CreateYRotationMatrix</a>(theta_y) *</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                         <a class="code" href="class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a">Mat3::CreateZRotationMatrix</a>(theta_z);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">// Translation from offset</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a> trans = {0.0f, 0.0f, offset_z};</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// Set pipeline transform</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d">BindRotation</a>(rot);</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a8292a77189cee1306958bf86ebee73e5">BindTranslation</a>(trans);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// Render triangles</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Draw</a>(itlist);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    }</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160; </div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList&lt;Vertex&gt;</a> itlist;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <a class="code" href="class_pipeline.html">Pipeline</a> pipeline;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">float</span> dTheta = Math::PI&lt;float&gt;;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordtype">float</span> offset_z = 2.0f;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordtype">float</span> theta_x = 0.0f;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keywordtype">float</span> theta_y = 0.0f;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="keywordtype">float</span> theta_z = 0.0f;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
 <div class="ttc" id="a_cube_8h_html"><div class="ttname"><a href="_cube_8h.html">Cube.h</a></div></div>
 <div class="ttc" id="a_matrix3_8h_html"><div class="ttname"><a href="_matrix3_8h.html">Matrix3.h</a></div></div>
 <div class="ttc" id="a_pipeline_8h_html"><div class="ttname"><a href="_pipeline_8h.html">Pipeline.h</a></div></div>
@@ -191,12 +193,13 @@ $(document).ready(function(){initNavTree('_cube_skin_scene_8h_source.html',''); 
 <div class="ttc" id="aclass_matrix3_html_a7b88435a5d6c183b5b46efa2b6dbcb3a"><div class="ttname"><a href="class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a">Matrix3&lt; float &gt;::CreateZRotationMatrix</a></div><div class="ttdeci">static Matrix3 CreateZRotationMatrix(float theta)</div><div class="ttdef"><b>Definition:</b> Matrix3.h:78</div></div>
 <div class="ttc" id="aclass_matrix3_html_ae2e635e8fc49db308a95dde2a5518bbc"><div class="ttname"><a href="class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc">Matrix3&lt; float &gt;::CreateYRotationMatrix</a></div><div class="ttdeci">static Matrix3 CreateYRotationMatrix(float theta)</div><div class="ttdef"><b>Definition:</b> Matrix3.h:64</div></div>
 <div class="ttc" id="aclass_mouse_html"><div class="ttname"><a href="class_mouse.html">Mouse</a></div><div class="ttdef"><b>Definition:</b> Mouse.h:8</div></div>
-<div class="ttc" id="aclass_pipeline_html"><div class="ttname"><a href="class_pipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> Pipeline.h:15</div></div>
-<div class="ttc" id="aclass_pipeline_html_a179077548f7770a505e2aaadb5060f53"><div class="ttname"><a href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Pipeline::Vertex</a></div><div class="ttdeci">Effect::Vertex Vertex</div><div class="ttdef"><b>Definition:</b> Pipeline.h:17</div></div>
-<div class="ttc" id="aclass_pipeline_html_a25e264532d6e4cc68855f9f8c1172331"><div class="ttname"><a href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">Pipeline::effect</a></div><div class="ttdeci">Effect effect</div><div class="ttdef"><b>Definition:</b> Pipeline.h:232</div></div>
-<div class="ttc" id="aclass_pipeline_html_a76274774f61e4b5a1c708decf65712b9"><div class="ttname"><a href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Pipeline::Draw</a></div><div class="ttdeci">void Draw(const IndexedTriangleList&lt; Vertex &gt; &amp;triList)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:23</div></div>
-<div class="ttc" id="aclass_pipeline_html_a8292a77189cee1306958bf86ebee73e5"><div class="ttname"><a href="class_pipeline.html#a8292a77189cee1306958bf86ebee73e5">Pipeline::BindTranslation</a></div><div class="ttdeci">void BindTranslation(const Vec3 &amp;translation_in)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:31</div></div>
-<div class="ttc" id="aclass_pipeline_html_aad524adda7bb538f882dbbf98eb20c1d"><div class="ttname"><a href="class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d">Pipeline::BindRotation</a></div><div class="ttdeci">void BindRotation(const Mat3 &amp;rotation_in)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:27</div></div>
+<div class="ttc" id="aclass_pipeline_html"><div class="ttname"><a href="class_pipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> Pipeline.h:16</div></div>
+<div class="ttc" id="aclass_pipeline_html_a179077548f7770a505e2aaadb5060f53"><div class="ttname"><a href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Pipeline::Vertex</a></div><div class="ttdeci">Effect::Vertex Vertex</div><div class="ttdef"><b>Definition:</b> Pipeline.h:18</div></div>
+<div class="ttc" id="aclass_pipeline_html_a25e264532d6e4cc68855f9f8c1172331"><div class="ttname"><a href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">Pipeline::effect</a></div><div class="ttdeci">Effect effect</div><div class="ttdef"><b>Definition:</b> Pipeline.h:244</div></div>
+<div class="ttc" id="aclass_pipeline_html_a76274774f61e4b5a1c708decf65712b9"><div class="ttname"><a href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Pipeline::Draw</a></div><div class="ttdeci">void Draw(const IndexedTriangleList&lt; Vertex &gt; &amp;triList)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:24</div></div>
+<div class="ttc" id="aclass_pipeline_html_a8292a77189cee1306958bf86ebee73e5"><div class="ttname"><a href="class_pipeline.html#a8292a77189cee1306958bf86ebee73e5">Pipeline::BindTranslation</a></div><div class="ttdeci">void BindTranslation(const Vec3 &amp;translation_in)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:32</div></div>
+<div class="ttc" id="aclass_pipeline_html_aad524adda7bb538f882dbbf98eb20c1d"><div class="ttname"><a href="class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d">Pipeline::BindRotation</a></div><div class="ttdeci">void BindRotation(const Mat3 &amp;rotation_in)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:28</div></div>
+<div class="ttc" id="aclass_pipeline_html_adf2322f3b604145324fe70fd45266b46"><div class="ttname"><a href="class_pipeline.html#adf2322f3b604145324fe70fd45266b46">Pipeline::BeginFrame</a></div><div class="ttdeci">void BeginFrame()</div><div class="ttdef"><b>Definition:</b> Pipeline.h:37</div></div>
 <div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.h:10</div></div>
 <div class="ttc" id="aclass_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3&lt; float &gt;</a></div></div>
 <div class="ttc" id="anamespace_math_html_abb70099a95f7e3ae8eb62c3694775a6b"><div class="ttname"><a href="namespace_math.html#abb70099a95f7e3ae8eb62c3694775a6b">Math::WrapAngle</a></div><div class="ttdeci">T WrapAngle(T theta)</div><div class="ttdef"><b>Definition:</b> Math.h:38</div></div>
