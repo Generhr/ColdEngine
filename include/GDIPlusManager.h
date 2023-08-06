@@ -2,6 +2,7 @@
 
 #include "Win.h" /* Windows.h */
 
+
 class GDIPlusManager {
 public:
     GDIPlusManager();

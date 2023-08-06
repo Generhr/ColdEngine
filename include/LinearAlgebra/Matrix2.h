@@ -2,6 +2,7 @@
 
 #include <iostream> /* stream, cout */
 
+
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
  */
@@ -37,12 +38,12 @@ public:
 
     // Accessor Operators
 
-    T& operator[](std::size_t inedx) {
-        return elements[inedx];
+    T& operator[](std::size_t index) {
+        return elements[index];
     }
 
-    T const& operator[](std::size_t inedx) const {
-        return elements[inedx];
+    T const& operator[](std::size_t index) const {
+        return elements[index];
     }
 
     template<typename C>

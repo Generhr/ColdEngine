@@ -1,14 +1,14 @@
 #pragma once
 
-#include <array>          /* array */
-#include <compare>        /* operator<, operator<=, operator>, operator>= */
-#include <cstddef>        /* size_t */
-#include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
-
 #include "Math.h" /* square */
-
 #include "Matrix2.h"
 #include "Matrix3.h"
+
+#include <array>    /* array */
+#include <compare>  /* operator<, operator<=, operator>, operator>= */
+#include <cstddef>  /* size_t */
+#include <iostream> /* char_traits, operator<<, ostream, cout, endl */
+
 
 /**
  * Class for a two-dimensional vector object and assorted functions useful for manipulating points.
@@ -28,8 +28,8 @@ public:
      * @return {number} The distance.
      */
     constexpr static T Distance(const Vector2& vector1, const Vector2& vector2) {
-        return std::sqrt(Math::square(vector1.elements[0] - vector2.elements[0]) +
-                         Math::square(vector1.elements[1] - vector2.elements[1]));
+        return std::sqrt(Math::Square(vector1.elements[0] - vector2.elements[0]) +
+                         Math::Square(vector1.elements[1] - vector2.elements[1]));
     }
 
     /**
@@ -39,8 +39,8 @@ public:
      * @return {number} The squared distance.
      */
     constexpr static T DistanceSquared(const Vector2& vector1, const Vector2& vector2) {
-        return Math::square(vector1.elements[0] - vector2.elements[0]) +
-               Math::square(vector1.elements[1] - vector2.elements[1]);
+        return Math::Square(vector1.elements[0] - vector2.elements[0]) +
+               Math::Square(vector1.elements[1] - vector2.elements[1]);
     }
 
     /**
@@ -243,7 +243,7 @@ public:
      * @return {number} The length of the vector, squared.
      */
     T GetMagnitudeSquared() const {
-        return Math::square(*this);
+        return Math::Square(*this);
     }
 
     /**

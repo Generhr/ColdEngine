@@ -4,6 +4,7 @@
 
 #include <queue>
 
+
 class Mouse {
     friend class MainWindow;
 

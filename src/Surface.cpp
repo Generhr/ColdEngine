@@ -11,6 +11,7 @@
 
 #pragma comment(lib, "gdiplus.lib")
 
+
 void Surface::PutPixelAlpha(unsigned int x, unsigned int y, const Color c) {
     assert(x < width);
     assert(y < height);

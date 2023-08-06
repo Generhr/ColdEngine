@@ -1,5 +1,6 @@
 {
     //============== Native ======================================================//
+    "debug.terminal.clearBeforeReusing": true,
     "editor.rulers": [
         120
     ],
@@ -293,6 +294,7 @@
         "IOERROR",
         "IPERSISTSTREAM",
         "IPID",
+        "itlist",
         "IWYU",
         "kwargs",
         "LBUTTON",
@@ -505,11 +507,13 @@
         "XALIGN",
         "XAPO",
         "XAUDIO",
+        "xclamp",
         "XDOM",
         "XEEDS",
         "XENROLL",
         "XFORM",
         "xyxx",
+        "yclamp",
         "YESNO",
         "zbuffer"
     ],

@@ -1,12 +1,9 @@
 #pragma once
 
 #include "EngineException.h"
-#include "Colors.h"
-#include "GDIPlusManager.h"
-#include "LinearAlgebra/Vector2.h"
 #include "LinearAlgebra/Vector3.h"
+#include "GDIPlusManager.h"
 #include "Surface.h"
-#include "TexVertex.h"
 
 #define byte                                                                                                           \
     win_byte_override  // https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h
@@ -18,6 +15,7 @@
 #include <wrl.h>
 
 #define COLD_GFX_EXCEPTION(hr, note) Graphics::Exception(hr, note, _CRT_WIDE(__FILE__), __LINE__)
+
 
 class Graphics {
 public:
@@ -114,35 +112,6 @@ public:
     void DrawLine(const Vec3& p1, const Vec3& p2, Color c) {
         DrawLine(p1[0], p1[1], p2[0], p2[1], c);
     }
-
-    void DrawTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
-    void DrawTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
-    void DrawTriangleTexWrap(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
-
-private:
-    void DrawFlatTopTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
-    void DrawFlatBottomTriangle(const Vec3& v0, const Vec3& v1, const Vec3& v2, Color c);
-    void DrawFlatTopTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
-    void DrawFlatBottomTriangleTex(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
-    void DrawFlatTriangleTex(const TexVertex& v0,
-        const TexVertex& v1,
-        const TexVertex& v2,
-        const Surface& tex,
-        const TexVertex& dv0,
-        const TexVertex& dv1,
-        TexVertex& itEdge1);
-    void DrawFlatTopTriangleTexWrap(const TexVertex& v0, const TexVertex& v1, const TexVertex& v2, const Surface& tex);
-    void DrawFlatBottomTriangleTexWrap(const TexVertex& v0,
-        const TexVertex& v1,
-        const TexVertex& v2,
-        const Surface& tex);
-    void DrawFlatTriangleTexWrap(const TexVertex& v0,
-        const TexVertex& v1,
-        const TexVertex& v2,
-        const Surface& tex,
-        const TexVertex& dv0,
-        const TexVertex& dv1,
-        TexVertex& itEdge1);
 
 private:
     GDIPlusManager gdipMan;

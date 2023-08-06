@@ -9,6 +9,7 @@
 #include <numbers>
 #include <random>
 
+
 namespace Math {
     // Constants
 
@@ -24,17 +25,17 @@ namespace Math {
     // Angle Functions
 
     template<typename T>
-    inline auto toRadians(const T& degrees) {
+    inline auto ToRadians(const T& degrees) {
         return degrees * (PI<T> / 180.0);
     }
 
     template<typename T>
-    inline auto toDegrees(const T& radians) {
+    inline auto ToDegrees(const T& radians) {
         return radians * (180.0 / PI<T>);
     }
 
     template<typename T>
-    inline T wrapAngle(T theta) {
+    inline T WrapAngle(T theta) {
         const auto pi = PI<T>;
         const T modded = fmod(theta, static_cast<T>(2.0) * pi);
 
@@ -44,31 +45,31 @@ namespace Math {
     // Basic Functions
 
     template<typename T>
-    inline auto square(const T& x) {
+    inline auto Square(const T& x) {
         return x * x;
     }
 
     template<typename T>
-    inline auto cube(const T& x) {
+    inline auto Cube(const T& x) {
         return x * x * x;
     }
 
     // Interpolation Functions
 
     template<typename T>
-    inline auto lerp(const T& start, const T& end, const double alpha) {
+    inline auto Lerp(const T& start, const T& end, const double alpha) {
         return start + (end - start) * alpha;
     }
 
     // Mapping Functions
 
     template<typename T>
-    inline auto map(const T& value, const T& start1, const T& stop1, const T& start2, const T& stop2) {
+    inline auto Map(const T& value, const T& start1, const T& stop1, const T& start2, const T& stop2) {
         return start2 + (stop2 - start2) * ((value - start1) / (stop1 - start1));
     }
 
     template<typename T>
-    inline auto wrap(const T& number, const T& lower, const T& upper) {
+    inline auto Wrap(const T& number, const T& lower, const T& upper) {
         const T diff = upper - lower;
 
         while (number < lower) {
@@ -85,19 +86,19 @@ namespace Math {
     // Other Functions
 
     template<typename T>
-    inline T min(const T& a, const T& b) {
+    inline T Min(const T& a, const T& b) {
         return (a < b) ? a : b;
     }
 
     template<typename T>
-    inline T max(const T& a, const T& b) {
+    inline T Max(const T& a, const T& b) {
         return (a > b) ? a : b;
     }
 
     // Random Number Functions
 
     template<typename T>
-    inline T random() {
+    inline T Random() {
         static std::random_device rd;
         static std::mt19937 gen(rd());
 
@@ -107,7 +108,7 @@ namespace Math {
     }
 
     template<typename T>
-    inline T random(const T& min, const T& max) {
+    inline T Random(const T& min, const T& max) {
         static std::random_device rd;
         static std::mt19937 gen(rd());
 
@@ -117,7 +118,7 @@ namespace Math {
     }
 
     template<typename T>
-    inline void setRandomSeed(unsigned int const seed) {
+    inline void SetRandomSeed(unsigned int const seed) {
         std::mt19937 gen(seed);
 
         gen.discard(70000);  // Discard initial random values for better seed coverage
@@ -125,7 +126,7 @@ namespace Math {
     }
 
     template<typename T>
-    inline void setRandomSeed() {
+    inline void SetRandomSeed() {
         std::random_device rd;
 
         setRandomSeed<T>(rd());

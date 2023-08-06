@@ -3,6 +3,7 @@
 #include "LinearAlgebra/Vector2.h"
 #include "LinearAlgebra/Vector3.h"
 
+
 class TexVertex {
 public:
     TexVertex(const Vec3& pos, const Vec2& tc) : pos(pos), tc(tc) {

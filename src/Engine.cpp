@@ -1,35 +1,17 @@
-#include <sstream>
-
 #include "Engine.h"
 
 #include "MainWindow.h"
-#include "Scenes/SolidCubeScene.h"
-#include "Scenes/CubeOrderScene.h"
-#include "Scenes/ConHexScene.h"
-#include "Scenes/ConHexWireScene.h"
-#include "Scenes/XMutualScene.h"
-#include "Scenes/TexCubeScene.h"
-#include "Scenes/TexWrapCubeScene.h"
-#include "Scenes/FoldedCubeScene.h"
-#include "Scenes/FoldedCubeWrapScene.h"
-#include "Scenes/CubeSkinnedScene.h"
+#include "Scenes/CubeSkinScene.h"
+#include "Scenes/CubeSolidScene.h"
+#include "Scenes/CubeVertexColorScene.h"
+
+#include <sstream>
+
 
 Engine::Engine(MainWindow& window) : window(window), graphics(window) {
-    scenes.push_back(std::make_unique<SolidCubeScene>());
-    scenes.push_back(std::make_unique<CubeOrderScene>());
-    scenes.push_back(std::make_unique<ConHexScene>());
-    scenes.push_back(std::make_unique<ConHexWireScene>());
-    scenes.push_back(std::make_unique<XMutualScene>());
-    scenes.push_back(std::make_unique<TexCubeScene>());
-    scenes.push_back(std::make_unique<TexCubeScene>(2.0f));
-    scenes.push_back(std::make_unique<TexWrapCubeScene>(2.0f));
-    scenes.push_back(std::make_unique<TexWrapCubeScene>(6.0f));
-    scenes.push_back(std::make_unique<TexWrapCubeScene>(L"res\\wood.jpg", 2.0f));
-    scenes.push_back(std::make_unique<FoldedCubeScene>());
-    scenes.push_back(std::make_unique<FoldedCubeWrapScene>());
-    scenes.push_back(std::make_unique<CubeSkinnedScene>(L"res\\dice_skin.png"));
-    scenes.push_back(std::make_unique<CubeSkinnedScene>(L"res\\office_skin.jpg"));
-    scenes.push_back(std::make_unique<CubeSkinnedScene>(L"res\\office_skin_lores.png"));
+    scenes.push_back(std::make_unique<CubeSkinScene>(graphics, L"res\\office_skin.jpg"));
+    scenes.push_back(std::make_unique<CubeSolidScene>(graphics));
+    scenes.push_back(std::make_unique<CubeVertexColorScene>(graphics));
 
     curScene = scenes.begin();
     SetWindowName();
@@ -63,7 +45,7 @@ void Engine::ComposeFrame() {
     graphics.BeginFrame();
 
     // Draw scene
-    (*curScene)->Draw(graphics);
+    (*curScene)->Draw();
 
     graphics.EndFrame();
 }
@@ -88,5 +70,6 @@ void Engine::ReverseCycleScenes() {
 }
 
 void Engine::SetWindowName() const {
-    SetWindowTextA(window.GetHWND(), (*curScene)->GetName().c_str());
+    SetWindowTextW(window.GetHWND(),
+        (*curScene)->GetName().c_str());  //~ Changed `GetName()` to wide to avoid "potential loss of data" warnings
 }

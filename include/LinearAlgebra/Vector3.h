@@ -1,13 +1,13 @@
 #pragma once
 
-#include <array>          /* array */
-#include <iostream>       /* char_traits, operator<<, ostream, cout, endl */
-#include <compare>        /* operator<, operator<=, operator>, operator>= */
-#include <cstddef>        /* size_t */
-
 #include "Math.h" /* square */
-
 #include "Matrix3.h"
+
+#include <array>    /* array */
+#include <iostream> /* char_traits, operator<<, ostream, cout, endl */
+#include <compare>  /* operator<, operator<=, operator>, operator>= */
+#include <cstddef>  /* size_t */
+
 
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
@@ -27,9 +27,9 @@ public:
      * @return {number} The distance.
      */
     constexpr static T Distance(const Vector3& vector1, const Vector3& vector2) {
-        return std::sqrt(Math::square(vector1.elements[0] - vector2.elements[0]) +
-                         Math::square(vector1.elements[1] - vector2.elements[1]) +
-                         Math::square(vector1.elements[2] - vector2.elements[2]));
+        return std::sqrt(Math::Square(vector1.elements[0] - vector2.elements[0]) +
+                         Math::Square(vector1.elements[1] - vector2.elements[1]) +
+                         Math::Square(vector1.elements[2] - vector2.elements[2]));
     }
 
     /**
@@ -39,9 +39,9 @@ public:
      * @return {number} The squared distance.
      */
     constexpr static T DistanceSquared(const Vector3& vector1, const Vector3& vector2) {
-        return Math::square(vector1.elements[0] - vector2.elements[0]) +
-               Math::square(vector1.elements[1] - vector2.elements[1]) +
-               Math::square(vector1.elements[2] - vector2.elements[2]);
+        return Math::Square(vector1.elements[0] - vector2.elements[0]) +
+               Math::Square(vector1.elements[1] - vector2.elements[1]) +
+               Math::Square(vector1.elements[2] - vector2.elements[2]);
     }
 
     /**
@@ -244,7 +244,7 @@ public:
      * @return {number} The length of the vector, squared.
      */
     T GetMagnitudeSquared() const {
-        return Math::square(*this);
+        return Math::Square(*this);
     }
 
     /**

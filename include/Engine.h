@@ -1,11 +1,12 @@
 #pragma once
 
+#include "FrameTimer.h"
+#include "Graphics.h"
+#include "Scene.h"
+
 #include <memory>
 #include <vector>
 
-#include "Graphics.h"
-#include "Scene.h"
-#include "FrameTimer.h"
 
 class Engine {
 public:

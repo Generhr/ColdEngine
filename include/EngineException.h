@@ -2,6 +2,7 @@
 
 #include <string>
 
+
 class EngineException {
 public:
     EngineException(std::wstring file, unsigned int line, std::wstring note = L"")

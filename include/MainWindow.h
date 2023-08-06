@@ -8,6 +8,7 @@
 
 #include <string>
 
+
 class HWNDKey {
     friend Graphics::Graphics(HWNDKey&);
 

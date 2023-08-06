@@ -1,5 +1,8 @@
 #pragma once
 
+#include "LinearAlgebra/Vector3.h"
+
+
 class Color {
 public:
     constexpr Color() : dword() {
@@ -22,10 +25,17 @@ public:
 
     Color(Color&&) = default;
 
+    explicit Color(const Vec3& cf) : Color(unsigned char(cf[0]), unsigned char(cf[1]), unsigned char(cf[2])) {
+    }
+
     ~Color() = default;
 
     Color& operator=(Color&& color) = default;
     Color& operator=(const Color& color) = default;
+
+    explicit operator Vec3() const {
+        return {float(GetR()), float(GetG()), float(GetB())};
+    }
 
     constexpr unsigned char GetX() const {
         return dword >> 24u;

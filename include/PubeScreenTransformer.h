@@ -3,6 +3,7 @@
 #include "Graphics.h"
 #include "LinearAlgebra/Vector3.h"
 
+
 class PubeScreenTransformer {
 public:
     PubeScreenTransformer()
@@ -14,12 +15,15 @@ public:
         const float zInv = 1.0f / v[2];
         v[0] = (v[0] * zInv + 1.0f) * xFactor;
         v[1] = (-v[1] * zInv + 1.0f) * yFactor;
+
         return v;
     }
 
-    //  Vec3 GetTransformed(const Vec3& v) const {
-    //      return Transform(Vec3(v));
-    //  }
+    Vec3 GetTransformed(const Vec3& v) const {
+        Vec3 copy(v);
+
+        return Transform(copy);
+    }
 
 private:
     float xFactor;

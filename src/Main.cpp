@@ -5,6 +5,7 @@
 #include <iostream>
 #include <thread>
 
+
 using namespace std::chrono_literals;
 
 struct game_state {

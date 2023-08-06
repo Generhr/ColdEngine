@@ -7,7 +7,7 @@ include(cmake/SafeGuards.cmake)
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.3.2"
+        VERSION "1.4.0"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C
@@ -158,12 +158,12 @@ set(HEADER_LIST)
 file(GLOB_RECURSE HEADER_FILES include/*${SUFFIX_HPPHEADER})
 
 foreach(HEADER_FILE ${HEADER_FILES})
-    if(NOT "${HEADER_FILE}" IN_LIST PRECOMPILED_HEADER_LIST AND NOT "${HEADER_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST) #~ https://gitlab.kitware.com/cmake/cmake/-/issues/22091
+    if(NOT "${HEADER_FILE}" IN_LIST PRECOMPILED_HEADER_LIST AND NOT "${HEADER_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST)
         list(APPEND HEADER_LIST ${HEADER_FILE})
     endif()
 endforeach()
 
-set(SOURCE_LIST "${CSO_FILES}")
+set(SOURCE_LIST "${CSO_FILES}") # NOTE: Adding `CSO_FILES` here ensures that they are built if the variable has been set and that only happens if the .cso files have been deleted
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
@@ -201,7 +201,7 @@ endif()
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
-    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include" "${CMAKE_BINARY_DIR}/bin/ShaderOutput"
+    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include"
 )
 
 #=====  Set Standard and Warnings  =============================================#
