@@ -7,13 +7,13 @@
 #include "Effect/SolidEffect.h"
 
 
-class CubeSolidScene : public Scene {
+class DoubleCubeScene : public Scene {
 public:
     typedef Pipeline<SolidEffect> Pipeline;
     typedef Pipeline::Vertex Vertex;
 
 public:
-    explicit CubeSolidScene(Graphics& graphics)
+    explicit DoubleCubeScene(Graphics& graphics)
         : itlist(Cube::GetPlainIndependentFaces<Vertex>()), pipeline(graphics),
           Scene(L"Colored cube vertex gradient scene") {
         const Color colors[] =
@@ -61,17 +61,29 @@ public:
     virtual void Draw() override {
         pipeline.BeginFrame();
 
-        // Generate rotation matrix from euler angles
-        const Mat3 rot = Mat3::CreateXRotationMatrix(theta_x) * Mat3::CreateYRotationMatrix(theta_y) *
-                         Mat3::CreateZRotationMatrix(theta_z);
-        // Translation from offset
-        const Vec3 trans = {0.0f, 0.0f, offset_z};
+        // Fixed cube
+        {
+            // Generate rotation matrix from euler angles (rotate in opposition to mobile cube)
+            const Mat3 rot = Mat3::CreateXRotationMatrix(-theta_x) * Mat3::CreateYRotationMatrix(-theta_y) *
+                             Mat3::CreateZRotationMatrix(-theta_z);
+            // Set pipeline transform
+            pipeline.BindRotation(rot);
+            pipeline.BindTranslation({0.0f, 0.0f, 2.0f});
+            // Render triangles
+            pipeline.Draw(itlist);
+        }
 
-        // Set pipeline transform
-        pipeline.BindRotation(rot);
-        pipeline.BindTranslation(trans);
-        // Render triangles
-        pipeline.Draw(itlist);
+        // Mobile cube
+        {
+            // Generate rotation matrix from euler angles
+            const Mat3 rot = Mat3::CreateXRotationMatrix(theta_x) * Mat3::CreateYRotationMatrix(theta_y) *
+                             Mat3::CreateZRotationMatrix(theta_z);
+            // Set pipeline transform
+            pipeline.BindRotation(rot);
+            pipeline.BindTranslation({0.0f, 0.0f, offset_z});
+            // Render triangles
+            pipeline.Draw(itlist);
+        }
     }
 
 private:

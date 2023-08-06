@@ -1,7 +1,8 @@
 #pragma once
 
-#include "Colors.h"
 #include "Win.h"
+
+#include "Colors.h"
 // #include "Rect.h"
 #include "EngineException.h"
 
@@ -48,6 +49,7 @@ public:
         pitch = donor.pitch;
         pBuffer = std::move(donor.pBuffer);
         donor.pBuffer = nullptr;
+
         return *this;
     }
 
@@ -74,6 +76,7 @@ public:
     Color GetPixel(unsigned int x, unsigned int y) const {
         assert(x < width);
         assert(y < height);
+
         return pBuffer[y * pitch + x];
     }
 
@@ -106,7 +109,9 @@ private:
     // Calculate pixel pitch required for given byte alignment (must be multiple of 4 bytes)
     static unsigned int GetPitch(unsigned int width, unsigned int byteAlignment) {
         assert(byteAlignment % 4 == 0);
+
         const unsigned int pixelAlignment = byteAlignment / sizeof(Color);
+
         return width + (pixelAlignment - width % pixelAlignment) % pixelAlignment;
     }
 

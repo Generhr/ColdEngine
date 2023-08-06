@@ -6,6 +6,7 @@
 #include "IndexedTriangleList.h"
 #include "PubeScreenTransformer.h"
 #include "LinearAlgebra/Matrix3.h"
+#include "ZBuffer.h"
 
 #include <algorithm>
 
@@ -17,7 +18,7 @@ public:
     typedef typename Effect::Vertex Vertex;
 
 public:
-    explicit Pipeline(Graphics& graphics) : graphics(graphics) {
+    explicit Pipeline(Graphics& graphics) : graphics(graphics), zb(graphics.ScreenWidth, graphics.ScreenHeight) {
     }
 
     void Draw(const IndexedTriangleList<Vertex>& triList) {
@@ -30,6 +31,11 @@ public:
 
     void BindTranslation(const Vec3& translation_in) {
         translation = translation_in;
+    }
+
+    // Needed to reset the z-buffer after each frame
+    void BeginFrame() {
+        zb.Clear();
     }
 
 private:
@@ -178,7 +184,8 @@ private:
         DrawFlatTriangle(it0, it1, it2, dit0, dit1, itEdge1);
     }
 
-    // Scan over triangle in screen space, interpolate attributes, invoke ps and write pixel to screen
+    // Does processing common to both flat top and flat bottom triangles scan over triangle in screen space, interpolate
+    // attributes, depth cull, invoke ps and write pixel to screen
     void DrawFlatTriangle(const Vertex& it0,
         const Vertex& it1,
         const Vertex& it2,
@@ -217,13 +224,18 @@ private:
                                           //~ Perspective-Correct Interpolation: https://tinyurl.com/mrrzxc7c
                 // Recover interpolated `z` from interpolated `1 / z`
                 const float z = 1.0f / iLine.pos[2];
-                // Recover interpolated attributes (wasted effort in multiplying `pos` (x, y, z) here, but not a huge
-                // deal, not worth the code complication to fix)
-                const auto attr = iLine * z;
 
-                // Invoke pixel shader with interpolated vertex attributes and use the result to set the pixel color on
-                // the screen
-                graphics.PutPixel(x, y, effect.ps(attr));
+                // Do z rejection / update of z buffer
+                // skip shading step if z rejected (early z)
+                if (zb.TestAndSet(x, y, z)) {  //~ Depth Precision Visualized: https://tinyurl.com/2fmpcmzw
+                    // Recover interpolated attributes (wasted effort in multiplying `pos` (x, y, z) here, but not a
+                    // huge deal, not worth the code complication to fix)
+                    const auto attr = iLine * z;
+
+                    // Invoke pixel shader with interpolated vertex attributes and use the result to set the pixel color
+                    // on the screen
+                    graphics.PutPixel(x, y, effect.ps(attr));
+                }
             }
         }
     }
@@ -233,6 +245,7 @@ public:
 
 private:
     Graphics& graphics;
+    ZBuffer zb;
     PubeScreenTransformer pst;
     Mat3 rotation;
     Vec3 translation;

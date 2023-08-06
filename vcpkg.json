@@ -1,6 +1,6 @@
 {
     "name": "packages",
-    "version-string": "1.4.1",
+    "version-string": "1.4.3",
     "dependencies": [
         {
             "name": "gtest"

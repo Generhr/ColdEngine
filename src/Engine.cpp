@@ -4,6 +4,7 @@
 #include "Scenes/CubeSkinScene.h"
 #include "Scenes/CubeSolidScene.h"
 #include "Scenes/CubeVertexColorScene.h"
+#include "Scenes/DoubleCubeScene.h"
 
 #include <sstream>
 
@@ -12,6 +13,7 @@ Engine::Engine(MainWindow& window) : window(window), graphics(window) {
     scenes.push_back(std::make_unique<CubeSkinScene>(graphics, L"res\\office_skin.jpg"));
     scenes.push_back(std::make_unique<CubeSolidScene>(graphics));
     scenes.push_back(std::make_unique<CubeVertexColorScene>(graphics));
+    scenes.push_back(std::make_unique<DoubleCubeScene>(graphics));
 
     curScene = scenes.begin();
     SetWindowName();

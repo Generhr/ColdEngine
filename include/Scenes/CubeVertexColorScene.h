@@ -60,6 +60,8 @@ public:
     }
 
     virtual void Draw() override {
+        pipeline.BeginFrame();
+
         // Generate rotation matrix from euler angles
         const Mat3 rot = Mat3::CreateXRotationMatrix(theta_x) * Mat3::CreateYRotationMatrix(theta_y) *
                          Mat3::CreateZRotationMatrix(theta_z);
