@@ -10,12 +10,7 @@
 
 #include "LinearAlgebra/Vector2.h"
 
-// Ignore the intellisense error "cannot open source file" for .shh files. They will be created during the build
-// Sequence before the preprocessor runs.
-namespace FramebufferShaders {
-#include "FramebufferPS.shh"
-#include "FramebufferVS.shh"
-}  // Namespace FramebufferShaders
+#include "ReadData.h"
 
 #pragma comment(lib, "d3d11.lib")
 
@@ -49,6 +44,9 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 #endif
 #endif
 
+    auto pixelShaderBytes = GraphicsUtils::ReadData(L"ShaderOutput\\FramebufferPS.cso");
+    auto vertexShaderBytes = GraphicsUtils::ReadData(L"ShaderOutput\\FramebufferVS.cso");
+
     // Create device and front/back buffers
     if (FAILED(hr = D3D11CreateDeviceAndSwapChain(nullptr,
                    D3D_DRIVER_TYPE_HARDWARE,
@@ -67,6 +65,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 
     // Get handle to backbuffer
     ComPtr<ID3D11Resource> pBackBuffer;
+
     if (FAILED(hr = pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), static_cast<LPVOID*>(&pBackBuffer)))) {
         throw COLD_GFX_EXCEPTION(hr, L"Getting back buffer");
     }
@@ -120,17 +119,16 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 
     // Create pixel shader for framebuffer
     // Ignore the intellisense error "namespace has no member"
-    if (FAILED(hr = pDevice->CreatePixelShader(FramebufferShaders::FramebufferPSBytecode,
-                   sizeof(FramebufferShaders::FramebufferPSBytecode),
-                   nullptr,
-                   &pPixelShader))) {
+    if (FAILED(
+            hr =
+                pDevice->CreatePixelShader(pixelShaderBytes.data(), pixelShaderBytes.size(), nullptr, &pPixelShader))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating pixel shader");
     }
 
     // Create vertex shader for framebuffer
     // Ignore the intellisense error "namespace has no member"
-    if (FAILED(hr = pDevice->CreateVertexShader(FramebufferShaders::FramebufferVSBytecode,
-                   sizeof(FramebufferShaders::FramebufferVSBytecode),
+    if (FAILED(hr = pDevice->CreateVertexShader(vertexShaderBytes.data(),
+                   vertexShaderBytes.size(),
                    nullptr,
                    &pVertexShader))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating vertex shader");
@@ -163,11 +161,9 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
         {"TEXCOORD", 0, DXGI_FORMAT_R32G32_FLOAT, 0, 12, D3D11_INPUT_PER_VERTEX_DATA, 0}};
 
     // Ignore the intellisense error "namespace has no member"
-    if (FAILED(hr = pDevice->CreateInputLayout(ied,
-                   2,
-                   FramebufferShaders::FramebufferVSBytecode,
-                   sizeof(FramebufferShaders::FramebufferVSBytecode),
-                   &pInputLayout))) {
+    if (FAILED(
+            hr = pDevice
+                     ->CreateInputLayout(ied, 2, vertexShaderBytes.data(), vertexShaderBytes.size(), &pInputLayout))) {
         throw COLD_GFX_EXCEPTION(hr, L"Creating input layout");
     }
 

@@ -3,7 +3,7 @@ struct VOut {
     float2 texCoord : TEXCOORD0;
 };
 
-VOut FramebufferVS( float4 position : POSITION,float2 texCoord : TEXCOORD0 ) {
+VOut main(float4 position : POSITION, float2 texCoord : TEXCOORD0) {
     VOut output;
 
     output.position = position;

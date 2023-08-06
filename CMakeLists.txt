@@ -7,7 +7,7 @@ include(cmake/SafeGuards.cmake)
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.3.0"
+        VERSION "1.3.2"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C
@@ -107,6 +107,39 @@ include("${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.c
 
 add_subdirectory(configure)
 
+if(NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferPS.cso" OR NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferVS.cso")
+    # List of HLSL shader source files
+    set(HLSL_SHADER_FILES shaders/FramebufferPS.hlsl shaders/FramebufferVS.hlsl)
+
+    # Iterate through each shader and compile it
+    foreach(SHADER ${HLSL_SHADER_FILES})
+        get_filename_component(SHADER_NAME ${SHADER} NAME_WE)
+        set(CSO_OUTPUT ${CMAKE_BINARY_DIR}/bin/ShaderOutput/${SHADER_NAME})
+
+        string(REGEX REPLACE ".*(PS|VS)\\.hlsl" "\\1_4_0_level_9_1" TARGET_PROFILE ${SHADER})
+        string(TOLOWER ${TARGET_PROFILE} TARGET_PROFILE)
+
+        add_custom_command(
+            OUTPUT ${CSO_OUTPUT}
+            COMMAND fxc /T ${TARGET_PROFILE} # Target profile
+                    /E main # Entry point function in the shader
+                    $<IF:$<CONFIG:DEBUG>,/Od,/O1> # Optimization level
+                    -Zi # Enable debugging information
+                    -WX # Treat warnings as errors
+                    #/Vn Data # Variable name in header file
+                    #/Fh ${CSO_OUTPUT}.shh  # Output header file containing object code
+                    /Fo ${CSO_OUTPUT}.cso # Output object file
+                    /nologo # Suppress copyright message
+                    ${CMAKE_SOURCE_DIR}/${SHADER}
+            MAIN_DEPENDENCY ${CMAKE_SOURCE_DIR}/${SHADER}
+            COMMENT "Compiling ${SHADER_NAME}.hlsl"
+        )
+
+        list(APPEND CSO_FILES ${CSO_OUTPUT})
+    endforeach()
+endif()
+
+# Move textures into place
 file(GLOB_RECURSE COPY_FILES "res/*")
 file(COPY ${COPY_FILES} DESTINATION "${CMAKE_BINARY_DIR}/bin/res")
 
@@ -130,7 +163,7 @@ foreach(HEADER_FILE ${HEADER_FILES})
     endif()
 endforeach()
 
-set(SOURCE_LIST)
+set(SOURCE_LIST "${CSO_FILES}")
 
 file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
 
@@ -168,7 +201,7 @@ endif()
 target_include_directories(
     ${PROJECT_NAME}
     PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
-    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include"
+    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include" "${CMAKE_BINARY_DIR}/bin/ShaderOutput"
 )
 
 #=====  Set Standard and Warnings  =============================================#
@@ -191,6 +224,7 @@ endif()
 
 #=========  Link Dependencies  =================================================#
 
+# Precompile headers
 if(NOT ENABLE_CLANG_TIDY)
     target_precompile_headers(${PROJECT_NAME} PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
 endif()
