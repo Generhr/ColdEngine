@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['cullflags_672',['cullFlags',['../struct_indexed_triangle_list.html#a7a5bb1ed76f9b4c7f24a8b9518469c59',1,'IndexedTriangleList']]]
+  ['color_654',['color',['../class_solid_effect_1_1_vertex.html#a1c296a3b80a2affd261db6ba202d9869',1,'SolidEffect::Vertex::color()'],['../class_vertex_color_effect_1_1_vertex.html#ac82f3fbf9784cd1fb880705ee5544647',1,'VertexColorEffect::Vertex::color()']]]
 ];

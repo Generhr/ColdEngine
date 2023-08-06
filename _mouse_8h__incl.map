@@ -1,16 +1,16 @@
 <map id="include/Mouse.h" name="include/Mouse.h">
-<area shape="rect" id="node1" title=" " alt="" coords="250,5,366,33"/>
-<area shape="rect" id="node2" href="$_vector2_8h.html" title=" " alt="" coords="162,81,323,109"/>
-<area shape="rect" id="node14" title=" " alt="" coords="346,81,403,109"/>
-<area shape="rect" id="node3" title=" " alt="" coords="5,233,56,261"/>
-<area shape="rect" id="node4" title=" " alt="" coords="464,157,536,185"/>
-<area shape="rect" id="node5" title=" " alt="" coords="87,233,150,261"/>
-<area shape="rect" id="node6" title=" " alt="" coords="179,233,250,261"/>
-<area shape="rect" id="node7" href="$_math_8h.html" title=" " alt="" coords="355,157,416,185"/>
-<area shape="rect" id="node12" href="$_matrix2_8h.html" title=" " alt="" coords="205,157,280,185"/>
-<area shape="rect" id="node13" href="$_matrix3_8h.html" title=" " alt="" coords="105,157,180,185"/>
-<area shape="rect" id="node8" title=" " alt="" coords="274,233,331,261"/>
-<area shape="rect" id="node9" title=" " alt="" coords="355,233,407,261"/>
-<area shape="rect" id="node10" title=" " alt="" coords="431,233,502,261"/>
-<area shape="rect" id="node11" title=" " alt="" coords="526,233,591,261"/>
+<area shape="rect" id="node1" title=" " alt="" coords="250,5,367,33"/>
+<area shape="rect" id="node2" href="$_vector2_8h.html" title=" " alt="" coords="163,81,323,109"/>
+<area shape="rect" id="node14" title=" " alt="" coords="347,81,403,109"/>
+<area shape="rect" id="node3" href="$_math_8h.html" title=" " alt="" coords="368,157,430,185"/>
+<area shape="rect" id="node8" href="$_matrix2_8h.html" title=" " alt="" coords="5,157,81,185"/>
+<area shape="rect" id="node9" title=" " alt="" coords="43,233,115,261"/>
+<area shape="rect" id="node10" href="$_matrix3_8h.html" title=" " alt="" coords="205,157,281,185"/>
+<area shape="rect" id="node11" title=" " alt="" coords="139,233,190,261"/>
+<area shape="rect" id="node12" title=" " alt="" coords="214,233,277,261"/>
+<area shape="rect" id="node13" title=" " alt="" coords="478,157,549,185"/>
+<area shape="rect" id="node4" title=" " alt="" coords="301,233,358,261"/>
+<area shape="rect" id="node5" title=" " alt="" coords="382,233,435,261"/>
+<area shape="rect" id="node6" title=" " alt="" coords="458,233,529,261"/>
+<area shape="rect" id="node7" title=" " alt="" coords="554,233,618,261"/>
 </map>

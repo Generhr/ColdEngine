@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.3.2</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -91,31 +91,28 @@ $(document).ready(function(){initNavTree('_indexed_triangle_list_8h_source.html'
 <div class="contents">
 <a href="_indexed_triangle_list_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vector3_8h.html">LinearAlgebra/Vector3.h</a>&quot;</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vector3_8h.html">LinearAlgebra/Vector3.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
-<div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html">    8</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList</a> {</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">   10</a></span>&#160;    <a class="code" href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">IndexedTriangleList</a>(std::vector&lt;T&gt; verts_in, std::vector&lt;size_t&gt; indices_in)</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;        : <a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>(std::move(verts_in)), <a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>(std::move(indices_in)) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        assert(<a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>.size() &gt; 2);</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        assert(<a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>.size() % 3 == 0);</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <a class="code" href="struct_indexed_triangle_list.html#a7a5bb1ed76f9b4c7f24a8b9518469c59">cullFlags</a>.resize(<a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>.size() / 3, <span class="keyword">false</span>);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    }</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">   18</a></span>&#160;    std::vector&lt;T&gt; <a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>;</div>
-<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">   19</a></span>&#160;    std::vector&lt;size_t&gt; <a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#a7a5bb1ed76f9b4c7f24a8b9518469c59">   20</a></span>&#160;    std::vector&lt;bool&gt; <a class="code" href="struct_indexed_triangle_list.html#a7a5bb1ed76f9b4c7f24a8b9518469c59">cullFlags</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;};</div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">class</span> T&gt;</div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html">    9</a></span>&#160;<span class="keyword">struct </span><a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">   11</a></span>&#160;    <a class="code" href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">IndexedTriangleList</a>(std::vector&lt;T&gt; verts_in, std::vector&lt;size_t&gt; indices_in)</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;        : <a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>(std::move(verts_in)), <a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>(std::move(indices_in)) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;        assert(<a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>.size() &gt; 2);</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;        assert(<a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>.size() % 3 == 0);</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    }</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">   17</a></span>&#160;    std::vector&lt;T&gt; <a class="code" href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">vertices</a>;</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">   18</a></span>&#160;    std::vector&lt;size_t&gt; <a class="code" href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">indices</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;};</div>
 <div class="ttc" id="a_vector3_8h_html"><div class="ttname"><a href="_vector3_8h.html">Vector3.h</a></div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html"><div class="ttname"><a href="struct_indexed_triangle_list.html">IndexedTriangleList</a></div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:8</div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html_a53b0882d73659419419f275e212af328"><div class="ttname"><a href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">IndexedTriangleList::vertices</a></div><div class="ttdeci">std::vector&lt; T &gt; vertices</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:18</div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html_a7a5bb1ed76f9b4c7f24a8b9518469c59"><div class="ttname"><a href="struct_indexed_triangle_list.html#a7a5bb1ed76f9b4c7f24a8b9518469c59">IndexedTriangleList::cullFlags</a></div><div class="ttdeci">std::vector&lt; bool &gt; cullFlags</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:20</div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html_aae82fd3eca5fff943f6713552a36e6cb"><div class="ttname"><a href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">IndexedTriangleList::indices</a></div><div class="ttdeci">std::vector&lt; size_t &gt; indices</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:19</div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html_ae84711e09d2af5df76c42e95169e10b3"><div class="ttname"><a href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">IndexedTriangleList::IndexedTriangleList</a></div><div class="ttdeci">IndexedTriangleList(std::vector&lt; T &gt; verts_in, std::vector&lt; size_t &gt; indices_in)</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:10</div></div>
+<div class="ttc" id="astruct_indexed_triangle_list_html"><div class="ttname"><a href="struct_indexed_triangle_list.html">IndexedTriangleList</a></div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:9</div></div>
+<div class="ttc" id="astruct_indexed_triangle_list_html_a53b0882d73659419419f275e212af328"><div class="ttname"><a href="struct_indexed_triangle_list.html#a53b0882d73659419419f275e212af328">IndexedTriangleList::vertices</a></div><div class="ttdeci">std::vector&lt; T &gt; vertices</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:17</div></div>
+<div class="ttc" id="astruct_indexed_triangle_list_html_aae82fd3eca5fff943f6713552a36e6cb"><div class="ttname"><a href="struct_indexed_triangle_list.html#aae82fd3eca5fff943f6713552a36e6cb">IndexedTriangleList::indices</a></div><div class="ttdeci">std::vector&lt; size_t &gt; indices</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:18</div></div>
+<div class="ttc" id="astruct_indexed_triangle_list_html_ae84711e09d2af5df76c42e95169e10b3"><div class="ttname"><a href="struct_indexed_triangle_list.html#ae84711e09d2af5df76c42e95169e10b3">IndexedTriangleList::IndexedTriangleList</a></div><div class="ttdeci">IndexedTriangleList(std::vector&lt; T &gt; verts_in, std::vector&lt; size_t &gt; indices_in)</div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:11</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

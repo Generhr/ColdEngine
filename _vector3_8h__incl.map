@@ -1,13 +1,13 @@
 <map id="include/LinearAlgebra/Vector3.h" name="include/LinearAlgebra/Vector3.h">
-<area shape="rect" id="node1" title=" " alt="" coords="155,5,301,49"/>
-<area shape="rect" id="node2" title=" " alt="" coords="5,173,56,201"/>
-<area shape="rect" id="node3" title=" " alt="" coords="80,173,152,201"/>
-<area shape="rect" id="node4" title=" " alt="" coords="431,97,502,125"/>
-<area shape="rect" id="node5" title=" " alt="" coords="176,173,240,201"/>
-<area shape="rect" id="node6" href="$_math_8h.html" title=" " alt="" coords="321,97,383,125"/>
-<area shape="rect" id="node11" href="$_matrix3_8h.html" title=" " alt="" coords="153,97,228,125"/>
-<area shape="rect" id="node7" title=" " alt="" coords="263,173,321,201"/>
-<area shape="rect" id="node8" title=" " alt="" coords="344,173,397,201"/>
-<area shape="rect" id="node9" title=" " alt="" coords="420,173,492,201"/>
-<area shape="rect" id="node10" title=" " alt="" coords="516,173,580,201"/>
+<area shape="rect" id="node1" title=" " alt="" coords="151,5,297,49"/>
+<area shape="rect" id="node2" href="$_math_8h.html" title=" " alt="" coords="319,97,380,125"/>
+<area shape="rect" id="node7" href="$_matrix3_8h.html" title=" " alt="" coords="149,97,224,125"/>
+<area shape="rect" id="node8" title=" " alt="" coords="5,173,56,201"/>
+<area shape="rect" id="node9" title=" " alt="" coords="80,173,144,201"/>
+<area shape="rect" id="node10" title=" " alt="" coords="168,173,240,201"/>
+<area shape="rect" id="node11" title=" " alt="" coords="428,97,500,125"/>
+<area shape="rect" id="node3" title=" " alt="" coords="263,173,321,201"/>
+<area shape="rect" id="node4" title=" " alt="" coords="344,173,397,201"/>
+<area shape="rect" id="node5" title=" " alt="" coords="420,173,492,201"/>
+<area shape="rect" id="node6" title=" " alt="" coords="516,173,580,201"/>
 </map>

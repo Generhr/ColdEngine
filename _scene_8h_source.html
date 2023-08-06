@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.3.2</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -91,38 +91,38 @@ $(document).ready(function(){initNavTree('_scene_8h_source.html',''); initResiza
 <div class="contents">
 <a href="_scene_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_keyboard_8h.html">Keyboard.h</a>&quot;</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mouse_8h.html">Mouse.h</a>&quot;</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_8h.html">Graphics.h</a>&quot;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_keyboard_8h.html">Keyboard.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_mouse_8h.html">Mouse.h</a>&quot;</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_graphics_8h.html">Graphics.h</a>&quot;</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_scene.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_scene.html">Scene</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="class_scene.html#aa8f88e4c6ad29a3f30b0c3f8a8fdace3">   11</a></span>&#160;    <a class="code" href="class_scene.html#aa8f88e4c6ad29a3f30b0c3f8a8fdace3">Scene</a>(<span class="keyword">const</span> std::string&amp; name) : name(name) {</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_scene.html#afa3e831ddec9371375f2dce35b1c5bbb">   14</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene.html#afa3e831ddec9371375f2dce35b1c5bbb">Update</a>(<a class="code" href="class_keyboard.html">Keyboard</a>&amp; kbd, <a class="code" href="class_mouse.html">Mouse</a>&amp; mouse, <span class="keywordtype">float</span> dt) = 0;</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_scene.html#af4e243638c6794e732aaa331113cb601">   16</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene.html#af4e243638c6794e732aaa331113cb601">Draw</a>(<a class="code" href="class_graphics.html">Graphics</a>&amp; graphics) <span class="keyword">const</span> = 0;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="class_scene.html#a0ef0a525f4aca43e574e4d6c1378f94c">   18</a></span>&#160;    <span class="keyword">const</span> std::string&amp; <a class="code" href="class_scene.html#a0ef0a525f4aca43e574e4d6c1378f94c">GetName</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span> name;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    std::string name;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160; </div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_scene.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_scene.html">Scene</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="class_scene.html#a917206db9c9972a7cd1cb38388e0d5de">   12</a></span>&#160;    <a class="code" href="class_scene.html#a917206db9c9972a7cd1cb38388e0d5de">Scene</a>(<span class="keyword">const</span> std::wstring&amp; name) : name(name) {</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;    }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_scene.html#afa3e831ddec9371375f2dce35b1c5bbb">   15</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene.html#afa3e831ddec9371375f2dce35b1c5bbb">Update</a>(<a class="code" href="class_keyboard.html">Keyboard</a>&amp; kbd, <a class="code" href="class_mouse.html">Mouse</a>&amp; mouse, <span class="keywordtype">float</span> dt) = 0;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_scene.html#a8680672fd30bb4b345e6fab918e31ecd">   17</a></span>&#160;    <span class="keyword">virtual</span> <span class="keywordtype">void</span> <a class="code" href="class_scene.html#a8680672fd30bb4b345e6fab918e31ecd">Draw</a>() = 0;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="class_scene.html#a2e68c89f9cac22013b80a9bfc8110a5b">   19</a></span>&#160;    <span class="keyword">const</span> std::wstring&amp; <a class="code" href="class_scene.html#a2e68c89f9cac22013b80a9bfc8110a5b">GetName</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">return</span> name;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    std::wstring name;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;};</div>
 <div class="ttc" id="a_graphics_8h_html"><div class="ttname"><a href="_graphics_8h.html">Graphics.h</a></div></div>
 <div class="ttc" id="a_keyboard_8h_html"><div class="ttname"><a href="_keyboard_8h.html">Keyboard.h</a></div></div>
 <div class="ttc" id="a_mouse_8h_html"><div class="ttname"><a href="_mouse_8h.html">Mouse.h</a></div></div>
-<div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:22</div></div>
-<div class="ttc" id="aclass_keyboard_html"><div class="ttname"><a href="class_keyboard.html">Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:6</div></div>
-<div class="ttc" id="aclass_mouse_html"><div class="ttname"><a href="class_mouse.html">Mouse</a></div><div class="ttdef"><b>Definition:</b> Mouse.h:7</div></div>
-<div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.h:9</div></div>
-<div class="ttc" id="aclass_scene_html_a0ef0a525f4aca43e574e4d6c1378f94c"><div class="ttname"><a href="class_scene.html#a0ef0a525f4aca43e574e4d6c1378f94c">Scene::GetName</a></div><div class="ttdeci">const std::string &amp; GetName() const</div><div class="ttdef"><b>Definition:</b> Scene.h:18</div></div>
-<div class="ttc" id="aclass_scene_html_aa8f88e4c6ad29a3f30b0c3f8a8fdace3"><div class="ttname"><a href="class_scene.html#aa8f88e4c6ad29a3f30b0c3f8a8fdace3">Scene::Scene</a></div><div class="ttdeci">Scene(const std::string &amp;name)</div><div class="ttdef"><b>Definition:</b> Scene.h:11</div></div>
-<div class="ttc" id="aclass_scene_html_af4e243638c6794e732aaa331113cb601"><div class="ttname"><a href="class_scene.html#af4e243638c6794e732aaa331113cb601">Scene::Draw</a></div><div class="ttdeci">virtual void Draw(Graphics &amp;graphics) const =0</div></div>
+<div class="ttc" id="aclass_keyboard_html"><div class="ttname"><a href="class_keyboard.html">Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:7</div></div>
+<div class="ttc" id="aclass_mouse_html"><div class="ttname"><a href="class_mouse.html">Mouse</a></div><div class="ttdef"><b>Definition:</b> Mouse.h:8</div></div>
+<div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.h:10</div></div>
+<div class="ttc" id="aclass_scene_html_a2e68c89f9cac22013b80a9bfc8110a5b"><div class="ttname"><a href="class_scene.html#a2e68c89f9cac22013b80a9bfc8110a5b">Scene::GetName</a></div><div class="ttdeci">const std::wstring &amp; GetName() const</div><div class="ttdef"><b>Definition:</b> Scene.h:19</div></div>
+<div class="ttc" id="aclass_scene_html_a8680672fd30bb4b345e6fab918e31ecd"><div class="ttname"><a href="class_scene.html#a8680672fd30bb4b345e6fab918e31ecd">Scene::Draw</a></div><div class="ttdeci">virtual void Draw()=0</div></div>
+<div class="ttc" id="aclass_scene_html_a917206db9c9972a7cd1cb38388e0d5de"><div class="ttname"><a href="class_scene.html#a917206db9c9972a7cd1cb38388e0d5de">Scene::Scene</a></div><div class="ttdeci">Scene(const std::wstring &amp;name)</div><div class="ttdef"><b>Definition:</b> Scene.h:12</div></div>
 <div class="ttc" id="aclass_scene_html_afa3e831ddec9371375f2dce35b1c5bbb"><div class="ttname"><a href="class_scene.html#afa3e831ddec9371375f2dce35b1c5bbb">Scene::Update</a></div><div class="ttdeci">virtual void Update(Keyboard &amp;kbd, Mouse &amp;mouse, float dt)=0</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

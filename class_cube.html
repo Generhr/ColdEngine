@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.3.2</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -86,7 +86,7 @@ $(document).ready(function(){initNavTree('class_cube.html',''); initResizable();
 
 <div class="header">
   <div class="summary">
-<a href="#pub-methods">Public Member Functions</a> &#124;
+<a href="#pub-static-methods">Static Public Member Functions</a> &#124;
 <a href="class_cube-members.html">List of all members</a>  </div>
   <div class="headertitle">
 <div class="title">Cube Class Reference</div>  </div>
@@ -95,139 +95,100 @@ $(document).ready(function(){initNavTree('class_cube.html',''); initResizable();
 
 <p><code>#include &lt;<a class="el" href="_cube_8h_source.html">Cube.h</a>&gt;</code></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
-Public Member Functions</h2></td></tr>
-<tr class="memitem:a7f447455e5163996acaabca845082c25"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cube.html#a7f447455e5163996acaabca845082c25">Cube</a> (float size, float texdim=1.0f)</td></tr>
-<tr class="separator:a7f447455e5163996acaabca845082c25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:add851e4f08d10b194ee5ea954aa4e3f0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_indexed_line_list.html">IndexedLineList</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cube.html#add851e4f08d10b194ee5ea954aa4e3f0">GetLines</a> () const</td></tr>
-<tr class="separator:add851e4f08d10b194ee5ea954aa4e3f0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a685b6831206afa746754524dd33884ce"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; <a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cube.html#a685b6831206afa746754524dd33884ce">GetTriangles</a> () const</td></tr>
-<tr class="separator:a685b6831206afa746754524dd33884ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a03bc74c202049266ea91bd58f9e5b0f7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; <a class="el" href="class_tex_vertex.html">TexVertex</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_cube.html#a03bc74c202049266ea91bd58f9e5b0f7">GetTrianglesTex</a> () const</td></tr>
-<tr class="separator:a03bc74c202049266ea91bd58f9e5b0f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-methods"></a>
+Static Public Member Functions</h2></td></tr>
+<tr class="memitem:ab0dfa2a10a6bbca98ecd3453b6bf7d76"><td class="memTemplParams" colspan="2">template&lt;class V &gt; </td></tr>
+<tr class="memitem:ab0dfa2a10a6bbca98ecd3453b6bf7d76"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; V &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_cube.html#ab0dfa2a10a6bbca98ecd3453b6bf7d76">GetPlain</a> (float size=1.0f)</td></tr>
+<tr class="separator:ab0dfa2a10a6bbca98ecd3453b6bf7d76"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf56c728a7e3e8db3235ff6a87c79487"><td class="memTemplParams" colspan="2">template&lt;class V &gt; </td></tr>
+<tr class="memitem:adf56c728a7e3e8db3235ff6a87c79487"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; V &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_cube.html#adf56c728a7e3e8db3235ff6a87c79487">GetPlainIndependentFaces</a> (float size=1.0f)</td></tr>
+<tr class="separator:adf56c728a7e3e8db3235ff6a87c79487"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e5f82dc650c7359a92d9af02f500c75"><td class="memTemplParams" colspan="2">template&lt;class V &gt; </td></tr>
+<tr class="memitem:a8e5f82dc650c7359a92d9af02f500c75"><td class="memTemplItemLeft" align="right" valign="top">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; V &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">GetSkinned</a> (float size=1.0f)</td></tr>
+<tr class="separator:a8e5f82dc650c7359a92d9af02f500c75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
-<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a7f447455e5163996acaabca845082c25"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7f447455e5163996acaabca845082c25">&#9670;&nbsp;</a></span>Cube()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">Cube::Cube </td>
-          <td>(</td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>size</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">float&#160;</td>
-          <td class="paramname"><em>texdim</em> = <code>1.0f</code>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">explicit</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-</div>
-</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="add851e4f08d10b194ee5ea954aa4e3f0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#add851e4f08d10b194ee5ea954aa4e3f0">&#9670;&nbsp;</a></span>GetLines()</h2>
+<a id="ab0dfa2a10a6bbca98ecd3453b6bf7d76"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab0dfa2a10a6bbca98ecd3453b6bf7d76">&#9670;&nbsp;</a></span>GetPlain()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class V &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_indexed_line_list.html">IndexedLineList</a> Cube::GetLines </td>
+          <td class="memname">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt;V&gt; Cube::GetPlain </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size</em> = <code>1.0f</code></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
 
 </div>
 </div>
-<a id="a685b6831206afa746754524dd33884ce"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a685b6831206afa746754524dd33884ce">&#9670;&nbsp;</a></span>GetTriangles()</h2>
+<a id="adf56c728a7e3e8db3235ff6a87c79487"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adf56c728a7e3e8db3235ff6a87c79487">&#9670;&nbsp;</a></span>GetPlainIndependentFaces()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class V &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt;<a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a>&gt; Cube::GetTriangles </td>
+          <td class="memname">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt;V&gt; Cube::GetPlainIndependentFaces </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size</em> = <code>1.0f</code></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_cube_a685b6831206afa746754524dd33884ce_icgraph.svg" width="348" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
 
 </div>
 </div>
-<a id="a03bc74c202049266ea91bd58f9e5b0f7"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a03bc74c202049266ea91bd58f9e5b0f7">&#9670;&nbsp;</a></span>GetTrianglesTex()</h2>
+<a id="a8e5f82dc650c7359a92d9af02f500c75"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8e5f82dc650c7359a92d9af02f500c75">&#9670;&nbsp;</a></span>GetSkinned()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class V &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt;<a class="el" href="class_tex_vertex.html">TexVertex</a>&gt; Cube::GetTrianglesTex </td>
+          <td class="memname">static <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt;V&gt; Cube::GetSkinned </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
+          <td class="paramtype">float&#160;</td>
+          <td class="paramname"><em>size</em> = <code>1.0f</code></td><td>)</td>
+          <td></td>
         </tr>
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">static</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_cube_a03bc74c202049266ea91bd58f9e5b0f7_icgraph.svg" width="390" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
 
 </div>
 </div>

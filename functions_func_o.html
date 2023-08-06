@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.3.2</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -94,6 +94,9 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 <li>operator Matrix3&lt; C &gt;()
 : <a class="el" href="class_matrix3.html#ace98f98cc2b446cbc900cc8b777dd077">Matrix3&lt; T &gt;</a>
 </li>
+<li>operator Vec3()
+: <a class="el" href="class_color.html#ab7fb482965372c202ec26257ed2c183f">Color</a>
+</li>
 <li>operator Vector2&lt; U &gt;()
 : <a class="el" href="class_vector2.html#a6eeecaaec86bc85251f38de1fc35cddc">Vector2&lt; T &gt;</a>
 </li>
@@ -110,57 +113,86 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 , <a class="el" href="class_vector3.html#ac86ea680d88ed02d20c82ed12217ede7">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#acbfe1a25697b93c89ac02ae913bb1b41">Vector4&lt; T &gt;</a>
 </li>
+<li>operator()()
+: <a class="el" href="class_solid_effect_1_1_pixel_shader.html#a579534e662d573c729bd89ad85ee4756">SolidEffect::PixelShader</a>
+, <a class="el" href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">TextureEffect::PixelShader</a>
+, <a class="el" href="class_vertex_color_effect_1_1_pixel_shader.html#a9f5916d268f1728391827b79cbaedcfe">VertexColorEffect::PixelShader</a>
+</li>
 <li>operator*()
 : <a class="el" href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">Matrix2&lt; T &gt;</a>
 , <a class="el" href="class_matrix3.html#a93773850369802cbb5bc5ec10bb16bc4">Matrix3&lt; T &gt;</a>
+, <a class="el" href="class_solid_effect_1_1_vertex.html#a71bf4abbfe918160bf1522c11035fc74">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#af63ce4953444cf8d3b8f75a49b99b745">TextureEffect::Vertex</a>
 , <a class="el" href="class_tex_vertex.html#ab76fecd96e26a83f5ad648ab136c75f8">TexVertex</a>
 , <a class="el" href="class_vector2.html#a9005f3cabd87e331759a1bbe370a542f">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a996efc3ced625aad7bbde05e051a55dc">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a93c9ff6af500894401293fce281207fa">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#a61a6239562beb22f3885ed29bc56cd36">VertexColorEffect::Vertex</a>
 </li>
 <li>operator*=()
 : <a class="el" href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">Matrix2&lt; T &gt;</a>
-, <a class="el" href="class_matrix3.html#ab78bb24eee21a2cc969b8181770547f9">Matrix3&lt; T &gt;</a>
+, <a class="el" href="class_matrix3.html#a8d62bf9aa0fb8955d5250731a2822e85">Matrix3&lt; T &gt;</a>
+, <a class="el" href="class_solid_effect_1_1_vertex.html#a201fa5db5d896822541e69752e2bd219">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#a81159e0f17901d73cb5c22f2cc1c7e70">TextureEffect::Vertex</a>
 , <a class="el" href="class_tex_vertex.html#af73d574d48d9d04d14098e1827b2cee3">TexVertex</a>
 , <a class="el" href="class_vector2.html#af48d750d21362f7340e4286ae60f496c">Vector2&lt; T &gt;</a>
-, <a class="el" href="class_vector3.html#a0ec523962f7e55e38d41d05f4d4b682f">Vector3&lt; T &gt;</a>
+, <a class="el" href="class_vector3.html#a257e6999212cf46f7bd8756fddfa4b0a">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a234e4e8ac6b4b1397f2975924c15df41">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#acad57817f717b01b43a57e1b579d8a14">VertexColorEffect::Vertex</a>
 </li>
 <li>operator+()
-: <a class="el" href="class_tex_vertex.html#a3c0edce56822cfb0c11a7c8a00c69381">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#a8fc43565a348ef8e2df3bfbf2916c234">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#ad9f0a7aa27640e85fcfea98daf7e2628">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#a3c0edce56822cfb0c11a7c8a00c69381">TexVertex</a>
 , <a class="el" href="class_vector2.html#a38fedb734b38196a3bad5578115cc353">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a7228c05728441d214acb010b30eebe31">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a3fe035920ac255d0d296b388638df191">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#aa278c00c5f32289f4a23d82147edaa8a">VertexColorEffect::Vertex</a>
 </li>
 <li>operator+=()
-: <a class="el" href="class_tex_vertex.html#a7cf46c5616711de3d0cf009c7c9bcca1">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#a3b9f626a2a1040ad4df8894be09fb733">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#a77ca371b9f486adad0e4fec39508c19e">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#a7cf46c5616711de3d0cf009c7c9bcca1">TexVertex</a>
 , <a class="el" href="class_vector2.html#a763815733a3a4031e109cdd586142a0b">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a6e20da12dd7236f0fa4fb679594b4e06">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#aeb6ca56ab45b572c7bbfeaefdb1d3e10">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#aa32fc0d9781611853907d3c126474186">VertexColorEffect::Vertex</a>
 </li>
 <li>operator-()
-: <a class="el" href="class_tex_vertex.html#ada24b6748f16d818ba195c82e45c53d7">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#a5f2991c3003306813b8d318c66a8f188">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#a6d5c96ca04cf1f5104d645a9d1953e6f">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#ada24b6748f16d818ba195c82e45c53d7">TexVertex</a>
 , <a class="el" href="class_vector2.html#aceee2beba2c62006a79861df898994b5">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#ad1f6fb2ad5c909641587d0899fe4cd41">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a316339efbdff04501fc4732fc9862963">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#a0e52c45db21beb7cd9fde9e41012fa7a">VertexColorEffect::Vertex</a>
 </li>
 <li>operator-=()
-: <a class="el" href="class_tex_vertex.html#a0720c62b2a9057e35d52b4b5bbb7ddb3">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#a092b276bd17a8a624ec531551af8ee4c">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#a322c27285f4cd7a2ea31d09a42f1c5d0">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#a0720c62b2a9057e35d52b4b5bbb7ddb3">TexVertex</a>
 , <a class="el" href="class_vector2.html#aed8abeea6a9df4d11f75de6e6d9ca028">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a48f2cac6af176d3c5bb86ce13d9ac44d">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a83ccaab42469915a6fd29c77b2e772de">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#abb1a9fd605a3dc8309b84c1aa1f8bfbc">VertexColorEffect::Vertex</a>
 </li>
 <li>operator/()
-: <a class="el" href="class_tex_vertex.html#a9f342752e33490f477dfdac8d9b747f6">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#a044873de8b95313dcf4ba4f4bb5a1b44">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#ac563e7303ca4870a63891611077a174b">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#a9f342752e33490f477dfdac8d9b747f6">TexVertex</a>
 , <a class="el" href="class_vector2.html#af0c5cd6dd34ccf30dbd0b6fcdbf450ec">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#aa14fef7fb47344c58c92f6ef033ce110">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a8906da76924badb255fdd6a6100a4ae7">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#a8f3e38bea697845fed7a57dfcf5e8808">VertexColorEffect::Vertex</a>
 </li>
 <li>operator/=()
-: <a class="el" href="class_tex_vertex.html#ad455135f24c8c5a27709a48b7128a079">TexVertex</a>
+: <a class="el" href="class_solid_effect_1_1_vertex.html#aeb4c596055f4fcd4b1b36b35e1ee2e35">SolidEffect::Vertex</a>
+, <a class="el" href="class_texture_effect_1_1_vertex.html#a547d68952d60d1797ed8e4e396e15b47">TextureEffect::Vertex</a>
+, <a class="el" href="class_tex_vertex.html#ad455135f24c8c5a27709a48b7128a079">TexVertex</a>
 , <a class="el" href="class_vector2.html#aca1cf0d608631fb004e62c6de7b64014">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a30de6b5b08d7a0859b86b4705ca20e3d">Vector3&lt; T &gt;</a>
 , <a class="el" href="class_vector4.html#a9ebccd1d3d1413513cb385ab0c7f4032">Vector4&lt; T &gt;</a>
+, <a class="el" href="class_vertex_color_effect_1_1_vertex.html#ad9b072368108f2e03b2846b88236197f">VertexColorEffect::Vertex</a>
 </li>
 <li>operator&lt;()
 : <a class="el" href="class_vector2.html#a0455557db4b5489d89773382c0177514">Vector2&lt; T &gt;</a>
@@ -176,7 +208,7 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 , <a class="el" href="class_engine_exception.html#ac50fc758069f91b7cdf4a3e7a64eea27">EngineException</a>
 , <a class="el" href="class_g_d_i_plus_manager.html#a8acd50da2ef5f1249bff9ddc7361e164">GDIPlusManager</a>
 , <a class="el" href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">Graphics</a>
-, <a class="el" href="class_h_w_n_d_key.html#a739a11861cd8df0b1854eddc43a5d972">HWNDKey</a>
+, <a class="el" href="class_h_w_n_d_key.html#a5e31414dacccb6123108f0f29d5ac742">HWNDKey</a>
 , <a class="el" href="class_keyboard.html#a494c29997ced4b9fe28fef8e0c2c34ae">Keyboard</a>
 , <a class="el" href="class_main_window.html#aaa4474cfd4fdb8d3386764a6eb1a4684">MainWindow</a>
 , <a class="el" href="class_mouse.html#a819e86107c42969fbd14511ce7b30898">Mouse</a>
@@ -198,7 +230,7 @@ $(document).ready(function(){initNavTree('functions_func_o.html',''); initResiza
 , <a class="el" href="class_vector3.html#a54c5a8bda0a3b344006015247e93b9c5">Vector3&lt; T &gt;</a>
 </li>
 <li>operator[]()
-: <a class="el" href="class_matrix2.html#a02a4b422672d519b58a8f503896e9f47">Matrix2&lt; T &gt;</a>
+: <a class="el" href="class_matrix2.html#afbfa75e08b7d5eae7400a8b32f1d7137">Matrix2&lt; T &gt;</a>
 , <a class="el" href="class_matrix3.html#a2d571c76147fbca8c85e11019a98f82f">Matrix3&lt; T &gt;</a>
 , <a class="el" href="class_vector2.html#ae045f40d26c109c525f637c388f37f72">Vector2&lt; T &gt;</a>
 , <a class="el" href="class_vector3.html#a2e039b9e69f6044bb4af951709b42c1e">Vector3&lt; T &gt;</a>

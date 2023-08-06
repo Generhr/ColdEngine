@@ -1,0 +1,9 @@
+<map id="CubeVertexColorScene::Draw" name="CubeVertexColorScene::Draw">
+<area shape="rect" id="node1" title=" " alt="" coords="5,144,162,188"/>
+<area shape="rect" id="node2" href="$class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d" title=" " alt="" coords="217,5,367,33"/>
+<area shape="rect" id="node3" href="$class_pipeline.html#a8292a77189cee1306958bf86ebee73e5" title=" " alt="" coords="210,57,374,85"/>
+<area shape="rect" id="node4" href="$class_matrix3.html#a3672400f647456083337d53db6478505" title=" " alt="" coords="213,109,371,153"/>
+<area shape="rect" id="node5" href="$class_matrix3.html#ae2e635e8fc49db308a95dde2a5518bbc" title=" " alt="" coords="213,177,371,221"/>
+<area shape="rect" id="node6" href="$class_matrix3.html#a7b88435a5d6c183b5b46efa2b6dbcb3a" title=" " alt="" coords="213,245,371,289"/>
+<area shape="rect" id="node7" href="$class_pipeline.html#a76274774f61e4b5a1c708decf65712b9" title=" " alt="" coords="240,313,344,341"/>
+</map>

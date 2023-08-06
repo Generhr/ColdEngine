@@ -1,8 +1,7 @@
 <map id="include/Cube.h" name="include/Cube.h">
-<area shape="rect" id="node1" title=" " alt="" coords="347,5,454,33"/>
-<area shape="rect" id="node2" href="$_cube_order_scene_8h.html" title=" " alt="" coords="5,81,182,125"/>
-<area shape="rect" id="node4" href="$_solid_cube_scene_8h.html" title=" " alt="" coords="206,81,379,125"/>
-<area shape="rect" id="node5" href="$_tex_cube_scene_8h.html" title=" " alt="" coords="403,89,616,117"/>
-<area shape="rect" id="node6" href="$_tex_wrap_cube_scene_8h.html" title=" " alt="" coords="641,81,837,125"/>
-<area shape="rect" id="node3" href="$_engine_8cpp.html" title=" " alt="" coords="346,173,454,201"/>
+<area shape="rect" id="node1" title=" " alt="" coords="281,5,388,33"/>
+<area shape="rect" id="node2" href="$_cube_skin_scene_8h.html" title=" " alt="" coords="5,89,224,117"/>
+<area shape="rect" id="node4" href="$_cube_solid_scene_8h.html" title=" " alt="" coords="248,81,421,125"/>
+<area shape="rect" id="node5" href="$_cube_vertex_color_scene_8h.html" title=" " alt="" coords="445,81,627,125"/>
+<area shape="rect" id="node3" href="$_engine_8cpp.html" title=" " alt="" coords="280,173,389,201"/>
 </map>

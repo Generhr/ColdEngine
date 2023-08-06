@@ -1,3 +1,6 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_mouse_1_1_event.html" title=" " alt="" coords="5,5,106,33"/>
+<area shape="rect" id="node1" href="$class_scene.html" title=" " alt="" coords="5,57,64,85"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html" title=" " alt="" coords="133,5,247,33"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html" title=" " alt="" coords="131,57,249,85"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html" title=" " alt="" coords="112,109,268,137"/>
 </map>

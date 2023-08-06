@@ -1,9 +1,8 @@
 <map id="Surface::PutPixel" name="Surface::PutPixel">
-<area shape="rect" id="node1" title=" " alt="" coords="607,83,730,111"/>
-<area shape="rect" id="node2" href="$class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe" title=" " alt="" coords="417,56,547,84"/>
-<area shape="rect" id="node7" href="$class_surface.html#a187f57fb4942d79ce17a84f17efac54c" title=" " alt="" coords="404,108,559,136"/>
-<area shape="rect" id="node3" href="$class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86" title=" " alt="" coords="222,31,356,59"/>
-<area shape="rect" id="node6" href="$class_graphics.html#a64e7971066ee21f5b77aa525742f29e2" title=" " alt="" coords="224,83,354,111"/>
-<area shape="rect" id="node4" href="$class_con_hex_wire_scene.html#ae76a65199cc4ef0b23a53e896ecafff9" title=" " alt="" coords="5,5,174,33"/>
-<area shape="rect" id="node5" href="$class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d" title=" " alt="" coords="22,57,157,85"/>
+<area shape="rect" id="node1" title=" " alt="" coords="573,57,696,85"/>
+<area shape="rect" id="node2" href="$class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe" title=" " alt="" coords="383,31,513,59"/>
+<area shape="rect" id="node6" href="$class_surface.html#a187f57fb4942d79ce17a84f17efac54c" title=" " alt="" coords="370,83,525,111"/>
+<area shape="rect" id="node3" href="$class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86" title=" " alt="" coords="188,5,322,33"/>
+<area shape="rect" id="node5" href="$class_graphics.html#a64e7971066ee21f5b77aa525742f29e2" title=" " alt="" coords="190,57,320,85"/>
+<area shape="rect" id="node4" href="$class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d" title=" " alt="" coords="5,5,140,33"/>
 </map>

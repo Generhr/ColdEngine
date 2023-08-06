@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.3.2</span>
+   &#160;<span id="projectnumber">1.4.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -93,125 +93,126 @@ $(document).ready(function(){initNavTree('_matrix2_8h_source.html',''); initResi
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span> <span class="comment">/* stream, cout */</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
-<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="class_matrix2.html">    9</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_matrix2.html">Matrix2</a> {</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;    std::array&lt;T, 4&gt; elements = {0.0, 0.0, 0.0, 0.0};</div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="comment">// Static Functions</span></div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">   16</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">CreateIdentityMatrix</a>() {</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>(1.0, 0.0, 0.0, 1.0);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    }</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">   20</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">CreateScalingMatrix</a>(T factor) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="keywordflow">return</span> {factor, 0.0, 0.0, factor};</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
-<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">   24</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">CreateRotationMatrix</a>(T theta) {</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keyword">const</span> T cosTheta = cos(theta);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">const</span> T sinTheta = sin(theta);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> {cosTheta, sinTheta, -sinTheta, cosTheta};</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// Constructors</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno"><a class="line" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">   33</a></span>&#160;    <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>() = <span class="keywordflow">default</span>;  <span class="comment">//* Default.</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="class_matrix2.html#a57187b87ec341c956887d45736bec955">   35</a></span>&#160;    <a class="code" href="class_matrix2.html#a57187b87ec341c956887d45736bec955">Matrix2</a>(T m00, T m01, T m10, T m11) : elements {m00, m01, m10, m11} {  <span class="comment">//* Based on other Matrix2.</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// Accessor Operators</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="class_matrix2.html#a02a4b422672d519b58a8f503896e9f47">   40</a></span>&#160;    T&amp; <a class="code" href="class_matrix2.html#a02a4b422672d519b58a8f503896e9f47">operator[]</a>(std::size_t inedx) {</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordflow">return</span> elements[inedx];</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="class_matrix2.html#ac20b77f90c393f960a3933fe6460f44b">   44</a></span>&#160;    T <span class="keyword">const</span>&amp; <a class="code" href="class_matrix2.html#ac20b77f90c393f960a3933fe6460f44b">operator[]</a>(std::size_t inedx)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">return</span> elements[inedx];</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> C&gt;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_matrix2.html#a71e2a9b021354eb9e2d3b9fbd0e7510a">   49</a></span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> <a class="code" href="class_matrix2.html">Matrix2&lt;C&gt;</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">return</span> {(C)elements[0], (C)elements[1], (C)elements[2], (C)elements[3]};</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">   53</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">operator&lt;&lt;</a>(std::ostream&amp; stream, <span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>&amp; vector) {</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; vector[0] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; vector[1] &lt;&lt; <span class="stringliteral">&quot;\n &quot;</span> &lt;&lt; vector[2] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; vector[3] &lt;&lt; <span class="stringliteral">&quot;]&quot;</span>;</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160; </div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">return</span> stream;</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="comment">// Comparison Operators</span></div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
-<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">   61</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">operator==</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">return</span> elements == matrix.elements;</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">   65</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">operator!=</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> elements != matrix.elements;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Assignment Operators</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">   71</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a>&amp; <a class="code" href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">operator*=</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix) {  <span class="comment">//~ FIX</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> [a00, a01, a10, a11] = elements;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> [b00, b01, b10, b11] = matrix.elements;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">   78</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a>&amp; <a class="code" href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">operator*=</a>(<span class="keyword">const</span> T&amp; scalar) {</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        elements[0] *= scalar;</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        elements[1] *= scalar;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        elements[2] *= scalar;</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        elements[3] *= scalar;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160; </div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    <span class="comment">// Arithmetic Operators</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
-<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">   89</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">operator*</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>(*<span class="keyword">this</span>) *= matrix;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
-<div class="line"><a name="l00093"></a><span class="lineno"><a class="line" href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">   93</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">operator*</a>(<span class="keyword">const</span> T&amp; scalar)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>(*<span class="keyword">this</span>) *= scalar;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    }</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    <span class="comment">// Instance Methods</span></div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">   99</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>&amp; <a class="code" href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">SetIdentity</a>() {</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span> = <a class="code" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">Matrix2&lt;T&gt;::CreateIdentityMatrix</a>();</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">  103</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">Print</a>()<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; elements[0] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; elements[1] &lt;&lt; <span class="stringliteral">&quot;\n &quot;</span> &lt;&lt; elements[2] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; elements[3] &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                  &lt;&lt; std::endl;</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;};</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160; </div>
-<div class="line"><a name="l00109"></a><span class="lineno"><a class="line" href="_matrix2_8h.html#a7b82eb7537f872738312626597d51507">  109</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_matrix2.html">Mat2</a> = <a class="code" href="class_matrix2.html">Matrix2&lt;float&gt;</a>;</div>
-<div class="ttc" id="aclass_matrix2_html"><div class="ttname"><a href="class_matrix2.html">Matrix2</a></div><div class="ttdef"><b>Definition:</b> Matrix2.h:9</div></div>
-<div class="ttc" id="aclass_matrix2_html_a02a4b422672d519b58a8f503896e9f47"><div class="ttname"><a href="class_matrix2.html#a02a4b422672d519b58a8f503896e9f47">Matrix2::operator[]</a></div><div class="ttdeci">T &amp; operator[](std::size_t inedx)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:40</div></div>
-<div class="ttc" id="aclass_matrix2_html_a0683c7d10e3dc288bfcfd66c25964388"><div class="ttname"><a href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">Matrix2::operator*=</a></div><div class="ttdeci">Matrix2 &amp; operator*=(const T &amp;scalar)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:78</div></div>
-<div class="ttc" id="aclass_matrix2_html_a0d1416162fb0298a2b4d7aa192a6c485"><div class="ttname"><a href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">Matrix2::operator*</a></div><div class="ttdeci">Matrix2 operator*(const T &amp;scalar) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:93</div></div>
-<div class="ttc" id="aclass_matrix2_html_a34a0eeef2ac9045f4587596a5a20c9f6"><div class="ttname"><a href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">Matrix2::SetIdentity</a></div><div class="ttdeci">Matrix2&lt; T &gt; &amp; SetIdentity()</div><div class="ttdef"><b>Definition:</b> Matrix2.h:99</div></div>
-<div class="ttc" id="aclass_matrix2_html_a57187b87ec341c956887d45736bec955"><div class="ttname"><a href="class_matrix2.html#a57187b87ec341c956887d45736bec955">Matrix2::Matrix2</a></div><div class="ttdeci">Matrix2(T m00, T m01, T m10, T m11)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:35</div></div>
-<div class="ttc" id="aclass_matrix2_html_a57e3d2d5480c9966587fc86ce9e88f5c"><div class="ttname"><a href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">Matrix2::operator==</a></div><div class="ttdeci">bool operator==(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:61</div></div>
-<div class="ttc" id="aclass_matrix2_html_a5a7d5fdd235272816807254723c6e1ea"><div class="ttname"><a href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">Matrix2::CreateRotationMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateRotationMatrix(T theta)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:24</div></div>
-<div class="ttc" id="aclass_matrix2_html_a656aa48174fda96a670e0445f6b9cab2"><div class="ttname"><a href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">Matrix2::operator*=</a></div><div class="ttdeci">Matrix2 &amp; operator*=(const Matrix2 &amp;matrix)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:71</div></div>
-<div class="ttc" id="aclass_matrix2_html_a7019fe9a1e314394eb6996ef5e4005a5"><div class="ttname"><a href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">Matrix2::CreateScalingMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateScalingMatrix(T factor)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:20</div></div>
-<div class="ttc" id="aclass_matrix2_html_a7b095c949f9525da297621839c8a481d"><div class="ttname"><a href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">Matrix2::operator*</a></div><div class="ttdeci">Matrix2 operator*(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:89</div></div>
-<div class="ttc" id="aclass_matrix2_html_aaf7e7149ef4008b510742076644c51d7"><div class="ttname"><a href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">Matrix2::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, const Matrix2&lt; T &gt; &amp;vector)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:53</div></div>
-<div class="ttc" id="aclass_matrix2_html_ab8eab9e102b84757aca1507f5e054ca1"><div class="ttname"><a href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">Matrix2::operator!=</a></div><div class="ttdeci">bool operator!=(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:65</div></div>
-<div class="ttc" id="aclass_matrix2_html_ac20b77f90c393f960a3933fe6460f44b"><div class="ttname"><a href="class_matrix2.html#ac20b77f90c393f960a3933fe6460f44b">Matrix2::operator[]</a></div><div class="ttdeci">T const  &amp; operator[](std::size_t inedx) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:44</div></div>
-<div class="ttc" id="aclass_matrix2_html_ad4af665a239d74bf204207dbb6f41cae"><div class="ttname"><a href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">Matrix2::Print</a></div><div class="ttdeci">void Print() const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:103</div></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="class_matrix2.html">   10</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_matrix2.html">Matrix2</a> {</div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    std::array&lt;T, 4&gt; elements = {0.0, 0.0, 0.0, 0.0};</div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="comment">// Static Functions</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">   17</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">CreateIdentityMatrix</a>() {</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>(1.0, 0.0, 0.0, 1.0);</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    }</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">   21</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">CreateScalingMatrix</a>(T factor) {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">return</span> {factor, 0.0, 0.0, factor};</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">   25</a></span>&#160;    constexpr <span class="keyword">static</span> <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">CreateRotationMatrix</a>(T theta) {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keyword">const</span> T cosTheta = cos(theta);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="keyword">const</span> T sinTheta = sin(theta);</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="keywordflow">return</span> {cosTheta, sinTheta, -sinTheta, cosTheta};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// Constructors</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">   34</a></span>&#160;    <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>() = <span class="keywordflow">default</span>;  <span class="comment">//* Default.</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="class_matrix2.html#a57187b87ec341c956887d45736bec955">   36</a></span>&#160;    <a class="code" href="class_matrix2.html#a57187b87ec341c956887d45736bec955">Matrix2</a>(T m00, T m01, T m10, T m11) : elements {m00, m01, m10, m11} {  <span class="comment">//* Based on other Matrix2.</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Accessor Operators</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="class_matrix2.html#afbfa75e08b7d5eae7400a8b32f1d7137">   41</a></span>&#160;    T&amp; <a class="code" href="class_matrix2.html#afbfa75e08b7d5eae7400a8b32f1d7137">operator[]</a>(std::size_t index) {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordflow">return</span> elements[index];</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="class_matrix2.html#a45c9d616d98f41bb8f80cf69518d831d">   45</a></span>&#160;    T <span class="keyword">const</span>&amp; <a class="code" href="class_matrix2.html#a45c9d616d98f41bb8f80cf69518d831d">operator[]</a>(std::size_t index)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">return</span> elements[index];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    }</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span> C&gt;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_matrix2.html#a71e2a9b021354eb9e2d3b9fbd0e7510a">   50</a></span>&#160;    <span class="keyword">explicit</span> <span class="keyword">operator</span> <a class="code" href="class_matrix2.html">Matrix2&lt;C&gt;</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="keywordflow">return</span> {(C)elements[0], (C)elements[1], (C)elements[2], (C)elements[3]};</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    }</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160; </div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">   54</a></span>&#160;    <span class="keyword">friend</span> std::ostream&amp; <a class="code" href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">operator&lt;&lt;</a>(std::ostream&amp; stream, <span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>&amp; vector) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        stream &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; vector[0] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; vector[1] &lt;&lt; <span class="stringliteral">&quot;\n &quot;</span> &lt;&lt; vector[2] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; vector[3] &lt;&lt; <span class="stringliteral">&quot;]&quot;</span>;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">return</span> stream;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    <span class="comment">// Comparison Operators</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">   62</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">operator==</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">return</span> elements == matrix.elements;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">   66</a></span>&#160;    <span class="keywordtype">bool</span> <a class="code" href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">operator!=</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">return</span> elements != matrix.elements;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// Assignment Operators</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">   72</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a>&amp; <a class="code" href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">operator*=</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix) {  <span class="comment">//~ FIX</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> [a00, a01, a10, a11] = elements;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> [b00, b01, b10, b11] = matrix.elements;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">   79</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a>&amp; <a class="code" href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">operator*=</a>(<span class="keyword">const</span> T&amp; scalar) {</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        elements[0] *= scalar;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        elements[1] *= scalar;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        elements[2] *= scalar;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        elements[3] *= scalar;</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span>;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="comment">// Arithmetic Operators</span></div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">   90</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">operator*</a>(<span class="keyword">const</span> <a class="code" href="class_matrix2.html">Matrix2</a>&amp; matrix)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>(*<span class="keyword">this</span>) *= matrix;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno"><a class="line" href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">   94</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2</a> <a class="code" href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">operator*</a>(<span class="keyword">const</span> T&amp; scalar)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2</a>(*<span class="keyword">this</span>) *= scalar;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="comment">// Instance Methods</span></div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">  100</a></span>&#160;    <a class="code" href="class_matrix2.html">Matrix2&lt;T&gt;</a>&amp; <a class="code" href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">SetIdentity</a>() {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> *<span class="keyword">this</span> = <a class="code" href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">Matrix2&lt;T&gt;::CreateIdentityMatrix</a>();</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">  104</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">Print</a>()<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        std::cout &lt;&lt; <span class="stringliteral">&quot;[&quot;</span> &lt;&lt; elements[0] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; elements[1] &lt;&lt; <span class="stringliteral">&quot;\n &quot;</span> &lt;&lt; elements[2] &lt;&lt; <span class="stringliteral">&quot;, &quot;</span> &lt;&lt; elements[3] &lt;&lt; <span class="stringliteral">&quot;]&quot;</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;                  &lt;&lt; std::endl;</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    }</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;};</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160; </div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="line" href="_matrix2_8h.html#a7b82eb7537f872738312626597d51507">  110</a></span>&#160;<span class="keyword">using</span> <a class="code" href="class_matrix2.html">Mat2</a> = <a class="code" href="class_matrix2.html">Matrix2&lt;float&gt;</a>;</div>
+<div class="ttc" id="aclass_matrix2_html"><div class="ttname"><a href="class_matrix2.html">Matrix2</a></div><div class="ttdef"><b>Definition:</b> Matrix2.h:10</div></div>
+<div class="ttc" id="aclass_matrix2_html_a0683c7d10e3dc288bfcfd66c25964388"><div class="ttname"><a href="class_matrix2.html#a0683c7d10e3dc288bfcfd66c25964388">Matrix2::operator*=</a></div><div class="ttdeci">Matrix2 &amp; operator*=(const T &amp;scalar)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:79</div></div>
+<div class="ttc" id="aclass_matrix2_html_a0d1416162fb0298a2b4d7aa192a6c485"><div class="ttname"><a href="class_matrix2.html#a0d1416162fb0298a2b4d7aa192a6c485">Matrix2::operator*</a></div><div class="ttdeci">Matrix2 operator*(const T &amp;scalar) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:94</div></div>
+<div class="ttc" id="aclass_matrix2_html_a34a0eeef2ac9045f4587596a5a20c9f6"><div class="ttname"><a href="class_matrix2.html#a34a0eeef2ac9045f4587596a5a20c9f6">Matrix2::SetIdentity</a></div><div class="ttdeci">Matrix2&lt; T &gt; &amp; SetIdentity()</div><div class="ttdef"><b>Definition:</b> Matrix2.h:100</div></div>
+<div class="ttc" id="aclass_matrix2_html_a45c9d616d98f41bb8f80cf69518d831d"><div class="ttname"><a href="class_matrix2.html#a45c9d616d98f41bb8f80cf69518d831d">Matrix2::operator[]</a></div><div class="ttdeci">T const  &amp; operator[](std::size_t index) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:45</div></div>
+<div class="ttc" id="aclass_matrix2_html_a57187b87ec341c956887d45736bec955"><div class="ttname"><a href="class_matrix2.html#a57187b87ec341c956887d45736bec955">Matrix2::Matrix2</a></div><div class="ttdeci">Matrix2(T m00, T m01, T m10, T m11)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:36</div></div>
+<div class="ttc" id="aclass_matrix2_html_a57e3d2d5480c9966587fc86ce9e88f5c"><div class="ttname"><a href="class_matrix2.html#a57e3d2d5480c9966587fc86ce9e88f5c">Matrix2::operator==</a></div><div class="ttdeci">bool operator==(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:62</div></div>
+<div class="ttc" id="aclass_matrix2_html_a5a7d5fdd235272816807254723c6e1ea"><div class="ttname"><a href="class_matrix2.html#a5a7d5fdd235272816807254723c6e1ea">Matrix2::CreateRotationMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateRotationMatrix(T theta)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:25</div></div>
+<div class="ttc" id="aclass_matrix2_html_a656aa48174fda96a670e0445f6b9cab2"><div class="ttname"><a href="class_matrix2.html#a656aa48174fda96a670e0445f6b9cab2">Matrix2::operator*=</a></div><div class="ttdeci">Matrix2 &amp; operator*=(const Matrix2 &amp;matrix)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:72</div></div>
+<div class="ttc" id="aclass_matrix2_html_a7019fe9a1e314394eb6996ef5e4005a5"><div class="ttname"><a href="class_matrix2.html#a7019fe9a1e314394eb6996ef5e4005a5">Matrix2::CreateScalingMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateScalingMatrix(T factor)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:21</div></div>
+<div class="ttc" id="aclass_matrix2_html_a7b095c949f9525da297621839c8a481d"><div class="ttname"><a href="class_matrix2.html#a7b095c949f9525da297621839c8a481d">Matrix2::operator*</a></div><div class="ttdeci">Matrix2 operator*(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:90</div></div>
+<div class="ttc" id="aclass_matrix2_html_aaf7e7149ef4008b510742076644c51d7"><div class="ttname"><a href="class_matrix2.html#aaf7e7149ef4008b510742076644c51d7">Matrix2::operator&lt;&lt;</a></div><div class="ttdeci">friend std::ostream &amp; operator&lt;&lt;(std::ostream &amp;stream, const Matrix2&lt; T &gt; &amp;vector)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:54</div></div>
+<div class="ttc" id="aclass_matrix2_html_ab8eab9e102b84757aca1507f5e054ca1"><div class="ttname"><a href="class_matrix2.html#ab8eab9e102b84757aca1507f5e054ca1">Matrix2::operator!=</a></div><div class="ttdeci">bool operator!=(const Matrix2 &amp;matrix) const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:66</div></div>
+<div class="ttc" id="aclass_matrix2_html_ad4af665a239d74bf204207dbb6f41cae"><div class="ttname"><a href="class_matrix2.html#ad4af665a239d74bf204207dbb6f41cae">Matrix2::Print</a></div><div class="ttdeci">void Print() const</div><div class="ttdef"><b>Definition:</b> Matrix2.h:104</div></div>
 <div class="ttc" id="aclass_matrix2_html_aeb6c969aadd40b3aaa76edad9fd69821"><div class="ttname"><a href="class_matrix2.html#aeb6c969aadd40b3aaa76edad9fd69821">Matrix2::Matrix2</a></div><div class="ttdeci">Matrix2()=default</div></div>
-<div class="ttc" id="aclass_matrix2_html_aff74e8e9a97e25f5105774c5cae54caa"><div class="ttname"><a href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">Matrix2::CreateIdentityMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateIdentityMatrix()</div><div class="ttdef"><b>Definition:</b> Matrix2.h:16</div></div>
+<div class="ttc" id="aclass_matrix2_html_afbfa75e08b7d5eae7400a8b32f1d7137"><div class="ttname"><a href="class_matrix2.html#afbfa75e08b7d5eae7400a8b32f1d7137">Matrix2::operator[]</a></div><div class="ttdeci">T &amp; operator[](std::size_t index)</div><div class="ttdef"><b>Definition:</b> Matrix2.h:41</div></div>
+<div class="ttc" id="aclass_matrix2_html_aff74e8e9a97e25f5105774c5cae54caa"><div class="ttname"><a href="class_matrix2.html#aff74e8e9a97e25f5105774c5cae54caa">Matrix2::CreateIdentityMatrix</a></div><div class="ttdeci">constexpr static Matrix2 CreateIdentityMatrix()</div><div class="ttdef"><b>Definition:</b> Matrix2.h:17</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

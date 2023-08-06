@@ -1,13 +1,6 @@
 <map id="Scene" name="Scene">
-<area shape="rect" id="node1" title=" " alt="" coords="5,240,64,268"/>
-<area shape="rect" id="node2" href="$class_con_hex_scene.html" title=" " alt="" coords="139,5,243,33"/>
-<area shape="rect" id="node3" href="$class_con_hex_wire_scene.html" title=" " alt="" coords="125,57,257,85"/>
-<area shape="rect" id="node4" href="$class_cube_order_scene.html" title=" " alt="" coords="131,109,251,137"/>
-<area shape="rect" id="node5" href="$class_cube_skinned_scene.html" title=" " alt="" coords="123,161,259,189"/>
-<area shape="rect" id="node6" href="$class_folded_cube_scene.html" title=" " alt="" coords="127,213,255,241"/>
-<area shape="rect" id="node7" href="$class_folded_cube_wrap_scene.html" title=" " alt="" coords="112,265,270,293"/>
-<area shape="rect" id="node8" href="$class_solid_cube_scene.html" title=" " alt="" coords="132,317,250,345"/>
-<area shape="rect" id="node9" href="$class_tex_cube_scene.html" title=" " alt="" coords="136,369,246,397"/>
-<area shape="rect" id="node10" href="$class_tex_wrap_cube_scene.html" title=" " alt="" coords="121,421,261,449"/>
-<area shape="rect" id="node11" href="$class_x_mutual_scene.html" title=" " alt="" coords="139,473,243,501"/>
+<area shape="rect" id="node1" title=" " alt="" coords="173,5,232,33"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html" title=" " alt="" coords="5,81,120,109"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html" title=" " alt="" coords="144,81,261,109"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html" title=" " alt="" coords="286,81,442,109"/>
 </map>
