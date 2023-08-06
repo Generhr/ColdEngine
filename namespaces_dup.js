@@ -1,7 +1,9 @@
 var namespaces_dup =
 [
     [ "Colors", "namespace_colors.html", null ],
-    [ "FramebufferShaders", "namespace_framebuffer_shaders.html", null ],
+    [ "GraphicsUtils", "namespace_graphics_utils.html", [
+      [ "ReadData", "namespace_graphics_utils.html#aeefe0ea397db9f75596b70203df20069", null ]
+    ] ],
     [ "Math", "namespace_math.html", [
       [ "cube", "namespace_math.html#a71c34ca40516d1178c72f1eec4bd47c2", null ],
       [ "lerp", "namespace_math.html#ad33ddf84062d06ffa7df046f967fff2c", null ],
