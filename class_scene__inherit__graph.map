@@ -1,7 +1,9 @@
 <map id="Scene" name="Scene">
-<area shape="rect" id="node1" title=" " alt="" coords="253,5,312,33"/>
-<area shape="rect" id="node2" href="$class_cube_skin_scene.html" title=" " alt="" coords="5,81,120,109"/>
-<area shape="rect" id="node3" href="$class_cube_solid_scene.html" title=" " alt="" coords="144,81,261,109"/>
-<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html" title=" " alt="" coords="286,81,442,109"/>
-<area shape="rect" id="node5" href="$class_double_cube_scene.html" title=" " alt="" coords="466,81,595,109"/>
+<area shape="rect" id="node1" title=" " alt="" coords="5,136,64,164"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html" title=" " alt="" coords="156,5,271,33"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html" title=" " alt="" coords="155,57,272,85"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html" title=" " alt="" coords="135,109,292,137"/>
+<area shape="rect" id="node5" href="$class_cube_vertex_position_color_scene.html" title=" " alt="" coords="112,161,315,189"/>
+<area shape="rect" id="node6" href="$class_double_cube_scene.html" title=" " alt="" coords="149,213,278,241"/>
+<area shape="rect" id="node7" href="$class_vertex_wave_scene.html" title=" " alt="" coords="149,265,278,293"/>
 </map>

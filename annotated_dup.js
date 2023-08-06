@@ -5,6 +5,8 @@ var annotated_dup =
     [ "CubeSkinScene", "class_cube_skin_scene.html", "class_cube_skin_scene" ],
     [ "CubeSolidScene", "class_cube_solid_scene.html", "class_cube_solid_scene" ],
     [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", "class_cube_vertex_color_scene" ],
+    [ "CubeVertexPositionColorScene", "class_cube_vertex_position_color_scene.html", "class_cube_vertex_position_color_scene" ],
+    [ "DefaultVertexShader", "class_default_vertex_shader.html", "class_default_vertex_shader" ],
     [ "DoubleCubeScene", "class_double_cube_scene.html", "class_double_cube_scene" ],
     [ "Engine", "class_engine.html", "class_engine" ],
     [ "EngineException", "class_engine_exception.html", "class_engine_exception" ],
@@ -20,6 +22,7 @@ var annotated_dup =
     [ "Matrix3", "class_matrix3.html", "class_matrix3" ],
     [ "Mouse", "class_mouse.html", "class_mouse" ],
     [ "Pipeline", "class_pipeline.html", "class_pipeline" ],
+    [ "Plane", "class_plane.html", null ],
     [ "PubeScreenTransformer", "class_pube_screen_transformer.html", "class_pube_screen_transformer" ],
     [ "Scene", "class_scene.html", "class_scene" ],
     [ "SolidEffect", "class_solid_effect.html", "class_solid_effect" ],
@@ -31,5 +34,8 @@ var annotated_dup =
     [ "Vector3", "class_vector3.html", "class_vector3" ],
     [ "Vector4", "class_vector4.html", "class_vector4" ],
     [ "VertexColorEffect", "class_vertex_color_effect.html", "class_vertex_color_effect" ],
+    [ "VertexPositionColorEffect", "class_vertex_position_color_effect.html", "class_vertex_position_color_effect" ],
+    [ "VertexWaveScene", "class_vertex_wave_scene.html", "class_vertex_wave_scene" ],
+    [ "WaveVertexTextureEffect", "class_wave_vertex_texture_effect.html", "class_wave_vertex_texture_effect" ],
     [ "ZBuffer", "class_z_buffer.html", "class_z_buffer" ]
 ];

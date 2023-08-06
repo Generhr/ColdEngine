@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.9.1"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>ColdEngine: include/Effect/TextureEffect.h Source File</title>
+<title>ColdEngine: include/Effects/TextureEffect.h Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.4.3</span>
+   &#160;<span id="projectnumber">1.5.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -92,7 +92,7 @@ $(document).ready(function(){initNavTree('_texture_effect_8h_source.html',''); i
 <a href="_texture_effect_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_pipeline_8h.html">Pipeline.h</a>&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_vector2_8h.html">LinearAlgebra/Vector2.h</a>&quot;</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_default_vertex_shader_8h.html">Shaders/DefaultVertexShader.h</a>&quot;</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment">// Basic texture effect</span></div>
@@ -157,46 +157,51 @@ $(document).ready(function(){initNavTree('_texture_effect_8h_source.html',''); i
 <div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_vertex.html#a6e86c53d49ec0f0e360e02cf3310fa11">   66</a></span>&#160;        <a class="code" href="class_vector2.html">Vec2</a> <a class="code" href="class_texture_effect_1_1_vertex.html#a6e86c53d49ec0f0e360e02cf3310fa11">t</a>;</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    };</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Invoked for each pixel of a triangle takes an input of attributes that are the result of interpolating vertex</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    <span class="comment">// attributes and outputs a color</span></div>
-<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html">   71</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_texture_effect_1_1_pixel_shader.html">PixelShader</a> {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">   73</a></span>&#160;        <a class="code" href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">PixelShader</a>() : tex_width(), tex_height(), tex_xclamp(), tex_yclamp() {</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span> Input&gt;</div>
-<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">   77</a></span>&#160;        <a class="code" href="class_color.html">Color</a> <a class="code" href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">operator()</a>(<span class="keyword">const</span> Input&amp; in)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordflow">return</span> pTex-&gt;GetPixel((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)std::min(in.t[0] * tex_width + 0.5f, tex_xclamp),</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)std::min(in.t[1] * tex_height + 0.5f, tex_yclamp));</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
-<div class="line"><a name="l00082"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">   82</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">BindTexture</a>(<span class="keyword">const</span> std::wstring&amp; filename) {</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            pTex = std::make_unique&lt;Surface&gt;(<a class="code" href="class_surface.html#a56f7924ec6d563a5bf2f6b7586c2b621">Surface::FromFile</a>(filename));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            tex_width = float(pTex-&gt;GetWidth());</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            tex_height = float(pTex-&gt;GetHeight());</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            tex_xclamp = tex_width - 1.0f;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            tex_yclamp = tex_height - 1.0f;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160; </div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        std::unique_ptr&lt;Surface&gt; pTex;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordtype">float</span> tex_width;</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <span class="keywordtype">float</span> tex_height;</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordtype">float</span> tex_xclamp;</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">float</span> tex_yclamp;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    };</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00099"></a><span class="lineno"><a class="line" href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">   99</a></span>&#160;    <a class="code" href="class_texture_effect_1_1_pixel_shader.html">PixelShader</a> <a class="code" href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">ps</a>;</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    <span class="comment">// Default vs rotates and translates vertices, does not touch attributes</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="class_texture_effect.html#a43a80b4aeeeac533ed87eb9bc378c9bf">   70</a></span>&#160;    <span class="keyword">typedef</span> <a class="code" href="class_default_vertex_shader.html">DefaultVertexShader&lt;Vertex&gt;</a> <a class="code" href="class_texture_effect.html#a43a80b4aeeeac533ed87eb9bc378c9bf">VertexShader</a>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    <span class="comment">// Invoked for each pixel of a triangle takes an input of attributes that are the result of interpolating vertex</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    <span class="comment">// attributes and outputs a color</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html">   74</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_texture_effect_1_1_pixel_shader.html">PixelShader</a> {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">   76</a></span>&#160;        <a class="code" href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">PixelShader</a>() : pTex(), tex_width(), tex_height(), tex_xclamp(), tex_yclamp() {</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keyword">template</span>&lt;<span class="keyword">class</span> Input&gt;</div>
+<div class="line"><a name="l00080"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">   80</a></span>&#160;        <a class="code" href="class_color.html">Color</a> <a class="code" href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">operator()</a>(<span class="keyword">const</span> Input&amp; in)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            <span class="keywordflow">return</span> pTex-&gt;GetPixel((<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)std::min(in.t[0] * tex_width + 0.5f, tex_xclamp),</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                (<span class="keywordtype">unsigned</span> <span class="keywordtype">int</span>)std::min(in.t[1] * tex_height + 0.5f, tex_yclamp));</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">   85</a></span>&#160;        <span class="keywordtype">void</span> <a class="code" href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">BindTexture</a>(<span class="keyword">const</span> std::wstring&amp; filename) {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            pTex = std::make_unique&lt;Surface&gt;(<a class="code" href="class_surface.html#a56f7924ec6d563a5bf2f6b7586c2b621">Surface::FromFile</a>(filename));</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            tex_width = float(pTex-&gt;GetWidth());</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            tex_height = float(pTex-&gt;GetHeight());</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            tex_xclamp = tex_width - 1.0f;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            tex_yclamp = tex_height - 1.0f;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        std::unique_ptr&lt;Surface&gt; pTex;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        <span class="keywordtype">float</span> tex_width;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordtype">float</span> tex_height;</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordtype">float</span> tex_xclamp;</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        <span class="keywordtype">float</span> tex_yclamp;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    };</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00102"></a><span class="lineno"><a class="line" href="class_texture_effect.html#a369a1cb4312f63cf5f7dfa55b0de7e9a">  102</a></span>&#160;    <a class="code" href="class_default_vertex_shader.html">VertexShader</a> <a class="code" href="class_texture_effect.html#a369a1cb4312f63cf5f7dfa55b0de7e9a">vs</a>;</div>
+<div class="line"><a name="l00103"></a><span class="lineno"><a class="line" href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">  103</a></span>&#160;    <a class="code" href="class_texture_effect_1_1_pixel_shader.html">PixelShader</a> <a class="code" href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">ps</a>;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;};</div>
+<div class="ttc" id="a_default_vertex_shader_8h_html"><div class="ttname"><a href="_default_vertex_shader_8h.html">DefaultVertexShader.h</a></div></div>
 <div class="ttc" id="a_pipeline_8h_html"><div class="ttname"><a href="_pipeline_8h.html">Pipeline.h</a></div></div>
-<div class="ttc" id="a_vector2_8h_html"><div class="ttname"><a href="_vector2_8h.html">Vector2.h</a></div></div>
 <div class="ttc" id="aclass_color_html"><div class="ttname"><a href="class_color.html">Color</a></div><div class="ttdef"><b>Definition:</b> Colors.h:6</div></div>
+<div class="ttc" id="aclass_default_vertex_shader_html"><div class="ttname"><a href="class_default_vertex_shader.html">DefaultVertexShader</a></div><div class="ttdef"><b>Definition:</b> DefaultVertexShader.h:4</div></div>
 <div class="ttc" id="aclass_surface_html_a56f7924ec6d563a5bf2f6b7586c2b621"><div class="ttname"><a href="class_surface.html#a56f7924ec6d563a5bf2f6b7586c2b621">Surface::FromFile</a></div><div class="ttdeci">static Surface FromFile(const std::wstring &amp;name)</div><div class="ttdef"><b>Definition:</b> Surface.cpp:30</div></div>
-<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html">TextureEffect::PixelShader</a></div><div class="ttdef"><b>Definition:</b> TextureEffect.h:71</div></div>
-<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_a6321fe62bc48c423bedfc34b2976934a"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">TextureEffect::PixelShader::BindTexture</a></div><div class="ttdeci">void BindTexture(const std::wstring &amp;filename)</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:82</div></div>
-<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_a9223d28f972ea311775dce0e95204563"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">TextureEffect::PixelShader::operator()</a></div><div class="ttdeci">Color operator()(const Input &amp;in) const</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:77</div></div>
-<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_adcf9d270ca396bd18124e36c10971ab1"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">TextureEffect::PixelShader::PixelShader</a></div><div class="ttdeci">PixelShader()</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:73</div></div>
+<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html">TextureEffect::PixelShader</a></div><div class="ttdef"><b>Definition:</b> TextureEffect.h:74</div></div>
+<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_a6321fe62bc48c423bedfc34b2976934a"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#a6321fe62bc48c423bedfc34b2976934a">TextureEffect::PixelShader::BindTexture</a></div><div class="ttdeci">void BindTexture(const std::wstring &amp;filename)</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:85</div></div>
+<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_a9223d28f972ea311775dce0e95204563"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#a9223d28f972ea311775dce0e95204563">TextureEffect::PixelShader::operator()</a></div><div class="ttdeci">Color operator()(const Input &amp;in) const</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:80</div></div>
+<div class="ttc" id="aclass_texture_effect_1_1_pixel_shader_html_adcf9d270ca396bd18124e36c10971ab1"><div class="ttname"><a href="class_texture_effect_1_1_pixel_shader.html#adcf9d270ca396bd18124e36c10971ab1">TextureEffect::PixelShader::PixelShader</a></div><div class="ttdeci">PixelShader()</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:76</div></div>
 <div class="ttc" id="aclass_texture_effect_1_1_vertex_html"><div class="ttname"><a href="class_texture_effect_1_1_vertex.html">TextureEffect::Vertex</a></div><div class="ttdef"><b>Definition:</b> TextureEffect.h:11</div></div>
 <div class="ttc" id="aclass_texture_effect_1_1_vertex_html_a14ea152d835fb1cf402b10bdeca4aaed"><div class="ttname"><a href="class_texture_effect_1_1_vertex.html#a14ea152d835fb1cf402b10bdeca4aaed">TextureEffect::Vertex::pos</a></div><div class="ttdeci">Vec3 pos</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:65</div></div>
 <div class="ttc" id="aclass_texture_effect_1_1_vertex_html_a2ee0e4fd01aafd4391541e315df35f80"><div class="ttname"><a href="class_texture_effect_1_1_vertex.html#a2ee0e4fd01aafd4391541e315df35f80">TextureEffect::Vertex::Vertex</a></div><div class="ttdeci">Vertex()=default</div></div>
@@ -213,7 +218,9 @@ $(document).ready(function(){initNavTree('_texture_effect_8h_source.html',''); i
 <div class="ttc" id="aclass_texture_effect_1_1_vertex_html_ad9f0a7aa27640e85fcfea98daf7e2628"><div class="ttname"><a href="class_texture_effect_1_1_vertex.html#ad9f0a7aa27640e85fcfea98daf7e2628">TextureEffect::Vertex::operator+</a></div><div class="ttdeci">Vertex operator+(const Vertex &amp;rhs) const</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:30</div></div>
 <div class="ttc" id="aclass_texture_effect_1_1_vertex_html_af63ce4953444cf8d3b8f75a49b99b745"><div class="ttname"><a href="class_texture_effect_1_1_vertex.html#af63ce4953444cf8d3b8f75a49b99b745">TextureEffect::Vertex::operator*</a></div><div class="ttdeci">Vertex operator*(float rhs) const</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:50</div></div>
 <div class="ttc" id="aclass_texture_effect_html"><div class="ttname"><a href="class_texture_effect.html">TextureEffect</a></div><div class="ttdef"><b>Definition:</b> TextureEffect.h:8</div></div>
-<div class="ttc" id="aclass_texture_effect_html_ad0a79d8c0c73d54eb83569b40f949364"><div class="ttname"><a href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">TextureEffect::ps</a></div><div class="ttdeci">PixelShader ps</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:99</div></div>
+<div class="ttc" id="aclass_texture_effect_html_a369a1cb4312f63cf5f7dfa55b0de7e9a"><div class="ttname"><a href="class_texture_effect.html#a369a1cb4312f63cf5f7dfa55b0de7e9a">TextureEffect::vs</a></div><div class="ttdeci">VertexShader vs</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:102</div></div>
+<div class="ttc" id="aclass_texture_effect_html_a43a80b4aeeeac533ed87eb9bc378c9bf"><div class="ttname"><a href="class_texture_effect.html#a43a80b4aeeeac533ed87eb9bc378c9bf">TextureEffect::VertexShader</a></div><div class="ttdeci">DefaultVertexShader&lt; Vertex &gt; VertexShader</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:70</div></div>
+<div class="ttc" id="aclass_texture_effect_html_ad0a79d8c0c73d54eb83569b40f949364"><div class="ttname"><a href="class_texture_effect.html#ad0a79d8c0c73d54eb83569b40f949364">TextureEffect::ps</a></div><div class="ttdeci">PixelShader ps</div><div class="ttdef"><b>Definition:</b> TextureEffect.h:103</div></div>
 <div class="ttc" id="aclass_vector2_html"><div class="ttname"><a href="class_vector2.html">Vector2&lt; float &gt;</a></div></div>
 <div class="ttc" id="aclass_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3&lt; float &gt;</a></div></div>
 </div><!-- fragment --></div><!-- contents -->
@@ -221,7 +228,7 @@ $(document).ready(function(){initNavTree('_texture_effect_8h_source.html',''); i
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_5c20107ceaa71582c1fedb9f0d02f0dd.html">Effect</a></li><li class="navelem"><a class="el" href="_texture_effect_8h.html">TextureEffect.h</a></li>
+    <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_9742a0590b83be96d0cf05cac5c5e4ea.html">Effects</a></li><li class="navelem"><a class="el" href="_texture_effect_8h.html">TextureEffect.h</a></li>
     <li class="footer">Generated by <a href="https://www.doxygen.org/index.html"><img class="footer" src="doxygen.svg" width="104" height="31" alt="doxygen"/></a> 1.9.1 </li>
   </ul>
 </div>

@@ -1,8 +1,10 @@
 <map id="ZBuffer::Clear" name="ZBuffer::Clear">
-<area shape="rect" id="node1" title=" " alt="" coords="412,88,511,116"/>
-<area shape="rect" id="node2" href="$class_pipeline.html#adf2322f3b604145324fe70fd45266b46" title=" " alt="" coords="219,88,364,116"/>
-<area shape="rect" id="node3" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="12,5,164,33"/>
-<area shape="rect" id="node4" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="11,57,165,85"/>
-<area shape="rect" id="node5" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="10,109,166,153"/>
-<area shape="rect" id="node6" href="$class_double_cube_scene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="5,177,171,205"/>
+<area shape="rect" id="node1" title=" " alt="" coords="450,152,549,180"/>
+<area shape="rect" id="node2" href="$class_pipeline.html#adf2322f3b604145324fe70fd45266b46" title=" " alt="" coords="257,152,402,180"/>
+<area shape="rect" id="node3" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="31,5,183,33"/>
+<area shape="rect" id="node4" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="30,57,184,85"/>
+<area shape="rect" id="node5" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="29,109,185,153"/>
+<area shape="rect" id="node6" href="$class_cube_vertex_position_color_scene.html#ae281a042a0863dbb9e3bb7a6070e58cc" title=" " alt="" coords="5,177,209,221"/>
+<area shape="rect" id="node7" href="$class_double_cube_scene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="24,245,190,273"/>
+<area shape="rect" id="node8" href="$class_vertex_wave_scene.html#aed98f12c1ea59d6d6138498f75a106d6" title=" " alt="" coords="24,297,190,325"/>
 </map>

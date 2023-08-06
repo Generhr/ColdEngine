@@ -2,6 +2,7 @@ var hierarchy =
 [
     [ "Color", "class_color.html", null ],
     [ "Cube", "class_cube.html", null ],
+    [ "DefaultVertexShader< Vertex >", "class_default_vertex_shader.html", null ],
     [ "Engine", "class_engine.html", null ],
     [ "EngineException", "class_engine_exception.html", [
       [ "Graphics::Exception", "class_graphics_1_1_exception.html", null ],
@@ -24,16 +25,22 @@ var hierarchy =
     [ "Matrix3< T >", "class_matrix3.html", null ],
     [ "Matrix3< float >", "class_matrix3.html", null ],
     [ "Mouse", "class_mouse.html", null ],
+    [ "VertexPositionColorEffect::VertexShader::Output", "class_vertex_position_color_effect_1_1_vertex_shader_1_1_output.html", null ],
     [ "Pipeline< Effect >", "class_pipeline.html", null ],
     [ "SolidEffect::PixelShader", "class_solid_effect_1_1_pixel_shader.html", null ],
     [ "TextureEffect::PixelShader", "class_texture_effect_1_1_pixel_shader.html", null ],
     [ "VertexColorEffect::PixelShader", "class_vertex_color_effect_1_1_pixel_shader.html", null ],
+    [ "VertexPositionColorEffect::PixelShader", "class_vertex_position_color_effect_1_1_pixel_shader.html", null ],
+    [ "WaveVertexTextureEffect::PixelShader", "class_wave_vertex_texture_effect_1_1_pixel_shader.html", null ],
+    [ "Plane", "class_plane.html", null ],
     [ "PubeScreenTransformer", "class_pube_screen_transformer.html", null ],
     [ "Scene", "class_scene.html", [
       [ "CubeSkinScene", "class_cube_skin_scene.html", null ],
       [ "CubeSolidScene", "class_cube_solid_scene.html", null ],
       [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", null ],
-      [ "DoubleCubeScene", "class_double_cube_scene.html", null ]
+      [ "CubeVertexPositionColorScene", "class_cube_vertex_position_color_scene.html", null ],
+      [ "DoubleCubeScene", "class_double_cube_scene.html", null ],
+      [ "VertexWaveScene", "class_vertex_wave_scene.html", null ]
     ] ],
     [ "SolidEffect", "class_solid_effect.html", null ],
     [ "Surface", "class_surface.html", null ],
@@ -48,6 +55,12 @@ var hierarchy =
     [ "SolidEffect::Vertex", "class_solid_effect_1_1_vertex.html", null ],
     [ "TextureEffect::Vertex", "class_texture_effect_1_1_vertex.html", null ],
     [ "VertexColorEffect::Vertex", "class_vertex_color_effect_1_1_vertex.html", null ],
+    [ "VertexPositionColorEffect::Vertex", "class_vertex_position_color_effect_1_1_vertex.html", null ],
+    [ "WaveVertexTextureEffect::Vertex", "class_wave_vertex_texture_effect_1_1_vertex.html", null ],
     [ "VertexColorEffect", "class_vertex_color_effect.html", null ],
+    [ "VertexPositionColorEffect", "class_vertex_position_color_effect.html", null ],
+    [ "VertexPositionColorEffect::VertexShader", "class_vertex_position_color_effect_1_1_vertex_shader.html", null ],
+    [ "WaveVertexTextureEffect::VertexShader", "class_wave_vertex_texture_effect_1_1_vertex_shader.html", null ],
+    [ "WaveVertexTextureEffect", "class_wave_vertex_texture_effect.html", null ],
     [ "ZBuffer", "class_z_buffer.html", null ]
 ];

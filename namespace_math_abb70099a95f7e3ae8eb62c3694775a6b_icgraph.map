@@ -1,7 +1,9 @@
 <map id="Math::WrapAngle" name="Math::WrapAngle">
-<area shape="rect" id="node1" title=" " alt="" coords="231,88,353,116"/>
-<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a291519be4aae4268c5b6cdb4b9fc864a" title=" " alt="" coords="12,5,176,33"/>
-<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="11,57,177,85"/>
-<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="16,109,172,153"/>
-<area shape="rect" id="node5" href="$class_double_cube_scene.html#aa0b545717ab49ff4b4726d15bb8917bb" title=" " alt="" coords="5,177,183,205"/>
+<area shape="rect" id="node1" title=" " alt="" coords="257,152,379,180"/>
+<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a291519be4aae4268c5b6cdb4b9fc864a" title=" " alt="" coords="25,5,189,33"/>
+<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="24,57,190,85"/>
+<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="29,109,185,153"/>
+<area shape="rect" id="node5" href="$class_cube_vertex_position_color_scene.html#a72ce3d23605de3262f97e8e935bd08e0" title=" " alt="" coords="5,177,209,221"/>
+<area shape="rect" id="node6" href="$class_double_cube_scene.html#aa0b545717ab49ff4b4726d15bb8917bb" title=" " alt="" coords="18,245,196,273"/>
+<area shape="rect" id="node7" href="$class_vertex_wave_scene.html#af914c4150ebb8c531dd5f14c62854e7e" title=" " alt="" coords="18,297,196,325"/>
 </map>

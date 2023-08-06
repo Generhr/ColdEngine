@@ -1,13 +1,12 @@
 var dir_d44c64559bbebec7f509842c48db8b23 =
 [
-    [ "Effect", "dir_5c20107ceaa71582c1fedb9f0d02f0dd.html", "dir_5c20107ceaa71582c1fedb9f0d02f0dd" ],
+    [ "Effects", "dir_9742a0590b83be96d0cf05cac5c5e4ea.html", "dir_9742a0590b83be96d0cf05cac5c5e4ea" ],
     [ "LinearAlgebra", "dir_47cbc8c4175a1baeda2f15555368db1c.html", "dir_47cbc8c4175a1baeda2f15555368db1c" ],
+    [ "Primitives", "dir_e15e4d6f467db1409d928a9a5394d3a8.html", "dir_e15e4d6f467db1409d928a9a5394d3a8" ],
     [ "Scenes", "dir_35b974b1bbf44ef7d950ecbcbdecc407.html", "dir_35b974b1bbf44ef7d950ecbcbdecc407" ],
+    [ "Shaders", "dir_da587653d34e0b5a39fcb72873e4f07e.html", "dir_da587653d34e0b5a39fcb72873e4f07e" ],
     [ "Utility", "dir_b647303d7dac632cf2e2685370b563a8.html", "dir_b647303d7dac632cf2e2685370b563a8" ],
     [ "Colors.h", "_colors_8h.html", "_colors_8h" ],
-    [ "Cube.h", "_cube_8h.html", [
-      [ "Cube", "class_cube.html", null ]
-    ] ],
     [ "DXErr.h", "_d_x_err_8h.html", "_d_x_err_8h" ],
     [ "Engine.h", "_engine_8h.html", [
       [ "Engine", "class_engine.html", "class_engine" ]

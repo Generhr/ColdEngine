@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.4.3</span>
+   &#160;<span id="projectnumber">1.5.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -101,6 +101,8 @@ $(document).ready(function(){initNavTree('class_pipeline.html',''); initResizabl
 Public Types</h2></td></tr>
 <tr class="memitem:a179077548f7770a505e2aaadb5060f53"><td class="memItemLeft" align="right" valign="top">typedef Effect::Vertex&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Vertex</a></td></tr>
 <tr class="separator:a179077548f7770a505e2aaadb5060f53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91ca1fdeb32ad26e1adf85fcd7300f65"><td class="memItemLeft" align="right" valign="top">typedef Effect::VertexShader::Output&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#a91ca1fdeb32ad26e1adf85fcd7300f65">VSOut</a></td></tr>
+<tr class="separator:a91ca1fdeb32ad26e1adf85fcd7300f65"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
@@ -108,10 +110,6 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a7549ad68c625da4e4a0749684cefbce2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76274774f61e4b5a1c708decf65712b9"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Draw</a> (const <a class="el" href="struct_indexed_triangle_list.html">IndexedTriangleList</a>&lt; <a class="el" href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Vertex</a> &gt; &amp;triList)</td></tr>
 <tr class="separator:a76274774f61e4b5a1c708decf65712b9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aad524adda7bb538f882dbbf98eb20c1d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#aad524adda7bb538f882dbbf98eb20c1d">BindRotation</a> (const <a class="el" href="_matrix3_8h.html#a274b13daa38b5a2dbf2ef98ae55c23be">Mat3</a> &amp;rotation_in)</td></tr>
-<tr class="separator:aad524adda7bb538f882dbbf98eb20c1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8292a77189cee1306958bf86ebee73e5"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#a8292a77189cee1306958bf86ebee73e5">BindTranslation</a> (const <a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;translation_in)</td></tr>
-<tr class="separator:a8292a77189cee1306958bf86ebee73e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adf2322f3b604145324fe70fd45266b46"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pipeline.html#adf2322f3b604145324fe70fd45266b46">BeginFrame</a> ()</td></tr>
 <tr class="separator:adf2322f3b604145324fe70fd45266b46"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -131,6 +129,22 @@ template&lt;class Effect &gt; </div>
       <table class="memname">
         <tr>
           <td class="memname">typedef Effect::Vertex <a class="el" href="class_pipeline.html">Pipeline</a>&lt; Effect &gt;::<a class="el" href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Vertex</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a91ca1fdeb32ad26e1adf85fcd7300f65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91ca1fdeb32ad26e1adf85fcd7300f65">&#9670;&nbsp;</a></span>VSOut</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;class Effect &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">typedef Effect::VertexShader::Output <a class="el" href="class_pipeline.html">Pipeline</a>&lt; Effect &gt;::<a class="el" href="class_pipeline.html#a91ca1fdeb32ad26e1adf85fcd7300f65">VSOut</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -200,75 +214,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_adf2322f3b604145324fe70fd45266b46_icgraph.svg" width="370" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="aad524adda7bb538f882dbbf98eb20c1d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aad524adda7bb538f882dbbf98eb20c1d">&#9670;&nbsp;</a></span>BindRotation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Effect &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_pipeline.html">Pipeline</a>&lt; Effect &gt;::BindRotation </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="_matrix3_8h.html#a274b13daa38b5a2dbf2ef98ae55c23be">Mat3</a> &amp;&#160;</td>
-          <td class="paramname"><em>rotation_in</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_aad524adda7bb538f882dbbf98eb20c1d_icgraph.svg" width="374" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
-</div>
-</div>
-
-</div>
-</div>
-<a id="a8292a77189cee1306958bf86ebee73e5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a8292a77189cee1306958bf86ebee73e5">&#9670;&nbsp;</a></span>BindTranslation()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<div class="memtemplate">
-template&lt;class Effect &gt; </div>
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void <a class="el" href="class_pipeline.html">Pipeline</a>&lt; Effect &gt;::BindTranslation </td>
-          <td>(</td>
-          <td class="paramtype">const <a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;&#160;</td>
-          <td class="paramname"><em>translation_in</em></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<div class="dynheader">
-Here is the caller graph for this function:</div>
-<div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_a8292a77189cee1306958bf86ebee73e5_icgraph.svg" width="388" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_adf2322f3b604145324fe70fd45266b46_icgraph.svg" width="408" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -302,7 +248,7 @@ template&lt;class Effect &gt; </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_a76274774f61e4b5a1c708decf65712b9_icgraph.svg" width="328" height="211"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_pipeline_a76274774f61e4b5a1c708decf65712b9_icgraph.svg" width="367" height="331"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
