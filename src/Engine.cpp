@@ -5,6 +5,8 @@
 #include "Scenes/CubeSolidScene.h"
 #include "Scenes/CubeVertexColorScene.h"
 #include "Scenes/DoubleCubeScene.h"
+#include "Scenes/VertexWaveScene.h"
+#include "Scenes/CubeVertexPositionColorScene.h"
 
 #include <sstream>
 
@@ -14,6 +16,8 @@ Engine::Engine(MainWindow& window) : window(window), graphics(window) {
     scenes.push_back(std::make_unique<CubeSolidScene>(graphics));
     scenes.push_back(std::make_unique<CubeVertexColorScene>(graphics));
     scenes.push_back(std::make_unique<DoubleCubeScene>(graphics));
+    scenes.push_back(std::make_unique<CubeVertexPositionColorScene>(graphics));
+    scenes.push_back(std::make_unique<VertexWaveScene>(graphics));
 
     curScene = scenes.begin();
     SetWindowName();

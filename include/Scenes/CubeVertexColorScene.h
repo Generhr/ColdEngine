@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Scene.h"
-#include "Cube.h"
+#include "Primitives/Cube.h"
 #include "LinearAlgebra/Matrix3.h"
 #include "Pipeline.h"
-#include "Effect/VertexColorEffect.h"
+#include "Effects/VertexColorEffect.h"
 
 
 class CubeVertexColorScene : public Scene {
@@ -69,8 +69,8 @@ public:
         const Vec3 trans = {0.0f, 0.0f, offset_z};
 
         // Set pipeline transform
-        pipeline.BindRotation(rot);
-        pipeline.BindTranslation(trans);
+        pipeline.effect.vs.BindRotation(rot);
+        pipeline.effect.vs.BindTranslation(trans);
         // Render triangles
         pipeline.Draw(itlist);
     }

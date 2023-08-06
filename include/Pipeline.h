@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Win.h"
+
 #include "Graphics.h"
 #include "Triangle.h"
 #include "IndexedTriangleList.h"
@@ -16,6 +17,7 @@ template<class Effect>
 class Pipeline {
 public:
     typedef typename Effect::Vertex Vertex;
+    typedef typename Effect::VertexShader::Output VSOut;
 
 public:
     explicit Pipeline(Graphics& graphics) : graphics(graphics), zb(graphics.ScreenWidth, graphics.ScreenHeight) {
@@ -23,14 +25,6 @@ public:
 
     void Draw(const IndexedTriangleList<Vertex>& triList) {
         ProcessVertices(triList.vertices, triList.indices);
-    }
-
-    void BindRotation(const Mat3& rotation_in) {
-        rotation = rotation_in;
-    }
-
-    void BindTranslation(const Vec3& translation_in) {
-        translation = translation_in;
     }
 
     // Needed to reset the z-buffer after each frame
@@ -41,15 +35,13 @@ public:
 private:
     // Vertex Processing Function
 
-    // Transforms vertices and then passes vtx & idx lists to triangle assembler
+    // Transforms vertices using `vs` and then passes vtx & idx lists to triangle assembler
     void ProcessVertices(const std::vector<Vertex>& vertices, const std::vector<size_t>& indices) {
         // Create vertex vector for vs output
-        std::vector<Vertex> verticesOut;
+        std::vector<VSOut> verticesOut(vertices.size());
 
-        // Transform vertices using matrix + vector
-        std::transform(vertices.begin(), vertices.end(), std::back_inserter(verticesOut), [&](const auto& v) {
-            return Vertex(v.pos * rotation + translation, v);
-        });
+        // Transform vertices with `vs`
+        std::transform(vertices.begin(), vertices.end(), verticesOut.begin(), effect.vs);
 
         // Assemble triangles from stream of indices and vertices
         AssembleTriangles(verticesOut, indices);
@@ -59,7 +51,7 @@ private:
 
     // Assembles indexed vertex stream into triangles and passes them to post process culls (does not send) back facing
     // triangles
-    void AssembleTriangles(const std::vector<Vertex>& vertices, const std::vector<size_t>& indices) {
+    void AssembleTriangles(const std::vector<VSOut>& vertices, const std::vector<size_t>& indices) {
         // Assemble triangles in the stream and process
         for (size_t i = 0, end = indices.size() / 3; i < end; i++) {
             // Determine triangle vertices via indexing
@@ -78,9 +70,9 @@ private:
     // Triangle Processing Function
 
     // Takes 3 vertices to generate triangle and sends generated triangle to post-processing
-    void ProcessTriangle(const Vertex& v0, const Vertex& v1, const Vertex& v2) {
+    void ProcessTriangle(const VSOut& v0, const VSOut& v1, const VSOut& v2) {
         // Generate triangle from 3 vertices using gs and send to post-processing
-        Triangle<Vertex> a {v0, v1, v2};
+        Triangle<VSOut> a {v0, v1, v2};
 
         PostProcessTriangleVertices(a);
     }
@@ -88,7 +80,7 @@ private:
     // Vertex Post-processing Function
 
     // Perform perspective and viewport transformations
-    void PostProcessTriangleVertices(Triangle<Vertex>& triangle) {
+    void PostProcessTriangleVertices(Triangle<VSOut>& triangle) {
         // Perspective divide and screen transform for all 3 vertices
         pst.Transform(triangle.v0);
         pst.Transform(triangle.v1);
@@ -105,11 +97,11 @@ private:
     //
     // Entry point for triangle rasterization, sorts vertices, determines case, splits to flat triangles, dispatches to
     // flat triangle functions
-    void DrawTriangle(const Triangle<Vertex>& triangle) {
+    void DrawTriangle(const Triangle<VSOut>& triangle) {
         // Using pointers so we can swap (for sorting purposes)
-        const Vertex* pv0 = &triangle.v0;
-        const Vertex* pv1 = &triangle.v1;
-        const Vertex* pv2 = &triangle.v2;
+        const VSOut* pv0 = &triangle.v0;
+        const VSOut* pv1 = &triangle.v1;
+        const VSOut* pv2 = &triangle.v2;
 
         // Sorting vertices by y
         if (pv1->pos[1] < pv0->pos[1]) {
@@ -124,7 +116,8 @@ private:
             std::swap(pv0, pv1);
         }
 
-        if (pv0->pos[1] == pv1->pos[1]) {  // Natural flat top
+        // Natural flat top
+        if (pv0->pos[1] == pv1->pos[1]) {
             // Sorting top vertices by x
             if (pv1->pos[0] < pv0->pos[0]) {
                 std::swap(pv0, pv1);
@@ -132,7 +125,8 @@ private:
 
             DrawFlatTopTriangle(*pv0, *pv1, *pv2);
         }
-        else if (pv1->pos[1] == pv2->pos[1]) {  // Natural flat bottom
+        // Natural flat bottom
+        else if (pv1->pos[1] == pv2->pos[1]) {
             // Sorting bottom vertices by x
             if (pv2->pos[0] < pv1->pos[0]) {
                 std::swap(pv1, pv2);
@@ -140,7 +134,8 @@ private:
 
             DrawFlatBottomTriangle(*pv0, *pv1, *pv2);
         }
-        else {  // General triangle
+        // General triangle
+        else {
             // Find splitting vertex interpolant
             const float alphaSplit = (pv1->pos[1] - pv0->pos[1]) / (pv2->pos[1] - pv0->pos[1]);
             const auto vi = Math::Lerp(*pv0, *pv2, alphaSplit);
@@ -157,7 +152,7 @@ private:
     }
 
     // Does flat *TOP* triangle-specific calculations and calls DrawFlatTriangle
-    void DrawFlatTopTriangle(const Vertex& it0, const Vertex& it1, const Vertex& it2) {
+    void DrawFlatTopTriangle(const VSOut& it0, const VSOut& it1, const VSOut& it2) {
         // Calulcate dVertex / dy change in interpolant for every 1 change in y
         const float delta_y = it2.pos[1] - it0.pos[1];
         const auto dit0 = (it2 - it0) / delta_y;
@@ -171,7 +166,7 @@ private:
     }
 
     // Does flat *BOTTOM* triangle-specific calculations and calls DrawFlatTriangle
-    void DrawFlatBottomTriangle(const Vertex& it0, const Vertex& it1, const Vertex& it2) {
+    void DrawFlatBottomTriangle(const VSOut& it0, const VSOut& it1, const VSOut& it2) {
         // Calulcate dVertex / dy change in interpolant for every 1 change in y
         const float delta_y = it2.pos[1] - it0.pos[1];
         const auto dit0 = (it1 - it0) / delta_y;
@@ -186,12 +181,12 @@ private:
 
     // Does processing common to both flat top and flat bottom triangles scan over triangle in screen space, interpolate
     // attributes, depth cull, invoke ps and write pixel to screen
-    void DrawFlatTriangle(const Vertex& it0,
-        const Vertex& it1,
-        const Vertex& it2,
-        const Vertex& dv0,
-        const Vertex& dv1,
-        Vertex itEdge1) {
+    void DrawFlatTriangle(const VSOut& it0,
+        const VSOut& it1,
+        const VSOut& it2,
+        const VSOut& dv0,
+        const VSOut& dv1,
+        VSOut itEdge1) {
         // Create edge interpolant for left edge (always v0)
         auto itEdge0 = it0;
 

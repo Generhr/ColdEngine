@@ -1,27 +1,20 @@
 #pragma once
 
 #include "Scene.h"
-#include "Primitives/Cube.h"
+#include "Primitives/Plane.h"
 #include "LinearAlgebra/Matrix3.h"
-#include "Pipeline.h"
-#include "Effects/SolidEffect.h"
+#include "Effects/WaveVertexTextureEffect.h"
 
 
-class CubeSolidScene : public Scene {
+class VertexWaveScene : public Scene {
 public:
-    typedef Pipeline<SolidEffect> Pipeline;
+    typedef Pipeline<WaveVertexTextureEffect> Pipeline;
     typedef Pipeline::Vertex Vertex;
 
 public:
-    explicit CubeSolidScene(Graphics& graphics)
-        : itlist(Cube::GetPlainIndependentFaces<Vertex>()), pipeline(graphics),
-          Scene(L"Colored cube vertex gradient scene") {
-        const Color colors[] =
-            {Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta, Colors::Yellow, Colors::Cyan};
-
-        for (int i = 0; i < itlist.vertices.size(); i++) {
-            itlist.vertices[i].color = colors[i / 4];
-        }
+    explicit VertexWaveScene(Graphics& graphics)
+        : itlist(Plane::GetSkinned<Vertex>(20)), pipeline(graphics), Scene(L"Test Plane Rippling VS") {
+        pipeline.effect.ps.BindTexture(L"res\\sauron-bhole-100x100.png");
     }
 
     virtual void Update(Keyboard& kbd, Mouse& mouse, float dt) override {
@@ -56,6 +49,8 @@ public:
         if (kbd.KeyIsPressed('F')) {
             offset_z -= 2.0f * dt;
         }
+
+        time += dt;
     }
 
     virtual void Draw() override {
@@ -70,6 +65,7 @@ public:
         // Set pipeline transform
         pipeline.effect.vs.BindRotation(rot);
         pipeline.effect.vs.BindTranslation(trans);
+        pipeline.effect.vs.SetTime(time);
         // Render triangles
         pipeline.Draw(itlist);
     }
@@ -83,4 +79,5 @@ private:
     float theta_x = 0.0f;
     float theta_y = 0.0f;
     float theta_z = 0.0f;
+    float time = 0.0f;
 };

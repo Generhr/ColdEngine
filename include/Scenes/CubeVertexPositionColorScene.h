@@ -4,24 +4,17 @@
 #include "Primitives/Cube.h"
 #include "LinearAlgebra/Matrix3.h"
 #include "Pipeline.h"
-#include "Effects/SolidEffect.h"
+#include "Effects/VertexPositionColorEffect.h"
 
 
-class CubeSolidScene : public Scene {
+class CubeVertexPositionColorScene : public Scene {
 public:
-    typedef Pipeline<SolidEffect> Pipeline;
+    typedef Pipeline<VertexPositionColorEffect> Pipeline;
     typedef Pipeline::Vertex Vertex;
 
 public:
-    explicit CubeSolidScene(Graphics& graphics)
-        : itlist(Cube::GetPlainIndependentFaces<Vertex>()), pipeline(graphics),
-          Scene(L"Colored cube vertex gradient scene") {
-        const Color colors[] =
-            {Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta, Colors::Yellow, Colors::Cyan};
-
-        for (int i = 0; i < itlist.vertices.size(); i++) {
-            itlist.vertices[i].color = colors[i / 4];
-        }
+    explicit CubeVertexPositionColorScene(Graphics& graphics)
+        : itlist(Cube::GetPlain<Vertex>()), pipeline(graphics), Scene(L"Colored cube vertex gradient scene") {
     }
 
     virtual void Update(Keyboard& kbd, Mouse& mouse, float dt) override {

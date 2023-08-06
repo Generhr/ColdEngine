@@ -1,10 +1,10 @@
 #pragma once
 
 #include "Scene.h"
-#include "Cube.h"
+#include "Primitives/Cube.h"
 #include "LinearAlgebra/Matrix3.h"
 #include "Pipeline.h"
-#include "Effect/SolidEffect.h"
+#include "Effects/SolidEffect.h"
 
 
 class DoubleCubeScene : public Scene {
@@ -67,8 +67,8 @@ public:
             const Mat3 rot = Mat3::CreateXRotationMatrix(-theta_x) * Mat3::CreateYRotationMatrix(-theta_y) *
                              Mat3::CreateZRotationMatrix(-theta_z);
             // Set pipeline transform
-            pipeline.BindRotation(rot);
-            pipeline.BindTranslation({0.0f, 0.0f, 2.0f});
+            pipeline.effect.vs.BindRotation(rot);
+            pipeline.effect.vs.BindTranslation({0.0f, 0.0f, 2.0f});
             // Render triangles
             pipeline.Draw(itlist);
         }
@@ -79,8 +79,8 @@ public:
             const Mat3 rot = Mat3::CreateXRotationMatrix(theta_x) * Mat3::CreateYRotationMatrix(theta_y) *
                              Mat3::CreateZRotationMatrix(theta_z);
             // Set pipeline transform
-            pipeline.BindRotation(rot);
-            pipeline.BindTranslation({0.0f, 0.0f, offset_z});
+            pipeline.effect.vs.BindRotation(rot);
+            pipeline.effect.vs.BindTranslation({0.0f, 0.0f, offset_z});
             // Render triangles
             pipeline.Draw(itlist);
         }

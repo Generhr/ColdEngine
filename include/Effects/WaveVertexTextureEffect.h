@@ -1,13 +1,10 @@
 #pragma once
 
 #include "Pipeline.h"
-#include "LinearAlgebra/Vector2.h"
 
 
-// Basic texture effect
-class TextureEffect {
+class WaveVertexTextureEffect {
 public:
-    // The vertex type that will be input into the pipeline
     class Vertex {
     public:
         Vertex() = default;
@@ -24,6 +21,7 @@ public:
         Vertex& operator+=(const Vertex& rhs) {
             pos += rhs.pos;
             t += rhs.t;
+
             return *this;
         }
 
@@ -34,6 +32,7 @@ public:
         Vertex& operator-=(const Vertex& rhs) {
             pos -= rhs.pos;
             t -= rhs.t;
+
             return *this;
         }
 
@@ -44,6 +43,7 @@ public:
         Vertex& operator*=(float rhs) {
             pos *= rhs;
             t *= rhs;
+
             return *this;
         }
 
@@ -54,6 +54,7 @@ public:
         Vertex& operator/=(float rhs) {
             pos /= rhs;
             t /= rhs;
+
             return *this;
         }
 
@@ -66,11 +67,44 @@ public:
         Vec2 t;
     };
 
-    // Invoked for each pixel of a triangle takes an input of attributes that are the result of interpolating vertex
-    // attributes and outputs a color
+    // Perturbs vertices in y axis in sin wave based on x position and time
+    class VertexShader {
+    public:
+        typedef Vertex Output;
+
+    public:
+        void BindRotation(const Mat3& rotation_in) {
+            rotation = rotation_in;
+        }
+
+        void BindTranslation(const Vec3& translation_in) {
+            translation = translation_in;
+        }
+
+        Output operator()(const Vertex& in) const {
+            Vec3 pos = in.pos * rotation + translation;
+            pos[1] += amplitude * std::sin(time * freqScroll + pos[0] * freqWave);
+
+            return {pos, in.t};
+        }
+
+        void SetTime(float t) {
+            time = t;
+        }
+
+    private:
+        Mat3 rotation;
+        Vec3 translation;
+        float time = 0.0f;
+        float freqWave = 10.0f;
+        float freqScroll = 5.0f;
+        float amplitude = 0.05f;
+    };
+
+    // texture clamped ps
     class PixelShader {
     public:
-        PixelShader() : tex_width(), tex_height(), tex_xclamp(), tex_yclamp() {
+        PixelShader() : pTex(), tex_width(), tex_height(), tex_xclamp(), tex_yclamp() {
         }
 
         template<class Input>
@@ -96,5 +130,6 @@ public:
     };
 
 public:
+    VertexShader vs;
     PixelShader ps;
 };
