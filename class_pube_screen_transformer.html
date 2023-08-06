@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">1.4.1</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -99,10 +99,12 @@ $(document).ready(function(){initNavTree('class_pube_screen_transformer.html',''
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a400846d8e83e99b2c350b5036eb83183"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pube_screen_transformer.html#a400846d8e83e99b2c350b5036eb83183">PubeScreenTransformer</a> ()</td></tr>
 <tr class="separator:a400846d8e83e99b2c350b5036eb83183"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1cdbac114c52bfc52aaec9da0e68b5a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pube_screen_transformer.html#a1cdbac114c52bfc52aaec9da0e68b5a0">Transform</a> (<a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;v) const</td></tr>
-<tr class="separator:a1cdbac114c52bfc52aaec9da0e68b5a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34795531a19098b60a19b4e09e139c7c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_pube_screen_transformer.html#a34795531a19098b60a19b4e09e139c7c">GetTransformed</a> (const <a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;v) const</td></tr>
-<tr class="separator:a34795531a19098b60a19b4e09e139c7c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afdba1b136b3fd35f5dbbc47d38b62d0e"><td class="memTemplParams" colspan="2">template&lt;class Vertex &gt; </td></tr>
+<tr class="memitem:afdba1b136b3fd35f5dbbc47d38b62d0e"><td class="memTemplItemLeft" align="right" valign="top">Vertex &amp;&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_pube_screen_transformer.html#afdba1b136b3fd35f5dbbc47d38b62d0e">Transform</a> (Vertex &amp;v) const</td></tr>
+<tr class="separator:afdba1b136b3fd35f5dbbc47d38b62d0e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b792f2fe97d8860542236ea37eb3d74"><td class="memTemplParams" colspan="2">template&lt;class Vertex &gt; </td></tr>
+<tr class="memitem:a4b792f2fe97d8860542236ea37eb3d74"><td class="memTemplItemLeft" align="right" valign="top">Vertex&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="class_pube_screen_transformer.html#a4b792f2fe97d8860542236ea37eb3d74">GetTransformed</a> (const Vertex &amp;v) const</td></tr>
+<tr class="separator:a4b792f2fe97d8860542236ea37eb3d74"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a id="a400846d8e83e99b2c350b5036eb83183"></a>
@@ -131,19 +133,21 @@ Public Member Functions</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a id="a34795531a19098b60a19b4e09e139c7c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a34795531a19098b60a19b4e09e139c7c">&#9670;&nbsp;</a></span>GetTransformed()</h2>
+<a id="a4b792f2fe97d8860542236ea37eb3d74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b792f2fe97d8860542236ea37eb3d74">&#9670;&nbsp;</a></span>GetTransformed()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Vertex &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> PubeScreenTransformer::GetTransformed </td>
+          <td class="memname">Vertex PubeScreenTransformer::GetTransformed </td>
           <td>(</td>
-          <td class="paramtype">const <a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;&#160;</td>
+          <td class="paramtype">const Vertex &amp;&#160;</td>
           <td class="paramname"><em>v</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -157,25 +161,27 @@ Public Member Functions</h2></td></tr>
 <div class="dynheader">
 Here is the call graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pube_screen_transformer_a34795531a19098b60a19b4e09e139c7c_cgraph.svg" width="380" height="55"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_pube_screen_transformer_a4b792f2fe97d8860542236ea37eb3d74_cgraph.svg" width="380" height="55"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
 </div>
 </div>
-<a id="a1cdbac114c52bfc52aaec9da0e68b5a0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1cdbac114c52bfc52aaec9da0e68b5a0">&#9670;&nbsp;</a></span>Transform()</h2>
+<a id="afdba1b136b3fd35f5dbbc47d38b62d0e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afdba1b136b3fd35f5dbbc47d38b62d0e">&#9670;&nbsp;</a></span>Transform()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<div class="memtemplate">
+template&lt;class Vertex &gt; </div>
 <table class="mlabels">
   <tr>
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a>&amp; PubeScreenTransformer::Transform </td>
+          <td class="memname">Vertex&amp; PubeScreenTransformer::Transform </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="_vector3_8h.html#a221ad8ea4d9be4111628ee1ca22ee3ba">Vec3</a> &amp;&#160;</td>
+          <td class="paramtype">Vertex &amp;&#160;</td>
           <td class="paramname"><em>v</em></td><td>)</td>
           <td> const</td>
         </tr>
@@ -189,7 +195,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_pube_screen_transformer_a1cdbac114c52bfc52aaec9da0e68b5a0_icgraph.svg" width="380" height="55"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_pube_screen_transformer_afdba1b136b3fd35f5dbbc47d38b62d0e_icgraph.svg" width="380" height="55"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 

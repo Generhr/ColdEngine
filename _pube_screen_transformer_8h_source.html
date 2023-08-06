@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.4.0</span>
+   &#160;<span id="projectnumber">1.4.1</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -102,32 +102,39 @@ $(document).ready(function(){initNavTree('_pube_screen_transformer_8h_source.htm
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;          yFactor(static_cast&lt;float&gt;(<a class="code" href="class_graphics.html">Graphics</a>::ScreenHeight) / 2.0f) {</div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;    }</div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="class_pube_screen_transformer.html#a1cdbac114c52bfc52aaec9da0e68b5a0">   14</a></span>&#160;    <a class="code" href="class_vector3.html">Vec3</a>&amp; <a class="code" href="class_pube_screen_transformer.html#a1cdbac114c52bfc52aaec9da0e68b5a0">Transform</a>(<a class="code" href="class_vector3.html">Vec3</a>&amp; v)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> zInv = 1.0f / v[2];</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        v[0] = (v[0] * zInv + 1.0f) * xFactor;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;        v[1] = (-v[1] * zInv + 1.0f) * yFactor;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span> v;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    }</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_pube_screen_transformer.html#a34795531a19098b60a19b4e09e139c7c">   22</a></span>&#160;    <a class="code" href="class_vector3.html">Vec3</a> <a class="code" href="class_pube_screen_transformer.html#a34795531a19098b60a19b4e09e139c7c">GetTransformed</a>(<span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a>&amp; v)<span class="keyword"> const </span>{</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="class_vector3.html">Vec3</a> copy(v);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_pube_screen_transformer.html#a1cdbac114c52bfc52aaec9da0e68b5a0">Transform</a>(copy);</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Vertex&gt;</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="class_pube_screen_transformer.html#afdba1b136b3fd35f5dbbc47d38b62d0e">   15</a></span>&#160;    Vertex&amp; <a class="code" href="class_pube_screen_transformer.html#afdba1b136b3fd35f5dbbc47d38b62d0e">Transform</a>(Vertex&amp; v)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> zInv = 1.0f / v.pos[2];</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;        <span class="comment">// Divide all position components and attributes by `z` (we want to be interpolating our attributes in the same</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="comment">// space where the `x, y` interpolation is taking place to prevent distortion)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        v *= zInv;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <span class="comment">// Adjust position `x, y` from perspective normalized space to screen dimension space after perspective divide</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        v.pos[0] = (v.pos[0] + 1.0f) * xFactor;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        v.pos[1] = (-v.pos[1] + 1.0f) * yFactor;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="comment">// Store `1 / z` in `z` (we will need the interpolated `1 / z` so that we can recover the attributes after</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="comment">// interperlation.)</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        v.pos[2] = zInv;</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordtype">float</span> xFactor;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">float</span> yFactor;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;};</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span> v;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> Vertex&gt;</div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="class_pube_screen_transformer.html#a4b792f2fe97d8860542236ea37eb3d74">   32</a></span>&#160;    Vertex <a class="code" href="class_pube_screen_transformer.html#a4b792f2fe97d8860542236ea37eb3d74">GetTransformed</a>(<span class="keyword">const</span> Vertex&amp; v)<span class="keyword"> const </span>{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> <a class="code" href="class_pube_screen_transformer.html#afdba1b136b3fd35f5dbbc47d38b62d0e">Transform</a>(Vertex(v));</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">float</span> xFactor;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordtype">float</span> yFactor;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;};</div>
 <div class="ttc" id="a_graphics_8h_html"><div class="ttname"><a href="_graphics_8h.html">Graphics.h</a></div></div>
 <div class="ttc" id="a_vector3_8h_html"><div class="ttname"><a href="_vector3_8h.html">Vector3.h</a></div></div>
 <div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:20</div></div>
 <div class="ttc" id="aclass_pube_screen_transformer_html"><div class="ttname"><a href="class_pube_screen_transformer.html">PubeScreenTransformer</a></div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:7</div></div>
-<div class="ttc" id="aclass_pube_screen_transformer_html_a1cdbac114c52bfc52aaec9da0e68b5a0"><div class="ttname"><a href="class_pube_screen_transformer.html#a1cdbac114c52bfc52aaec9da0e68b5a0">PubeScreenTransformer::Transform</a></div><div class="ttdeci">Vec3 &amp; Transform(Vec3 &amp;v) const</div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:14</div></div>
-<div class="ttc" id="aclass_pube_screen_transformer_html_a34795531a19098b60a19b4e09e139c7c"><div class="ttname"><a href="class_pube_screen_transformer.html#a34795531a19098b60a19b4e09e139c7c">PubeScreenTransformer::GetTransformed</a></div><div class="ttdeci">Vec3 GetTransformed(const Vec3 &amp;v) const</div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:22</div></div>
 <div class="ttc" id="aclass_pube_screen_transformer_html_a400846d8e83e99b2c350b5036eb83183"><div class="ttname"><a href="class_pube_screen_transformer.html#a400846d8e83e99b2c350b5036eb83183">PubeScreenTransformer::PubeScreenTransformer</a></div><div class="ttdeci">PubeScreenTransformer()</div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:9</div></div>
-<div class="ttc" id="aclass_vector3_html"><div class="ttname"><a href="class_vector3.html">Vector3&lt; float &gt;</a></div></div>
+<div class="ttc" id="aclass_pube_screen_transformer_html_a4b792f2fe97d8860542236ea37eb3d74"><div class="ttname"><a href="class_pube_screen_transformer.html#a4b792f2fe97d8860542236ea37eb3d74">PubeScreenTransformer::GetTransformed</a></div><div class="ttdeci">Vertex GetTransformed(const Vertex &amp;v) const</div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:32</div></div>
+<div class="ttc" id="aclass_pube_screen_transformer_html_afdba1b136b3fd35f5dbbc47d38b62d0e"><div class="ttname"><a href="class_pube_screen_transformer.html#afdba1b136b3fd35f5dbbc47d38b62d0e">PubeScreenTransformer::Transform</a></div><div class="ttdeci">Vertex &amp; Transform(Vertex &amp;v) const</div><div class="ttdef"><b>Definition:</b> PubeScreenTransformer.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -33,7 +33,7 @@ var searchData=
   ['getposy_534',['GetPosY',['../class_mouse_1_1_event.html#a85460659bdc08b0e1fe9bcd6d4c7d0a3',1,'Mouse::Event::GetPosY()'],['../class_mouse.html#ada9ba37672842e0968252ae9dd737891',1,'Mouse::GetPosY()']]],
   ['getr_535',['GetR',['../class_color.html#a481e58f883a627ddfa9c8cdeb295891e',1,'Color']]],
   ['getskinned_536',['GetSkinned',['../class_cube.html#a8e5f82dc650c7359a92d9af02f500c75',1,'Cube']]],
-  ['gettransformed_537',['GetTransformed',['../class_pube_screen_transformer.html#a34795531a19098b60a19b4e09e139c7c',1,'PubeScreenTransformer']]],
+  ['gettransformed_537',['GetTransformed',['../class_pube_screen_transformer.html#a4b792f2fe97d8860542236ea37eb3d74',1,'PubeScreenTransformer']]],
   ['gettranspose_538',['GetTranspose',['../class_matrix3.html#ae8443d8d4140db953228bd393305001b',1,'Matrix3']]],
   ['gettype_539',['GetType',['../class_mouse_1_1_event.html#a3f75592ce8c5bf94d5404f17df3784f8',1,'Mouse::Event']]],
   ['getwidth_540',['GetWidth',['../class_surface.html#a5cb02e782d0ba6bac4ae0a48d04ed15b',1,'Surface']]],
