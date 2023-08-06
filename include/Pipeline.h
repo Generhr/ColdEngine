@@ -84,9 +84,9 @@ private:
     // Perform perspective and viewport transformations
     void PostProcessTriangleVertices(Triangle<Vertex>& triangle) {
         // Perspective divide and screen transform for all 3 vertices
-        pst.Transform(triangle.v0.pos);
-        pst.Transform(triangle.v1.pos);
-        pst.Transform(triangle.v2.pos);
+        pst.Transform(triangle.v0);
+        pst.Transform(triangle.v1);
+        pst.Transform(triangle.v2);
 
         // Draw the triangle
         DrawTriangle(triangle);
@@ -212,9 +212,18 @@ private:
             // Prestep scanline interpolant
             iLine += diLine * (static_cast<float>(xStart) + 0.5f - itEdge0.pos[0]);
 
-            for (int x = xStart; x < xEnd; x++, iLine += diLine) {
-                // Invoke pixel shader and write resulting color value
-                graphics.PutPixel(x, y, effect.ps(iLine));
+            for (int x = xStart; x < xEnd;
+                 x++, iLine += diLine) {  //~ Rasterization: a Practical Implementation: https://tinyurl.com/7m9ssz7f
+                                          //~ Perspective-Correct Interpolation: https://tinyurl.com/mrrzxc7c
+                // Recover interpolated `z` from interpolated `1 / z`
+                const float z = 1.0f / iLine.pos[2];
+                // Recover interpolated attributes (wasted effort in multiplying `pos` (x, y, z) here, but not a huge
+                // deal, not worth the code complication to fix)
+                const auto attr = iLine * z;
+
+                // Invoke pixel shader with interpolated vertex attributes and use the result to set the pixel color on
+                // the screen
+                graphics.PutPixel(x, y, effect.ps(attr));
             }
         }
     }

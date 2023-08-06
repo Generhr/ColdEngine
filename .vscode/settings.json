@@ -128,6 +128,7 @@
         "*.md": "vscode.markdown.preview.editor",
         "*.svg": "svgPreviewer.customEditor"
     },
+    "workbench.editor.tabSizing": "fit",
     "[cmake]": {
         "editor.defaultFormatter": "cheshirekow.cmake-format",
         "editor.quickSuggestions": {
