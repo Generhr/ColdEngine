@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['screenheight_720',['ScreenHeight',['../class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c',1,'Graphics']]],
-  ['screenwidth_721',['ScreenWidth',['../class_graphics.html#a299cde483dbb4244cdfe332d0693c088',1,'Graphics']]]
+  ['rightispressed_743',['rightIsPressed',['../class_mouse.html#a77c7f70c2084ae501282fd6c3a7a4ad1',1,'Mouse']]]
 ];

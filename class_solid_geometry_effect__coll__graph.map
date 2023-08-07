@@ -1,0 +1,5 @@
+<map id="SolidGeometryEffect" name="SolidGeometryEffect">
+<area shape="rect" id="node1" title=" " alt="" coords="87,113,227,141"/>
+<area shape="rect" id="node2" href="$class_solid_geometry_effect_1_1_pixel_shader.html" title=" " alt="" coords="5,5,146,49"/>
+<area shape="rect" id="node3" href="$class_solid_geometry_effect_1_1_geometry_shader.html" title=" " alt="" coords="169,5,310,49"/>
+</map>

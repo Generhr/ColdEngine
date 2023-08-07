@@ -1,4 +1,5 @@
 <map id="VertexColorEffect" name="VertexColorEffect">
-<area shape="rect" id="node1" title=" " alt="" coords="9,113,132,141"/>
+<area shape="rect" id="node1" title=" " alt="" coords="96,113,218,141"/>
 <area shape="rect" id="node2" href="$class_vertex_color_effect_1_1_pixel_shader.html" title=" " alt="" coords="5,5,136,49"/>
+<area shape="rect" id="node3" href="$class_default_geometry_shader.html" title=" " alt="" coords="160,5,331,49"/>
 </map>

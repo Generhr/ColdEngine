@@ -3,6 +3,9 @@ var dir_35b974b1bbf44ef7d950ecbcbdecc407 =
     [ "CubeSkinScene.h", "_cube_skin_scene_8h.html", [
       [ "CubeSkinScene", "class_cube_skin_scene.html", "class_cube_skin_scene" ]
     ] ],
+    [ "CubeSolidGeometryScene.h", "_cube_solid_geometry_scene_8h.html", [
+      [ "CubeSolidGeometryScene", "class_cube_solid_geometry_scene.html", "class_cube_solid_geometry_scene" ]
+    ] ],
     [ "CubeSolidScene.h", "_cube_solid_scene_8h.html", [
       [ "CubeSolidScene", "class_cube_solid_scene.html", "class_cube_solid_scene" ]
     ] ],

@@ -1,11 +1,12 @@
 <map id="Keyboard::KeyIsPressed" name="Keyboard::KeyIsPressed">
-<area shape="rect" id="node1" title=" " alt="" coords="354,185,519,213"/>
+<area shape="rect" id="node1" title=" " alt="" coords="354,220,519,248"/>
 <area shape="rect" id="node2" href="$class_cube_skin_scene.html#a291519be4aae4268c5b6cdb4b9fc864a" title=" " alt="" coords="123,5,286,33"/>
-<area shape="rect" id="node3" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="121,57,288,85"/>
-<area shape="rect" id="node4" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="126,109,283,153"/>
-<area shape="rect" id="node5" href="$class_cube_vertex_position_color_scene.html#a72ce3d23605de3262f97e8e935bd08e0" title=" " alt="" coords="103,177,306,221"/>
-<area shape="rect" id="node6" href="$class_double_cube_scene.html#aa0b545717ab49ff4b4726d15bb8917bb" title=" " alt="" coords="116,245,293,273"/>
-<area shape="rect" id="node7" href="$class_vertex_wave_scene.html#af914c4150ebb8c531dd5f14c62854e7e" title=" " alt="" coords="116,297,293,325"/>
-<area shape="rect" id="node8" href="$class_engine.html#a56cc30926ee112fbf83bfa4083d3af79" title=" " alt="" coords="132,349,277,377"/>
-<area shape="rect" id="node9" href="$_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,349,55,377"/>
+<area shape="rect" id="node3" href="$class_cube_solid_geometry_scene.html#a4501743d912f6818f264525e806f4f8b" title=" " alt="" coords="117,57,292,101"/>
+<area shape="rect" id="node4" href="$class_cube_solid_scene.html#a2c58f00b9630b056326c6d753e535fdf" title=" " alt="" coords="121,125,288,153"/>
+<area shape="rect" id="node5" href="$class_cube_vertex_color_scene.html#aa27efa84023993c57c5b32497dc6aca3" title=" " alt="" coords="126,177,283,221"/>
+<area shape="rect" id="node6" href="$class_cube_vertex_position_color_scene.html#a72ce3d23605de3262f97e8e935bd08e0" title=" " alt="" coords="103,245,306,289"/>
+<area shape="rect" id="node7" href="$class_double_cube_scene.html#aa0b545717ab49ff4b4726d15bb8917bb" title=" " alt="" coords="116,313,293,341"/>
+<area shape="rect" id="node8" href="$class_vertex_wave_scene.html#af914c4150ebb8c531dd5f14c62854e7e" title=" " alt="" coords="116,365,293,393"/>
+<area shape="rect" id="node9" href="$class_engine.html#a56cc30926ee112fbf83bfa4083d3af79" title=" " alt="" coords="132,417,277,445"/>
+<area shape="rect" id="node10" href="$_main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97" title=" " alt="" coords="5,417,55,445"/>
 </map>

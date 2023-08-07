@@ -65,9 +65,10 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "_colors_8h.html",
-"_vertex_wave_scene_8h_source.html",
-"class_matrix3.html#ae8ee5776ec530aca76eef58d3344df73",
-"class_vertex_color_effect_1_1_vertex.html"
+"_vector4_8h_source.html",
+"class_matrix3.html#a2aff28294a7d669246f40e352ef3c1b1",
+"class_vector3.html#a30de6b5b08d7a0859b86b4705ca20e3d",
+"namespace_math.html#a8cfad34615c1a63f778f57cc1cda7f52"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

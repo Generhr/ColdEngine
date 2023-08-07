@@ -7,7 +7,7 @@ var class_engine_exception =
     [ "GetExceptionType", "class_engine_exception.html#aaf0093daa4c1892417f1bf7ceeb4d2d1", null ],
     [ "GetFile", "class_engine_exception.html#abf7227ac5d810c93b624e30c9582d80d", null ],
     [ "GetFullMessage", "class_engine_exception.html#a7b236857d511dc746e080c302a83409e", null ],
-    [ "GetLine", "class_engine_exception.html#a5174c091547aa949e3336dfc187576d1", null ],
+    [ "GetLine", "class_engine_exception.html#a1c34163797c05055e8ff65b93887977c", null ],
     [ "GetLocation", "class_engine_exception.html#a2e37e0524aba986548968397d0742d06", null ],
     [ "GetNote", "class_engine_exception.html#a15642b205ddcb90fa3f6f4618fd4a895", null ],
     [ "operator=", "class_engine_exception.html#ac50fc758069f91b7cdf4a3e7a64eea27", null ],

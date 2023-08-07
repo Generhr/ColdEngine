@@ -2,6 +2,8 @@ var hierarchy =
 [
     [ "Color", "class_color.html", null ],
     [ "Cube", "class_cube.html", null ],
+    [ "DefaultGeometryShader< Vertex >", "class_default_geometry_shader.html", null ],
+    [ "DefaultGeometryShader< VertexShader::Output >", "class_default_geometry_shader.html", null ],
     [ "DefaultVertexShader< Vertex >", "class_default_vertex_shader.html", null ],
     [ "Engine", "class_engine.html", null ],
     [ "EngineException", "class_engine_exception.html", [
@@ -14,6 +16,7 @@ var hierarchy =
     [ "FrameTimer", "class_frame_timer.html", null ],
     [ "game_state", "structgame__state.html", null ],
     [ "GDIPlusManager", "class_g_d_i_plus_manager.html", null ],
+    [ "SolidGeometryEffect::GeometryShader", "class_solid_geometry_effect_1_1_geometry_shader.html", null ],
     [ "Graphics", "class_graphics.html", null ],
     [ "HWNDKey", "class_h_w_n_d_key.html", [
       [ "MainWindow", "class_main_window.html", null ]
@@ -25,9 +28,11 @@ var hierarchy =
     [ "Matrix3< T >", "class_matrix3.html", null ],
     [ "Matrix3< float >", "class_matrix3.html", null ],
     [ "Mouse", "class_mouse.html", null ],
+    [ "SolidGeometryEffect::GeometryShader::Output", "class_solid_geometry_effect_1_1_geometry_shader_1_1_output.html", null ],
     [ "VertexPositionColorEffect::VertexShader::Output", "class_vertex_position_color_effect_1_1_vertex_shader_1_1_output.html", null ],
     [ "Pipeline< Effect >", "class_pipeline.html", null ],
     [ "SolidEffect::PixelShader", "class_solid_effect_1_1_pixel_shader.html", null ],
+    [ "SolidGeometryEffect::PixelShader", "class_solid_geometry_effect_1_1_pixel_shader.html", null ],
     [ "TextureEffect::PixelShader", "class_texture_effect_1_1_pixel_shader.html", null ],
     [ "VertexColorEffect::PixelShader", "class_vertex_color_effect_1_1_pixel_shader.html", null ],
     [ "VertexPositionColorEffect::PixelShader", "class_vertex_position_color_effect_1_1_pixel_shader.html", null ],
@@ -36,6 +41,7 @@ var hierarchy =
     [ "PubeScreenTransformer", "class_pube_screen_transformer.html", null ],
     [ "Scene", "class_scene.html", [
       [ "CubeSkinScene", "class_cube_skin_scene.html", null ],
+      [ "CubeSolidGeometryScene", "class_cube_solid_geometry_scene.html", null ],
       [ "CubeSolidScene", "class_cube_solid_scene.html", null ],
       [ "CubeVertexColorScene", "class_cube_vertex_color_scene.html", null ],
       [ "CubeVertexPositionColorScene", "class_cube_vertex_position_color_scene.html", null ],
@@ -43,6 +49,7 @@ var hierarchy =
       [ "VertexWaveScene", "class_vertex_wave_scene.html", null ]
     ] ],
     [ "SolidEffect", "class_solid_effect.html", null ],
+    [ "SolidGeometryEffect", "class_solid_geometry_effect.html", null ],
     [ "Surface", "class_surface.html", null ],
     [ "TextureEffect", "class_texture_effect.html", null ],
     [ "TexVertex", "class_tex_vertex.html", null ],
@@ -53,6 +60,7 @@ var hierarchy =
     [ "Vector3< float >", "class_vector3.html", null ],
     [ "Vector4< T >", "class_vector4.html", null ],
     [ "SolidEffect::Vertex", "class_solid_effect_1_1_vertex.html", null ],
+    [ "SolidGeometryEffect::Vertex", "class_solid_geometry_effect_1_1_vertex.html", null ],
     [ "TextureEffect::Vertex", "class_texture_effect_1_1_vertex.html", null ],
     [ "VertexColorEffect::Vertex", "class_vertex_color_effect_1_1_vertex.html", null ],
     [ "VertexPositionColorEffect::Vertex", "class_vertex_position_color_effect_1_1_vertex.html", null ],
