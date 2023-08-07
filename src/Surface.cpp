@@ -36,10 +36,7 @@ Surface Surface::FromFile(const std::wstring& name) {
         Gdiplus::Bitmap bitmap(name.c_str());
 
         if (bitmap.GetLastStatus() != Gdiplus::Status::Ok) {
-            std::wstringstream ss;
-            ss << L"Loading image [" << name << L"]: failed to load.";
-
-            throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
+            throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to load [" + name + L"].");
         }
 
         pitch = width = bitmap.GetWidth();
@@ -66,17 +63,18 @@ void Surface::Save(const std::wstring& filename) const {
         Gdiplus::ImageCodecInfo* pImageCodecInfo = nullptr;
 
         Gdiplus::GetImageEncodersSize(&num, &size);
+
         if (size == 0) {
-            std::wstringstream ss;
-            ss << L"Saving surface to [" << filename << L"]: failed to get encoder; size == 0.";
-            throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
+            throw Exception(_CRT_WIDE(__FILE__),
+                __LINE__,
+                L"Failed to get encoder for [" + filename + L"] (size == 0).");
         }
 
         pImageCodecInfo = static_cast<Gdiplus::ImageCodecInfo*>(malloc(size));
         if (pImageCodecInfo == nullptr) {
-            std::wstringstream ss;
-            ss << L"Saving surface to [" << filename << L"]: failed to get encoder; failed to allocate memory.";
-            throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
+            throw Exception(_CRT_WIDE(__FILE__),
+                __LINE__,
+                L"Failed to get encoder for [" + filename + L"] (failed to allocate memory).");
         }
 
         GetImageEncoders(num, size, pImageCodecInfo);
@@ -90,9 +88,10 @@ void Surface::Save(const std::wstring& filename) const {
         }
 
         free(pImageCodecInfo);
-        std::wstringstream ss;
-        ss << L"Saving surface to [" << filename << L"]: failed to get encoder; failed to find matching encoder.";
-        throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
+
+        throw Exception(_CRT_WIDE(__FILE__),
+            __LINE__,
+            L"Failed to get encoder for [" + filename + L"] (failed to find matching encoder).");
     };
 
     CLSID bmpID;
@@ -103,9 +102,7 @@ void Surface::Save(const std::wstring& filename) const {
         PixelFormat32bppARGB,
         reinterpret_cast<BYTE*>(pBuffer.get()));
     if (bitmap.Save(filename.c_str(), &bmpID, nullptr) != Gdiplus::Status::Ok) {
-        std::wstringstream ss;
-        ss << L"Saving surface to [" << filename << L"]: failed to save.";
-        throw Exception(_CRT_WIDE(__FILE__), __LINE__, ss.str());
+        throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to save bitmap to [" + filename + L"].");
     }
 }
 

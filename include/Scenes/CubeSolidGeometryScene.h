@@ -4,17 +4,19 @@
 #include "Primitives/Cube.h"
 #include "LinearAlgebra/Matrix3.h"
 #include "Pipeline.h"
-#include "Effects/VertexPositionColorEffect.h"
+#include "Effects/SolidGeometryEffect.h"
 
 
-class CubeVertexPositionColorScene : public Scene {
+class CubeSolidGeometryScene : public Scene {
 public:
-    typedef Pipeline<VertexPositionColorEffect> Pipeline;
+    typedef Pipeline<SolidGeometryEffect> Pipeline;
     typedef Pipeline::Vertex Vertex;
 
 public:
-    explicit CubeVertexPositionColorScene(Graphics& graphics)
-        : itlist(Cube::GetPlain<Vertex>()), pipeline(graphics), Scene(L"Cube vertex position color scene") {
+    explicit CubeSolidGeometryScene(Graphics& graphics)
+        : itlist(Cube::GetPlain<Vertex>()), pipeline(graphics), Scene(L"Colored cube geometry solid face scene") {
+        pipeline.effect.gs.BindColors(
+            {Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta, Colors::Yellow, Colors::Cyan});
     }
 
     virtual void Update(Keyboard& kbd, Mouse& mouse, float dt) override {
@@ -60,10 +62,10 @@ public:
         // Translation from offset
         const Vec3 trans = {0.0f, 0.0f, offset_z};
 
-        // Set pipeline transform
+        // set pipeline transform
         pipeline.effect.vs.BindRotation(rot);
         pipeline.effect.vs.BindTranslation(trans);
-        // Render triangles
+        // render triangles
         pipeline.Draw(itlist);
     }
 

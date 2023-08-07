@@ -6,7 +6,7 @@
 class EngineException {
 public:
     EngineException(std::wstring file, unsigned int line, std::wstring note = L"")
-        : file(std::move(file)), line(line), note(std::move(note)) {
+        : file(std::move(file)), line(std::to_wstring(line)), note(std::move(note)) {
     }
 
     virtual ~EngineException() = default;
@@ -20,7 +20,7 @@ public:
         return file;
     }
 
-    unsigned int GetLine() const {
+    const std::wstring& GetLine() const {
         return line;
     }
 
@@ -29,7 +29,7 @@ public:
     }
 
     std::wstring GetLocation() const {
-        return std::wstring(L"Line [") + std::to_wstring(line) + L"] in " + file;
+        return std::wstring(L"Line [") + line + L"] in " + file;
     }
 
     virtual std::wstring GetFullMessage() const = 0;
@@ -37,6 +37,6 @@ public:
 
 private:
     std::wstring file;
-    unsigned int line;
+    std::wstring line;
     std::wstring note;
 };

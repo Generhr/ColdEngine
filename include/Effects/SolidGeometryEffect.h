@@ -1,13 +1,13 @@
 #pragma once
 
 #include "Pipeline.h"
-#include "Shaders/DefaultGeometryShader.h"
+#include "Shaders/DefaultVertexShader.h"
 
 
-// Color gradient effect between vertices determined by vertex position
-class VertexPositionColorEffect {
+// solid color attribute taken from table in gs and not interpolated
+class SolidGeometryEffect {
 public:
-    // The vertex type that will be input into the pipeline
+    // the vertex type that will be input into the pipeline
     class Vertex {
     public:
         Vertex() = default;
@@ -62,8 +62,11 @@ public:
         Vec3 pos;
     };
 
-    // Uses `x, y, z` position components to determine color
-    class VertexShader {
+    // Default vs rotates and translates vertices, does not touch attributes
+    typedef DefaultVertexShader<Vertex> VertexShader;
+    // GeometryShader colors vertices using their index from a table, every two triangles are colored from the same
+    // entry
+    class GeometryShader {
     public:
         class Output {
         public:
@@ -75,12 +78,11 @@ public:
             Output(const Vec3& pos, const Output& src) : pos(pos), color(src.color) {
             }
 
-            Output(const Vec3& pos, const Vec3& color) : pos(pos), color(color) {
+            Output(const Vec3& pos, const Color& color) : pos(pos), color(color) {
             }
 
             Output& operator+=(const Output& rhs) {
                 pos += rhs.pos;
-                color += rhs.color;
 
                 return *this;
             }
@@ -91,7 +93,6 @@ public:
 
             Output& operator-=(const Output& rhs) {
                 pos -= rhs.pos;
-                color -= rhs.color;
 
                 return *this;
             }
@@ -102,7 +103,6 @@ public:
 
             Output& operator*=(float rhs) {
                 pos *= rhs;
-                color *= rhs;
 
                 return *this;
             }
@@ -113,7 +113,6 @@ public:
 
             Output& operator/=(float rhs) {
                 pos /= rhs;
-                color /= rhs;
 
                 return *this;
             }
@@ -124,37 +123,34 @@ public:
 
         public:
             Vec3 pos;
-            Vec3 color;
+            Color color;
         };
 
     public:
-        void BindRotation(const Mat3& rotation_in) {
-            rotation = rotation_in;
-        }
+        Triangle<Output> operator()(const VertexShader::Output& in0,
+            const VertexShader::Output& in1,
+            const VertexShader::Output& in2,
+            size_t triangle_index) const {
+            return {{in0.pos, triangle_colors[triangle_index / 2]},
+                {in1.pos, triangle_colors[triangle_index / 2]},
+                {in2.pos, triangle_colors[triangle_index / 2]}};
+        };
 
-        void BindTranslation(const Vec3& translation_in) {
-            translation = translation_in;
-        }
-
-        Output operator()(const Vertex& in) const {
-            const auto pos = in.pos * rotation + translation;
-            return {pos, Vec3 {std::abs(pos[0]), std::abs(pos[1]), std::abs(pos[2])} * 255.0f};
+        void BindColors(std::vector<Color> colors) {
+            triangle_colors = std::move(colors);
         }
 
     private:
-        Mat3 rotation;
-        Vec3 translation;
+        std::vector<Color> triangle_colors;
     };
 
-    // Default gs passes vertices through and outputs triangle
-    typedef DefaultGeometryShader<VertexShader::Output> GeometryShader;
-
-    // Converts float color into packed byte color
+    // Invoked for each pixel of a triangle takes an input of attributes that are the result of interpolating vertex
+    // attributes and outputs a color
     class PixelShader {
     public:
         template<class Input>
         Color operator()(const Input& in) const {
-            return Color(in.color);
+            return in.color;
         }
     };
 

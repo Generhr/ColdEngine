@@ -35,8 +35,6 @@ int main(int argc, char* argv[]) {
     try {
         MainWindow wnd(hInst, pArgs);
 
-        wnd.ShowMessageBox(L"Beep boop", L"Thumbs up!");
-
         try {
             using clock = std::chrono::high_resolution_clock;
 
@@ -123,10 +121,15 @@ int main(int argc, char* argv[]) {
                 }
             }
         }
-        catch (const EngineException& e) {
-            const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at Windows message loop.";
+        catch (const EngineException& error) {
+            const std::wstringstream ss(  //~ `file:line` is supported by VSCode intellisense so you can alt + click
+                                          //~ to go to the location of the error
+                L"\n(\x1b[36m" + error.GetFile() + L":" + error.GetLine() + L"\x1b[0m) \x1b[31mERROR\x1b[0m: " +
+                error.GetNote());
+            const std::wstring eMsg = error.GetFullMessage() + L"\n\nException caught at Windows message loop.";
 
-            wnd.ShowMessageBox(e.GetExceptionType(), eMsg);
+            std::wcerr << ss.str() << std::endl;
+            wnd.ShowMessageBox(error.GetExceptionType(), eMsg);
         }
         catch (const std::exception& e) {
             // Need to convert std::exception what() string from narrow to wide string
@@ -143,7 +146,7 @@ int main(int argc, char* argv[]) {
     catch (const EngineException& e) {
         const std::wstring eMsg = e.GetFullMessage() + L"\n\nException caught at main window creation.";
 
-        // MessageBox(nullptr, eMsg.c_str(), e.GetExceptionType().c_str(), MB_OK);
+        MessageBoxW(nullptr, eMsg.c_str(), e.GetExceptionType().c_str(), MB_OK);
     }
     catch (const std::exception& e) {
         // Need to convert std::exception what() string from narrow to wide string
@@ -151,10 +154,10 @@ int main(int argc, char* argv[]) {
         const std::wstring eMsg =
             std::wstring(whatStr.begin(), whatStr.end()) + L"\n\nException caught at main window creation.";
 
-        // MessageBox(nullptr, eMsg.c_str(), L"Unhandled STL Exception", MB_OK);
+        MessageBoxW(nullptr, eMsg.c_str(), L"Unhandled STL Exception", MB_OK);
     }
     catch (...) {
-        // MessageBox(nullptr, L"\n\nException caught at main window creation.", L"Unhandled Non-STL Exception", MB_OK);
+        MessageBoxW(nullptr, L"\n\nException caught at main window creation.", L"Unhandled Non-STL Exception", MB_OK);
     }
 
     return 0;

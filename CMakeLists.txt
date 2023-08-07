@@ -7,7 +7,7 @@ include(cmake/SafeGuards.cmake)
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.5.0"
+        VERSION "1.5.3"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C
@@ -139,7 +139,7 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferPS.cso" OR NOT EX
     endforeach()
 endif()
 
-# Move textures into place
+# Move textures into place so that they are relative to the executable
 file(GLOB_RECURSE COPY_FILES "res/*")
 file(COPY ${COPY_FILES} DESTINATION "${CMAKE_BINARY_DIR}/bin/res")
 
@@ -175,6 +175,10 @@ endforeach()
 
 #===========  Create Target  ===================================================#
 
+# Delete all cmake files from previous builds
+add_custom_target(clean-cmake-files COMMAND git clean -d -f -x)
+
+# Main executable
 if(ENABLE_CLANG_TIDY AND NO_STATIC_CODE_ANALYSIS_LIST)
     add_library(NO_STATIC_CODE_ANALYSIS OBJECT "${NO_STATIC_CODE_ANALYSIS_LIST}")
     set_target_properties(NO_STATIC_CODE_ANALYSIS PROPERTIES CXX_CLANG_TIDY "")

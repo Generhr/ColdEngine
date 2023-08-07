@@ -15,7 +15,7 @@ public:
 public:
     explicit CubeSolidScene(Graphics& graphics)
         : itlist(Cube::GetPlainIndependentFaces<Vertex>()), pipeline(graphics),
-          Scene(L"Colored cube vertex gradient scene") {
+          Scene(L"Colored cube solid independent faces scene") {
         const Color colors[] =
             {Colors::Red, Colors::Green, Colors::Blue, Colors::Magenta, Colors::Yellow, Colors::Cyan};
 

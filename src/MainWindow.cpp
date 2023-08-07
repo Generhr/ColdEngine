@@ -52,6 +52,11 @@ MainWindow::MainWindow(HINSTANCE hInst, wchar_t* pArgs) : hInst(hInst), args(pAr
 
     // Throw an exception if something went terribly wrong
     if (hWnd == nullptr) {
+        std::wstringstream ss;
+        ss << "(\x1b[36m" << __FILE__ << ":" << __LINE__
+           << "\x1b[0m) \x1b[31mERROR\x1b[0m: Failed to get valid window handle.";
+
+        std::wcerr << ss.str() << std::endl;
         throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to get valid window handle.");
     }
 
@@ -74,7 +79,7 @@ bool MainWindow::IsMinimized() const {
 }
 
 void MainWindow::ShowMessageBox(const std::wstring& title, const std::wstring& message) const {
-    // MessageBox(hWnd, message.c_str(), title.c_str(), MB_OK);
+    MessageBoxW(hWnd, message.c_str(), title.c_str(), MB_OK);
 }
 
 bool MainWindow::ProcessMessage() {
@@ -82,10 +87,12 @@ bool MainWindow::ProcessMessage() {
     while (PeekMessage(&msg, nullptr, 0, 0, PM_REMOVE)) {
         TranslateMessage(&msg);
         DispatchMessage(&msg);
+
         if (msg.message == WM_QUIT) {
             return false;
         }
     }
+
     return true;
 }
 
@@ -124,6 +131,7 @@ LRESULT MainWindow::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
     switch (msg) {
         case WM_DESTROY:
             PostQuitMessage(0);
+
             break;
 
         // ************ KEYBOARD MESSAGES ************ //
@@ -135,9 +143,11 @@ LRESULT MainWindow::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
             break;
         case WM_KEYUP:
             kbd.OnKeyReleased(static_cast<unsigned char>(wParam));
+
             break;
         case WM_CHAR:
             kbd.OnChar(static_cast<unsigned char>(wParam));
+
             break;
 
         // ************ MOUSE MESSAGES ************ //
@@ -196,6 +206,7 @@ LRESULT MainWindow::HandleMsg(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
         }
         case WM_MOUSEWHEEL: {
             const POINTS pt = MAKEPOINTS(lParam);
+
             if (GET_WHEEL_DELTA_WPARAM(wParam) > 0) {
                 mouse.OnWheelUp(pt.x, pt.y);
             }

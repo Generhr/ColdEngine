@@ -68,6 +68,7 @@ public:
     void PutPixel(unsigned int x, unsigned int y, Color c) {
         assert(x < width);
         assert(y < height);
+
         pBuffer[y * pitch + x] = c;
     }
 
@@ -102,6 +103,7 @@ public:
 
     static Surface FromFile(const std::wstring& name);
     static Surface FromMemory(const unsigned char* imageData, unsigned int width, unsigned int height);
+
     void Save(const std::wstring& filename) const;
     void Copy(const Surface& src);
 

@@ -2,6 +2,7 @@
 
 #include "Pipeline.h"
 #include "Shaders/DefaultVertexShader.h"
+#include "Shaders/DefaultGeometryShader.h"
 
 
 // Color gradient effect between vertices
@@ -68,6 +69,8 @@ public:
 
     // Default vs rotates and translates vertices, does not touch attributes
     typedef DefaultVertexShader<Vertex> VertexShader;
+    // Default gs passes vertices through and outputs triangle
+    typedef DefaultGeometryShader<VertexShader::Output> GeometryShader;
 
     // Invoked for each pixel of a triangle takes an input of attributes that are the result of interpolating vertex
     // attributes and outputs a color
@@ -81,5 +84,6 @@ public:
 
 public:
     VertexShader vs;
+    GeometryShader gs;
     PixelShader ps;
 };
