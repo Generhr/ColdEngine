@@ -92,12 +92,10 @@ private:
     }
 
     // Triangle Rasterization Functions
-
     //    it0, it1, etc. stand for interpolants
     //    (values which are interpolated across a triangle in screen space)
-    //
+
     // Entry point for triangle rasterization, sorts vertices, determines case, splits to flat triangles, dispatches to
-    // flat triangle functions
     void DrawTriangle(const Triangle<GSOut>& triangle) {
         // Using pointers so we can swap (for sorting purposes)
         const GSOut* pv0 = &triangle.v0;

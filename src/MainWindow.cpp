@@ -52,12 +52,10 @@ MainWindow::MainWindow(HINSTANCE hInst, wchar_t* pArgs) : hInst(hInst), args(pAr
 
     // Throw an exception if something went terribly wrong
     if (hWnd == nullptr) {
-        std::wstringstream ss;
-        ss << "(\x1b[36m" << __FILE__ << ":" << __LINE__
-           << "\x1b[0m) \x1b[31mERROR\x1b[0m: Failed to get valid window handle.";
-
-        std::wcerr << ss.str() << std::endl;
-        throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to get valid window handle.");
+        throw Exception(ENGINE_EXCEPTION_FILE,
+            ENGINE_EXCEPTION_LINE,
+            ENGINE_EXCEPTION_COLUMN,
+            L"Failed to get valid window handle.");
     }
 
     // Show and update

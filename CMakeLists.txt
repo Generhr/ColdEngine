@@ -7,7 +7,7 @@ include(cmake/SafeGuards.cmake)
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.5.3"
+        VERSION "1.6.0"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C

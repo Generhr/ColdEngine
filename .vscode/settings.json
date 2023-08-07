@@ -114,7 +114,8 @@
         "xtr1common": "cpp",
         "xtree": "cpp",
         "xutility": "cpp",
-        "*.shh": "cpp"
+        "*.shh": "cpp",
+        "source_location": "cpp"
     },
     "files.autoSave": "off", // This will build the project when you switch to another window (annoying).
     "files.exclude": {

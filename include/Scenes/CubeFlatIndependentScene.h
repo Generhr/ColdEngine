@@ -1,19 +1,20 @@
 #pragma once
 
 #include "Scene.h"
-#include "Primitives/Plane.h"
+#include "Primitives/Cube.h"
 #include "LinearAlgebra/Matrix3.h"
-#include "Effects/WaveVertexTextureEffect.h"
+#include "Pipeline.h"
+#include "Effects/VertexFlatEffect.h"
 
-class VertexWaveScene : public Scene {
+
+class CubeFlatIndependentScene : public Scene {
 public:
-    typedef Pipeline<WaveVertexTextureEffect> Pipeline;
+    typedef Pipeline<VertexFlatEffect> Pipeline;
     typedef Pipeline::Vertex Vertex;
 
 public:
-    explicit VertexWaveScene(Graphics& gfx)
-        : itlist(Plane::GetSkinned<Vertex>(20)), pipeline(gfx), Scene(L"Test Plane Rippling VS") {
-        pipeline.effect.ps.BindTexture(L"res\\sauron-bhole-100x100.png");
+    explicit CubeFlatIndependentScene(Graphics& graphics)
+        : itlist(Cube::GetIndependentFacesNormals<Vertex>()), pipeline(graphics), Scene(L"Cube flat vertex scene") {
     }
 
     virtual void Update(Keyboard& kbd, Mouse& mouse, float dt) override {
@@ -66,14 +67,12 @@ public:
         }
 
         if (kbd.KeyIsPressed('R')) {
-            offset_z += 2.0f * dt;
+            offset_z += 0.2f * dt;
         }
 
         if (kbd.KeyIsPressed('F')) {
-            offset_z -= 2.0f * dt;
+            offset_z -= 0.2f * dt;
         }
-
-        time += dt;
     }
 
     virtual void Draw() override {
@@ -90,8 +89,7 @@ public:
         // Set pipeline transform
         pipeline.effect.vs.BindRotation(rot);
         pipeline.effect.vs.BindTranslation(trans);
-        pipeline.effect.vs.SetTime(time);
-        pipeline.effect.gs.SetLightDirection(light_dir * rot_phi);
+        pipeline.effect.vs.SetLightDirection(light_dir * rot_phi);
         // Render triangles
         pipeline.Draw(itlist);
     }
@@ -105,7 +103,6 @@ private:
     float theta_x = 0.0f;
     float theta_y = 0.0f;
     float theta_z = 0.0f;
-    float time = 0.0f;
     float phi_x = 0.0f;
     float phi_y = 0.0f;
     float phi_z = 0.0f;

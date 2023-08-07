@@ -61,19 +61,19 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
                    &pDevice,
                    &featureLevelsSupported,
                    &pImmediateContext))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating device and swap chain");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating device and swap chain");
     }
 
     // Get handle to backbuffer
     ComPtr<ID3D11Resource> pBackBuffer;
 
     if (FAILED(hr = pSwapChain->GetBuffer(0, __uuidof(ID3D11Texture2D), static_cast<LPVOID*>(&pBackBuffer)))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Getting back buffer");
+        throw GRAPHICS_EXCEPTION(hr, L"Getting back buffer");
     }
 
     // Create a view on backbuffer that we can render to
     if (FAILED(hr = pDevice->CreateRenderTargetView(pBackBuffer.Get(), nullptr, &pRenderTargetView))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating render target view on backbuffer");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating render target view on backbuffer");
     }
 
     // Set backbuffer as the render target using created view
@@ -105,7 +105,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 
     // Create the texture
     if (FAILED(hr = pDevice->CreateTexture2D(&sysTexDesc, nullptr, &pSysBufferTexture))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating sysbuffer texture");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating sysbuffer texture");
     }
 
     D3D11_SHADER_RESOURCE_VIEW_DESC srvDesc = {};
@@ -115,14 +115,14 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
 
     // Create the resource view on the texture
     if (FAILED(hr = pDevice->CreateShaderResourceView(pSysBufferTexture.Get(), &srvDesc, &pSysBufferTextureView))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating view on sysBuffer texture");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating view on sysBuffer texture");
     }
 
     // Create pixel shader for framebuffer
     if (FAILED(
             hr =
                 pDevice->CreatePixelShader(pixelShaderBytes.data(), pixelShaderBytes.size(), nullptr, &pPixelShader))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating pixel shader");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating pixel shader");
     }
 
     // Create vertex shader for framebuffer
@@ -130,7 +130,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
                    vertexShaderBytes.size(),
                    nullptr,
                    &pVertexShader))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating vertex shader");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating vertex shader");
     }
 
     // Create and fill vertex buffer with quad for rendering frame
@@ -151,7 +151,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     initData.pSysMem = vertices;
 
     if (FAILED(hr = pDevice->CreateBuffer(&bd, &initData, &pVertexBuffer))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating vertex buffer");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating vertex buffer");
     }
 
     // Create input layout for fullscreen quad
@@ -163,7 +163,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     if (FAILED(
             hr = pDevice
                      ->CreateInputLayout(ied, 2, vertexShaderBytes.data(), vertexShaderBytes.size(), &pInputLayout))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating input layout");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating input layout");
     }
 
     // Create sampler state for fullscreen textured quad
@@ -177,7 +177,7 @@ Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
     sampDesc.MaxLOD = D3D11_FLOAT32_MAX;
 
     if (FAILED(hr = pDevice->CreateSamplerState(&sampDesc, &pSamplerState))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Creating sampler state");
+        throw GRAPHICS_EXCEPTION(hr, L"Creating sampler state");
     }
 }
 
@@ -198,7 +198,7 @@ void Graphics::EndFrame() {
     // Lock and map the adapter memory for copying over the sysbuffer
     if (FAILED(hr = pImmediateContext
                         ->Map(pSysBufferTexture.Get(), 0u, D3D11_MAP_WRITE_DISCARD, 0u, &mappedSysBufferTexture))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Mapping sysbuffer");
+        throw GRAPHICS_EXCEPTION(hr, L"Mapping sysbuffer");
     }
 
     // Perform the copy line-by-line
@@ -220,12 +220,16 @@ void Graphics::EndFrame() {
 
     // Flip back/front buffers
     if (FAILED(hr = pSwapChain->Present(1u, 0u))) {
-        throw COLD_GFX_EXCEPTION(hr, L"Presenting back buffer");
+        throw GRAPHICS_EXCEPTION(hr, L"Presenting back buffer");
     }
 }
 
-Graphics::Exception::Exception(HRESULT hr, const std::wstring& note, const wchar_t* file, unsigned int line)
-    : EngineException(file, line, note), hr(hr) {
+Graphics::Exception::Exception(HRESULT hr,
+    const std::wstring note,
+    const std::wstring file,
+    const std::wstring line,
+    const std::wstring column)
+    : EngineException(file, line, column, note), hr(hr) {
 }
 
 std::wstring Graphics::Exception::GetFullMessage() const {
@@ -253,5 +257,5 @@ std::wstring Graphics::Exception::GetErrorDescription() const {
 }
 
 std::wstring Graphics::Exception::GetExceptionType() const {
-    return L"Cold Graphics Exception";
+    return L"Graphics Exception";
 }

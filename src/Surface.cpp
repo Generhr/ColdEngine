@@ -36,7 +36,10 @@ Surface Surface::FromFile(const std::wstring& name) {
         Gdiplus::Bitmap bitmap(name.c_str());
 
         if (bitmap.GetLastStatus() != Gdiplus::Status::Ok) {
-            throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to load [" + name + L"].");
+            throw Exception(ENGINE_EXCEPTION_FILE,
+                ENGINE_EXCEPTION_LINE,
+                ENGINE_EXCEPTION_COLUMN,
+                L"Failed to load [" + name + L"].");
         }
 
         pitch = width = bitmap.GetWidth();
@@ -65,15 +68,18 @@ void Surface::Save(const std::wstring& filename) const {
         Gdiplus::GetImageEncodersSize(&num, &size);
 
         if (size == 0) {
-            throw Exception(_CRT_WIDE(__FILE__),
-                __LINE__,
+            throw Exception(ENGINE_EXCEPTION_FILE,
+                ENGINE_EXCEPTION_LINE,
+                ENGINE_EXCEPTION_COLUMN,
                 L"Failed to get encoder for [" + filename + L"] (size == 0).");
         }
 
         pImageCodecInfo = static_cast<Gdiplus::ImageCodecInfo*>(malloc(size));
+
         if (pImageCodecInfo == nullptr) {
-            throw Exception(_CRT_WIDE(__FILE__),
-                __LINE__,
+            throw Exception(ENGINE_EXCEPTION_FILE,
+                ENGINE_EXCEPTION_LINE,
+                ENGINE_EXCEPTION_COLUMN,
                 L"Failed to get encoder for [" + filename + L"] (failed to allocate memory).");
         }
 
@@ -89,8 +95,9 @@ void Surface::Save(const std::wstring& filename) const {
 
         free(pImageCodecInfo);
 
-        throw Exception(_CRT_WIDE(__FILE__),
-            __LINE__,
+        throw Exception(ENGINE_EXCEPTION_FILE,
+            ENGINE_EXCEPTION_LINE,
+            ENGINE_EXCEPTION_COLUMN,
             L"Failed to get encoder for [" + filename + L"] (failed to find matching encoder).");
     };
 
@@ -101,14 +108,19 @@ void Surface::Save(const std::wstring& filename) const {
         pitch * sizeof(Color),
         PixelFormat32bppARGB,
         reinterpret_cast<BYTE*>(pBuffer.get()));
+
     if (bitmap.Save(filename.c_str(), &bmpID, nullptr) != Gdiplus::Status::Ok) {
-        throw Exception(_CRT_WIDE(__FILE__), __LINE__, L"Failed to save bitmap to [" + filename + L"].");
+        throw Exception(ENGINE_EXCEPTION_FILE,
+            ENGINE_EXCEPTION_LINE,
+            ENGINE_EXCEPTION_COLUMN,
+            L"Failed to save bitmap to [" + filename + L"].");
     }
 }
 
 void Surface::Copy(const Surface& src) {
     assert(width == src.width);
     assert(height == src.height);
+
     if (pitch == src.pitch) {
         memcpy(pBuffer.get(), src.pBuffer.get(), pitch * height * sizeof(Color));
     }

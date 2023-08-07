@@ -5,21 +5,26 @@
 #include "Scenes/CubeSolidScene.h"
 #include "Scenes/CubeVertexColorScene.h"
 #include "Scenes/DoubleCubeScene.h"
-#include "Scenes/VertexWaveScene.h"
 #include "Scenes/CubeVertexPositionColorScene.h"
 #include "Scenes/CubeSolidGeometryScene.h"
-
-#include <sstream>
+#include "Scenes/CubeFlatIndependentScene.h"
+#include "Scenes/GeometryFlatScene.h"
+#include "Scenes/VertexWaveScene.h"
 
 
 Engine::Engine(MainWindow& window) : window(window), graphics(window) {
-    scenes.push_back(std::make_unique<CubeSkinScene>(graphics, L"res\\office_skin.jpg"));
-    scenes.push_back(std::make_unique<CubeSolidScene>(graphics));
-    scenes.push_back(std::make_unique<CubeVertexColorScene>(graphics));
-    scenes.push_back(std::make_unique<DoubleCubeScene>(graphics));
-    scenes.push_back(std::make_unique<CubeVertexPositionColorScene>(graphics));
-    scenes.push_back(std::make_unique<VertexWaveScene>(graphics));
+    // scenes.push_back(std::make_unique<CubeSkinScene>(graphics, L"res\\office_skin.jpg"));
+    // scenes.push_back(std::make_unique<CubeSolidScene>(graphics));
+    // scenes.push_back(std::make_unique<CubeVertexColorScene>(graphics));
+    // scenes.push_back(std::make_unique<DoubleCubeScene>(graphics));
+    // scenes.push_back(std::make_unique<CubeVertexPositionColorScene>(graphics));
     scenes.push_back(std::make_unique<CubeSolidGeometryScene>(graphics));
+    scenes.push_back(std::make_unique<CubeFlatIndependentScene>(graphics));
+    scenes.push_back(std::make_unique<GeometryFlatScene>(graphics, Cube::GetPlain<GeometryFlatScene::Vertex>()));
+    scenes.push_back(std::make_unique<GeometryFlatScene>(graphics,
+        IndexedTriangleList<GeometryFlatScene::Vertex>::Load("res\\bunny.obj")));
+    scenes.push_back(std::make_unique<VertexWaveScene>(graphics));
+
 
     curScene = scenes.begin();
     SetWindowName();

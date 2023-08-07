@@ -62,10 +62,10 @@ public:
         // Translation from offset
         const Vec3 trans = {0.0f, 0.0f, offset_z};
 
-        // set pipeline transform
+        // Set pipeline transform
         pipeline.effect.vs.BindRotation(rot);
         pipeline.effect.vs.BindTranslation(trans);
-        // render triangles
+        // Render triangles
         pipeline.Draw(itlist);
     }
 

@@ -300,6 +300,34 @@ public:
         return *this;
     }
 
+    // Clamp to between 0.0 ~ 1.0
+    Vector3& Saturate() {
+        elements[0] = std::min(1.0f, std::max(0.0f, elements[0]));
+        elements[1] = std::min(1.0f, std::max(0.0f, elements[1]));
+        elements[2] = std::min(1.0f, std::max(0.0f, elements[2]));
+
+        return *this;
+    }
+
+    Vector3 GetSaturated() const {
+        Vector3 temp(*this);
+        temp.Saturate();
+
+        return temp;
+    }
+
+    Vector3& Hadamard(const Vector3& vector) {
+        elements[0] *= vector[0];
+        elements[1] *= vector[1];
+        elements[2] *= vector[2];
+
+        return *this;
+    }
+
+    Vector3 GetHadamard(const Vector3& vector) const {
+        return Vector3(*this).Hadamard(vector);
+    }
+
     void Print() const {
         std::cout << "[" << elements[0] << ", " << elements[1] << ", " << elements[2] << "]" << std::endl;
     }

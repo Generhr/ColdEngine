@@ -122,10 +122,10 @@ int main(int argc, char* argv[]) {
             }
         }
         catch (const EngineException& error) {
-            const std::wstringstream ss(  //~ `file:line` is supported by VSCode intellisense so you can alt + click
-                                          //~ to go to the location of the error
-                L"\n(\x1b[36m" + error.GetFile() + L":" + error.GetLine() + L"\x1b[0m) \x1b[31mERROR\x1b[0m: " +
-                error.GetNote());
+            const std::wstringstream ss(  //~ `file:line:column` is supported by VSCode intellisense so you can alt +
+                                          //~ click to go to the location of the error
+                L"\n(\x1b[36m" + error.GetFile() + L":" + error.GetLine() + L":" + error.GetColumn() +
+                L"\x1b[0m) \x1b[31mERROR\x1b[0m: " + error.GetNote());
             const std::wstring eMsg = error.GetFullMessage() + L"\n\nException caught at Windows message loop.";
 
             std::wcerr << ss.str() << std::endl;
