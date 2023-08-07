@@ -23,5 +23,7 @@ var namespaces_dup =
       [ "e", "namespace_math.html#a175f14bb986f9e314f71ce232999a49b", null ],
       [ "epsilon", "namespace_math.html#a8cfad34615c1a63f778f57cc1cda7f52", null ],
       [ "PI", "namespace_math.html#abef423a83d88fb7f559ecbb0adeba9e6", null ]
-    ] ]
+    ] ],
+    [ "Miniball", "namespace_miniball.html", "namespace_miniball" ],
+    [ "tinyobj", "namespacetinyobj.html", "namespacetinyobj" ]
 ];

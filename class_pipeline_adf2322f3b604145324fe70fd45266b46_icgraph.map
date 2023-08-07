@@ -1,10 +1,12 @@
 <map id="Pipeline::BeginFrame" name="Pipeline::BeginFrame">
-<area shape="rect" id="node1" title=" " alt="" coords="257,185,402,213"/>
-<area shape="rect" id="node2" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="31,5,183,33"/>
-<area shape="rect" id="node3" href="$class_cube_solid_geometry_scene.html#aa7ef23fe155a0a262c0357eaa3452506" title=" " alt="" coords="20,57,194,101"/>
-<area shape="rect" id="node4" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="30,125,184,153"/>
-<area shape="rect" id="node5" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="29,177,185,221"/>
-<area shape="rect" id="node6" href="$class_cube_vertex_position_color_scene.html#ae281a042a0863dbb9e3bb7a6070e58cc" title=" " alt="" coords="5,245,209,289"/>
-<area shape="rect" id="node7" href="$class_double_cube_scene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="24,313,190,341"/>
-<area shape="rect" id="node8" href="$class_vertex_wave_scene.html#aed98f12c1ea59d6d6138498f75a106d6" title=" " alt="" coords="24,365,190,393"/>
+<area shape="rect" id="node1" title=" " alt="" coords="257,253,402,281"/>
+<area shape="rect" id="node2" href="$class_cube_flat_independent_scene.html#a5a2d8f2ca8c78d6e283531a521f0806b" title=" " alt="" coords="17,5,197,49"/>
+<area shape="rect" id="node3" href="$class_cube_skin_scene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="31,73,183,101"/>
+<area shape="rect" id="node4" href="$class_cube_solid_geometry_scene.html#aa7ef23fe155a0a262c0357eaa3452506" title=" " alt="" coords="20,125,194,169"/>
+<area shape="rect" id="node5" href="$class_cube_solid_scene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="30,193,184,221"/>
+<area shape="rect" id="node6" href="$class_cube_vertex_color_scene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="29,245,185,289"/>
+<area shape="rect" id="node7" href="$class_cube_vertex_position_color_scene.html#ae281a042a0863dbb9e3bb7a6070e58cc" title=" " alt="" coords="5,313,209,357"/>
+<area shape="rect" id="node8" href="$class_double_cube_scene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="24,381,190,409"/>
+<area shape="rect" id="node9" href="$class_geometry_flat_scene.html#aa5db5bbb8ea5e69cf430bbd4ab144054" title=" " alt="" coords="20,433,194,461"/>
+<area shape="rect" id="node10" href="$class_vertex_wave_scene.html#aed98f12c1ea59d6d6138498f75a106d6" title=" " alt="" coords="24,485,190,513"/>
 </map>

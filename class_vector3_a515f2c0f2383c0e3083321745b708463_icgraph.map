@@ -1,11 +1,18 @@
 <map id="Vector3::Vector3" name="Vector3::Vector3">
-<area shape="rect" id="node1" title=" " alt="" coords="495,135,615,163"/>
-<area shape="rect" id="node2" href="$class_vector3.html#a1453d64a7a4333b19d6a92b8e61e617e" title=" " alt="" coords="287,31,447,59"/>
-<area shape="rect" id="node6" href="$class_vector3.html#a996efc3ced625aad7bbde05e051a55dc" title=" " alt="" coords="304,83,430,111"/>
-<area shape="rect" id="node7" href="$class_vector3.html#a7228c05728441d214acb010b30eebe31" title=" " alt="" coords="303,135,432,163"/>
-<area shape="rect" id="node8" href="$class_vector3.html#ad1f6fb2ad5c909641587d0899fe4cd41" title=" " alt="" coords="305,187,430,215"/>
-<area shape="rect" id="node9" href="$class_vector3.html#aa14fef7fb47344c58c92f6ef033ce110" title=" " alt="" coords="305,239,430,267"/>
-<area shape="rect" id="node3" href="$class_vector3.html#a60a66eb12fb598ec0f2ada72819395b2" title=" " alt="" coords="107,5,239,33"/>
-<area shape="rect" id="node5" href="$_vector3_8cpp.html#acd001b833aaf532c808c6051f045d3c2" title=" " alt="" coords="146,57,200,85"/>
-<area shape="rect" id="node4" href="$_vector3_8cpp.html#ab5848f313403912f60a11f987ed720c7" title=" " alt="" coords="5,5,59,33"/>
+<area shape="rect" id="node1" title=" " alt="" coords="597,319,717,347"/>
+<area shape="rect" id="node2" href="$class_vector3.html#a38e1d9f64ce8ff78a86b87f3826c1ee2" title=" " alt="" coords="392,81,546,109"/>
+<area shape="rect" id="node5" href="$class_vector3.html#a1453d64a7a4333b19d6a92b8e61e617e" title=" " alt="" coords="389,240,549,268"/>
+<area shape="rect" id="node13" href="$class_vector3.html#a996efc3ced625aad7bbde05e051a55dc" title=" " alt="" coords="406,292,532,320"/>
+<area shape="rect" id="node14" href="$class_vector3.html#a7228c05728441d214acb010b30eebe31" title=" " alt="" coords="405,344,534,372"/>
+<area shape="rect" id="node15" href="$class_vector3.html#ad1f6fb2ad5c909641587d0899fe4cd41" title=" " alt="" coords="407,396,532,424"/>
+<area shape="rect" id="node16" href="$class_vector3.html#aa14fef7fb47344c58c92f6ef033ce110" title=" " alt="" coords="407,448,532,476"/>
+<area shape="rect" id="node3" href="$class_vertex_flat_effect_1_1_vertex_shader.html#a5730ea8d60ef2a0d7a80ccfdd6996918" title=" " alt="" coords="144,5,304,49"/>
+<area shape="rect" id="node4" href="$class_geometry_flat_effect_1_1_geometry_shader.html#a84bd7b52ddfb6c22dfe57eaacdf7a50f" title=" " alt="" coords="129,73,319,117"/>
+<area shape="rect" id="node6" href="$class_vector3.html#a60a66eb12fb598ec0f2ada72819395b2" title=" " alt="" coords="158,141,290,169"/>
+<area shape="rect" id="node8" href="$class_wave_vertex_texture_effect_1_1_geometry_shader.html#a2c58f9e1316b26ca6014e8ee9b3fa9cf" title=" " alt="" coords="129,193,319,237"/>
+<area shape="rect" id="node9" href="$class_geometry_flat_effect_1_1_geometry_shader.html#a4ef92d67615439c6cd50961e231a7a83" title=" " alt="" coords="132,261,316,321"/>
+<area shape="rect" id="node10" href="$class_vertex_flat_effect_1_1_vertex_shader.html#aa0c59c8483a1af26e93aabab04cb0c4d" title=" " alt="" coords="139,345,309,389"/>
+<area shape="rect" id="node11" href="$class_wave_vertex_texture_effect_1_1_geometry_shader.html#a4a3dfd7d8776a0abffb2910b217e43bb" title=" " alt="" coords="107,413,341,457"/>
+<area shape="rect" id="node12" href="$_vector3_8cpp.html#acd001b833aaf532c808c6051f045d3c2" title=" " alt="" coords="197,481,251,509"/>
+<area shape="rect" id="node7" href="$_vector3_8cpp.html#ab5848f313403912f60a11f987ed720c7" title=" " alt="" coords="5,141,59,169"/>
 </map>

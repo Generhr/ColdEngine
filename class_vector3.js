@@ -3,9 +3,12 @@ var class_vector3 =
     [ "Vector3", "class_vector3.html#a515f2c0f2383c0e3083321745b708463", null ],
     [ "Vector3", "class_vector3.html#a6797fe2b04a56b6b2ee517f23876ebab", null ],
     [ "Vector3", "class_vector3.html#ac0d32b1213d10d8891355fa7b6b66137", null ],
+    [ "GetHadamard", "class_vector3.html#a38e1d9f64ce8ff78a86b87f3826c1ee2", null ],
     [ "GetMagnitude", "class_vector3.html#ac297afb6e74370b4327d779328412b18", null ],
     [ "GetMagnitudeSquared", "class_vector3.html#a40b58e9af6b19f4fd02e75a7e036c497", null ],
     [ "GetNormalized", "class_vector3.html#a1453d64a7a4333b19d6a92b8e61e617e", null ],
+    [ "GetSaturated", "class_vector3.html#aa3844aebe353eafd860e9de078c25a08", null ],
+    [ "Hadamard", "class_vector3.html#aca7f3ae6237f6eee9ea877dac2d5481d", null ],
     [ "Lerp", "class_vector3.html#ad665e668b51840b3db8ce7b4865f7df5", null ],
     [ "Negate", "class_vector3.html#aa96e13816c0a24c56b0dece3ac2b17c2", null ],
     [ "Normalize", "class_vector3.html#a60a66eb12fb598ec0f2ada72819395b2", null ],
@@ -31,5 +34,6 @@ var class_vector3 =
     [ "operator[]", "class_vector3.html#a2e039b9e69f6044bb4af951709b42c1e", null ],
     [ "operator[]", "class_vector3.html#ae2e9c8abad270e35c9ce7dc1d223b0d1", null ],
     [ "Print", "class_vector3.html#a0eeda5e5b36696689e436607a2230014", null ],
+    [ "Saturate", "class_vector3.html#a7a46fa3ba23eddf38c884a9b4b4baa0b", null ],
     [ "operator<<", "class_vector3.html#a7f914f191b64d7e4f66c8a4f80dace16", null ]
 ];

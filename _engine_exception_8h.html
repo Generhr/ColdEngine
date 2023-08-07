@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -86,22 +86,24 @@ $(document).ready(function(){initNavTree('_engine_exception_8h.html',''); initRe
 
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Classes</a>  </div>
+<a href="#nested-classes">Classes</a> &#124;
+<a href="#define-members">Macros</a>  </div>
   <div class="headertitle">
 <div class="title">EngineException.h File Reference</div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;source_location&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for EngineException.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_engine_exception_8h__incl.svg" width="187" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_engine_exception_8h__incl.svg" width="208" height="115"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_engine_exception_8h__dep__incl.svg" width="2023" height="603"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_engine_exception_8h__dep__incl.svg" width="2475" height="603"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -111,7 +113,59 @@ This graph shows which files directly or indirectly include this file:</div>
 Classes</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html">EngineException</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+Macros</h2></td></tr>
+<tr class="memitem:a2e77f68bdd93449601380f9f9b3e7450"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_engine_exception_8h.html#a2e77f68bdd93449601380f9f9b3e7450">ENGINE_EXCEPTION_FILE</a>&#160;&#160;&#160;    std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt;().from_bytes(std::source_location::current().file_name())</td></tr>
+<tr class="separator:a2e77f68bdd93449601380f9f9b3e7450"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a801e8a588513d85626c48863f479e903"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_engine_exception_8h.html#a801e8a588513d85626c48863f479e903">ENGINE_EXCEPTION_LINE</a>&#160;&#160;&#160;std::to_wstring(std::source_location::current().line())</td></tr>
+<tr class="separator:a801e8a588513d85626c48863f479e903"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb5ab9cf9dbb795fd0b86c190c0c0b0f"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_engine_exception_8h.html#abb5ab9cf9dbb795fd0b86c190c0c0b0f">ENGINE_EXCEPTION_COLUMN</a>&#160;&#160;&#160;std::to_wstring(std::source_location::current().column())</td></tr>
+<tr class="separator:abb5ab9cf9dbb795fd0b86c190c0c0b0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Macro Definition Documentation</h2>
+<a id="abb5ab9cf9dbb795fd0b86c190c0c0b0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb5ab9cf9dbb795fd0b86c190c0c0b0f">&#9670;&nbsp;</a></span>ENGINE_EXCEPTION_COLUMN</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENGINE_EXCEPTION_COLUMN&#160;&#160;&#160;std::to_wstring(std::source_location::current().column())</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a2e77f68bdd93449601380f9f9b3e7450"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2e77f68bdd93449601380f9f9b3e7450">&#9670;&nbsp;</a></span>ENGINE_EXCEPTION_FILE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENGINE_EXCEPTION_FILE&#160;&#160;&#160;    std::wstring_convert&lt;std::codecvt_utf8&lt;wchar_t&gt;&gt;().from_bytes(std::source_location::current().file_name())</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
+<a id="a801e8a588513d85626c48863f479e903"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a801e8a588513d85626c48863f479e903">&#9670;&nbsp;</a></span>ENGINE_EXCEPTION_LINE</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define ENGINE_EXCEPTION_LINE&#160;&#160;&#160;std::to_wstring(std::source_location::current().line())</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+</div>
+</div>
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

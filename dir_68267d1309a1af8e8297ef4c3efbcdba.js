@@ -8,5 +8,6 @@ var dir_68267d1309a1af8e8297ef4c3efbcdba =
     [ "Main.cpp", "_main_8cpp.html", "_main_8cpp" ],
     [ "MainWindow.cpp", "_main_window_8cpp.html", null ],
     [ "Mouse.cpp", "_mouse_8cpp.html", null ],
-    [ "Surface.cpp", "_surface_8cpp.html", "_surface_8cpp" ]
+    [ "Surface.cpp", "_surface_8cpp.html", "_surface_8cpp" ],
+    [ "tiny_obj_loader.cpp", "tiny__obj__loader_8cpp.html", "tiny__obj__loader_8cpp" ]
 ];

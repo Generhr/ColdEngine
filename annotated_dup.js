@@ -1,7 +1,26 @@
 var annotated_dup =
 [
+    [ "Miniball", "namespace_miniball.html", [
+      [ "CoordAccessor", "struct_miniball_1_1_coord_accessor.html", "struct_miniball_1_1_coord_accessor" ],
+      [ "CoordAccessor< Pit_, Cit_ * >", "struct_miniball_1_1_coord_accessor_3_01_pit___00_01_cit___01_5_01_4.html", "struct_miniball_1_1_coord_accessor_3_01_pit___00_01_cit___01_5_01_4" ],
+      [ "Miniball", "class_miniball_1_1_miniball.html", "class_miniball_1_1_miniball" ]
+    ] ],
+    [ "tinyobj", "namespacetinyobj.html", [
+      [ "texture_option_t", "structtinyobj_1_1texture__option__t.html", "structtinyobj_1_1texture__option__t" ],
+      [ "material_t", "structtinyobj_1_1material__t.html", "structtinyobj_1_1material__t" ],
+      [ "tag_t", "structtinyobj_1_1tag__t.html", "structtinyobj_1_1tag__t" ],
+      [ "index_t", "structtinyobj_1_1index__t.html", "structtinyobj_1_1index__t" ],
+      [ "mesh_t", "structtinyobj_1_1mesh__t.html", "structtinyobj_1_1mesh__t" ],
+      [ "shape_t", "structtinyobj_1_1shape__t.html", "structtinyobj_1_1shape__t" ],
+      [ "attrib_t", "structtinyobj_1_1attrib__t.html", "structtinyobj_1_1attrib__t" ],
+      [ "callback_t_", "structtinyobj_1_1callback__t__.html", "structtinyobj_1_1callback__t__" ],
+      [ "MaterialReader", "classtinyobj_1_1_material_reader.html", "classtinyobj_1_1_material_reader" ],
+      [ "MaterialFileReader", "classtinyobj_1_1_material_file_reader.html", "classtinyobj_1_1_material_file_reader" ],
+      [ "MaterialStreamReader", "classtinyobj_1_1_material_stream_reader.html", "classtinyobj_1_1_material_stream_reader" ]
+    ] ],
     [ "Color", "class_color.html", "class_color" ],
     [ "Cube", "class_cube.html", null ],
+    [ "CubeFlatIndependentScene", "class_cube_flat_independent_scene.html", "class_cube_flat_independent_scene" ],
     [ "CubeSkinScene", "class_cube_skin_scene.html", "class_cube_skin_scene" ],
     [ "CubeSolidGeometryScene", "class_cube_solid_geometry_scene.html", "class_cube_solid_geometry_scene" ],
     [ "CubeSolidScene", "class_cube_solid_scene.html", "class_cube_solid_scene" ],
@@ -15,6 +34,8 @@ var annotated_dup =
     [ "FrameTimer", "class_frame_timer.html", "class_frame_timer" ],
     [ "game_state", "structgame__state.html", null ],
     [ "GDIPlusManager", "class_g_d_i_plus_manager.html", "class_g_d_i_plus_manager" ],
+    [ "GeometryFlatEffect", "class_geometry_flat_effect.html", "class_geometry_flat_effect" ],
+    [ "GeometryFlatScene", "class_geometry_flat_scene.html", "class_geometry_flat_scene" ],
     [ "Graphics", "class_graphics.html", "class_graphics" ],
     [ "HWNDKey", "class_h_w_n_d_key.html", "class_h_w_n_d_key" ],
     [ "IndexedTriangleList", "struct_indexed_triangle_list.html", "struct_indexed_triangle_list" ],
@@ -37,6 +58,7 @@ var annotated_dup =
     [ "Vector3", "class_vector3.html", "class_vector3" ],
     [ "Vector4", "class_vector4.html", "class_vector4" ],
     [ "VertexColorEffect", "class_vertex_color_effect.html", "class_vertex_color_effect" ],
+    [ "VertexFlatEffect", "class_vertex_flat_effect.html", "class_vertex_flat_effect" ],
     [ "VertexPositionColorEffect", "class_vertex_position_color_effect.html", "class_vertex_position_color_effect" ],
     [ "VertexWaveScene", "class_vertex_wave_scene.html", "class_vertex_wave_scene" ],
     [ "WaveVertexTextureEffect", "class_wave_vertex_texture_effect.html", "class_wave_vertex_texture_effect" ],

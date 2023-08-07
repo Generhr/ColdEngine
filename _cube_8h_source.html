@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -235,97 +235,156 @@ $(document).ready(function(){initNavTree('_cube_8h_source.html',''); initResizab
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;    }</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160; </div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> V&gt;</div>
-<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">  147</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList&lt;V&gt;</a> <a class="code" href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">GetSkinned</a>(<span class="keywordtype">float</span> size = 1.0f) {</div>
-<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> side = size / 2.0f;</div>
-<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> ConvertTexCoord = [](<span class="keywordtype">float</span> u, <span class="keywordtype">float</span> v) { <span class="keywordflow">return</span> <a class="code" href="class_vector2.html">Vec2</a> {(u + 1.0f) / 3.0f, v / 4.0f}; };</div>
+<div class="line"><a name="l00147"></a><span class="lineno"><a class="line" href="class_cube.html#a76a576853ae3e07904ff4b3994a3094a">  147</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList&lt;V&gt;</a> <a class="code" href="class_cube.html#a76a576853ae3e07904ff4b3994a3094a">GetIndependentFacesNormals</a>(<span class="keywordtype">float</span> size = 1.0f) {</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        <span class="comment">// First generate cube vertex positions (independent faces)</span></div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keyword">auto</span> cube = GetPlainIndependentFaces&lt;V&gt;(size);</div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160; </div>
-<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        std::vector&lt;Vec3&gt; vertices;</div>
-<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        std::vector&lt;Vec2&gt; tc;</div>
-<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160; </div>
-<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 0</span></div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 0.0f));</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 1</span></div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 0.0f));</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        vertices.emplace_back(-side, side, -side);  <span class="comment">// 2</span></div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 1.0f));</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        vertices.emplace_back(side, side, -side);  <span class="comment">// 3</span></div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 1.0f));</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        vertices.emplace_back(-side, -side, side);  <span class="comment">// 4</span></div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 3.0f));</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        vertices.emplace_back(side, -side, side);  <span class="comment">// 5</span></div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 3.0f));</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        vertices.emplace_back(-side, side, side);  <span class="comment">// 6</span></div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 2.0f));</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        vertices.emplace_back(side, side, side);  <span class="comment">// 7</span></div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 2.0f));</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 8</span></div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 4.0f));</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 9</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 4.0f));</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 10</span></div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        tc.emplace_back(ConvertTexCoord(2.0f, 1.0f));</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        vertices.emplace_back(-side, -side, side);  <span class="comment">// 11</span></div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        tc.emplace_back(ConvertTexCoord(2.0f, 2.0f));</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 12</span></div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        tc.emplace_back(ConvertTexCoord(-1.0f, 1.0f));</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        vertices.emplace_back(side, -side, side);  <span class="comment">// 13</span></div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        tc.emplace_back(ConvertTexCoord(-1.0f, 2.0f));</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        std::vector&lt;V&gt; verts(vertices.size());</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160; </div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; vertices.size(); i++) {</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;            verts[i].pos = vertices[i];</div>
-<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;            verts[i].t = tc[i];</div>
-<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        }</div>
-<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160; </div>
-<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        <span class="keywordflow">return</span> {std::move(verts),</div>
-<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;            {0,</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;                2,</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;                1,</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;                2,</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;                3,</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;                1,</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;                4,</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;                8,</div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;                5,</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;                5,</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;                8,</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;                9,</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;                2,</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;                6,</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;                3,</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;                3,</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;                6,</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;                7,</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;                4,</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;                5,</div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;                7,</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;                4,</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;                7,</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;                6,</div>
-<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;                2,</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;                10,</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;                11,</div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;                2,</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;                11,</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;                6,</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;                12,</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;                3,</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;                7,</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;                12,</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;                7,</div>
-<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;                13}};</div>
-<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;    }</div>
-<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;};</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;        <span class="comment">// Then for each vertex, add the normal (determined by inspection of cube)</span></div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,-side ); // 0 near side</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,-side ); // 1</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,-side ); // 2</span></div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,-side ); // 3</span></div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        cube.vertices[0].n = {0.0f, 0.0f, -1.0f};</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        cube.vertices[1].n = {0.0f, 0.0f, -1.0f};</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;        cube.vertices[2].n = {0.0f, 0.0f, -1.0f};</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        cube.vertices[3].n = {0.0f, 0.0f, -1.0f};</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,side ); // 4 far side</span></div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,side ); // 5</span></div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,side ); // 6</span></div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,side ); // 7</span></div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;        cube.vertices[4].n = {0.0f, 0.0f, 1.0f};</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        cube.vertices[5].n = {0.0f, 0.0f, 1.0f};</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;        cube.vertices[6].n = {0.0f, 0.0f, 1.0f};</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;        cube.vertices[7].n = {0.0f, 0.0f, 1.0f};</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,-side ); // 8 left side</span></div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,-side ); // 9</span></div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,side ); // 10</span></div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,side ); // 11</span></div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;        cube.vertices[8].n = {-1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;        cube.vertices[9].n = {-1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;        cube.vertices[10].n = {-1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;        cube.vertices[11].n = {-1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,-side ); // 12 right side</span></div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,-side ); // 13</span></div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,side ); // 14</span></div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,side ); // 15</span></div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;        cube.vertices[12].n = {1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;        cube.vertices[13].n = {1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        cube.vertices[14].n = {1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        cube.vertices[15].n = {1.0f, 0.0f, 0.0f};</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,-side ); // 16 bottom side</span></div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,-side ); // 17</span></div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;        <span class="comment">// vertices.emplace_back( -side,-side,side ); // 18</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;        <span class="comment">// vertices.emplace_back( side,-side,side ); // 19</span></div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;        cube.vertices[16].n = {0.0f, -1.0f, 0.0f};</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;        cube.vertices[17].n = {0.0f, -1.0f, 0.0f};</div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;        cube.vertices[18].n = {0.0f, -1.0f, 0.0f};</div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;        cube.vertices[19].n = {0.0f, -1.0f, 0.0f};</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,-side ); // 20 top side</span></div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,-side ); // 21</span></div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;        <span class="comment">// vertices.emplace_back( -side,side,side ); // 22</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;        <span class="comment">// vertices.emplace_back( side,side,side ); // 23</span></div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;        cube.vertices[20].n = {0.0f, 1.0f, 0.0f};</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;        cube.vertices[21].n = {0.0f, 1.0f, 0.0f};</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;        cube.vertices[22].n = {0.0f, 1.0f, 0.0f};</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;        cube.vertices[23].n = {0.0f, 1.0f, 0.0f};</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160; </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;        <span class="keywordflow">return</span> cube;</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160; </div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">class</span> V&gt;</div>
+<div class="line"><a name="l00205"></a><span class="lineno"><a class="line" href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">  205</a></span>&#160;    <span class="keyword">static</span> <a class="code" href="struct_indexed_triangle_list.html">IndexedTriangleList&lt;V&gt;</a> <a class="code" href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">GetSkinned</a>(<span class="keywordtype">float</span> size = 1.0f) {</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> side = size / 2.0f;</div>
+<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;        <span class="keyword">const</span> <span class="keyword">auto</span> ConvertTexCoord = [](<span class="keywordtype">float</span> u, <span class="keywordtype">float</span> v) { <span class="keywordflow">return</span> <a class="code" href="class_vector2.html">Vec2</a> {(u + 1.0f) / 3.0f, v / 4.0f}; };</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160; </div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;        std::vector&lt;Vec3&gt; vertices;</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;        std::vector&lt;Vec2&gt; tc;</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160; </div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 0</span></div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 0.0f));</div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 1</span></div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 0.0f));</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;        vertices.emplace_back(-side, side, -side);  <span class="comment">// 2</span></div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 1.0f));</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;        vertices.emplace_back(side, side, -side);  <span class="comment">// 3</span></div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 1.0f));</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;        vertices.emplace_back(-side, -side, side);  <span class="comment">// 4</span></div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 3.0f));</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        vertices.emplace_back(side, -side, side);  <span class="comment">// 5</span></div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 3.0f));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        vertices.emplace_back(-side, side, side);  <span class="comment">// 6</span></div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 2.0f));</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;        vertices.emplace_back(side, side, side);  <span class="comment">// 7</span></div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 2.0f));</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 8</span></div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;        tc.emplace_back(ConvertTexCoord(1.0f, 4.0f));</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 9</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;        tc.emplace_back(ConvertTexCoord(0.0f, 4.0f));</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;        vertices.emplace_back(-side, -side, -side);  <span class="comment">// 10</span></div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;        tc.emplace_back(ConvertTexCoord(2.0f, 1.0f));</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;        vertices.emplace_back(-side, -side, side);  <span class="comment">// 11</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;        tc.emplace_back(ConvertTexCoord(2.0f, 2.0f));</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;        vertices.emplace_back(side, -side, -side);  <span class="comment">// 12</span></div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;        tc.emplace_back(ConvertTexCoord(-1.0f, 1.0f));</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;        vertices.emplace_back(side, -side, side);  <span class="comment">// 13</span></div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;        tc.emplace_back(ConvertTexCoord(-1.0f, 2.0f));</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160; </div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        std::vector&lt;V&gt; verts(vertices.size());</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160; </div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; vertices.size(); i++) {</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;            verts[i].pos = vertices[i];</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;            verts[i].t = tc[i];</div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;        }</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160; </div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;        <span class="keywordflow">return</span> {std::move(verts),</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;            {0,</div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;                2,</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;                1,</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;                2,</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;                3,</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;                1,</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;                4,</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;                8,</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;                5,</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;                5,</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;                8,</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;                9,</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;                2,</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;                6,</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;                3,</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;                3,</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;                6,</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;                7,</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;                4,</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;                5,</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;                7,</div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;                4,</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;                7,</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;                6,</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;                2,</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;                10,</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;                11,</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;                2,</div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;                11,</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;                6,</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;                12,</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;                3,</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;                7,</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;                12,</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;                7,</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;                13}};</div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    }</div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;};</div>
 <div class="ttc" id="a_indexed_triangle_list_8h_html"><div class="ttname"><a href="_indexed_triangle_list_8h.html">IndexedTriangleList.h</a></div></div>
 <div class="ttc" id="a_vector2_8h_html"><div class="ttname"><a href="_vector2_8h.html">Vector2.h</a></div></div>
 <div class="ttc" id="a_vector3_8h_html"><div class="ttname"><a href="_vector3_8h.html">Vector3.h</a></div></div>
 <div class="ttc" id="aclass_cube_html"><div class="ttname"><a href="class_cube.html">Cube</a></div><div class="ttdef"><b>Definition:</b> Cube.h:8</div></div>
-<div class="ttc" id="aclass_cube_html_a8e5f82dc650c7359a92d9af02f500c75"><div class="ttname"><a href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">Cube::GetSkinned</a></div><div class="ttdeci">static IndexedTriangleList&lt; V &gt; GetSkinned(float size=1.0f)</div><div class="ttdef"><b>Definition:</b> Cube.h:147</div></div>
+<div class="ttc" id="aclass_cube_html_a76a576853ae3e07904ff4b3994a3094a"><div class="ttname"><a href="class_cube.html#a76a576853ae3e07904ff4b3994a3094a">Cube::GetIndependentFacesNormals</a></div><div class="ttdeci">static IndexedTriangleList&lt; V &gt; GetIndependentFacesNormals(float size=1.0f)</div><div class="ttdef"><b>Definition:</b> Cube.h:147</div></div>
+<div class="ttc" id="aclass_cube_html_a8e5f82dc650c7359a92d9af02f500c75"><div class="ttname"><a href="class_cube.html#a8e5f82dc650c7359a92d9af02f500c75">Cube::GetSkinned</a></div><div class="ttdeci">static IndexedTriangleList&lt; V &gt; GetSkinned(float size=1.0f)</div><div class="ttdef"><b>Definition:</b> Cube.h:205</div></div>
 <div class="ttc" id="aclass_cube_html_ab0dfa2a10a6bbca98ecd3453b6bf7d76"><div class="ttname"><a href="class_cube.html#ab0dfa2a10a6bbca98ecd3453b6bf7d76">Cube::GetPlain</a></div><div class="ttdeci">static IndexedTriangleList&lt; V &gt; GetPlain(float size=1.0f)</div><div class="ttdef"><b>Definition:</b> Cube.h:11</div></div>
 <div class="ttc" id="aclass_cube_html_adf56c728a7e3e8db3235ff6a87c79487"><div class="ttname"><a href="class_cube.html#adf56c728a7e3e8db3235ff6a87c79487">Cube::GetPlainIndependentFaces</a></div><div class="ttdeci">static IndexedTriangleList&lt; V &gt; GetPlainIndependentFaces(float size=1.0f)</div><div class="ttdef"><b>Definition:</b> Cube.h:71</div></div>
 <div class="ttc" id="aclass_vector2_html"><div class="ttname"><a href="class_vector2.html">Vector2&lt; float &gt;</a></div></div>
-<div class="ttc" id="astruct_indexed_triangle_list_html"><div class="ttname"><a href="struct_indexed_triangle_list.html">IndexedTriangleList</a></div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:9</div></div>
+<div class="ttc" id="astruct_indexed_triangle_list_html"><div class="ttname"><a href="struct_indexed_triangle_list.html">IndexedTriangleList</a></div><div class="ttdef"><b>Definition:</b> IndexedTriangleList.h:14</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

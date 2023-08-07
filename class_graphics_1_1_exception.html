@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -109,8 +109,8 @@ Collaboration diagram for Graphics::Exception:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4b41b1546bc1cfed820ce788bb92be66"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_1_1_exception.html#a4b41b1546bc1cfed820ce788bb92be66">Exception</a> (HRESULT hr, const std::wstring &amp;note, const wchar_t *file, unsigned int line)</td></tr>
-<tr class="separator:a4b41b1546bc1cfed820ce788bb92be66"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a398c569a113cc09dc43665d753989e6f"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_1_1_exception.html#a398c569a113cc09dc43665d753989e6f">Exception</a> (HRESULT hr, const std::wstring note, std::wstring file, std::wstring line, std::wstring column)</td></tr>
+<tr class="separator:a398c569a113cc09dc43665d753989e6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ac17beac957a2bd74fd7057c0854cec2b"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_1_1_exception.html#ac17beac957a2bd74fd7057c0854cec2b">GetErrorName</a> () const</td></tr>
 <tr class="separator:ac17beac957a2bd74fd7057c0854cec2b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5c772df700d65afebeede2458517b79d"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_1_1_exception.html#a5c772df700d65afebeede2458517b79d">GetErrorDescription</a> () const</td></tr>
@@ -120,8 +120,8 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac8b78d9f50a178dc70407079a6958602"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graphics_1_1_exception.html#ac8b78d9f50a178dc70407079a6958602">GetExceptionType</a> () const override</td></tr>
 <tr class="separator:ac8b78d9f50a178dc70407079a6958602"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_class_engine_exception"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_class_engine_exception')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="class_engine_exception.html">EngineException</a></td></tr>
-<tr class="memitem:a1f4658e47cce2e58118224fa9e708eb0 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a1f4658e47cce2e58118224fa9e708eb0">EngineException</a> (std::wstring file, unsigned int line, std::wstring note=L&quot;&quot;)</td></tr>
-<tr class="separator:a1f4658e47cce2e58118224fa9e708eb0 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8342e8291733901720d16464558d77e9 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a8342e8291733901720d16464558d77e9">EngineException</a> (std::wstring file, std::wstring line, std::wstring column, std::wstring note=L&quot;&quot;)</td></tr>
+<tr class="separator:a8342e8291733901720d16464558d77e9 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a66204b3ce3618c833b7e05513601df7e inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">virtual&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a66204b3ce3618c833b7e05513601df7e">~EngineException</a> ()=default</td></tr>
 <tr class="separator:a66204b3ce3618c833b7e05513601df7e inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa4d4dc2be89a85d9614847bbb0ba5c14 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#aa4d4dc2be89a85d9614847bbb0ba5c14">EngineException</a> (const <a class="el" href="class_engine_exception.html">EngineException</a> &amp;)=delete</td></tr>
@@ -132,18 +132,20 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:acda0a93844c6a1dca62c21d9aa3461d6 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8c6fdc6ede9c2994869dd24de51f90fd inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_engine_exception.html">EngineException</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a8c6fdc6ede9c2994869dd24de51f90fd">operator=</a> (<a class="el" href="class_engine_exception.html">EngineException</a> &amp;&amp;)=delete</td></tr>
 <tr class="separator:a8c6fdc6ede9c2994869dd24de51f90fd inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abf7227ac5d810c93b624e30c9582d80d inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#abf7227ac5d810c93b624e30c9582d80d">GetFile</a> () const</td></tr>
-<tr class="separator:abf7227ac5d810c93b624e30c9582d80d inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a1c34163797c05055e8ff65b93887977c inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a1c34163797c05055e8ff65b93887977c">GetLine</a> () const</td></tr>
-<tr class="separator:a1c34163797c05055e8ff65b93887977c inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a15642b205ddcb90fa3f6f4618fd4a895 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a15642b205ddcb90fa3f6f4618fd4a895">GetNote</a> () const</td></tr>
-<tr class="separator:a15642b205ddcb90fa3f6f4618fd4a895 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2e37e0524aba986548968397d0742d06 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a2e37e0524aba986548968397d0742d06">GetLocation</a> () const</td></tr>
-<tr class="separator:a2e37e0524aba986548968397d0742d06 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f9716f2cbfca37967fef65ffa43fea8 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">constexpr const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a7f9716f2cbfca37967fef65ffa43fea8">GetFile</a> () const</td></tr>
+<tr class="separator:a7f9716f2cbfca37967fef65ffa43fea8 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a16795da45dd97c36bf6eef37cfadf847 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">constexpr const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a16795da45dd97c36bf6eef37cfadf847">GetLine</a> () const</td></tr>
+<tr class="separator:a16795da45dd97c36bf6eef37cfadf847 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aac9495c7081783bd4a2301d93b2e6ce8 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">constexpr const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#aac9495c7081783bd4a2301d93b2e6ce8">GetColumn</a> () const</td></tr>
+<tr class="separator:aac9495c7081783bd4a2301d93b2e6ce8 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aede7919e4760fd23fab00f2aa1e4d301 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">constexpr const std::wstring &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#aede7919e4760fd23fab00f2aa1e4d301">GetNote</a> () const</td></tr>
+<tr class="separator:aede7919e4760fd23fab00f2aa1e4d301 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1e32f18e4c19d52686472505d305cc59 inherit pub_methods_class_engine_exception"><td class="memItemLeft" align="right" valign="top">constexpr const std::wstring&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_engine_exception.html#a1e32f18e4c19d52686472505d305cc59">GetLocation</a> () const</td></tr>
+<tr class="separator:a1e32f18e4c19d52686472505d305cc59 inherit pub_methods_class_engine_exception"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
-<a id="a4b41b1546bc1cfed820ce788bb92be66"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a4b41b1546bc1cfed820ce788bb92be66">&#9670;&nbsp;</a></span>Exception()</h2>
+<a id="a398c569a113cc09dc43665d753989e6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a398c569a113cc09dc43665d753989e6f">&#9670;&nbsp;</a></span>Exception()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -157,20 +159,26 @@ Public Member Functions</h2></td></tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const std::wstring &amp;&#160;</td>
+          <td class="paramtype">const std::wstring&#160;</td>
           <td class="paramname"><em>note</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">const wchar_t *&#160;</td>
+          <td class="paramtype">std::wstring&#160;</td>
           <td class="paramname"><em>file</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">unsigned int&#160;</td>
-          <td class="paramname"><em>line</em>&#160;</td>
+          <td class="paramtype">std::wstring&#160;</td>
+          <td class="paramname"><em>line</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">std::wstring&#160;</td>
+          <td class="paramname"><em>column</em>&#160;</td>
         </tr>
         <tr>
           <td></td>

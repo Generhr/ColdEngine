@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['t_746',['t',['../class_texture_effect_1_1_vertex.html#a6e86c53d49ec0f0e360e02cf3310fa11',1,'TextureEffect::Vertex::t()'],['../class_wave_vertex_texture_effect_1_1_vertex.html#a82fba85c768b5ac50e0bb8abe298a8cf',1,'WaveVertexTextureEffect::Vertex::t()']]],
-  ['tc_747',['tc',['../class_tex_vertex.html#aa23beecbc89999cccbf397c9cc39dd62',1,'TexVertex']]]
+  ['object_5fcb_1004',['object_cb',['../structtinyobj_1_1callback__t__.html#ad91a780d704c9d7ed9f858f42f33c78d',1,'tinyobj::callback_t_']]],
+  ['origin_5foffset_1005',['origin_offset',['../structtinyobj_1_1texture__option__t.html#ab6a036a11f7b1317709a4d3e25495e07',1,'tinyobj::texture_option_t']]]
 ];

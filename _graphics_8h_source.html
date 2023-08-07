@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -97,160 +97,162 @@ $(document).ready(function(){initNavTree('_graphics_8h_source.html',''); initRes
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="_surface_8h.html">Surface.h</a>&quot;</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160; </div>
 <div class="line"><a name="l00008"></a><span class="lineno"><a class="line" href="_graphics_8h.html#a71809484a26cd96c6abe839a0a8a289d">    8</a></span>&#160;<span class="preprocessor">#define byte                                                                                                           \</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    win_byte_override  </span><span class="comment">// https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#undef byte</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;wrl.h&gt;</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="_graphics_8h.html#abd90668edfd31776a3294caa23be6058">   17</a></span>&#160;<span class="preprocessor">#define COLD_GFX_EXCEPTION(hr, note) Graphics::Exception(hr, note, _CRT_WIDE(__FILE__), __LINE__)</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">    win_byte_override  </span><span class="comment">//~</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;                       <span class="comment">//https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;d3d11.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#undef byte</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;wrl.h&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
-<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="class_graphics.html">   20</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_graphics.html">Graphics</a> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_graphics_1_1_exception.html">   22</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_graphics_1_1_exception.html">Exception</a> : <span class="keyword">public</span> <a class="code" href="class_engine_exception.html">EngineException</a> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    <span class="keyword">public</span>:</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="class_graphics_1_1_exception.html#a4b41b1546bc1cfed820ce788bb92be66">Exception</a>(HRESULT hr, <span class="keyword">const</span> std::wstring&amp; note, <span class="keyword">const</span> <span class="keywordtype">wchar_t</span>* file, <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> line);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#ac17beac957a2bd74fd7057c0854cec2b">GetErrorName</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#a5c772df700d65afebeede2458517b79d">GetErrorDescription</a>() <span class="keyword">const</span>;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#a72385eeb123d5171055c501c52833563">GetFullMessage</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#ac8b78d9f50a178dc70407079a6958602">GetExceptionType</a>() <span class="keyword">const override</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">private</span>:</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        HRESULT hr;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    };</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// Vertex format for the framebuffer fullscreen textured quad</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">struct </span>FSQVertex {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">float</span> x, y, z;  <span class="comment">// Position</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">float</span> u, v;     <span class="comment">// Texcoords</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    };</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_graphics.html#ab29fadd0d25fa1313d89c84443f49122">Graphics</a>(<span class="keyword">class</span> <a class="code" href="class_h_w_n_d_key.html">HWNDKey</a>&amp; key);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160; </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="class_graphics.html#a7841c9a961ac9bca33bd30ddf8066cdb">~Graphics</a>();</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="_graphics_8h.html#a49431b733154720ffe1538a574b0eec3">   19</a></span>&#160;<span class="preprocessor">#define GRAPHICS_EXCEPTION(hr, note)                                                                                   \</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">    Graphics::Exception(hr, note, ENGINE_EXCEPTION_FILE, ENGINE_EXCEPTION_LINE, ENGINE_EXCEPTION_COLUMN)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="class_graphics.html">   22</a></span>&#160;<span class="keyword">class </span><a class="code" href="class_graphics.html">Graphics</a> {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="class_graphics_1_1_exception.html">   24</a></span>&#160;    <span class="keyword">class </span><a class="code" href="class_graphics_1_1_exception.html">Exception</a> : <span class="keyword">public</span> <a class="code" href="class_engine_exception.html">EngineException</a> {</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keyword">public</span>:</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="class_graphics_1_1_exception.html#a398c569a113cc09dc43665d753989e6f">Exception</a>(HRESULT hr, <span class="keyword">const</span> std::wstring note, std::wstring file, std::wstring line, std::wstring column);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#ac17beac957a2bd74fd7057c0854cec2b">GetErrorName</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#a5c772df700d65afebeede2458517b79d">GetErrorDescription</a>() <span class="keyword">const</span>;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#a72385eeb123d5171055c501c52833563">GetFullMessage</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        std::wstring <a class="code" href="class_graphics_1_1_exception.html#ac8b78d9f50a178dc70407079a6958602">GetExceptionType</a>() <span class="keyword">const override</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keyword">private</span>:</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        HRESULT hr;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    };</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// Vertex format for the framebuffer fullscreen textured quad</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keyword">struct </span>FSQVertex {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordtype">float</span> x, y, z;  <span class="comment">// Position</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordtype">float</span> u, v;     <span class="comment">// Texcoords</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    };</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="keyword">explicit</span> <a class="code" href="class_graphics.html#ab29fadd0d25fa1313d89c84443f49122">Graphics</a>(<span class="keyword">class</span> <a class="code" href="class_h_w_n_d_key.html">HWNDKey</a>&amp; key);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno"><a class="line" href="class_graphics.html#abe2f13f24a1d35c55fdac10a282744eb">   46</a></span>&#160;    <a class="code" href="class_graphics.html#abe2f13f24a1d35c55fdac10a282744eb">Graphics</a>(<span class="keyword">const</span> <a class="code" href="class_graphics.html">Graphics</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">   47</a></span>&#160;    <a class="code" href="class_graphics.html">Graphics</a>&amp; <a class="code" href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_graphics.html">Graphics</a>&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_graphics.html#ac19c4971eef9958a863e425ddd6936b4">   48</a></span>&#160;    <a class="code" href="class_graphics.html#ac19c4971eef9958a863e425ddd6936b4">Graphics</a>(<a class="code" href="class_graphics.html">Graphics</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_graphics.html#a1e3ea788357130397c3afe72f360ada7">   49</a></span>&#160;    <a class="code" href="class_graphics.html">Graphics</a>&amp; <a class="code" href="class_graphics.html#a1e3ea788357130397c3afe72f360ada7">operator=</a>(<a class="code" href="class_graphics.html">Graphics</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a56203cba547bde8af2eadda01e0d17c3">EndFrame</a>();</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <a class="code" href="class_graphics.html#a7841c9a961ac9bca33bd30ddf8066cdb">~Graphics</a>();</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="class_graphics.html#abe2f13f24a1d35c55fdac10a282744eb">   48</a></span>&#160;    <a class="code" href="class_graphics.html#abe2f13f24a1d35c55fdac10a282744eb">Graphics</a>(<span class="keyword">const</span> <a class="code" href="class_graphics.html">Graphics</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">   49</a></span>&#160;    <a class="code" href="class_graphics.html">Graphics</a>&amp; <a class="code" href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">operator=</a>(<span class="keyword">const</span> <a class="code" href="class_graphics.html">Graphics</a>&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="class_graphics.html#ac19c4971eef9958a863e425ddd6936b4">   50</a></span>&#160;    <a class="code" href="class_graphics.html#ac19c4971eef9958a863e425ddd6936b4">Graphics</a>(<a class="code" href="class_graphics.html">Graphics</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="class_graphics.html#a1e3ea788357130397c3afe72f360ada7">   51</a></span>&#160;    <a class="code" href="class_graphics.html">Graphics</a>&amp; <a class="code" href="class_graphics.html#a1e3ea788357130397c3afe72f360ada7">operator=</a>(<a class="code" href="class_graphics.html">Graphics</a>&amp;&amp;) = <span class="keyword">delete</span>;</div>
 <div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#ae9f5bcaa267fdff06bbfcf1e2ddf7137">BeginFrame</a>();</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a56203cba547bde8af2eadda01e0d17c3">EndFrame</a>();</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
-<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">   55</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="class_color.html">Color</a> c) {</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        sysBuffer.<a class="code" href="class_surface.html#ad95a03761aaa5229eab2a500441eb322">PutPixel</a>(x, y, c);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
-<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">   59</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">PutPixel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b) {</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(x, y, {<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(r), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(g), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(b)});</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">   63</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">DrawLine</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> y2, <a class="code" href="class_color.html">Color</a> c) {</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> dx = x2 - x1;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> dy = y2 - y1;</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keywordflow">if</span> (dy == 0.0f &amp;&amp; dx == 0.0f) {</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x1), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y1), c);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (abs(dy) &gt; abs(dx)) {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;            <span class="keywordflow">if</span> (dy &lt; 0.0f) {</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                std::swap(x1, x2);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                std::swap(y1, y2);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160; </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">float</span> m = dx / dy;</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            <span class="keywordtype">float</span> y = y1;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keywordtype">int</span> lastIntY = 0;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">float</span> x = x1; y &lt; y2; y += 1.0f, x += m) {</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                lastIntY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y);</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x), lastIntY, c);</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            }</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2) &gt; lastIntY) {</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2), c);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            }</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;        }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            <span class="keywordflow">if</span> (dx &lt; 0.0f) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                std::swap(x1, x2);</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                std::swap(y1, y2);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">float</span> m = dy / dx;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordtype">float</span> x = x1;</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keywordtype">int</span> lastIntX = 0;</div>
-<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160; </div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">float</span> y = y1; x &lt; x2; x += 1.0f, y += m) {</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;                lastIntX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x);</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(lastIntX, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y), c);</div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;            }</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160; </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2) &gt; lastIntX) {</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2), c);</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            }</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        }</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    }</div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160; </div>
-<div class="line"><a name="l00112"></a><span class="lineno"><a class="line" href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">  112</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">DrawLine</a>(<span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a>&amp; p1, <span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a>&amp; p2, <a class="code" href="class_color.html">Color</a> c) {</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        <a class="code" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">DrawLine</a>(p1[0], p1[1], p2[0], p2[1], c);</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;    }</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;<span class="keyword">private</span>:</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;    <a class="code" href="class_g_d_i_plus_manager.html">GDIPlusManager</a> gdipMan;</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;    Microsoft::WRL::ComPtr&lt;IDXGISwapChain&gt; pSwapChain;</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Device&gt; pDevice;</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11DeviceContext&gt; pImmediateContext;</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11RenderTargetView&gt; pRenderTargetView;</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt; pSysBufferTexture;</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; pSysBufferTextureView;</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11PixelShader&gt; pPixelShader;</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11VertexShader&gt; pVertexShader;</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Buffer&gt; pVertexBuffer;</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11InputLayout&gt; pInputLayout;</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11SamplerState&gt; pSamplerState;</div>
-<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    D3D11_MAPPED_SUBRESOURCE mappedSysBufferTexture;</div>
-<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    <a class="code" href="class_surface.html">Surface</a> sysBuffer;</div>
-<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
-<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00133"></a><span class="lineno"><a class="line" href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">  133</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">ScreenWidth</a> = 640u;</div>
-<div class="line"><a name="l00134"></a><span class="lineno"><a class="line" href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">  134</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">ScreenHeight</a> = 640u;</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;};</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#ae9f5bcaa267fdff06bbfcf1e2ddf7137">BeginFrame</a>();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">   57</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <a class="code" href="class_color.html">Color</a> c) {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        sysBuffer.<a class="code" href="class_surface.html#ad95a03761aaa5229eab2a500441eb322">PutPixel</a>(x, y, c);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160; </div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">   61</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">PutPixel</a>(<span class="keywordtype">int</span> x, <span class="keywordtype">int</span> y, <span class="keywordtype">int</span> r, <span class="keywordtype">int</span> g, <span class="keywordtype">int</span> b) {</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(x, y, {<span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(r), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(g), <span class="keyword">static_cast&lt;</span><span class="keywordtype">unsigned</span> <span class="keywordtype">char</span><span class="keyword">&gt;</span>(b)});</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">   65</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">DrawLine</a>(<span class="keywordtype">float</span> x1, <span class="keywordtype">float</span> y1, <span class="keywordtype">float</span> x2, <span class="keywordtype">float</span> y2, <a class="code" href="class_color.html">Color</a> c) {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> dx = x2 - x1;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="keyword">const</span> <span class="keywordtype">float</span> dy = y2 - y1;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (dy == 0.0f &amp;&amp; dx == 0.0f) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x1), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y1), c);</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        }</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (abs(dy) &gt; abs(dx)) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <span class="keywordflow">if</span> (dy &lt; 0.0f) {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                std::swap(x1, x2);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                std::swap(y1, y2);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">float</span> m = dx / dy;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordtype">float</span> y = y1;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;            <span class="keywordtype">int</span> lastIntY = 0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">float</span> x = x1; y &lt; y2; y += 1.0f, x += m) {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                lastIntY = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x), lastIntY, c);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160; </div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2) &gt; lastIntY) {</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2), c);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            <span class="keywordflow">if</span> (dx &lt; 0.0f) {</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                std::swap(x1, x2);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;                std::swap(y1, y2);</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;            <span class="keyword">const</span> <span class="keywordtype">float</span> m = dy / dx;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            <span class="keywordtype">float</span> x = x1;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;            <span class="keywordtype">int</span> lastIntX = 0;</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">float</span> y = y1; x &lt; x2; x += 1.0f, y += m) {</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;                lastIntX = <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(lastIntX, <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y), c);</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            <span class="keywordflow">if</span> (<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2) &gt; lastIntX) {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;                <a class="code" href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">PutPixel</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(x2), <span class="keyword">static_cast&lt;</span><span class="keywordtype">int</span><span class="keyword">&gt;</span>(y2), c);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        }</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160; </div>
+<div class="line"><a name="l00114"></a><span class="lineno"><a class="line" href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">  114</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">DrawLine</a>(<span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a>&amp; p1, <span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a>&amp; p2, <a class="code" href="class_color.html">Color</a> c) {</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <a class="code" href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">DrawLine</a>(p1[0], p1[1], p2[0], p2[1], c);</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    }</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160; </div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;    <a class="code" href="class_g_d_i_plus_manager.html">GDIPlusManager</a> gdipMan;</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;    Microsoft::WRL::ComPtr&lt;IDXGISwapChain&gt; pSwapChain;</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Device&gt; pDevice;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11DeviceContext&gt; pImmediateContext;</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11RenderTargetView&gt; pRenderTargetView;</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Texture2D&gt; pSysBufferTexture;</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11ShaderResourceView&gt; pSysBufferTextureView;</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11PixelShader&gt; pPixelShader;</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11VertexShader&gt; pVertexShader;</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11Buffer&gt; pVertexBuffer;</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11InputLayout&gt; pInputLayout;</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    Microsoft::WRL::ComPtr&lt;ID3D11SamplerState&gt; pSamplerState;</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;    D3D11_MAPPED_SUBRESOURCE mappedSysBufferTexture;</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    <a class="code" href="class_surface.html">Surface</a> sysBuffer;</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160; </div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00135"></a><span class="lineno"><a class="line" href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">  135</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">ScreenWidth</a> = 640u;</div>
+<div class="line"><a name="l00136"></a><span class="lineno"><a class="line" href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">  136</a></span>&#160;    <span class="keyword">static</span> constexpr <span class="keywordtype">unsigned</span> <span class="keywordtype">int</span> <a class="code" href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">ScreenHeight</a> = 640u;</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;};</div>
 <div class="ttc" id="a_engine_exception_8h_html"><div class="ttname"><a href="_engine_exception_8h.html">EngineException.h</a></div></div>
 <div class="ttc" id="a_g_d_i_plus_manager_8h_html"><div class="ttname"><a href="_g_d_i_plus_manager_8h.html">GDIPlusManager.h</a></div></div>
 <div class="ttc" id="a_surface_8h_html"><div class="ttname"><a href="_surface_8h.html">Surface.h</a></div></div>
 <div class="ttc" id="a_vector3_8h_html"><div class="ttname"><a href="_vector3_8h.html">Vector3.h</a></div></div>
 <div class="ttc" id="aclass_color_html"><div class="ttname"><a href="class_color.html">Color</a></div><div class="ttdef"><b>Definition:</b> Colors.h:6</div></div>
-<div class="ttc" id="aclass_engine_exception_html"><div class="ttname"><a href="class_engine_exception.html">EngineException</a></div><div class="ttdef"><b>Definition:</b> EngineException.h:6</div></div>
+<div class="ttc" id="aclass_engine_exception_html"><div class="ttname"><a href="class_engine_exception.html">EngineException</a></div><div class="ttdef"><b>Definition:</b> EngineException.h:12</div></div>
 <div class="ttc" id="aclass_g_d_i_plus_manager_html"><div class="ttname"><a href="class_g_d_i_plus_manager.html">GDIPlusManager</a></div><div class="ttdef"><b>Definition:</b> GDIPlusManager.h:6</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html"><div class="ttname"><a href="class_graphics_1_1_exception.html">Graphics::Exception</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:22</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html_a4b41b1546bc1cfed820ce788bb92be66"><div class="ttname"><a href="class_graphics_1_1_exception.html#a4b41b1546bc1cfed820ce788bb92be66">Graphics::Exception::Exception</a></div><div class="ttdeci">Exception(HRESULT hr, const std::wstring &amp;note, const wchar_t *file, unsigned int line)</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:227</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html_a5c772df700d65afebeede2458517b79d"><div class="ttname"><a href="class_graphics_1_1_exception.html#a5c772df700d65afebeede2458517b79d">Graphics::Exception::GetErrorDescription</a></div><div class="ttdeci">std::wstring GetErrorDescription() const</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:248</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html_a72385eeb123d5171055c501c52833563"><div class="ttname"><a href="class_graphics_1_1_exception.html#a72385eeb123d5171055c501c52833563">Graphics::Exception::GetFullMessage</a></div><div class="ttdeci">std::wstring GetFullMessage() const override</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:231</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html_ac17beac957a2bd74fd7057c0854cec2b"><div class="ttname"><a href="class_graphics_1_1_exception.html#ac17beac957a2bd74fd7057c0854cec2b">Graphics::Exception::GetErrorName</a></div><div class="ttdeci">std::wstring GetErrorName() const</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:244</div></div>
-<div class="ttc" id="aclass_graphics_1_1_exception_html_ac8b78d9f50a178dc70407079a6958602"><div class="ttname"><a href="class_graphics_1_1_exception.html#ac8b78d9f50a178dc70407079a6958602">Graphics::Exception::GetExceptionType</a></div><div class="ttdeci">std::wstring GetExceptionType() const override</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:255</div></div>
-<div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:20</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html"><div class="ttname"><a href="class_graphics_1_1_exception.html">Graphics::Exception</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:24</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html_a398c569a113cc09dc43665d753989e6f"><div class="ttname"><a href="class_graphics_1_1_exception.html#a398c569a113cc09dc43665d753989e6f">Graphics::Exception::Exception</a></div><div class="ttdeci">Exception(HRESULT hr, const std::wstring note, std::wstring file, std::wstring line, std::wstring column)</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:227</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html_a5c772df700d65afebeede2458517b79d"><div class="ttname"><a href="class_graphics_1_1_exception.html#a5c772df700d65afebeede2458517b79d">Graphics::Exception::GetErrorDescription</a></div><div class="ttdeci">std::wstring GetErrorDescription() const</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:252</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html_a72385eeb123d5171055c501c52833563"><div class="ttname"><a href="class_graphics_1_1_exception.html#a72385eeb123d5171055c501c52833563">Graphics::Exception::GetFullMessage</a></div><div class="ttdeci">std::wstring GetFullMessage() const override</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:235</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html_ac17beac957a2bd74fd7057c0854cec2b"><div class="ttname"><a href="class_graphics_1_1_exception.html#ac17beac957a2bd74fd7057c0854cec2b">Graphics::Exception::GetErrorName</a></div><div class="ttdeci">std::wstring GetErrorName() const</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:248</div></div>
+<div class="ttc" id="aclass_graphics_1_1_exception_html_ac8b78d9f50a178dc70407079a6958602"><div class="ttname"><a href="class_graphics_1_1_exception.html#ac8b78d9f50a178dc70407079a6958602">Graphics::Exception::GetExceptionType</a></div><div class="ttdeci">std::wstring GetExceptionType() const override</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:259</div></div>
+<div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:22</div></div>
 <div class="ttc" id="aclass_graphics_html_a1e3ea788357130397c3afe72f360ada7"><div class="ttname"><a href="class_graphics.html#a1e3ea788357130397c3afe72f360ada7">Graphics::operator=</a></div><div class="ttdeci">Graphics &amp; operator=(Graphics &amp;&amp;)=delete</div></div>
-<div class="ttc" id="aclass_graphics_html_a299cde483dbb4244cdfe332d0693c088"><div class="ttname"><a href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">Graphics::ScreenWidth</a></div><div class="ttdeci">static constexpr unsigned int ScreenWidth</div><div class="ttdef"><b>Definition:</b> Graphics.h:133</div></div>
+<div class="ttc" id="aclass_graphics_html_a299cde483dbb4244cdfe332d0693c088"><div class="ttname"><a href="class_graphics.html#a299cde483dbb4244cdfe332d0693c088">Graphics::ScreenWidth</a></div><div class="ttdeci">static constexpr unsigned int ScreenWidth</div><div class="ttdef"><b>Definition:</b> Graphics.h:135</div></div>
 <div class="ttc" id="aclass_graphics_html_a56203cba547bde8af2eadda01e0d17c3"><div class="ttname"><a href="class_graphics.html#a56203cba547bde8af2eadda01e0d17c3">Graphics::EndFrame</a></div><div class="ttdeci">void EndFrame()</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:195</div></div>
-<div class="ttc" id="aclass_graphics_html_a64e7971066ee21f5b77aa525742f29e2"><div class="ttname"><a href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">Graphics::PutPixel</a></div><div class="ttdeci">void PutPixel(int x, int y, int r, int g, int b)</div><div class="ttdef"><b>Definition:</b> Graphics.h:59</div></div>
-<div class="ttc" id="aclass_graphics_html_a69fae0334426fd8a8a271d9843d4f7fe"><div class="ttname"><a href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">Graphics::PutPixel</a></div><div class="ttdeci">void PutPixel(int x, int y, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:55</div></div>
+<div class="ttc" id="aclass_graphics_html_a64e7971066ee21f5b77aa525742f29e2"><div class="ttname"><a href="class_graphics.html#a64e7971066ee21f5b77aa525742f29e2">Graphics::PutPixel</a></div><div class="ttdeci">void PutPixel(int x, int y, int r, int g, int b)</div><div class="ttdef"><b>Definition:</b> Graphics.h:61</div></div>
+<div class="ttc" id="aclass_graphics_html_a69fae0334426fd8a8a271d9843d4f7fe"><div class="ttname"><a href="class_graphics.html#a69fae0334426fd8a8a271d9843d4f7fe">Graphics::PutPixel</a></div><div class="ttdeci">void PutPixel(int x, int y, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:57</div></div>
 <div class="ttc" id="aclass_graphics_html_a7841c9a961ac9bca33bd30ddf8066cdb"><div class="ttname"><a href="class_graphics.html#a7841c9a961ac9bca33bd30ddf8066cdb">Graphics::~Graphics</a></div><div class="ttdeci">~Graphics()</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:184</div></div>
-<div class="ttc" id="aclass_graphics_html_a90b62640a14c0b52a4a85d3197b8d01c"><div class="ttname"><a href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">Graphics::ScreenHeight</a></div><div class="ttdeci">static constexpr unsigned int ScreenHeight</div><div class="ttdef"><b>Definition:</b> Graphics.h:134</div></div>
+<div class="ttc" id="aclass_graphics_html_a90b62640a14c0b52a4a85d3197b8d01c"><div class="ttname"><a href="class_graphics.html#a90b62640a14c0b52a4a85d3197b8d01c">Graphics::ScreenHeight</a></div><div class="ttdeci">static constexpr unsigned int ScreenHeight</div><div class="ttdef"><b>Definition:</b> Graphics.h:136</div></div>
 <div class="ttc" id="aclass_graphics_html_ab29fadd0d25fa1313d89c84443f49122"><div class="ttname"><a href="class_graphics.html#ab29fadd0d25fa1313d89c84443f49122">Graphics::Graphics</a></div><div class="ttdeci">Graphics(class HWNDKey &amp;key)</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:20</div></div>
 <div class="ttc" id="aclass_graphics_html_abaf6bc20f9541026835dfee157ac5efb"><div class="ttname"><a href="class_graphics.html#abaf6bc20f9541026835dfee157ac5efb">Graphics::operator=</a></div><div class="ttdeci">Graphics &amp; operator=(const Graphics &amp;)=delete</div></div>
 <div class="ttc" id="aclass_graphics_html_abe2f13f24a1d35c55fdac10a282744eb"><div class="ttname"><a href="class_graphics.html#abe2f13f24a1d35c55fdac10a282744eb">Graphics::Graphics</a></div><div class="ttdeci">Graphics(const Graphics &amp;)=delete</div></div>
 <div class="ttc" id="aclass_graphics_html_ac19c4971eef9958a863e425ddd6936b4"><div class="ttname"><a href="class_graphics.html#ac19c4971eef9958a863e425ddd6936b4">Graphics::Graphics</a></div><div class="ttdeci">Graphics(Graphics &amp;&amp;)=delete</div></div>
-<div class="ttc" id="aclass_graphics_html_acc62144c402eeaec8e0d496f4cac9c86"><div class="ttname"><a href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">Graphics::DrawLine</a></div><div class="ttdeci">void DrawLine(float x1, float y1, float x2, float y2, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:63</div></div>
-<div class="ttc" id="aclass_graphics_html_adc0d5b1fd9721c739fb702978fe13e8d"><div class="ttname"><a href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">Graphics::DrawLine</a></div><div class="ttdeci">void DrawLine(const Vec3 &amp;p1, const Vec3 &amp;p2, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:112</div></div>
+<div class="ttc" id="aclass_graphics_html_acc62144c402eeaec8e0d496f4cac9c86"><div class="ttname"><a href="class_graphics.html#acc62144c402eeaec8e0d496f4cac9c86">Graphics::DrawLine</a></div><div class="ttdeci">void DrawLine(float x1, float y1, float x2, float y2, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:65</div></div>
+<div class="ttc" id="aclass_graphics_html_adc0d5b1fd9721c739fb702978fe13e8d"><div class="ttname"><a href="class_graphics.html#adc0d5b1fd9721c739fb702978fe13e8d">Graphics::DrawLine</a></div><div class="ttdeci">void DrawLine(const Vec3 &amp;p1, const Vec3 &amp;p2, Color c)</div><div class="ttdef"><b>Definition:</b> Graphics.h:114</div></div>
 <div class="ttc" id="aclass_graphics_html_ae9f5bcaa267fdff06bbfcf1e2ddf7137"><div class="ttname"><a href="class_graphics.html#ae9f5bcaa267fdff06bbfcf1e2ddf7137">Graphics::BeginFrame</a></div><div class="ttdeci">void BeginFrame()</div><div class="ttdef"><b>Definition:</b> Graphics.cpp:191</div></div>
 <div class="ttc" id="aclass_h_w_n_d_key_html"><div class="ttname"><a href="class_h_w_n_d_key.html">HWNDKey</a></div><div class="ttdef"><b>Definition:</b> MainWindow.h:13</div></div>
 <div class="ttc" id="aclass_surface_html"><div class="ttname"><a href="class_surface.html">Surface</a></div><div class="ttdef"><b>Definition:</b> Surface.h:15</div></div>

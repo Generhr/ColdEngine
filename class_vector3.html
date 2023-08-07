@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -160,6 +160,14 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aa96e13816c0a24c56b0dece3ac2b17c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad665e668b51840b3db8ce7b4865f7df5"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#ad665e668b51840b3db8ce7b4865f7df5">Lerp</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;vector, float alpha)</td></tr>
 <tr class="separator:ad665e668b51840b3db8ce7b4865f7df5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a46fa3ba23eddf38c884a9b4b4baa0b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#a7a46fa3ba23eddf38c884a9b4b4baa0b">Saturate</a> ()</td></tr>
+<tr class="separator:a7a46fa3ba23eddf38c884a9b4b4baa0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa3844aebe353eafd860e9de078c25a08"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#aa3844aebe353eafd860e9de078c25a08">GetSaturated</a> () const</td></tr>
+<tr class="separator:aa3844aebe353eafd860e9de078c25a08"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca7f3ae6237f6eee9ea877dac2d5481d"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#aca7f3ae6237f6eee9ea877dac2d5481d">Hadamard</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;vector)</td></tr>
+<tr class="separator:aca7f3ae6237f6eee9ea877dac2d5481d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a38e1d9f64ce8ff78a86b87f3826c1ee2"><td class="memItemLeft" align="right" valign="top"><a class="el" href="class_vector3.html">Vector3</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#a38e1d9f64ce8ff78a86b87f3826c1ee2">GetHadamard</a> (const <a class="el" href="class_vector3.html">Vector3</a> &amp;vector) const</td></tr>
+<tr class="separator:a38e1d9f64ce8ff78a86b87f3826c1ee2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0eeda5e5b36696689e436607a2230014"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_vector3.html#a0eeda5e5b36696689e436607a2230014">Print</a> () const</td></tr>
 <tr class="separator:a0eeda5e5b36696689e436607a2230014"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
@@ -218,7 +226,7 @@ template&lt;typename T &gt; </div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a515f2c0f2383c0e3083321745b708463_icgraph.svg" width="620" height="272"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a515f2c0f2383c0e3083321745b708463_icgraph.svg" width="723" height="515"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -500,6 +508,46 @@ template&lt;typename T &gt; </div>
 
 </div>
 </div>
+<a id="a38e1d9f64ce8ff78a86b87f3826c1ee2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a38e1d9f64ce8ff78a86b87f3826c1ee2">&#9670;&nbsp;</a></span>GetHadamard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3.html">Vector3</a> <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt;::GetHadamard </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a38e1d9f64ce8ff78a86b87f3826c1ee2_cgraph.svg" width="332" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a38e1d9f64ce8ff78a86b87f3826c1ee2_icgraph.svg" width="404" height="123"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
 <a id="ac297afb6e74370b4327d779328412b18"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ac297afb6e74370b4327d779328412b18">&#9670;&nbsp;</a></span>GetMagnitude()</h2>
 
@@ -534,7 +582,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_ac297afb6e74370b4327d779328412b18_icgraph.svg" width="656" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_ac297afb6e74370b4327d779328412b18_icgraph.svg" width="759" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -574,7 +622,7 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a40b58e9af6b19f4fd02e75a7e036c497_icgraph.svg" width="908" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a40b58e9af6b19f4fd02e75a7e036c497_icgraph.svg" width="1010" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 
@@ -614,9 +662,70 @@ Here is the call graph for this function:</div>
 <div class="dynheader">
 Here is the caller graph for this function:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a1453d64a7a4333b19d6a92b8e61e617e_icgraph.svg" width="454" height="91"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a1453d64a7a4333b19d6a92b8e61e617e_icgraph.svg" width="555" height="447"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
+
+</div>
+</div>
+<a id="aa3844aebe353eafd860e9de078c25a08"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa3844aebe353eafd860e9de078c25a08">&#9670;&nbsp;</a></span>GetSaturated()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3.html">Vector3</a> <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt;::GetSaturated </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the call graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_aa3844aebe353eafd860e9de078c25a08_cgraph.svg" width="334" height="39"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
+
+</div>
+</div>
+<a id="aca7f3ae6237f6eee9ea877dac2d5481d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca7f3ae6237f6eee9ea877dac2d5481d">&#9670;&nbsp;</a></span>Hadamard()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3.html">Vector3</a>&amp; <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt;::Hadamard </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt; &amp;&#160;</td>
+          <td class="paramname"><em>vector</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
 
 </div>
 </div>
@@ -1464,6 +1573,39 @@ template&lt;typename T &gt; </div>
   </tr>
 </table>
 </div><div class="memdoc">
+
+</div>
+</div>
+<a id="a7a46fa3ba23eddf38c884a9b4b4baa0b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a46fa3ba23eddf38c884a9b4b4baa0b">&#9670;&nbsp;</a></span>Saturate()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="class_vector3.html">Vector3</a>&amp; <a class="el" href="class_vector3.html">Vector3</a>&lt; T &gt;::Saturate </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<div class="dynheader">
+Here is the caller graph for this function:</div>
+<div class="dyncontent">
+<div class="center"><iframe scrolling="no" frameborder="0" src="class_vector3_a7a46fa3ba23eddf38c884a9b4b4baa0b_icgraph.svg" width="372" height="175"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+</div>
+</div>
 
 </div>
 </div>

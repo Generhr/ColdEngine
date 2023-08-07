@@ -1,6 +1,11 @@
 <map id="Vector3::GetNormalized" name="Vector3::GetNormalized">
-<area shape="rect" id="node1" title=" " alt="" coords="287,32,447,60"/>
-<area shape="rect" id="node2" href="$class_vector3.html#a60a66eb12fb598ec0f2ada72819395b2" title=" " alt="" coords="107,5,239,33"/>
-<area shape="rect" id="node4" href="$_vector3_8cpp.html#acd001b833aaf532c808c6051f045d3c2" title=" " alt="" coords="146,57,200,85"/>
+<area shape="rect" id="node1" title=" " alt="" coords="389,209,549,237"/>
+<area shape="rect" id="node2" href="$class_vector3.html#a60a66eb12fb598ec0f2ada72819395b2" title=" " alt="" coords="158,5,290,33"/>
+<area shape="rect" id="node4" href="$class_geometry_flat_effect_1_1_geometry_shader.html#a84bd7b52ddfb6c22dfe57eaacdf7a50f" title=" " alt="" coords="129,57,319,101"/>
+<area shape="rect" id="node5" href="$class_wave_vertex_texture_effect_1_1_geometry_shader.html#a2c58f9e1316b26ca6014e8ee9b3fa9cf" title=" " alt="" coords="129,125,319,169"/>
+<area shape="rect" id="node6" href="$class_geometry_flat_effect_1_1_geometry_shader.html#a4ef92d67615439c6cd50961e231a7a83" title=" " alt="" coords="132,193,316,253"/>
+<area shape="rect" id="node7" href="$class_vertex_flat_effect_1_1_vertex_shader.html#aa0c59c8483a1af26e93aabab04cb0c4d" title=" " alt="" coords="139,277,309,321"/>
+<area shape="rect" id="node8" href="$class_wave_vertex_texture_effect_1_1_geometry_shader.html#a4a3dfd7d8776a0abffb2910b217e43bb" title=" " alt="" coords="107,345,341,389"/>
+<area shape="rect" id="node9" href="$_vector3_8cpp.html#acd001b833aaf532c808c6051f045d3c2" title=" " alt="" coords="197,413,251,441"/>
 <area shape="rect" id="node3" href="$_vector3_8cpp.html#ab5848f313403912f60a11f987ed720c7" title=" " alt="" coords="5,5,59,33"/>
 </map>

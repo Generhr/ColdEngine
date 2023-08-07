@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -92,18 +92,19 @@ $(document).ready(function(){initNavTree('class_engine_exception.html',''); init
 
 <p>This is the complete list of members for <a class="el" href="class_engine_exception.html">EngineException</a>, including all inherited members.</p>
 <table class="directory">
-  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a1f4658e47cce2e58118224fa9e708eb0">EngineException</a>(std::wstring file, unsigned int line, std::wstring note=L&quot;&quot;)</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a8342e8291733901720d16464558d77e9">EngineException</a>(std::wstring file, std::wstring line, std::wstring column, std::wstring note=L&quot;&quot;)</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr><td class="entry"><a class="el" href="class_engine_exception.html#aa4d4dc2be89a85d9614847bbb0ba5c14">EngineException</a>(const EngineException &amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#acda0a93844c6a1dca62c21d9aa3461d6">EngineException</a>(EngineException &amp;&amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_engine_exception.html#aaf0093daa4c1892417f1bf7ceeb4d2d1">GetExceptionType</a>() const =0</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#abf7227ac5d810c93b624e30c9582d80d">GetFile</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a7b236857d511dc746e080c302a83409e">GetFullMessage</a>() const =0</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a1c34163797c05055e8ff65b93887977c">GetLine</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a2e37e0524aba986548968397d0742d06">GetLocation</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a15642b205ddcb90fa3f6f4618fd4a895">GetNote</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr><td class="entry"><a class="el" href="class_engine_exception.html#ac50fc758069f91b7cdf4a3e7a64eea27">operator=</a>(const EngineException &amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a8c6fdc6ede9c2994869dd24de51f90fd">operator=</a>(EngineException &amp;&amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
-  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a66204b3ce3618c833b7e05513601df7e">~EngineException</a>()=default</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_engine_exception.html#aac9495c7081783bd4a2301d93b2e6ce8">GetColumn</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#aaf0093daa4c1892417f1bf7ceeb4d2d1">GetExceptionType</a>() const =0</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a7f9716f2cbfca37967fef65ffa43fea8">GetFile</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a7b236857d511dc746e080c302a83409e">GetFullMessage</a>() const =0</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">pure virtual</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a16795da45dd97c36bf6eef37cfadf847">GetLine</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a1e32f18e4c19d52686472505d305cc59">GetLocation</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr><td class="entry"><a class="el" href="class_engine_exception.html#aede7919e4760fd23fab00f2aa1e4d301">GetNote</a>() const</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#ac50fc758069f91b7cdf4a3e7a64eea27">operator=</a>(const EngineException &amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
+  <tr><td class="entry"><a class="el" href="class_engine_exception.html#a8c6fdc6ede9c2994869dd24de51f90fd">operator=</a>(EngineException &amp;&amp;)=delete</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="class_engine_exception.html#a66204b3ce3618c833b7e05513601df7e">~EngineException</a>()=default</td><td class="entry"><a class="el" href="class_engine_exception.html">EngineException</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

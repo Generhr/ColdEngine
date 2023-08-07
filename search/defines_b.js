@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['win32_5flean_5fand_5fmean_843',['WIN32_LEAN_AND_MEAN',['../_win_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'Win.h']]]
+  ['oemresource_1154',['OEMRESOURCE',['../_win_8h.html#a3a75770af38d05856eb2e9d1867b471c',1,'Win.h']]]
 ];

@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -101,13 +101,13 @@ $(document).ready(function(){initNavTree('_graphics_8h.html',''); initResizable(
 </div><div class="textblock"><div class="dynheader">
 Include dependency graph for Graphics.h:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_graphics_8h__incl.svg" width="1084" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_graphics_8h__incl.svg" width="1143" height="419"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div><div class="textblock"><div class="dynheader">
 This graph shows which files directly or indirectly include this file:</div>
 <div class="dyncontent">
-<div class="center"><iframe scrolling="no" frameborder="0" src="_graphics_8h__dep__incl.svg" width="2050" height="451"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
+<div class="center"><iframe scrolling="no" frameborder="0" src="_graphics_8h__dep__incl.svg" width="2474" height="451"><p><b>This browser is not able to show SVG: try Firefox, Chrome, Safari, or Opera instead.</b></p></iframe>
 </div>
 </div>
 </div>
@@ -124,8 +124,8 @@ Classes</h2></td></tr>
 Macros</h2></td></tr>
 <tr class="memitem:a71809484a26cd96c6abe839a0a8a289d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_graphics_8h.html#a71809484a26cd96c6abe839a0a8a289d">byte</a>&#160;&#160;&#160;    win_byte_override</td></tr>
 <tr class="separator:a71809484a26cd96c6abe839a0a8a289d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd90668edfd31776a3294caa23be6058"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_graphics_8h.html#abd90668edfd31776a3294caa23be6058">COLD_GFX_EXCEPTION</a>(hr,  note)&#160;&#160;&#160;<a class="el" href="class_graphics_1_1_exception.html">Graphics::Exception</a>(hr, note, _CRT_WIDE(__FILE__), __LINE__)</td></tr>
-<tr class="separator:abd90668edfd31776a3294caa23be6058"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49431b733154720ffe1538a574b0eec3"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="_graphics_8h.html#a49431b733154720ffe1538a574b0eec3">GRAPHICS_EXCEPTION</a>(hr,  note)&#160;&#160;&#160;    <a class="el" href="class_graphics_1_1_exception.html">Graphics::Exception</a>(hr, note, <a class="el" href="_engine_exception_8h.html#a2e77f68bdd93449601380f9f9b3e7450">ENGINE_EXCEPTION_FILE</a>, <a class="el" href="_engine_exception_8h.html#a801e8a588513d85626c48863f479e903">ENGINE_EXCEPTION_LINE</a>, <a class="el" href="_engine_exception_8h.html#abb5ab9cf9dbb795fd0b86c190c0c0b0f">ENGINE_EXCEPTION_COLUMN</a>)</td></tr>
+<tr class="separator:a49431b733154720ffe1538a574b0eec3"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">Macro Definition Documentation</h2>
 <a id="a71809484a26cd96c6abe839a0a8a289d"></a>
@@ -142,14 +142,14 @@ Macros</h2></td></tr>
 
 </div>
 </div>
-<a id="abd90668edfd31776a3294caa23be6058"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#abd90668edfd31776a3294caa23be6058">&#9670;&nbsp;</a></span>COLD_GFX_EXCEPTION</h2>
+<a id="a49431b733154720ffe1538a574b0eec3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49431b733154720ffe1538a574b0eec3">&#9670;&nbsp;</a></span>GRAPHICS_EXCEPTION</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">#define COLD_GFX_EXCEPTION</td>
+          <td class="memname">#define GRAPHICS_EXCEPTION</td>
           <td>(</td>
           <td class="paramtype">&#160;</td>
           <td class="paramname">hr, </td>
@@ -163,7 +163,7 @@ Macros</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td>&#160;&#160;&#160;<a class="el" href="class_graphics_1_1_exception.html">Graphics::Exception</a>(hr, note, _CRT_WIDE(__FILE__), __LINE__)</td>
+          <td></td><td>&#160;&#160;&#160;    <a class="el" href="class_graphics_1_1_exception.html">Graphics::Exception</a>(hr, note, <a class="el" href="_engine_exception_8h.html#a2e77f68bdd93449601380f9f9b3e7450">ENGINE_EXCEPTION_FILE</a>, <a class="el" href="_engine_exception_8h.html#a801e8a588513d85626c48863f479e903">ENGINE_EXCEPTION_LINE</a>, <a class="el" href="_engine_exception_8h.html#abb5ab9cf9dbb795fd0b86c190c0c0b0f">ENGINE_EXCEPTION_COLUMN</a>)</td>
         </tr>
       </table>
 </div><div class="memdoc">

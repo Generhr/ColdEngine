@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.5.3</span>
+   &#160;<span id="projectnumber">1.6.0</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -153,10 +153,10 @@ $(document).ready(function(){initNavTree('_cube_solid_geometry_scene_8h_source.h
 <div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// Translation from offset</span></div>
 <div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keyword">const</span> <a class="code" href="class_vector3.html">Vec3</a> trans = {0.0f, 0.0f, offset_z};</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// set pipeline transform</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">// Set pipeline transform</span></div>
 <div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">effect</a>.vs.BindRotation(rot);</div>
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">effect</a>.vs.BindTranslation(trans);</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// render triangles</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <span class="comment">// Render triangles</span></div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        pipeline.<a class="code" href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Draw</a>(itlist);</div>
 <div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
 <div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
@@ -182,7 +182,7 @@ $(document).ready(function(){initNavTree('_cube_solid_geometry_scene_8h_source.h
 <div class="ttc" id="aclass_cube_solid_geometry_scene_html_a7da2873b23138e364cc25b64dcaa2111"><div class="ttname"><a href="class_cube_solid_geometry_scene.html#a7da2873b23138e364cc25b64dcaa2111">CubeSolidGeometryScene::Vertex</a></div><div class="ttdeci">Pipeline::Vertex Vertex</div><div class="ttdef"><b>Definition:</b> CubeSolidGeometryScene.h:13</div></div>
 <div class="ttc" id="aclass_cube_solid_geometry_scene_html_aa7ef23fe155a0a262c0357eaa3452506"><div class="ttname"><a href="class_cube_solid_geometry_scene.html#aa7ef23fe155a0a262c0357eaa3452506">CubeSolidGeometryScene::Draw</a></div><div class="ttdeci">virtual void Draw() override</div><div class="ttdef"><b>Definition:</b> CubeSolidGeometryScene.h:56</div></div>
 <div class="ttc" id="aclass_cube_solid_geometry_scene_html_ac52e16f3e9408c2ae248c7a7e4146d99"><div class="ttname"><a href="class_cube_solid_geometry_scene.html#ac52e16f3e9408c2ae248c7a7e4146d99">CubeSolidGeometryScene::CubeSolidGeometryScene</a></div><div class="ttdeci">CubeSolidGeometryScene(Graphics &amp;graphics)</div><div class="ttdef"><b>Definition:</b> CubeSolidGeometryScene.h:16</div></div>
-<div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:20</div></div>
+<div class="ttc" id="aclass_graphics_html"><div class="ttname"><a href="class_graphics.html">Graphics</a></div><div class="ttdef"><b>Definition:</b> Graphics.h:22</div></div>
 <div class="ttc" id="aclass_keyboard_html"><div class="ttname"><a href="class_keyboard.html">Keyboard</a></div><div class="ttdef"><b>Definition:</b> Keyboard.h:7</div></div>
 <div class="ttc" id="aclass_keyboard_html_a7b11ba07982539a0dd9b16b4706e7211"><div class="ttname"><a href="class_keyboard.html#a7b11ba07982539a0dd9b16b4706e7211">Keyboard::KeyIsPressed</a></div><div class="ttdeci">bool KeyIsPressed(unsigned char keycode) const</div><div class="ttdef"><b>Definition:</b> Keyboard.cpp:4</div></div>
 <div class="ttc" id="aclass_matrix3_html"><div class="ttname"><a href="class_matrix3.html">Matrix3&lt; float &gt;</a></div></div>
@@ -192,7 +192,7 @@ $(document).ready(function(){initNavTree('_cube_solid_geometry_scene_8h_source.h
 <div class="ttc" id="aclass_mouse_html"><div class="ttname"><a href="class_mouse.html">Mouse</a></div><div class="ttdef"><b>Definition:</b> Mouse.h:8</div></div>
 <div class="ttc" id="aclass_pipeline_html"><div class="ttname"><a href="class_pipeline.html">Pipeline</a></div><div class="ttdef"><b>Definition:</b> Pipeline.h:17</div></div>
 <div class="ttc" id="aclass_pipeline_html_a179077548f7770a505e2aaadb5060f53"><div class="ttname"><a href="class_pipeline.html#a179077548f7770a505e2aaadb5060f53">Pipeline::Vertex</a></div><div class="ttdeci">Effect::Vertex Vertex</div><div class="ttdef"><b>Definition:</b> Pipeline.h:19</div></div>
-<div class="ttc" id="aclass_pipeline_html_a25e264532d6e4cc68855f9f8c1172331"><div class="ttname"><a href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">Pipeline::effect</a></div><div class="ttdeci">Effect effect</div><div class="ttdef"><b>Definition:</b> Pipeline.h:240</div></div>
+<div class="ttc" id="aclass_pipeline_html_a25e264532d6e4cc68855f9f8c1172331"><div class="ttname"><a href="class_pipeline.html#a25e264532d6e4cc68855f9f8c1172331">Pipeline::effect</a></div><div class="ttdeci">Effect effect</div><div class="ttdef"><b>Definition:</b> Pipeline.h:238</div></div>
 <div class="ttc" id="aclass_pipeline_html_a76274774f61e4b5a1c708decf65712b9"><div class="ttname"><a href="class_pipeline.html#a76274774f61e4b5a1c708decf65712b9">Pipeline::Draw</a></div><div class="ttdeci">void Draw(const IndexedTriangleList&lt; Vertex &gt; &amp;triList)</div><div class="ttdef"><b>Definition:</b> Pipeline.h:27</div></div>
 <div class="ttc" id="aclass_pipeline_html_adf2322f3b604145324fe70fd45266b46"><div class="ttname"><a href="class_pipeline.html#adf2322f3b604145324fe70fd45266b46">Pipeline::BeginFrame</a></div><div class="ttdeci">void BeginFrame()</div><div class="ttdef"><b>Definition:</b> Pipeline.h:32</div></div>
 <div class="ttc" id="aclass_scene_html"><div class="ttname"><a href="class_scene.html">Scene</a></div><div class="ttdef"><b>Definition:</b> Scene.h:10</div></div>
