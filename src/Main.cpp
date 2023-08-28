@@ -5,18 +5,17 @@
 #include <iostream>
 #include <thread>
 
-
 using namespace std::chrono_literals;
 
 struct game_state {
     // This contains the state of your game, such as positions and velocities
 };
 
-void update(game_state*) {
+void update(game_state* /* state */) {
     // Update game logic here
 }
 
-void render(game_state const&) {
+void render(game_state const& /* state */) {
     // Render stuff here
 }
 
@@ -28,7 +27,7 @@ game_state interpolate(game_state const& current, game_state const& previous, fl
     return interpolated_state;
 }
 
-int main(int argc, char* argv[]) {
+int main(int /* argc */, char** /* argv[] */) {
     HINSTANCE hInst = GetModuleHandle(nullptr);
     LPWSTR pArgs = GetCommandLineW();
 
@@ -42,7 +41,7 @@ int main(int argc, char* argv[]) {
             auto delta = std::chrono::duration<float> {0ms};
 
             constexpr auto timestep =
-                std::chrono::duration<float, std::ratio<1, 60>> {1};  // Fixed timestep of 1/60th of a second.
+                std::chrono::duration<float, std::ratio<1, 60>> {1};  // Fixed timestep of 1/60th of a second
 
             game_state current_state;
             game_state previous_state;
@@ -68,7 +67,7 @@ int main(int argc, char* argv[]) {
                     delta -= timestep;
 
                     previous_state = current_state;
-                    update(&current_state);  // Update at a fixed rate each time.
+                    update(&current_state);  // Update at a fixed rate each time
 
                     engine.UpdateModel();
 
@@ -83,8 +82,8 @@ int main(int argc, char* argv[]) {
 
                 // FPS
 
-                if (std::chrono::duration<float> {currentTime - lastFpsUpdate} >= oneSecond) {  // Update every second.
-                    fps = (1 - 0.25f) * fps + 0.25f * (framesThisSecond / oneSecond.count());   // Compute the new FPS.
+                if (std::chrono::duration<float> {currentTime - lastFpsUpdate} >= oneSecond) {  // Update every second
+                    fps = (1 - 0.25f) * fps + 0.25f * (framesThisSecond / oneSecond.count());   // Compute the new FPS
 
                     std::cout << static_cast<int>(fps) << " ("
                               << std::chrono::duration<float> {currentTime - lastFpsUpdate} << ")\n";
@@ -97,7 +96,7 @@ int main(int argc, char* argv[]) {
 
                 // Render
 
-                // Calculate how close or far we are from the next timestep:
+                // Calculate how close or far we are from the next timestep
                 auto const alpha = delta / timestep;
                 auto interpolated_state = interpolate(current_state, previous_state, alpha);
 
@@ -112,7 +111,7 @@ int main(int argc, char* argv[]) {
                     std::chrono::duration<float, std::ratio<1, 60>> {1} -
                     5ms;  // You'll have to experiment with how much early. Too early and you burn too much CPU (and
                           // battery). Too little, and `sleep_for` occasionally wakes up too late when the CPU is under
-                          // a high load.
+                          // a high load
 
                 if (frameTime < targetFrameTime) {
                     auto const sleepDuration = targetFrameTime - frameTime;

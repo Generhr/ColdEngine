@@ -1,6 +1,5 @@
 #pragma once
 
-
 template<class V>
 class Triangle {
 public:

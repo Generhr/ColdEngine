@@ -6,7 +6,6 @@
 #include "Pipeline.h"
 #include "Effects/VertexFlatEffect.h"
 
-
 class CubeFlatIndependentScene : public Scene {
 public:
     typedef Pipeline<VertexFlatEffect> Pipeline;

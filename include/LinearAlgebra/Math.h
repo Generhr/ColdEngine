@@ -9,7 +9,6 @@
 #include <numbers>
 #include <random>
 
-
 namespace Math {
     // Constants
 

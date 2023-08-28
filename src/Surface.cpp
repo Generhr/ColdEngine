@@ -11,7 +11,6 @@
 
 #pragma comment(lib, "gdiplus.lib")
 
-
 void Surface::PutPixelAlpha(unsigned int x, unsigned int y, const Color c) {
     assert(x < width);
     assert(y < height);
@@ -36,9 +35,9 @@ Surface Surface::FromFile(const std::wstring& name) {
         Gdiplus::Bitmap bitmap(name.c_str());
 
         if (bitmap.GetLastStatus() != Gdiplus::Status::Ok) {
-            throw Exception(ENGINE_EXCEPTION_FILE,
-                ENGINE_EXCEPTION_LINE,
-                ENGINE_EXCEPTION_COLUMN,
+            throw Exception(GET_EXCEPTION_FILE,
+                GET_EXCEPTION_LINE,
+                GET_EXCEPTION_COLUMN,
                 L"Failed to load [" + name + L"].");
         }
 
@@ -68,18 +67,18 @@ void Surface::Save(const std::wstring& filename) const {
         Gdiplus::GetImageEncodersSize(&num, &size);
 
         if (size == 0) {
-            throw Exception(ENGINE_EXCEPTION_FILE,
-                ENGINE_EXCEPTION_LINE,
-                ENGINE_EXCEPTION_COLUMN,
+            throw Exception(GET_EXCEPTION_FILE,
+                GET_EXCEPTION_LINE,
+                GET_EXCEPTION_COLUMN,
                 L"Failed to get encoder for [" + filename + L"] (size == 0).");
         }
 
         pImageCodecInfo = static_cast<Gdiplus::ImageCodecInfo*>(malloc(size));
 
         if (pImageCodecInfo == nullptr) {
-            throw Exception(ENGINE_EXCEPTION_FILE,
-                ENGINE_EXCEPTION_LINE,
-                ENGINE_EXCEPTION_COLUMN,
+            throw Exception(GET_EXCEPTION_FILE,
+                GET_EXCEPTION_LINE,
+                GET_EXCEPTION_COLUMN,
                 L"Failed to get encoder for [" + filename + L"] (failed to allocate memory).");
         }
 
@@ -95,9 +94,9 @@ void Surface::Save(const std::wstring& filename) const {
 
         free(pImageCodecInfo);
 
-        throw Exception(ENGINE_EXCEPTION_FILE,
-            ENGINE_EXCEPTION_LINE,
-            ENGINE_EXCEPTION_COLUMN,
+        throw Exception(GET_EXCEPTION_FILE,
+            GET_EXCEPTION_LINE,
+            GET_EXCEPTION_COLUMN,
             L"Failed to get encoder for [" + filename + L"] (failed to find matching encoder).");
     };
 
@@ -110,9 +109,9 @@ void Surface::Save(const std::wstring& filename) const {
         reinterpret_cast<BYTE*>(pBuffer.get()));
 
     if (bitmap.Save(filename.c_str(), &bmpID, nullptr) != Gdiplus::Status::Ok) {
-        throw Exception(ENGINE_EXCEPTION_FILE,
-            ENGINE_EXCEPTION_LINE,
-            ENGINE_EXCEPTION_COLUMN,
+        throw Exception(GET_EXCEPTION_FILE,
+            GET_EXCEPTION_LINE,
+            GET_EXCEPTION_COLUMN,
             L"Failed to save bitmap to [" + filename + L"].");
     }
 }

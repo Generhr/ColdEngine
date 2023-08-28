@@ -4,7 +4,6 @@
 #include "Shaders/DefaultVertexShader.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 // Flat shading with face normals calculated in gs
 class GeometryFlatEffect {
 public:

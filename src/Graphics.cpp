@@ -14,7 +14,6 @@
 
 #pragma comment(lib, "d3d11.lib")
 
-
 using Microsoft::WRL::ComPtr;
 
 Graphics::Graphics(HWNDKey& key) : sysBuffer(ScreenWidth, ScreenHeight) {
@@ -224,7 +223,7 @@ void Graphics::EndFrame() {
     }
 }
 
-Graphics::Exception::Exception(HRESULT hr,
+Graphics::GraphicsException::GraphicsException(HRESULT hr,
     const std::wstring note,
     const std::wstring file,
     const std::wstring line,
@@ -232,7 +231,7 @@ Graphics::Exception::Exception(HRESULT hr,
     : EngineException(file, line, column, note), hr(hr) {
 }
 
-std::wstring Graphics::Exception::GetFullMessage() const {
+std::wstring Graphics::GraphicsException::GetFullMessage() const {
     const std::wstring empty = L"";
     const std::wstring errorName = GetErrorName();
     const std::wstring errorDesc = GetErrorDescription();
@@ -245,17 +244,17 @@ std::wstring Graphics::Exception::GetFullMessage() const {
            (!location.empty() ? std::wstring(L"Location: ") + location : empty);
 }
 
-std::wstring Graphics::Exception::GetErrorName() const {
+std::wstring Graphics::GraphicsException::GetErrorName() const {
     return DXGetErrorString(hr);
 }
 
-std::wstring Graphics::Exception::GetErrorDescription() const {
+std::wstring Graphics::GraphicsException::GetErrorDescription() const {
     std::array<wchar_t, 512> wideDescription;
     DXGetErrorDescription(hr, wideDescription.data(), wideDescription.size());
 
     return wideDescription.data();
 }
 
-std::wstring Graphics::Exception::GetExceptionType() const {
+std::wstring Graphics::GraphicsException::GetExceptionType() const {
     return L"Graphics Exception";
 }

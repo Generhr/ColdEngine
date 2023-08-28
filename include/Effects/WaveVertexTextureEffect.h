@@ -3,7 +3,6 @@
 #include "Pipeline.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 class WaveVertexTextureEffect {
 public:
     class Vertex {

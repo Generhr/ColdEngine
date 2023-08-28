@@ -8,7 +8,6 @@
 #include <cstddef>
 #include <iostream>
 
-
 template<typename T>
 class Vector4 {
 private:

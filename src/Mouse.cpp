@@ -2,7 +2,6 @@
 
 #include "LinearAlgebra/Vector2.h"
 
-
 Vector2<int> Mouse::GetPos() const {
     return {x, y};
 }

@@ -7,7 +7,6 @@
 #include <array>
 #include <vector>
 
-
 class Plane {
 public:
     template<class V>

@@ -47,7 +47,6 @@ THE SOFTWARE.
 #include <string>
 #include <vector>
 
-
 namespace tinyobj {
 
     // https://en.wikipedia.org/wiki/Wavefront_.obj_file says ...

@@ -4,7 +4,6 @@
 #include "Shaders/DefaultVertexShader.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 // Color gradient effect between vertices
 class VertexColorEffect {
 public:

@@ -8,7 +8,6 @@
 #include <compare>  /* operator<, operator<=, operator>, operator>= */
 #include <cstddef>  /* size_t */
 
-
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
  */

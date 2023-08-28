@@ -7,7 +7,6 @@
 #include "Pipeline.h"
 #include "Effects/TextureEffect.h"
 
-
 // Scene demonstrating skinned cube
 class CubeSkinScene : public Scene {
 public:

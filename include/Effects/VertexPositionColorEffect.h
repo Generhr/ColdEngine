@@ -3,7 +3,6 @@
 #include "Pipeline.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 // Color gradient effect between vertices determined by vertex position
 class VertexPositionColorEffect {
 public:

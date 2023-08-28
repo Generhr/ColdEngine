@@ -5,7 +5,6 @@
 #include <cstddef>  /* for size_t */
 #include <iostream> /* char_traits, operator<<, ostream, cout, endl */
 
-
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
  */

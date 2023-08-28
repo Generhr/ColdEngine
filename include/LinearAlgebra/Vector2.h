@@ -9,7 +9,6 @@
 #include <cstddef>  /* size_t */
 #include <iostream> /* char_traits, operator<<, ostream, cout, endl */
 
-
 /**
  * Class for a two-dimensional vector object and assorted functions useful for manipulating points.
  */

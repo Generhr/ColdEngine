@@ -1,6 +1,5 @@
 #include "Keyboard.h"
 
-
 bool Keyboard::KeyIsPressed(unsigned char keycode) const {
     return keystates[keycode];
 }

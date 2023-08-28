@@ -2,7 +2,6 @@
 
 #include "LinearAlgebra/Vector3.h"
 
-
 class Color {
 public:
     constexpr Color() : dword() {
@@ -25,7 +24,10 @@ public:
 
     Color(Color&&) = default;
 
-    explicit Color(const Vec3& cf) : Color(unsigned char(cf[0]), unsigned char(cf[1]), unsigned char(cf[2])) {
+    explicit Color(const Vec3& cf)
+        : Color(static_cast<unsigned char>(cf[0]),
+              static_cast<unsigned char>(cf[1]),
+              static_cast<unsigned char>(cf[2])) {
     }
 
     ~Color() = default;
@@ -34,26 +36,26 @@ public:
     Color& operator=(const Color& color) = default;
 
     explicit operator Vec3() const {
-        return {float(GetR()), float(GetG()), float(GetB())};
+        return {static_cast<float>(GetR()), static_cast<float>(GetG()), static_cast<float>(GetB())};
     }
 
-    constexpr unsigned char GetX() const {
+    [[nodiscard]] constexpr unsigned char GetX() const {
         return dword >> 24u;
     }
 
-    constexpr unsigned char GetA() const {
+    [[nodiscard]] constexpr unsigned char GetA() const {
         return GetX();
     }
 
-    constexpr unsigned char GetR() const {
+    [[nodiscard]] constexpr unsigned char GetR() const {
         return (dword >> 16u) & 0xFFu;
     }
 
-    constexpr unsigned char GetG() const {
+    [[nodiscard]] constexpr unsigned char GetG() const {
         return (dword >> 8u) & 0xFFu;
     }
 
-    constexpr unsigned char GetB() const {
+    [[nodiscard]] constexpr unsigned char GetB() const {
         return dword & 0xFFu;
     }
 

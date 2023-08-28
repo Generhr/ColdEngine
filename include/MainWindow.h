@@ -9,7 +9,6 @@
 
 #include <string>
 
-
 class HWNDKey {
     friend Graphics::Graphics(HWNDKey&);
 
@@ -21,7 +20,7 @@ public:
     HWNDKey(HWNDKey&&) = delete;
     HWNDKey& operator=(HWNDKey&&) = delete;
 
-    HWND GetHWND() const {
+    [[nodiscard]] HWND GetHWND() const {
         return hWnd;
     }
 
@@ -40,16 +39,15 @@ public:
 
         using EngineException::EngineException;
 
-        std::wstring GetFullMessage() const override {
+        [[nodiscard]] std::wstring GetFullMessage() const override {
             return GetNote() + L"\nAt: " + GetLocation();
         }
 
-        std::wstring GetExceptionType() const override {
+        [[nodiscard]] std::wstring GetExceptionType() const override {
             return L"Windows Exception";
         }
     };
 
-public:
     MainWindow(HINSTANCE hInst, wchar_t* pArgs);
 
     MainWindow(const MainWindow&) = delete;
@@ -58,9 +56,9 @@ public:
 
     ~MainWindow();
 
-    bool IsActive() const;
+    [[nodiscard]] bool IsActive() const;
 
-    bool IsMinimized() const;
+    [[nodiscard]] bool IsMinimized() const;
 
     void ShowMessageBox(const std::wstring& title, const std::wstring& message) const;
 
@@ -69,7 +67,7 @@ public:
     }
 
     // Returns false if quitting
-    bool ProcessMessage();
+    static bool ProcessMessage();
 
     const std::wstring& GetArgs() const {
         return args;

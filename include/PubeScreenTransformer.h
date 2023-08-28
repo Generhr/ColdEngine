@@ -3,7 +3,6 @@
 #include "Graphics.h"
 #include "LinearAlgebra/Vector3.h"
 
-
 class PubeScreenTransformer {
 public:
     PubeScreenTransformer()

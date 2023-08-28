@@ -3,7 +3,6 @@
 #include "Pipeline.h"
 #include "Shaders/DefaultVertexShader.h"
 
-
 // Solid color attribute taken from table in gs and not interpolated
 class SolidGeometryEffect {
 public:

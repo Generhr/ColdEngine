@@ -6,7 +6,6 @@
 #include "Pipeline.h"
 #include "Effects/SolidGeometryEffect.h"
 
-
 class CubeSolidGeometryScene : public Scene {
 public:
     typedef Pipeline<SolidGeometryEffect> Pipeline;

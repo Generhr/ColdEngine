@@ -1,4 +1,5 @@
 {
+    "json.schemaDownload.enable": true,
     //============== Native ======================================================//
     "debug.terminal.clearBeforeReusing": true,
     "editor.rulers": [
@@ -117,7 +118,7 @@
         "*.shh": "cpp",
         "source_location": "cpp"
     },
-    "files.autoSave": "off", // This will build the project when you switch to another window (annoying).
+    "files.autoSave": "off", //~ Builds the project when you switch to another window (annoying).
     "files.exclude": {
         "node_modules/**/*": true,
         "**/.classpath": true,
@@ -173,6 +174,7 @@
     "cmake.clearOutputBeforeBuild": true,
     "cmake.configureOnEdit": true,
     "cmake.configureOnOpen": false,
+    "cmake.ctest.allowParallelJobs": true,
     "cmake.ignoreCMakeListsMissing": false,
     "cmake.launchBehavior": "newTerminal",
     "cmake.showSystemKits": false,
@@ -288,6 +290,7 @@
         "IIDNOTREG",
         "IIDREG",
         "IIDSTRING",
+        "illum",
         "INEXTERNALCALL",
         "INSUFF",
         "INSUFFICIENTPRIVS",
@@ -400,6 +403,7 @@
         "NOZBUFFERHW",
         "NOZOVERLAYHW",
         "NTDSCRIPT",
+        "objl",
         "OEMRESOURCE",
         "OPLOCK",
         "OUTOFBOUNDS",
@@ -649,4 +653,5 @@
         "*.cc",
         "*.c(pp)?"
     ],
+    //==============  Other  ======================================================//
 }

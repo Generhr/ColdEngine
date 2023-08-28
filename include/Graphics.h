@@ -6,8 +6,7 @@
 #include "Surface.h"
 
 #define byte                                                                                                           \
-    win_byte_override  //~
-                       //https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h
+    win_byte_override  // https://stackoverflow.com/questions/45957830/gdipluspath-throws-ambiguous-byte-for-cstddef-and-rpcndr-h
 
 #include <d3d11.h>
 
@@ -15,19 +14,18 @@
 
 #include <wrl.h>
 
-
 #define GRAPHICS_EXCEPTION(hr, note)                                                                                   \
-    Graphics::Exception(hr, note, ENGINE_EXCEPTION_FILE, ENGINE_EXCEPTION_LINE, ENGINE_EXCEPTION_COLUMN)
+    Graphics::GraphicsException(hr, note, GET_EXCEPTION_FILE, GET_EXCEPTION_LINE, GET_EXCEPTION_COLUMN)
 
 class Graphics {
 public:
-    class Exception : public EngineException {
+    class GraphicsException : public EngineException {
     public:
-        Exception(HRESULT hr, const std::wstring note, std::wstring file, std::wstring line, std::wstring column);
-        std::wstring GetErrorName() const;
-        std::wstring GetErrorDescription() const;
-        std::wstring GetFullMessage() const override;
-        std::wstring GetExceptionType() const override;
+        GraphicsException(HRESULT hr, std::wstring note, std::wstring file, std::wstring line, std::wstring column);
+        [[nodiscard]] std::wstring GetErrorName() const;
+        [[nodiscard]] std::wstring GetErrorDescription() const;
+        [[nodiscard]] std::wstring GetFullMessage() const override;
+        [[nodiscard]] std::wstring GetExceptionType() const override;
 
     private:
         HRESULT hr;

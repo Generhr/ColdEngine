@@ -9,7 +9,6 @@
 #include <fstream>
 #include <cctype>
 
-
 template<class T>
 struct IndexedTriangleList {
 public:
@@ -58,7 +57,7 @@ public:
             throw std::runtime_error(("LoadObj returned false  File:" + filename).c_str());
         }
 
-        if (shapes.size() == 0u) {
+        if (shapes.empty()) {
             throw std::runtime_error(("LoadObj object file had no shapes  File:" + filename).c_str());
         }
 
@@ -91,7 +90,7 @@ public:
             // Load set of 3 indices for each face into OUR index std::vector
             for (size_t vn = 0; vn < 3u; vn++) {
                 const auto idx = mesh.indices[f * 3u + vn];
-                tl.indices.push_back(size_t(idx.vertex_index));
+                tl.indices.push_back(static_cast<size_t>(idx.vertex_index));
             }
 
             // Reverse winding if file marked as CCW
@@ -119,7 +118,7 @@ public:
         };
 
         // Solve the minimum bounding sphere
-        Miniball::Miniball<VertexAccessor> mb(3, vertices.cbegin(), vertices.cend());
+        const Miniball::Miniball<VertexAccessor> mb(3, vertices.cbegin(), vertices.cend());
         // Get center of min sphere
         // Result is a pointer to float[3] (what a shitty fucking interface)
         const auto pc = mb.center();
@@ -131,7 +130,7 @@ public:
         }
     }
 
-    float GetRadius() const {
+    [[nodiscard]] float GetRadius() const {
         // Find element with max distance from 0,0; that is our radius
         return std::max_element(vertices.begin(), vertices.end(), [](const T& v0, const T& v1) {
             return v0.pos.GetMagnitudeSquared() < v1.pos.GetMagnitudeSquared();

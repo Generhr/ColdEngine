@@ -17,6 +17,21 @@ jobs:
         with:
           submodules: true
 
+      - name: Cache LLVM and Clang
+        id: cache-llvm
+        uses: actions/cache@v3
+        with:
+          path: |
+            C:/Program Files/LLVM
+            ./llvm
+          key: llvm-16.0.0
+
+      - name: Install LLVM and Clang
+        uses: KyleMayes/install-llvm-action@v1
+        with:
+          version: "16.0.0"
+          cached: ${{ steps.cache-llvm.outputs.cache-hit }}
+
       - name: Get CMake
         uses: lukka/get-cmake@latest
 
@@ -29,8 +44,13 @@ jobs:
       - name: Run CMake
         uses: lukka/run-cmake@v10
         with:
-          configurePreset: "ninja-multi-vcpkg"
-          configurePresetAdditionalArgs: '[`-DENABLE_TESTING=ON`]'
-          buildPreset: "ninja-multi-vcpkg-release"
-          buildPresetAdditionalArgs: '[`--target unit_tests`, `-j4`]'
-          testPreset: "ninja-multi-vcpkg-release"
+          configurePreset: "configure-release-with-debug-info"
+          configurePresetAdditionalArgs: '[`-DENABLE_CODE_COVERAGE=ON`]'
+          buildPreset: "build-release-with-debug-info"
+          buildPresetAdditionalArgs: '[`--target unit_tests`]'
+          testPreset: "test-release-with-debug-info"
+
+      - name: Code Coverage
+        uses: codecov/codecov-action@v3
+        with:
+          token: ${{ secrets.CODECOV_TOKEN }}

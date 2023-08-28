@@ -11,18 +11,17 @@
 #include <string>
 #include <filesystem>
 
-
 class Surface {
 public:
     class Exception : public EngineException {
     public:
         using EngineException::EngineException;
 
-        std::wstring GetFullMessage() const override {
+        [[nodiscard]] std::wstring GetFullMessage() const override {
             return GetNote() + L"\nAt: " + GetLocation();
         }
 
-        std::wstring GetExceptionType() const override {
+        [[nodiscard]] std::wstring GetExceptionType() const override {
             return L"Surface Exception";
         }
     };
@@ -74,22 +73,22 @@ public:
 
     void PutPixelAlpha(unsigned int x, unsigned int y, Color c);
 
-    Color GetPixel(unsigned int x, unsigned int y) const {
+    [[nodiscard]] Color GetPixel(unsigned int x, unsigned int y) const {
         assert(x < width);
         assert(y < height);
 
         return pBuffer[y * pitch + x];
     }
 
-    unsigned int GetWidth() const {
+    [[nodiscard]] unsigned int GetWidth() const {
         return width;
     }
 
-    unsigned int GetHeight() const {
+    [[nodiscard]] unsigned int GetHeight() const {
         return height;
     }
 
-    unsigned int GetPitch() const {
+    [[nodiscard]] unsigned int GetPitch() const {
         return pitch;
     }
 
@@ -97,7 +96,7 @@ public:
         return pBuffer.get();
     }
 
-    const Color* GetBufferPtrConst() const {
+    [[nodiscard]] const Color* GetBufferPtrConst() const {
         return pBuffer.get();
     }
 

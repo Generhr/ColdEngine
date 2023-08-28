@@ -3,11 +3,10 @@
 #include <string>
 #include <source_location>
 
-
-#define ENGINE_EXCEPTION_FILE                                                                                          \
-    std::wstring_convert<std::codecvt_utf8<wchar_t>>().from_bytes(std::source_location::current().file_name())
-#define ENGINE_EXCEPTION_LINE std::to_wstring(std::source_location::current().line())
-#define ENGINE_EXCEPTION_COLUMN std::to_wstring(std::source_location::current().column())
+#define GET_EXCEPTION_FILE __FILEW__  //! StringConversion::Utf8ToWstring(std::source_location::current().file_name())
+#define GET_EXCEPTION_LINE std::to_wstring(__LINE__)  //! std::to_wstring(std::source_location::current().line())
+#define GET_EXCEPTION_COLUMN                                                                                           \
+    std::to_wstring(__builtin_COLUMN())  //! std::to_wstring(std::source_location::current().column())
 
 class EngineException {
 public:
@@ -22,28 +21,28 @@ public:
     EngineException(EngineException&&) = delete;
     EngineException& operator=(EngineException&&) = delete;
 
-    const constexpr std::wstring& GetFile() const {
+    [[nodiscard]] const constexpr std::wstring& GetFile() const {
         return file;
     }
 
-    const constexpr std::wstring& GetLine() const {
+    [[nodiscard]] const constexpr std::wstring& GetLine() const {
         return line;
     }
 
-    const constexpr std::wstring& GetColumn() const {
+    [[nodiscard]] const constexpr std::wstring& GetColumn() const {
         return column;
     }
 
-    const constexpr std::wstring& GetNote() const {
+    [[nodiscard]] const constexpr std::wstring& GetNote() const {
         return note;
     }
 
-    const constexpr std::wstring GetLocation() const {
+    [[nodiscard]] const constexpr std::wstring GetLocation() const {
         return std::wstring(L"Line [") + line + L"] in " + file;
     }
 
-    virtual std::wstring GetFullMessage() const = 0;
-    virtual std::wstring GetExceptionType() const = 0;
+    [[nodiscard]] virtual std::wstring GetFullMessage() const = 0;
+    [[nodiscard]] virtual std::wstring GetExceptionType() const = 0;
 
 private:
     std::wstring file;

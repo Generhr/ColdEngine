@@ -7,7 +7,6 @@
 #include <memory>
 #include <vector>
 
-
 class Engine {
 public:
     explicit Engine(class MainWindow& window);

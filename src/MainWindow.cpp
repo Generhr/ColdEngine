@@ -6,7 +6,6 @@
 
 #include <cassert>
 
-
 MainWindow::MainWindow(HINSTANCE hInst, wchar_t* pArgs) : hInst(hInst), args(pArgs) {
     // Register window class
     WNDCLASSEX wc = {sizeof(WNDCLASSEX),
@@ -52,9 +51,9 @@ MainWindow::MainWindow(HINSTANCE hInst, wchar_t* pArgs) : hInst(hInst), args(pAr
 
     // Throw an exception if something went terribly wrong
     if (hWnd == nullptr) {
-        throw Exception(ENGINE_EXCEPTION_FILE,
-            ENGINE_EXCEPTION_LINE,
-            ENGINE_EXCEPTION_COLUMN,
+        throw Exception(GET_EXCEPTION_FILE,
+            GET_EXCEPTION_LINE,
+            GET_EXCEPTION_COLUMN,
             L"Failed to get valid window handle.");
     }
 

@@ -4,7 +4,6 @@
 #include "LinearAlgebra/Vector2.h"
 #include "LinearAlgebra/Vector3.h"
 
-
 class Cube {
 public:
     template<class V>

@@ -1,23 +1,23 @@
-cmake_minimum_required(VERSION 3.21...3.27 FATAL_ERROR) #? 3.21 - PROJECT_IS_TOP_LEVEL
-
-#============  Safe Guards  ====================================================#
-
-include(cmake/SafeGuards.cmake)
+cmake_minimum_required(VERSION 3.27...3.27 FATAL_ERROR) #? 3.27 - SKIP_LINTING
 
 #==========  Project Details  ==================================================#
 
 project("ColdEngine"
-        VERSION "1.6.0"
+        VERSION "1.6.1"
         DESCRIPTION "Direct3D Wrapper / 3D Engine written in C++"
         HOMEPAGE_URL "https://github.com/Onimuru/ColdEngine"
         LANGUAGES CXX C
 )
 
+#============  Safe Guards  ====================================================#
+
+include(cmake/SafeGuards.cmake)
+variable_watch(CMAKE_BUILD_TYPE readonly_guard)
+
 #==========  CMake Variables  ==================================================#
 
 message(STATUS "\n-- Configuring CMake for ${PROJECT_NAME} v${PROJECT_VERSION}...\n--")
 
-# Only do these if this is the main project, and not if it is included through add_subdirectory:
 if(PROJECT_IS_TOP_LEVEL)
     if(NOT DEFINED CMAKE_CXX_STANDARD)
         set(CMAKE_CXX_STANDARD
@@ -26,17 +26,27 @@ if(PROJECT_IS_TOP_LEVEL)
         )
     endif()
 
-    # Require C++17 features like if constexpr:
     set(CMAKE_CXX_STANDARD_REQUIRED 17)
 
     set(CMAKE_CXX_EXTENSIONS OFF)
     set(CMAKE_C_EXTENSIONS OFF)
 endif()
 
-# Suppress generation of the ZERO_CHECK build target:
-set(CMAKE_SUPPRESS_REGENERATION true)
+set(CMAKE_SUPPRESS_REGENERATION ON)
+
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 set(CMAKE_COLOR_DIAGNOSTICS ON)
+
+include(ProcessorCount)
+ProcessorCount(PROCESSOR_COUNT)
+
+if(PROCESSOR_COUNT EQUAL 0)
+    set(PROCESSOR_COUNT 1)
+endif()
+
+string(TOLOWER "${PROJECT_NAME}" PROJECT_NAME_TOLOWER)
+string(TOUPPER "${PROJECT_NAME}" PROJECT_NAME_TOUPPER)
 
 set(GIT_SHA
     "Unknown"
@@ -44,19 +54,30 @@ set(GIT_SHA
 )
 string(SUBSTRING "${GIT_SHA}" 0 8 GIT_SHORT_SHA)
 
+#=======  Manual File Additions  ===============================================#
+
+set(SKIP_LINTING_LIST "${CMAKE_CURRENT_SOURCE_DIR}/src/DXErr.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/include/DXErr.h")
+
+set(PRECOMPILED_HEADER_LIST "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h")
+
+set(MANUAL_HEADER_LIST)
+
+set(MANUAL_SOURCE_LIST)
+
 #====  Define CMake Module Imports  ============================================#
 
+include(CMakeParseArguments)
+
 include(cmake/Options.cmake)
+
+include(cmake/Utilities.cmake)
 
 include(cmake/UpdateSubmodules.cmake)
 
 include(cmake/Cache.cmake)
 enable_cache()
 
-if(ENABLE_CPPCHECK
-   OR ENABLE_CLANG_TIDY
-   OR ENABLE_INCLUDE_WHAT_YOU_USE
-)
+if(ENABLE_STATIC_ANALYZERS)
     include(cmake/StaticAnalyzers.cmake)
 
     if(ENABLE_CPPCHECK)
@@ -84,11 +105,6 @@ endif()
 
 include(cmake/Warnings.cmake)
 
-if(ENABLE_DOXYGEN)
-    include(cmake/Doxygen.cmake)
-    enable_doxygen()
-endif()
-
 set(VCPKG_BUILD_DOCS OFF)
 set(VCPKG_BUILD_TESTS OFF)
 set(VCPKG_BUILD_EXAMPLES OFF)
@@ -101,20 +117,46 @@ endif()
 
 option(VCPKG_APPLOCAL_DEPS "Automatically copy dependencies into the output directory for executables." ON)
 
-include("${CMAKE_CURRENT_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake")
+include("${CMAKE_SOURCE_DIR}/external/vcpkg/scripts/buildsystems/vcpkg.cmake")
+
+#=========  Compiler/OS Fixes  =================================================#
+
+if(CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    if(WIN32)
+        add_compile_options($<$<COMPILE_LANGUAGE:C>:-fcolor-diagnostics> $<$<COMPILE_LANGUAGE:CXX>:-fcolor-diagnostics>)
+    else()
+        add_compile_options(-fcolor-diagnostics)
+    endif()
+
+    set(WINDOWS_HEADERS_NEEDED_BY_CLANG_LIST "$ENV{EXTERNAL_INCLUDE}")
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "GNU")
+    if(WIN32)
+        add_compile_options($<$<COMPILE_LANGUAGE:C>:-fdiagnostics-color=always> $<$<COMPILE_LANGUAGE:CXX>:-fdiagnostics-color=always>)
+    else()
+        add_compile_options(-fdiagnostics-color=always)
+    endif()
+elseif(CMAKE_CXX_COMPILER_ID STREQUAL "MSVC")
+    if(MSVC_VERSION GREATER 1900)
+        add_compile_options(/diagnostics:column)
+    endif()
+
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} /EHsc")
+else()
+    message(STATUS "No colored compiler diagnostic set for '${CMAKE_CXX_COMPILER_ID}' compiler.")
+endif()
 
 #==========  Configure Files  ==================================================#
 
-add_subdirectory(configure)
+configure_file("configure/config.h.in" "${CMAKE_CURRENT_BINARY_DIR}/configured_files/include/config.h" ESCAPE_QUOTES)
 
-if(NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferPS.cso" OR NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferVS.cso")
+if(NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/bin/ShaderOutput/FramebufferPS.cso" OR NOT EXISTS "${CMAKE_CURRENT_BINARY_DIR}/bin/ShaderOutput/FramebufferVS.cso")
     # List of HLSL shader source files
     set(HLSL_SHADER_FILES shaders/FramebufferPS.hlsl shaders/FramebufferVS.hlsl)
 
     # Iterate through each shader and compile it
     foreach(SHADER ${HLSL_SHADER_FILES})
         get_filename_component(SHADER_NAME ${SHADER} NAME_WE)
-        set(CSO_OUTPUT ${CMAKE_BINARY_DIR}/bin/ShaderOutput/${SHADER_NAME})
+        set(CSO_OUTPUT ${CMAKE_CURRENT_BINARY_DIR}/bin/ShaderOutput/${SHADER_NAME})
 
         string(REGEX REPLACE ".*(PS|VS)\\.hlsl" "\\1_4_0_level_9_1" TARGET_PROFILE ${SHADER})
         string(TOLOWER ${TARGET_PROFILE} TARGET_PROFILE)
@@ -137,57 +179,36 @@ if(NOT EXISTS "${CMAKE_BINARY_DIR}/bin/ShaderOutput/FramebufferPS.cso" OR NOT EX
 
         list(APPEND CSO_FILES ${CSO_OUTPUT})
     endforeach()
+
+    list(APPEND MANUAL_SOURCE_LIST "${CSO_FILES}") # NOTE: Adding `CSO_FILES` here ensures that they are built if the variable has been set and that only happens if the .cso files have been deleted
 endif()
 
 # Move textures into place so that they are relative to the executable
 file(GLOB_RECURSE COPY_FILES "res/*")
-file(COPY ${COPY_FILES} DESTINATION "${CMAKE_BINARY_DIR}/bin/res")
+file(COPY ${COPY_FILES} DESTINATION "${CMAKE_CURRENT_BINARY_DIR}/bin/res")
 
 #========== Add Source Files ==================================================#
 
 add_subdirectory(external EXCLUDE_FROM_ALL)
 
-set(PRECOMPILED_HEADER_LIST "${CMAKE_CURRENT_SOURCE_DIR}/include/pch.h")
+file(GLOB_RECURSE HEADER_LIST include/*)
+list(APPEND HEADER_LIST ${MANUAL_HEADER_LIST})
+list(REMOVE_DUPLICATES HEADER_LIST)
+list(REMOVE_ITEM HEADER_LIST ${PRECOMPILED_HEADER_LIST})
 
-if(ENABLE_CLANG_TIDY)
-    set(NO_STATIC_CODE_ANALYSIS_LIST "${CMAKE_CURRENT_SOURCE_DIR}/src/DXErr.cpp" "${CMAKE_CURRENT_SOURCE_DIR}/include/DXErr.h")
-endif()
+file(GLOB_RECURSE SOURCE_LIST src/*.cpp)
+list(APPEND SOURCE_LIST ${MANUAL_SOURCE_LIST})
+list(REMOVE_DUPLICATES SOURCE_LIST)
+list(REMOVE_ITEM SOURCE_LIST "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp")
 
-set(HEADER_LIST)
-
-file(GLOB_RECURSE HEADER_FILES include/*${SUFFIX_HPPHEADER})
-
-foreach(HEADER_FILE ${HEADER_FILES})
-    if(NOT "${HEADER_FILE}" IN_LIST PRECOMPILED_HEADER_LIST AND NOT "${HEADER_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST)
-        list(APPEND HEADER_LIST ${HEADER_FILE})
-    endif()
-endforeach()
-
-set(SOURCE_LIST "${CSO_FILES}") # NOTE: Adding `CSO_FILES` here ensures that they are built if the variable has been set and that only happens if the .cso files have been deleted
-
-file(GLOB_RECURSE SOURCE_FILES src/*.cpp)
-
-foreach(SOURCE_FILE ${SOURCE_FILES})
-    if(NOT "${SOURCE_FILE}" MATCHES ".*/Main.cpp" AND NOT "${SOURCE_FILE}" IN_LIST NO_STATIC_CODE_ANALYSIS_LIST)
-        list(APPEND SOURCE_LIST ${SOURCE_FILE})
-    endif()
+foreach(SOURCE_FILE IN LISTS SKIP_LINTING_LIST)
+    set_source_files_properties(${SOURCE_FILE} PROPERTIES SKIP_LINTING ON)
 endforeach()
 
 #===========  Create Target  ===================================================#
 
-# Delete all cmake files from previous builds
-add_custom_target(clean-cmake-files COMMAND git clean -d -f -x)
-
 # Main executable
-if(ENABLE_CLANG_TIDY AND NO_STATIC_CODE_ANALYSIS_LIST)
-    add_library(NO_STATIC_CODE_ANALYSIS OBJECT "${NO_STATIC_CODE_ANALYSIS_LIST}")
-    set_target_properties(NO_STATIC_CODE_ANALYSIS PROPERTIES CXX_CLANG_TIDY "")
-    target_include_directories(NO_STATIC_CODE_ANALYSIS PRIVATE "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>")
-
-    add_executable(${PROJECT_NAME} "src/Main.cpp" "$<TARGET_OBJECTS:NO_STATIC_CODE_ANALYSIS>" "${SOURCE_LIST}")
-else()
-    add_executable(${PROJECT_NAME} "src/Main.cpp" "${SOURCE_LIST}")
-endif()
+add_executable(${PROJECT_NAME} "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp" "${SOURCE_LIST}" "${HEADER_LIST}")
 
 if(VERBOSE_OUTPUT)
     message(STATUS "Created ${PROJECT_NAME} binary with the following sources:")
@@ -200,13 +221,16 @@ else()
     message(STATUS "Created ${PROJECT_NAME} binary")
 endif()
 
-#========  Include Directories  ================================================#
-
 target_include_directories(
     ${PROJECT_NAME}
-    PUBLIC "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
-    PRIVATE "${CMAKE_BINARY_DIR}/configured_files/include"
+    PUBLIC "${WINDOWS_HEADERS_NEEDED_BY_CLANG_LIST}" "$<BUILD_INTERFACE:${PROJECT_SOURCE_DIR}/include>"
+    PRIVATE "${CMAKE_CURRENT_BINARY_DIR}/configured_files/include"
 )
+
+# Precompile headers
+if(NOT ENABLE_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+    target_precompile_headers(${PROJECT_NAME} PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
+endif()
 
 #=====  Set Standard and Warnings  =============================================#
 
@@ -215,9 +239,9 @@ set_target_properties(
     PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD}
                CXX_STANDARD_REQUIRED 17
                CXX_EXTENSIONS NO
-               RUNTIME_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/bin"
-               LIBRARY_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
-               ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_BINARY_DIR}/lib"
+               RUNTIME_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/bin"
+               LIBRARY_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib"
+               ARCHIVE_OUTPUT_DIRECTORY "${CMAKE_CURRENT_BINARY_DIR}/lib"
 )
 
 message(STATUS "* using standard C++${CMAKE_CXX_STANDARD}")
@@ -226,62 +250,54 @@ if(ENABLE_WARNINGS)
     target_set_warnings(${PROJECT_NAME})
 endif()
 
-#=========  Link Dependencies  =================================================#
+#========  Compile Definitions  ================================================#
 
-# Precompile headers
-if(NOT ENABLE_CLANG_TIDY)
-    target_precompile_headers(${PROJECT_NAME} PRIVATE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
-endif()
+# Target
+target_compile_definitions(${PROJECT_NAME} PRIVATE "$<$<CONFIG:DEBUG>:-D${PROJECT_NAME_TOUPPER}_DEBUG>")
+
+#=========  Link Dependencies  =================================================#
 
 #===========  Alias Targets  ===================================================#
 
 add_executable(${PROJECT_NAME}::${PROJECT_NAME} ALIAS ${PROJECT_NAME})
 
+#==============  Install  ======================================================#
+
+include(GNUInstallDirs)
+
+# Determine the installation directory for headers and libraries (the CMAKE_INSTALL_* variables are defined by the GNUInstallDirs module)
+set(INSTALL_INCLUDE_DIR "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}-${PROJECT_VERSION}")
+set(INSTALL_BIN_DIR "${CMAKE_INSTALL_BINDIR}")
+set(INSTALL_LIB_DIR "${CMAKE_INSTALL_LIBDIR}")
+
 #========= Unit Testing Setup =================================================#
 
 if(PROJECT_IS_TOP_LEVEL)
     if(ENABLE_TESTING)
-        if(ENABLE_CODE_COVERAGE)
-            include(cmake/CodeCoverage.cmake)
-
-            append_coverage_compiler_flags()
-
-            setup_target_for_coverage_lcov(
-                NAME
-                coverage
-                EXECUTABLE
-                ctest
-                EXCLUDE
-                "${CMAKE_CURRENT_SOURCE_DIR}/cmake/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/external/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/src/Main.cpp"
-                "${CMAKE_CURRENT_SOURCE_DIR}/test/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/build/*"
-                "${CMAKE_CURRENT_SOURCE_DIR}/docs/*"
-            )
-        endif()
+        include(CTest) # NOTE: Replace this with `enable_testing()` if you get annoyed with all the build targets that CTest adds
 
         add_library(TESTING_LIBRARY INTERFACE)
 
-        if(ENABLE_CLANG_TIDY AND NO_STATIC_CODE_ANALYSIS_LIST)
-            target_sources(TESTING_LIBRARY INTERFACE "$<TARGET_OBJECTS:NO_STATIC_CODE_ANALYSIS>" "${SOURCE_LIST}" "${HEADER_LIST}")
-        else()
-            target_sources(TESTING_LIBRARY INTERFACE "${SOURCE_LIST}" "${HEADER_LIST}")
+        if(ENABLE_CODE_COVERAGE)
+            include(cmake/CodeCoverage.cmake)
+            append_coverage_compiler_flags_to_target(TESTING_LIBRARY)
         endif()
 
-        target_include_directories(TESTING_LIBRARY INTERFACE "${CMAKE_CURRENT_SOURCE_DIR}/include")
+        target_sources(TESTING_LIBRARY INTERFACE "${SOURCE_LIST}" "${HEADER_LIST}") # NOTE: Including header files here helps IDEs but is not required
+        target_include_directories(TESTING_LIBRARY INTERFACE "${WINDOWS_HEADERS_NEEDED_BY_CLANG_LIST}" "${CMAKE_CURRENT_SOURCE_DIR}/include")
+
+        if(NOT ENABLE_CLANG_TIDY OR CMAKE_CXX_COMPILER_ID MATCHES ".*Clang")
+            target_precompile_headers(TESTING_LIBRARY INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
+        endif()
+
         set_target_properties(
-            ${TESTING_LIBRARY}
+            TESTING_LIBRARY
             PROPERTIES CXX_STANDARD ${CMAKE_CXX_STANDARD}
                        CXX_STANDARD_REQUIRED 17
                        CXX_EXTENSIONS NO
         )
 
-        if(NOT ENABLE_CLANG_TIDY)
-            target_precompile_headers(TESTING_LIBRARY INTERFACE "$<$<COMPILE_LANGUAGE:CXX>:${PRECOMPILED_HEADER_LIST}>")
-        endif()
-
-        enable_testing()
+        target_compile_definitions(TESTING_LIBRARY INTERFACE "${PROJECT_NAME_TOUPPER}_TEST")
 
         find_package(GTest CONFIG REQUIRED)
         include(GoogleTest)
@@ -302,11 +318,9 @@ if(PROJECT_IS_TOP_LEVEL)
     endif()
 endif()
 
-#==============  Install  ======================================================#
+#==============  Doxygen  ======================================================#
 
-include(GNUInstallDirs)
-
-# Determine the installation directory for headers and libraries (the CMAKE_INSTALL_* variables are defined by the GNUInstallDirs module):
-set(INSTALL_INCLUDE_DIR "${CMAKE_INSTALL_INCLUDEDIR}/${PROJECT_NAME}-${PROJECT_VERSION}")
-set(INSTALL_BIN_DIR "${CMAKE_INSTALL_BINDIR}")
-set(INSTALL_LIB_DIR "${CMAKE_INSTALL_LIBDIR}")
+if(ENABLE_DOXYGEN)
+    include(cmake/Doxygen.cmake)
+    enable_doxygen()
+endif()

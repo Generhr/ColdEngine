@@ -11,7 +11,6 @@
 #include "Scenes/GeometryFlatScene.h"
 #include "Scenes/VertexWaveScene.h"
 
-
 Engine::Engine(MainWindow& window) : window(window), graphics(window) {
     // scenes.push_back(std::make_unique<CubeSkinScene>(graphics, L"res\\office_skin.jpg"));
     // scenes.push_back(std::make_unique<CubeSolidScene>(graphics));

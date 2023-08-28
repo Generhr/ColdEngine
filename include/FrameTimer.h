@@ -2,7 +2,6 @@
 
 #include <chrono>
 
-
 class FrameTimer {
 public:
     FrameTimer() = default;

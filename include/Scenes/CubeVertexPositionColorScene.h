@@ -6,7 +6,6 @@
 #include "Pipeline.h"
 #include "Effects/VertexPositionColorEffect.h"
 
-
 class CubeVertexPositionColorScene : public Scene {
 public:
     typedef Pipeline<VertexPositionColorEffect> Pipeline;

@@ -11,7 +11,6 @@
 
 #include <algorithm>
 
-
 // Triangle drawing pipeline with programable pixel shading stage
 template<class Effect>
 class Pipeline {

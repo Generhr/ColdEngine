@@ -17,7 +17,6 @@
         "gdiplus.lib")  //~ Sometimes if a new header file is added, and this error starts coming due to that, you need
                         //~ to add library as well to get rid of unresolved external symbol.
 
-
 GDIPlusManager::GDIPlusManager() {
     if (refCount++ == 0) {
         Gdiplus::GdiplusStartupInput input;

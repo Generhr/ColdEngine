@@ -4,7 +4,6 @@
 #include "Shaders/DefaultVertexShader.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 // Basic texture effect
 class TextureEffect {
 public:
@@ -81,14 +80,14 @@ public:
 
         template<class Input>
         Color operator()(const Input& in) const {
-            return pTex->GetPixel((unsigned int)std::min(in.t[0] * tex_width + 0.5f, tex_xclamp),
-                (unsigned int)std::min(in.t[1] * tex_height + 0.5f, tex_yclamp));
+            return pTex->GetPixel(static_cast<unsigned int>(std::min(in.t[0] * tex_width + 0.5f, tex_xclamp)),
+                static_cast<unsigned int>(std::min(in.t[1] * tex_height + 0.5f, tex_yclamp)));
         }
 
         void BindTexture(const std::wstring& filename) {
             pTex = std::make_unique<Surface>(Surface::FromFile(filename));
-            tex_width = float(pTex->GetWidth());
-            tex_height = float(pTex->GetHeight());
+            tex_width = static_cast<float>(pTex->GetWidth());
+            tex_height = static_cast<float>(pTex->GetHeight());
             tex_xclamp = tex_width - 1.0f;
             tex_yclamp = tex_height - 1.0f;
         }

@@ -4,7 +4,6 @@
 #include "Shaders/DefaultVertexShader.h"
 #include "Shaders/DefaultGeometryShader.h"
 
-
 // Solid color attribute not interpolated
 class SolidEffect {
 public:

@@ -20,7 +20,6 @@
 #include <system_error>
 #include <vector>
 
-
 namespace GraphicsUtils {
     inline std::vector<uint8_t> ReadData(_In_z_ const wchar_t* name) {
         std::ifstream inFile(name, std::ios::in | std::ios::binary | std::ios::ate);

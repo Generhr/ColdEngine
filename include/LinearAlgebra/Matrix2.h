@@ -2,7 +2,6 @@
 
 #include <iostream> /* stream, cout */
 
-
 /**
  * Class for a three-dimensional vector object and assorted functions useful for manipulation.
  */

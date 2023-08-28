@@ -6,7 +6,6 @@
 #include "Pipeline.h"
 #include "Effects/SolidEffect.h"
 
-
 class DoubleCubeScene : public Scene {
 public:
     typedef Pipeline<SolidEffect> Pipeline;

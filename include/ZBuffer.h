@@ -3,7 +3,6 @@
 #include <limits>
 #include <cassert>
 
-
 class ZBuffer {
 public:
     ZBuffer(int width, int height) : width(width), height(height), pBuffer(std::make_unique<float[]>(width * height)) {

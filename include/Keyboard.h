@@ -3,7 +3,6 @@
 #include <bitset>
 #include <queue>
 
-
 class Keyboard {
     friend class MainWindow;
 
@@ -23,19 +22,19 @@ public:
         Event(Type type, unsigned char code) : type(type), code(code) {
         }
 
-        bool IsPress() const {
+        [[nodiscard]] bool IsPress() const {
             return type == Press;
         }
 
-        bool IsRelease() const {
+        [[nodiscard]] bool IsRelease() const {
             return type == Release;
         }
 
-        bool IsValid() const {
+        [[nodiscard]] bool IsValid() const {
             return type != Invalid;
         }
 
-        unsigned char GetCode() const {
+        [[nodiscard]] unsigned char GetCode() const {
             return code;
         }
     };
@@ -50,17 +49,17 @@ public:
     Keyboard(Keyboard&&) = delete;
     Keyboard& operator=(Keyboard&&) = delete;
 
-    bool KeyIsPressed(unsigned char keycode) const;
+    [[nodiscard]] bool KeyIsPressed(unsigned char keycode) const;
     Event ReadKey();
-    bool KeyIsEmpty() const;
+    [[nodiscard]] bool KeyIsEmpty() const;
     char ReadChar();
-    bool CharIsEmpty() const;
+    [[nodiscard]] bool CharIsEmpty() const;
     void FlushKey();
     void FlushChar();
     void Flush();
     void EnableAutorepeat();
     void DisableAutorepeat();
-    bool AutorepeatIsEnabled() const;
+    [[nodiscard]] bool AutorepeatIsEnabled() const;
 
 private:
     void OnKeyPressed(unsigned char keycode);

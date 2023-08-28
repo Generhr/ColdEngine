@@ -6,7 +6,6 @@
 
 #include <string>
 
-
 class Scene {
 public:
     Scene(const std::wstring& name) : name(name) {

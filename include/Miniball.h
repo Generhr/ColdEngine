@@ -29,7 +29,6 @@
 #include <ctime>
 #include <limits>
 
-
 namespace Miniball {
 
     // Global Functions
