@@ -1,0 +1,6 @@
+<map id="WaveVertexTextureEffect" name="WaveVertexTextureEffect">
+<area shape="rect" id="node1" title=" " alt="" coords="259,78,444,105"/>
+<area shape="rect" id="node2" href="$classWaveVertexTextureEffect_1_1PixelShader.html" title=" " alt="" coords="5,5,191,47"/>
+<area shape="rect" id="node3" href="$classWaveVertexTextureEffect_1_1GeometryShader.html" title=" " alt="" coords="5,71,191,112"/>
+<area shape="rect" id="node4" href="$classWaveVertexTextureEffect_1_1VertexShader.html" title=" " alt="" coords="5,136,191,177"/>
+</map>

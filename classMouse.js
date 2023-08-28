@@ -1,0 +1,26 @@
+var classMouse =
+[
+    [ "Event", "classMouse_1_1Event.html", "classMouse_1_1Event" ],
+    [ "Mouse", "classMouse.html#a53384c0941547398386755904770b1dd", null ],
+    [ "~Mouse", "classMouse.html#ac3faa3278c5417443f6800f91d8d6f9d", null ],
+    [ "Mouse", "classMouse.html#a589f01769018752ebb09b4065892d2ba", null ],
+    [ "Mouse", "classMouse.html#a3a4c9249ae84e329b5e8c049efbbc9a0", null ],
+    [ "Flush", "classMouse.html#a240cd0d00a0aa4a57ceafeec058b256d", null ],
+    [ "GetPos", "classMouse.html#a92a7718f53f57b43aded06a1346325ac", null ],
+    [ "GetPosX", "classMouse.html#ac80c44d9454043b9f41a636886396e4a", null ],
+    [ "GetPosY", "classMouse.html#ada9ba37672842e0968252ae9dd737891", null ],
+    [ "IsEmpty", "classMouse.html#ae331dd2ea0826da1e1e0daa081841369", null ],
+    [ "IsInWindow", "classMouse.html#aac019d97e3890d863b26ed9eff1e3588", null ],
+    [ "LeftIsPressed", "classMouse.html#a368d450d32e6577d13c49782ca1dd9a7", null ],
+    [ "operator=", "classMouse.html#a819e86107c42969fbd14511ce7b30898", null ],
+    [ "operator=", "classMouse.html#ab839104477f874f32b961d5fe05dd184", null ],
+    [ "Read", "classMouse.html#a4871a2637c79bfedb316f7f66e939baf", null ],
+    [ "RightIsPressed", "classMouse.html#afc3a95d7c88453a34ee9747dcd2057b0", null ],
+    [ "MainWindow", "classMouse.html#af9db4b672c4d3104f5541893e08e1809", null ],
+    [ "buffer", "classMouse.html#aaa92dec51803701895f55bfd66731a17", null ],
+    [ "isInWindow", "classMouse.html#a4ae3eb8f6922cd929622bd9376a42dd7", null ],
+    [ "leftIsPressed", "classMouse.html#a57bd2081b361699e19254cf6fb3d65f6", null ],
+    [ "rightIsPressed", "classMouse.html#a77c7f70c2084ae501282fd6c3a7a4ad1", null ],
+    [ "x", "classMouse.html#a136eea114b70f46392b89cc3779d4291", null ],
+    [ "y", "classMouse.html#a4a29b1c18faaa2fbe39ff985ba9d6737", null ]
+];

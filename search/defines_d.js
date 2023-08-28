@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['tinyobjloader_5fimplementation_1156',['TINYOBJLOADER_IMPLEMENTATION',['../tiny__obj__loader_8cpp.html#af14fac7fbc250522a78849d58d5b0811',1,'tiny_obj_loader.cpp']]]
+  ['win32_5flean_5fand_5fmean_1273',['WIN32_LEAN_AND_MEAN',['../Win_8h.html#ac7bef5d85e3dcd73eef56ad39ffc84a9',1,'Win.h']]]
 ];

@@ -1,3 +1,12 @@
 <map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$class_solid_geometry_effect_1_1_geometry_shader_1_1_output.html" title=" " alt="" coords="5,5,180,49"/>
+<area shape="rect" id="node1" href="$classScene.html" title=" " alt="" coords="5,208,67,235"/>
+<area shape="rect" id="node2" href="$classCubeFlatIndependentScene.html" title=" " alt="" coords="126,5,326,32"/>
+<area shape="rect" id="node3" href="$classCubeSkinScene.html" title=" " alt="" coords="165,56,287,83"/>
+<area shape="rect" id="node4" href="$classCubeSolidGeometryScene.html" title=" " alt="" coords="131,107,321,133"/>
+<area shape="rect" id="node5" href="$classCubeSolidScene.html" title=" " alt="" coords="163,157,289,184"/>
+<area shape="rect" id="node6" href="$classCubeVertexColorScene.html" title=" " alt="" coords="141,208,311,235"/>
+<area shape="rect" id="node7" href="$classCubeVertexPositionColorScene.html" title=" " alt="" coords="115,259,337,285"/>
+<area shape="rect" id="node8" href="$classDoubleCubeScene.html" title=" " alt="" coords="156,309,296,336"/>
+<area shape="rect" id="node9" href="$classGeometryFlatScene.html" title=" " alt="" coords="151,360,301,387"/>
+<area shape="rect" id="node10" href="$classVertexWaveScene.html" title=" " alt="" coords="157,411,295,437"/>
 </map>

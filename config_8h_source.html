@@ -28,7 +28,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">ColdEngine
-   &#160;<span id="projectnumber">1.6.0</span>
+   &#160;<span id="projectnumber">1.6.1</span>
    </div>
    <div id="projectbrief">Direct3D Wrapper / 3D Engine written in C++</div>
   </td>
@@ -89,17 +89,33 @@ $(document).ready(function(){initNavTree('config_8h_source.html',''); initResiza
 <div class="title">config.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<a href="config_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<a href="config_8h.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/* config.h for CMake builds */</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#ifndef COLDENGINE_CONFIG_H</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#define COLDENGINE_CONFIG_H</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="keyword">static</span> constexpr std::string_view project_name = <span class="stringliteral">&quot;ColdEngine&quot;</span>;</div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="keyword">static</span> constexpr std::string_view project_version = <span class="stringliteral">&quot;1.6.0&quot;</span>;</div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="keyword">static</span> constexpr std::int32_t project_version_major{ 1 };</div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="keyword">static</span> constexpr std::int32_t project_version_minor{ 6 };</div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="keyword">static</span> constexpr std::int32_t project_version_patch{ 0 };</div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="keyword">static</span> constexpr std::string_view git_sha = <span class="stringliteral">&quot;Unknown&quot;</span>;</div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;string_view&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
+<div class="line"><a name="l00009"></a><span class="lineno"><a class="line" href="namespaceColdEngine.html">    9</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceColdEngine_1_1CMake.html">ColdEngine::CMake</a> {</div>
+<div class="line"><a name="l00010"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#a7fd3d8b1f40bcd336e5ecbc018e0036c">   10</a></span>&#160;    <span class="keyword">inline</span> constexpr std::string_view <a class="code" href="namespaceColdEngine_1_1CMake.html#a7fd3d8b1f40bcd336e5ecbc018e0036c">project_name</a> = <span class="stringliteral">&quot;ColdEngine&quot;</span>;</div>
+<div class="line"><a name="l00011"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#a96fbc6298686fb82bded94472201f929">   11</a></span>&#160;    <span class="keyword">inline</span> constexpr std::string_view <a class="code" href="namespaceColdEngine_1_1CMake.html#a96fbc6298686fb82bded94472201f929">project_version</a> = <span class="stringliteral">&quot;1.6.1&quot;</span>;</div>
+<div class="line"><a name="l00012"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#ac2d87b3d04ddbdf721ff383460233225">   12</a></span>&#160;    <span class="keyword">inline</span> constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceColdEngine_1_1CMake.html#ac2d87b3d04ddbdf721ff383460233225">project_version_major</a> { 1 };</div>
+<div class="line"><a name="l00013"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#a4061dfac5cf1ecfe24e07ae716c79bb3">   13</a></span>&#160;    <span class="keyword">inline</span> constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceColdEngine_1_1CMake.html#a4061dfac5cf1ecfe24e07ae716c79bb3">project_version_minor</a> { 6 };</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#a5a2ef311e0b536e66aceea13dea3fdfc">   14</a></span>&#160;    <span class="keyword">inline</span> constexpr <span class="keywordtype">int</span> <a class="code" href="namespaceColdEngine_1_1CMake.html#a5a2ef311e0b536e66aceea13dea3fdfc">project_version_patch</a> { 1 };</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="namespaceColdEngine_1_1CMake.html#ae762e82e799c3285badf75414b02bf0e">   15</a></span>&#160;    <span class="keyword">inline</span> constexpr std::string_view <a class="code" href="namespaceColdEngine_1_1CMake.html#ae762e82e799c3285badf75414b02bf0e">git_sha</a> = <span class="stringliteral">&quot;Unknown&quot;</span>;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;}  <span class="comment">// namespace ColdEngine::CMake</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#endif </span><span class="comment">/* COLDENGINE_CONFIG_H */</span><span class="preprocessor"></span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment">/* end config.h for CMake builds */</span></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html">ColdEngine::CMake</a></div><div class="ttdef"><b>Definition:</b> config.h:9</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_a4061dfac5cf1ecfe24e07ae716c79bb3"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#a4061dfac5cf1ecfe24e07ae716c79bb3">ColdEngine::CMake::project_version_minor</a></div><div class="ttdeci">constexpr int project_version_minor</div><div class="ttdef"><b>Definition:</b> config.h:13</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_a5a2ef311e0b536e66aceea13dea3fdfc"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#a5a2ef311e0b536e66aceea13dea3fdfc">ColdEngine::CMake::project_version_patch</a></div><div class="ttdeci">constexpr int project_version_patch</div><div class="ttdef"><b>Definition:</b> config.h:14</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_a7fd3d8b1f40bcd336e5ecbc018e0036c"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#a7fd3d8b1f40bcd336e5ecbc018e0036c">ColdEngine::CMake::project_name</a></div><div class="ttdeci">constexpr std::string_view project_name</div><div class="ttdef"><b>Definition:</b> config.h:10</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_a96fbc6298686fb82bded94472201f929"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#a96fbc6298686fb82bded94472201f929">ColdEngine::CMake::project_version</a></div><div class="ttdeci">constexpr std::string_view project_version</div><div class="ttdef"><b>Definition:</b> config.h:11</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_ac2d87b3d04ddbdf721ff383460233225"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#ac2d87b3d04ddbdf721ff383460233225">ColdEngine::CMake::project_version_major</a></div><div class="ttdeci">constexpr int project_version_major</div><div class="ttdef"><b>Definition:</b> config.h:12</div></div>
+<div class="ttc" id="anamespaceColdEngine_1_1CMake_html_ae762e82e799c3285badf75414b02bf0e"><div class="ttname"><a href="namespaceColdEngine_1_1CMake.html#ae762e82e799c3285badf75414b02bf0e">ColdEngine::CMake::git_sha</a></div><div class="ttdeci">constexpr std::string_view git_sha</div><div class="ttdef"><b>Definition:</b> config.h:15</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

@@ -1,0 +1,6 @@
+<map id="VertexFlatEffect" name="VertexFlatEffect">
+<area shape="rect" id="node1" title=" " alt="" coords="284,64,411,91"/>
+<area shape="rect" id="node2" href="$classVertexFlatEffect_1_1PixelShader.html" title=" " alt="" coords="5,5,216,32"/>
+<area shape="rect" id="node3" href="$classDefaultGeometryShader.html" title=" " alt="" coords="15,57,206,98"/>
+<area shape="rect" id="node4" href="$classVertexFlatEffect_1_1VertexShader.html" title=" " alt="" coords="23,122,199,163"/>
+</map>

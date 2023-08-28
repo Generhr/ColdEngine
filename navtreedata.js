@@ -25,9 +25,7 @@
 var NAVTREE =
 [
   [ "ColdEngine", "index.html", [
-    [ "C++ Project Template", "index.html", [
-      [ "Building", "index.html#autotoc_md1", null ]
-    ] ],
+    [ "Building", "index.html#autotoc_md1", null ],
     [ "Namespaces", "namespaces.html", [
       [ "Namespace List", "namespaces.html", "namespaces_dup" ],
       [ "Namespace Members", "namespacemembers.html", [
@@ -67,12 +65,12 @@ var NAVTREE =
 
 var NAVTREEINDEX =
 [
-"_colors_8h.html",
-"_vector3_8cpp.html#acd001b833aaf532c808c6051f045d3c2",
-"class_keyboard.html",
-"class_tex_vertex.html#a95d346af8d4fb15e8ac3167552f40de8",
-"class_wave_vertex_texture_effect.html#a06680b6139e81df14b867cc156004bb9",
-"structtinyobj_1_1material__t.html#a6f28d7a04ebb6435c62adb502847f4c3"
+"Colors_8h.html",
+"Vector3_8cpp.html#a5728c0f30f9304b996fd20ac7ecb6e5f",
+"classGraphics.html#ae9f5bcaa267fdff06bbfcf1e2ddf7137",
+"classSurface.html#adfec593613a2af990f9008f689b64eb0",
+"classVertexPositionColorEffect_1_1VertexShader_1_1Output.html#a63e4fbfc49949513db02490fbdab08f8",
+"pch_8h_source.html"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

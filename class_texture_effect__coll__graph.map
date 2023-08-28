@@ -1,5 +1,0 @@
-<map id="TextureEffect" name="TextureEffect">
-<area shape="rect" id="node1" title=" " alt="" coords="143,113,240,141"/>
-<area shape="rect" id="node2" href="$class_texture_effect_1_1_pixel_shader.html" title=" " alt="" coords="5,13,181,41"/>
-<area shape="rect" id="node3" href="$class_default_geometry_shader.html" title=" " alt="" coords="205,5,376,49"/>
-</map>

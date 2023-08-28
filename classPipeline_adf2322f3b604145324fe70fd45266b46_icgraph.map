@@ -1,0 +1,12 @@
+<map id="Pipeline::BeginFrame" name="Pipeline::BeginFrame">
+<area shape="rect" id="node1" title=" " alt="" coords="276,247,436,274"/>
+<area shape="rect" id="node2" href="$classCubeFlatIndependentScene.html#a5a2d8f2ca8c78d6e283531a521f0806b" title=" " alt="" coords="17,5,217,47"/>
+<area shape="rect" id="node3" href="$classCubeSkinScene.html#a48b277a1b41049e40ea70d90aa186627" title=" " alt="" coords="35,71,199,98"/>
+<area shape="rect" id="node4" href="$classCubeSolidGeometryScene.html#aa7ef23fe155a0a262c0357eaa3452506" title=" " alt="" coords="21,123,212,164"/>
+<area shape="rect" id="node5" href="$classCubeSolidScene.html#a889dfe03da33047374c1eb2291d5596e" title=" " alt="" coords="33,189,201,215"/>
+<area shape="rect" id="node6" href="$classCubeVertexColorScene.html#ad2934096c9527e9dbb8cdcb9f8a45f80" title=" " alt="" coords="31,240,202,281"/>
+<area shape="rect" id="node7" href="$classCubeVertexPositionColorScene.html#ae281a042a0863dbb9e3bb7a6070e58cc" title=" " alt="" coords="5,305,228,347"/>
+<area shape="rect" id="node8" href="$classDoubleCubeScene.html#a2f87358aaf1a53d1401ec11598d1eaa0" title=" " alt="" coords="25,371,208,398"/>
+<area shape="rect" id="node9" href="$classGeometryFlatScene.html#aa5db5bbb8ea5e69cf430bbd4ab144054" title=" " alt="" coords="20,422,213,449"/>
+<area shape="rect" id="node10" href="$classVertexWaveScene.html#aed98f12c1ea59d6d6138498f75a106d6" title=" " alt="" coords="26,473,207,499"/>
+</map>

@@ -8,9 +8,9 @@ var namespacetinyobj =
     [ "shape_t", "structtinyobj_1_1shape__t.html", "structtinyobj_1_1shape__t" ],
     [ "attrib_t", "structtinyobj_1_1attrib__t.html", "structtinyobj_1_1attrib__t" ],
     [ "callback_t_", "structtinyobj_1_1callback__t__.html", "structtinyobj_1_1callback__t__" ],
-    [ "MaterialReader", "classtinyobj_1_1_material_reader.html", "classtinyobj_1_1_material_reader" ],
-    [ "MaterialFileReader", "classtinyobj_1_1_material_file_reader.html", "classtinyobj_1_1_material_file_reader" ],
-    [ "MaterialStreamReader", "classtinyobj_1_1_material_stream_reader.html", "classtinyobj_1_1_material_stream_reader" ],
+    [ "MaterialReader", "classtinyobj_1_1MaterialReader.html", "classtinyobj_1_1MaterialReader" ],
+    [ "MaterialFileReader", "classtinyobj_1_1MaterialFileReader.html", "classtinyobj_1_1MaterialFileReader" ],
+    [ "MaterialStreamReader", "classtinyobj_1_1MaterialStreamReader.html", "classtinyobj_1_1MaterialStreamReader" ],
     [ "callback_t", "namespacetinyobj.html#ad0a2aed3de0484c23a55f6aa59c991f4", null ],
     [ "real_t", "namespacetinyobj.html#ad5ca7469ff56bf0d8423120cfd99adce", null ],
     [ "texture_type_t", "namespacetinyobj.html#a5c9f207e1f880a48bac0a3b69f16d7f8", [

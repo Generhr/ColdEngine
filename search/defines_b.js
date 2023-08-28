@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['oemresource_1154',['OEMRESOURCE',['../_win_8h.html#a3a75770af38d05856eb2e9d1867b471c',1,'Win.h']]]
+  ['strict_1271',['STRICT',['../Win_8h.html#a8a7c30a576d5706b6c0821834d01cbbc',1,'Win.h']]]
 ];

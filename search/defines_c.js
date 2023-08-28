@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['strict_1155',['STRICT',['../_win_8h.html#a8a7c30a576d5706b6c0821834d01cbbc',1,'Win.h']]]
+  ['tinyobjloader_5fimplementation_1272',['TINYOBJLOADER_IMPLEMENTATION',['../tiny__obj__loader_8cpp.html#af14fac7fbc250522a78849d58d5b0811',1,'tiny_obj_loader.cpp']]]
 ];
