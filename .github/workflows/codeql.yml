@@ -87,7 +87,7 @@ jobs:
         with:
           configurePreset: "configure-release-with-debug-info"
           buildPreset: "build-release-with-debug-info"
-          buildPresetAdditionalArgs: '[`--target WinCraft`]'
+          buildPresetAdditionalArgs: '[`--target ColdEngine`]'
 
       - name: Perform CodeQL Analysis
         uses: github/codeql-action/analyze@v2
