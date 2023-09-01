@@ -116,7 +116,8 @@
         "xtree": "cpp",
         "xutility": "cpp",
         "*.shh": "cpp",
-        "source_location": "cpp"
+        "source_location": "cpp",
+        "resumable": "cpp"
     },
     "files.autoSave": "off", //~ Builds the project when you switch to another window (annoying).
     "files.exclude": {
